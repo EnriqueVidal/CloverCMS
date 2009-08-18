@@ -1,0 +1,17 @@
+%h3
+  Editing pages
+  
+- form_for( @page ) do |f|
+  = f.error_messages
+  = f.hidden_field :id
+  
+  %p
+    = f.label :title
+  %p
+    = f.text_field :title
+  %p
+    = f.label :body
+  %p
+    = f.text_area :body
+  %p
+    = f.submit 'Update'

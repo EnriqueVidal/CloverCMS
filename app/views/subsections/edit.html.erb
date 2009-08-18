@@ -1,0 +1,12 @@
+<h1>Editing subsections</h1>
+
+<% form_for(@subsections) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @subsections %> |
+<%= link_to 'Back', subsections_path %>

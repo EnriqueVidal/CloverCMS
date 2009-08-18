@@ -1,0 +1,16 @@
+<h1>Edit Page</h1>
+
+<p>
+  <%= label_tag :title %>
+  <br />
+  <%= @page.title %>
+</p>
+
+<p>
+  <%= label_tag :body %>
+  <br />
+  <%= @page.body %>
+</p>
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
