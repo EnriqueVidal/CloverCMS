@@ -1,48 +1,33 @@
 class SectionsController < ApplicationController
+  
   def items
     @section = Section.find(params[:id])
+    
+    respond_to do |format|
+      format.html { render :layout => false}
+    end
   end
   
-  # GET /sections
-  # GET /sections.xml
-  def index
-    @sections = Section.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @sections }
-    end
-  end
-
-  # GET /sections/1
-  # GET /sections/1.xml
-  def show
+  def new_page
     @section = Section.find(params[:id])
-
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @section }
+      format.html { render :layout => false }
     end
   end
-
-  # GET /sections/new
-  # GET /sections/new.xml
+  
   def new
     @section = Section.new
 
     respond_to do |format|
-      format.html 
+      format.html { render :layout => false }
       format.xml  { render :xml => @section }
     end
   end
 
-  # GET /sections/1/edit
   def edit
     @section = Section.find(params[:id])
   end
 
-  # POST /sections
-  # POST /sections.xml
   def create
     @section = Section.new(params[:section])
 
@@ -58,8 +43,6 @@ class SectionsController < ApplicationController
     end
   end
 
-  # PUT /sections/1
-  # PUT /sections/1.xml
   def update
     @section = Section.find(params[:section][:id])
 
@@ -75,8 +58,6 @@ class SectionsController < ApplicationController
     end
   end
 
-  # DELETE /sections/1
-  # DELETE /sections/1.xml
   def destroy
     @section = Section.find(params[:id])
     @section.destroy

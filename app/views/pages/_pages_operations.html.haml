@@ -2,3 +2,5 @@
   %legend
     Actions
   = link_to_remote 'Edit', :update => 'rendered_items', :url => "/pages/#{page.id}/edit"
+  %br
+  = link_to 'Destroy', "/pages/#{page.id}/destroy", :confirm => 'Are you sure?'

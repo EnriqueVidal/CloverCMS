@@ -1,7 +1,11 @@
 %h3
   = !defined?(title) ? 'Pages' : title + ' Pages'
 
-= link_to_remote 'Add Page', :update => 'rendered_items', :url => '/pages/new'
+
+- if defined? section_id
+  = link_to_remote 'Add Page', :update => 'rendered_items', :url => '/sections/new_page/'     + section_id.to_s
+- elsif defined? subsection_id
+  = link_to_remote 'Add Page', :update => 'rendered_items', :url => '/subsections/new_page/'  + subsection_id.to_s
 
 %ul
   - for page in pages

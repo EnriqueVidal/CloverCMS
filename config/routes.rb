@@ -2,17 +2,21 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :manager
   
+  map.delete_page 'pages/:id/destroy',    :controller => 'pages',   :action => 'destroy'
+  map.create_page 'pages/create',         :controller => 'pages',   :action => 'create'
   map.update_page 'pages/update',         :controller => 'pages',   :action => 'update'
   map.edit_page   'pages/:id/edit',       :controller => 'pages',   :action => 'edit'
   map.show_page   'pages/:id',            :controller => 'pages',   :action => 'show'
   map.resources   :pages
   
-  map.add_subsection    'subsection/add_subsection/:section_id',  :controller => 'subsections',   :action => 'add_subsection'
-  map.subsection_items  'subsection/:id/items',                   :controller => 'subsections',   :action => 'items'
-  map.resources         :subsections
+  map.add_subsection_page   'subsection/new_page/:id',                :controller => 'subsections',   :action => 'new_page'
+  map.add_subsection        'subsection/add_subsection/:section_id',  :controller => 'subsections',   :action => 'add_subsection'
+  map.subsection_items      'subsection/:id/items',                   :controller => 'subsections',   :action => 'items'
+  map.resources             :subsections
 
-  map.new_section       'section/new',          :controller => 'sections',      :action => 'new'
-  map.section_items     'section/:id/items',    :controller => 'sections',      :action => 'items'
+  map.add_section_page  'section/new_page/:id',   :controller => 'sections',      :action => 'new_page'
+  map.new_section       'section/new',            :controller => 'sections',      :action => 'new'
+  map.section_items     'section/:id/items',      :controller => 'sections',      :action => 'items'
   map.resources         :sections
 
   # The priority is based upon order of creation: first created -> highest priority.

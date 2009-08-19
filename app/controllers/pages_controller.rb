@@ -11,6 +11,10 @@ class PagesController < ApplicationController
 
   def edit
     @page = Page.find(params[:id])
+    
+    respond_to do |format|
+      format.html { render :layout => false }
+    end
   end
 
   def create
@@ -19,10 +23,10 @@ class PagesController < ApplicationController
     respond_to do |format|
       if @page.save
         flash[:notice] = 'Page was successfully created.'
-        format.html { redirect_to(@page) }
+        format.html { redirect_to :controller => :manager, :action => :index }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to :controller => :manager, :action => :index }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end
@@ -48,7 +52,8 @@ class PagesController < ApplicationController
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to(pages_url) }
+      flash[:success] = 'Page was successfully removed.'
+      format.html { redirect_to :controller => :manager, :action => :index }
       format.xml  { head :ok }
     end
   end

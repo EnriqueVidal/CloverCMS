@@ -2,6 +2,17 @@ class SubsectionsController < ApplicationController
 
   def items
     @subsection = Subsection.find(params[:id])
+    
+    respond_to do |format|
+      format.html { render :layout => false }
+    end
+  end
+  
+  def new_page
+    @subsection = Subsection.find(params[:id])
+    respond_to do |format|
+      format.html { render :layout => false }
+    end
   end
   
   def add_subsection

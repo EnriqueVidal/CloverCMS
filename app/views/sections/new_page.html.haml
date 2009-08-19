@@ -1,0 +1,16 @@
+%h3
+  = "Add new Page to " + @section.name
+  
+- form_for( Page.new, :url => { :controller => 'pages', :action => 'create' } ) do |f|
+  = f.hidden_field :section_id, :value => @section.id
+  
+  = f.label :title
+  %br
+  = f.text_field :title
+  %br
+  = f.label :body
+  %br
+  = f.text_area :body
+  %br
+  %br
+  = f.submit 'Create'
