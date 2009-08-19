@@ -1,0 +1,13 @@
+%h3
+  Add Subsection
+  
+- form_for( @subsection, :url => { :action => 'create' } ) do |f|
+  = f.hidden_field :section_id, :value => @section_id
+  
+  = f.label :name
+  = f.text_field :name
+  
+  %br
+  %br
+  
+  = f.submit 'Create'

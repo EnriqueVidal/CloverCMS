@@ -1,7 +1,10 @@
 %h3
   Subsections
 
+= link_to_remote 'Add Subsection', :update => 'rendered_items', :url => "/subsection/add_subsection/#{section_id}"
+
+
 %ul
   - for subsection in subsections
     %li
-      = link_to_remote subsection.name, :update => 'rendered_items', :url => "/subsections/#{subsection.id}"
+      = link_to_remote subsection.name, :update => 'rendered_items', :url => "/subsections/items/#{subsection.id}"

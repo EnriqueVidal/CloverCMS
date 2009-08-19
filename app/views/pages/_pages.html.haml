@@ -1,5 +1,7 @@
 %h3
-  Pages
+  = !defined?(title) ? 'Pages' : title + ' Pages'
+
+= link_to_remote 'Add Page', :update => 'rendered_items', :url => '/pages/new'
 
 %ul
   - for page in pages

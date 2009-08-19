@@ -31,7 +31,7 @@ class SectionsController < ApplicationController
     @section = Section.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html 
       format.xml  { render :xml => @section }
     end
   end
@@ -49,7 +49,7 @@ class SectionsController < ApplicationController
     respond_to do |format|
       if @section.save
         flash[:notice] = 'Section was successfully created.'
-        format.html { redirect_to(@section) }
+        format.html { redirect_to :controller => :manager, :action => :index }
         format.xml  { render :xml => @section, :status => :created, :location => @section }
       else
         format.html { render :action => "new" }

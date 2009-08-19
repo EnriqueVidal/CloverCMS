@@ -1,7 +1,7 @@
 %h3
   Editing pages
   
-- form_for( @page ) do |f|
+- remote_form_for( @page ) do |f|
   = f.error_messages
   = f.hidden_field :id
   
@@ -14,4 +14,4 @@
   %p
     = f.text_area :body
   %p
-    = f.submit 'Update'
+    = submit_to_remote 'update_btn', 'Update', :url => { :action => 'update'}, :update  =>  { :success => 'rendered_items', :failure => 'rendered_items' }

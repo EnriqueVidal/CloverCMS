@@ -1,3 +1,4 @@
 class Subsection < ActiveRecord::Base
-  has_many  :pages
+  belongs_to  :section
+  has_many    :pages
 end

@@ -2,14 +2,18 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :manager
   
-  map.edit_page 'pages/:id/edit',       :controller => 'pages',   :action => 'edit'
-  map.show_page 'pages/:id',            :controller => 'pages',   :action => 'show'
-  map.resources :pages
+  map.update_page 'pages/update',         :controller => 'pages',   :action => 'update'
+  map.edit_page   'pages/:id/edit',       :controller => 'pages',   :action => 'edit'
+  map.show_page   'pages/:id',            :controller => 'pages',   :action => 'show'
+  map.resources   :pages
   
-  map.resources :subsections
+  map.add_subsection    'subsection/add_subsection/:section_id',  :controller => 'subsections',   :action => 'add_subsection'
+  map.subsection_items  'subsection/:id/items',                   :controller => 'subsections',   :action => 'items'
+  map.resources         :subsections
 
-  map.section_items 'section/:id/items', :controller => 'sections', :action => 'items'
-  map.resources     :sections
+  map.new_section       'section/new',          :controller => 'sections',      :action => 'new'
+  map.section_items     'section/:id/items',    :controller => 'sections',      :action => 'items'
+  map.resources         :sections
 
   # The priority is based upon order of creation: first created -> highest priority.
 

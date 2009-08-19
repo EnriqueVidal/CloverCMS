@@ -1,16 +1,9 @@
-<h1>Edit Page</h1>
+<h3>Show Page</h3>
 
-<p>
-  <%= label_tag :title %>
-  <br />
-  <%= @page.title %>
-</p>
+<h4><%= label_tag :title %></h4>
+  
+<p><%= @page.title %></p>
 
-<p>
-  <%= label_tag :body %>
-  <br />
-  <%= @page.body %>
-</p>
+<h4><%= label_tag :body %></h4>
 
-<%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+<p><%= @page.body %></p>

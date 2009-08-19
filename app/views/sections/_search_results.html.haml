@@ -1,8 +1,7 @@
 #results
-  %table
+  %ul
     - for section in @sections
-      %tr
-        %td
-          = link_to_remote section.name, :update => 'section_items', :url => "/section/#{section.id}/items"
+      %li
+        = link_to_remote section.name, :update => 'section_items', :url => "/section/#{section.id}/items"
 
   = will_paginate @sections
