@@ -2,6 +2,6 @@
   %ul
     - for section in @sections
       %li
-        = link_to_remote section.name, :update => 'section_items', :url => "/section/#{section.id}/items", :after => "$('section_items').show();$('rendered_items').hide();"
+        = link_to_remote section.name, :update => 'section_items', :url => "/section/#{section.id}/items", :after => "$('section_items').show();$('rendered_items').innerHTML='';$('rendered_items').hide();"
 
   = will_paginate @sections
