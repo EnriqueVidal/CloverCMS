@@ -3,11 +3,11 @@
 
 
 - if defined? section_id
-  = link_to_remote 'Add Page', :update => 'rendered_items', :url => '/sections/new_page/'     + section_id.to_s
+  = link_to_remote 'Add Page', :update => 'rendered_items', :url => "/sections/new_page/#{section_id}",         :after => "$('rendered_items').show();"
 - elsif defined? subsection_id
-  = link_to_remote 'Add Page', :update => 'rendered_items', :url => '/subsections/new_page/'  + subsection_id.to_s
+  = link_to_remote 'Add Page', :update => 'rendered_items', :url => "/subsections/new_page/#{subsection_id}",   :after => "$('rendered_items').show();"
 
 %ul
   - for page in pages
     %li
-      = link_to_remote page.title, :update => 'rendered_items', :url => "/pages/#{page.id}"
+      = link_to_remote page.title, :update => 'rendered_items', :url => "/pages/#{page.id}",  :after => "$('rendered_items').show();"
