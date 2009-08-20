@@ -2,6 +2,14 @@ class SubsectionsController < ApplicationController
   
   before_filter :check_authentication, 
                 :check_authorization
+                
+  def show
+    @subsection = Subsection.find(params[:id])
+    
+    respond_to do |format|
+      format.html { render :layout => false }
+    end
+  end
 
   def items
     @subsection = Subsection.find(params[:id])
@@ -65,7 +73,7 @@ class SubsectionsController < ApplicationController
     @subsection.destroy
 
     respond_to do |format|
-      format.html { redirect_to(subsection_url) }
+      format.html { redirect_to :controller => :manager, :action => :index }
       format.xml  { head :ok }
     end
   end

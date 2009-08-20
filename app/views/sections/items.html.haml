@@ -1,2 +1,9 @@
+%h3
+  = 'Section ' + @section.name
+
+= link_to_remote  'Edit ', :url => "/section/#{@section.id}/edit", :update => 'rendered_items', :after => "$('rendered_items').show();"
+%br
+= link_to         'Destroy', "/section/#{@section.id}/destroy", :confirm => 'Are you sure?'
+
 = render :partial => 'subsections/subsections', :locals => { :subsections => @section.subsections, :section_id => @section.id }
 = render :partial => 'pages/pages',             :locals => { :pages       => @section.pages, :section_id => @section.id }

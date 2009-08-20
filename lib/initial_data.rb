@@ -13,10 +13,57 @@ class InitialData
                   :email    => 'webmaster@cloverinteractive.com', 
                   :pass     => 'admin' 
                 }
+                
+    roles   = [ :post_editor, :post_comenter, :member ]
+    rights  = { 
+                  :post_editor  =>  [ 
+                                      {   
+                                        :name       => 'Create Post',
+                                        :controller => 'posts', 
+                                        :action     => 'create'
+                                      },
+                                      {
+                                        :name       => 'Render new Post form',
+                                        :controller => 'posts',
+                                        :action     => 'new'
+                                      },
+                                      {
+                                        :name       => 'Delete Post',
+                                        :controller => 'posts',
+                                        :action     => 'destroy'
+                                      }
+                                    ],
+                                    
+                 :post_comenter =>  [
+                                      {
+                                        :name       => 'Create Comment',
+                                        :controller => 'comments',
+                                        :action     => 'create'
+                                      }
+                                    ],
+                                    
+                :member         =>  [
+                                      {
+                                        :name       => 'Edit own Profile',
+                                        :controller => 'users',
+                                        :action     => 'profile'
+                                      }
+                                    ]
+              }
     
     self.create_section_and_pages( sections, pages )
+    self.create_roles_and_rights( roles, rights )
     self.create_admin( user )
+  
+  end
+  
+  def self.create_roles_and_rights( roles, rights )
+    puts ">>>>> Creating Roles and Rights <<<<<"
     
+    roles.each do |role|
+      @role = Role.create!( { :name => role.to_s.capitalize.gsub( /_/, ' ' ) } )
+      rights[role].each { |right| @role.rights.create!(right) }
+    end
   end
   
   def self.create_admin( user )

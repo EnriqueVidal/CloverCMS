@@ -1,0 +1,8 @@
+%h3
+  = 'Subsection ' + @subsection.name
+  
+- remote_form_for( @subsection ) do |f|
+  = f.hidden_field :id
+  = f.label :name
+  = f.text_field :name
+  = submit_to_remote 'update_btn', 'Update', :url => { :action => 'update'}, :update  =>  { :success => 'rendered_items', :failure => 'rendered_items' }

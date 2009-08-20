@@ -12,15 +12,19 @@ class User < ActiveRecord::Base
   validate                  :password_not_blank
   
   before_create :make_token
-  after_create  :create_person
+  after_create  :create_person, :assign_roles
     
   named_scope :active,    :conditions => 'activation_date IS NOT NULL'
   named_scope :latest,    lambda { |limit|  { :limit => limit, :order => 'activation_date DESC' } } 
 
   
   def create_person
-    member = Member.new( { :user_id => self.id } )
-    member.save
+    member = Member.create!( { :user_id => self.id } )
+  end
+  
+  def assign_roles
+    self.roles << Role.find_by_name('Member')
+    self.roles << Role.find_by_name('Post comenter')
   end
   
   def self.authenticate(email_or_username, password)

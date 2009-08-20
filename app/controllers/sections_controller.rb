@@ -29,6 +29,10 @@ class SectionsController < ApplicationController
 
   def edit
     @section = Section.find(params[:id])
+    
+    respond_to do |format|
+      format.html { render :layout => false }
+    end
   end
 
   def create
@@ -50,9 +54,9 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:section][:id])
 
     respond_to do |format|
-      if @sections.update_attributes(params[:section])
+      if @section.update_attributes(params[:section])
         flash[:notice] = 'Section was successfully updated.'
-        format.html { redirect_to(@section) }
+        format.html { redirect_to :controller => :manager, :action => :index }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -66,7 +70,7 @@ class SectionsController < ApplicationController
     @section.destroy
 
     respond_to do |format|
-      format.html { redirect_to(section_url) }
+      format.html { redirect_to :controller => :manager, :action => :index }
       format.xml  { head :ok }
     end
   end
