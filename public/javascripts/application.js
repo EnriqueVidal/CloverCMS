@@ -24,3 +24,19 @@ document.observe("dom:loaded", function() {
     })
   }
 })
+
+
+function showItem(element, trigger)
+{
+	if (element != null)
+		element.show();
+	if (trigger != null )
+		trigger.hide();
+}
+
+function update_hidden_value(text_field, option)
+{
+	var hidden_field 	= $(text_field).previous('.hidden_for_autocomplete');
+	hidden_field.value 	= option.value;
+	block_field(tf);
+}

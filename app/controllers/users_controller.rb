@@ -1,0 +1,94 @@
+class UsersController < ApplicationController
+  before_filter :check_authentication, :except => [:login, :register, :activate, :logout, :create]
+  
+  def show
+    @user = User.find_by_username(params[:username])
+  end
+  
+  def register 
+    @user = User.new
+    
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @user }
+    end
+  end
+  
+  def create
+    @user = User.new(params[:user])
+    respond_to do |format|
+      if @user.save
+        flash[:success] =  "Usuario #{@user.email} creado. Por favor revisa tu bandeja de entrada."
+
+        # Changed for now, must revisit and redirect to url.
+        #format.html { redirect_to( :controller => :home, :action => :index ) }
+
+        format.html { render "register" }
+        format.xml  { render :xml => @user, :status => :created, :location => @user }
+      else
+        format.html { render :action => :register }
+        format.xml  { render :xml, @user.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  def activate
+    @user = User.find_by_token(params[:token])
+    if @user && @user.activate
+      session[:user_id] = @user.id
+      flash[:success] = "Cuenta #{@user.email} activada"
+      redirect_to :action => :profile
+    else
+      flash[:error] = "El hash utilizado para esta activación es incorrecto"
+      redirect_to :action => :register
+    end
+  end
+  
+  def login
+    if request.post?
+      user = User.authenticate(params[:email_or_username], params[:pass])
+      if user
+        
+        session[:user_id] = user.id
+        
+        logger.info( "\t\t\t>>>>> INFO #{Time.now} login OK <<<<< " +
+                      "id #{request.session_options[:id]} " +
+                      "as user #{User.find(session[:user_id]).email}"
+                    )
+                    
+        redirect_to( :controller => :users, :action => :profile )
+      else
+        flash[:error] = "Información de login invalida, usuario o contraseña invalidos."
+        logger.warn( "\t\t\t>>>>> WARN #{Time.now} login FAILED for user #{params[:email]} <<<<< \n")
+        redirect_to(:action => :login)
+      end
+    end
+  end
+  
+  def logout
+    if session[:user_id]
+      user = User.find( session[:user_id] )
+      logger.info(  "\t\t\t>>>>> INFO #{Time.now} logout OK <<<<< " + 
+                    "person #{user.person.full_name} " +
+                    "as user #{user.username}"
+                  )
+    else
+      logger.warn("\t\t\t>>>>> WARN #{Time.now} logout FAILED <<<<< \n")
+    end
+    session[:user_id] = nil
+    flash.discard(:reset_password_token)
+    redirect_to login_path
+  end
+
+  def profile
+    @user = User.find(session[:user_id])
+    @person = @user.person
+  end
+
+  private
+  
+  def init_session
+    session[:user_id] = nil
+  end
+  
+end

@@ -1,0 +1,9 @@
+#date_of_birth_label
+  Fec. Nacimiento:
+#date_of_birth_text{ :style => 'display: block; padding-top: 10px;' }
+  = link_to( (!user.person.date_of_birth.nil? ? user.person.date_of_birth.strftime("%B, %d %Y") : 'no especificada'), 'javascript:void(null)', :onclick => "showItem($('update_date_of_birth'), $('date_of_birth_text'));" )
+
+#update_date_of_birth{ :style => 'display: none; margin-bottom: 5px; padding-top: 10px;' }  
+  = render :partial => 'people/update_date_of_birth', :locals => { :person => user.person }
+
+  

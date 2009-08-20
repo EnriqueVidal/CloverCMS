@@ -1,0 +1,38 @@
+%h2
+  Register
+  
+#register_tab
+  = link_to 'Registrar', register_path
+#login_tab
+  = link_to 'Login', login_path, :class => 'green_links'
+  
+%br.clear
+    
+- form_for @user, :url => { :action => :create } do |f|
+  #errors
+    = f.error_messages
+  #register_box
+    #username_label
+      = f.label :username, 'Usuario', :class => 'blue_text'
+    #username_input
+      = f.text_field :username, :size => 20
+  
+    #email_label
+      = f.label :email, 'Email', :class => 'blue_text'
+    #email_input
+      = f.text_field :email, :size => 20
+
+    #password_label
+      = f.label :contraseña, 'Contraseña', :class => 'blue_text'
+    #password_input
+      = f.password_field :pass, :size => 20
+  
+    #password_confirmation_label
+      = f.label :confirmar_contraseña, 'Confirmar Contraseña', :class => 'blue_text'
+    #password_confirmation_input
+      = f.password_field :pass_confirmation, :size => 20
+    
+    %br 
+    
+    #register_button
+      = f.submit :Enviar, { :class => 'button_bg', :id => "green_button"}

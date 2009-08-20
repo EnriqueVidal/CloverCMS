@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
 
+  before_filter :check_authentication, :except => [ :show ]
+
   def show
     @page = Page.find(params[:id])
    

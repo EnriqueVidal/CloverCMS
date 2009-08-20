@@ -1,0 +1,5 @@
+#update_person_photo
+  - if user.person.photo_file_name.nil?
+    = link_to image_tag('small_default_profile.jpg', :alt => user.person.full_name),    'javascript:void(null);', :onclick => "$('upload_person_photo').toggle();", :title => 'Cambiar Imagen'
+  - else
+    = link_to image_tag(user.person.photo_url(:small), :alt => user.person.full_name),  'javascript:void(null);', :onclick => "$('upload_person_photo').toggle();", :title => 'Cambiar Imagen'

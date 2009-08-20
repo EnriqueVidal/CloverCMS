@@ -1,0 +1,26 @@
+%h2
+  Login
+
+#register_tab  
+  = link_to 'Registrar', register_path
+#login_tab
+  = link_to 'Login', login_path
+
+%br.clear 
+ 
+#login_box
+  -form_tag do
+    #email_label
+      = label_tag :email, 'Email ó Usuario', :class => 'green_text'
+    #email_input
+      = text_field_tag :email_or_username
+    
+    #password_label
+      = label_tag :password, 'Password', :class => 'green_text'
+    #password_input
+      = password_field_tag :pass
+      
+    %br
+      
+    #login_button
+      = submit_tag 'Login ', :class => 'button_bg' 

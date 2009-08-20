@@ -1,0 +1,5 @@
+- form_for( person, :url => { :controller => :people, :action => :update } ) do |f|
+  = f.calendar_date_select :date_of_birth, :embedded => false, :year_range => 100.years.ago..0.years.from_now, :style => 'width: 115px;'
+  = link_to image_tag( 'icons/cancel.png' ), 'javascript:void(null)', :onclick => "showItem($('date_of_birth_text'), $('update_date_of_birth'));", :title => :cancelar  
+
+%br

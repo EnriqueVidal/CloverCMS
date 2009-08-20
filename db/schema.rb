@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090818225747) do
+ActiveRecord::Schema.define(:version => 20090819181038) do
 
   create_table "pages", :force => true do |t|
     t.string   "title"
@@ -18,6 +18,21 @@ ActiveRecord::Schema.define(:version => 20090818225747) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "subsection_id"
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "first_name",         :limit => 40, :default => "", :null => false
+    t.string   "middle_name",        :limit => 40
+    t.string   "last_name",          :limit => 40, :default => "", :null => false
+    t.date     "date_of_birth"
+    t.integer  "user_id"
+    t.string   "type"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.string   "gender",             :limit => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sections", :force => true do |t|
@@ -31,6 +46,17 @@ ActiveRecord::Schema.define(:version => 20090818225747) do
     t.integer  "section_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email",           :limit => 40, :null => false
+    t.string   "password"
+    t.string   "password_salt"
+    t.string   "token"
+    t.date     "activation_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "username"
   end
 
 end

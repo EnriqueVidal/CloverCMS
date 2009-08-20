@@ -1,4 +1,6 @@
 class SubsectionsController < ApplicationController
+  
+  before_filter :check_authentication
 
   def items
     @subsection = Subsection.find(params[:id])

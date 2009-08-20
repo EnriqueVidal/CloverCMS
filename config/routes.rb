@@ -1,5 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.profile   'profile',                :controller => 'users', :action => 'profile'
+  map.activate  'users/activate/:token',  :controller => 'users', :action => 'activate'
+  map.login     'login',                  :controller => 'users', :action => 'login'
+  map.logout    'logout',                 :controller => 'users', :action => 'logout'
+  map.register  'register',               :controller => 'users', :action => 'register'
+
   map.resources :manager
   
   map.delete_page 'pages/:id/destroy',    :controller => 'pages',   :action => 'destroy'
@@ -18,6 +24,10 @@ ActionController::Routing::Routes.draw do |map|
   map.new_section       'section/new',            :controller => 'sections',      :action => 'new'
   map.section_items     'section/:id/items',      :controller => 'sections',      :action => 'items'
   map.resources         :sections
+  
+  map.resources :people
+  map.resources :members
+  map.resources :admins
 
   # The priority is based upon order of creation: first created -> highest priority.
 

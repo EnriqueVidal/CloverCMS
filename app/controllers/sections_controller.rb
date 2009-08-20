@@ -1,5 +1,7 @@
 class SectionsController < ApplicationController
   
+  before_filter :check_authentication
+  
   def items
     @section = Section.find(params[:id])
     

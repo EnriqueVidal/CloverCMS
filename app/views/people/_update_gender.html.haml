@@ -1,0 +1,24 @@
+- form_for( person, :url => { :controller => :people, :action => :update }, :before_submit => 'validate();' ) do |f|
+  = f.hidden_field :gender, :id => 'gender_value'
+  
+  %select{ :style => 'width: 125px;' }
+    %option
+      Indica tú genero
+    %option{ :onclick => 'sendGender(true);' }
+      Masculino
+    %option{ :onclick => 'sendGender(false);' }
+      Femenino
+  
+  = f.submit 'ok'
+  = link_to :cancel, 'javascript:void(null);', :class => 'editor_cancel_link editor_cancel', :onclick => "showItem($('gender_text'), $('update_gender'));"
+
+%script{ :type => 'text/javascript' }
+  //<![CDATA[
+  function sendGender(male)
+  {
+  if (male)
+  $('gender_value').value = 'male';
+  else
+  $('gender_value').value = 'female';
+  }
+  //]]>

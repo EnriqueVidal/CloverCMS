@@ -8,6 +8,7 @@ ENV['GEM_HOME'] = "/home/cloverin/ruby/gems"                          if `hostna
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
+require File.join(File.dirname(__FILE__), '../lib/smtp_tls')
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
@@ -22,11 +23,12 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  
+
+  config.gem "calendar_date_select"
   config.gem "redgreen"
   config.gem "mocha"
   config.gem "haml"
-  config.gem "mislav-will_paginate",        :lib => 'will_paginate',  :source => 'http://gems.github.com', :version => '~> 2.3.11'
+  config.gem "mislav-will_paginate",    :lib => 'will_paginate',  :source => 'http://gems.github.com', :version => '~> 2.3.11'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -38,6 +40,7 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+  config.active_record.observers = :user_observer 
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
@@ -46,4 +49,14 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+  
+  config.action_mailer.smtp_settings =  {
+                                          :address        => "smtp.gmail.com",
+                                          :port           =>  587,
+                                          :domain         => "cloverinteractive.com",
+                                          :authentication => :plain,
+                                          :user_name      => "dont-reply@cloverinteractive.com",
+                                          :password       => "H@Nn@L1v3$C10v3R1N73r@kT1v3"
+                                        }
+  
 end
