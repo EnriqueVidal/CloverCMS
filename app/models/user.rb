@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_one :person, :dependent => :destroy
+  has_one                 :person, :dependent => :destroy
+  has_and_belongs_to_many :roles
   
   validates_presence_of     :email,     :username
   validates_uniqueness_of   :email,     :username

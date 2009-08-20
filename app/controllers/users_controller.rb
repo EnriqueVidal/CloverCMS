@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  before_filter :check_authentication, :except => [:login, :register, :activate, :logout, :create]
+
+  before_filter :check_authentication, 
+                :check_authorization, 
+                :except => [:login, :register, :activate, :logout, :create]
   
   def show
     @user = User.find_by_username(params[:username])
@@ -56,7 +59,12 @@ class UsersController < ApplicationController
                       "as user #{User.find(session[:user_id]).email}"
                     )
                     
-        redirect_to( :controller => :users, :action => :profile )
+        if !session[:intended_action].nil? && !session[:intended_controller].nil?
+            redirect_to :controller => session[:intended_controller], :action => session[:intended_action]
+        else          
+          redirect_to( :controller => :users, :action => :profile )
+        end
+        
       else
         flash[:error] = "Información de login invalida, usuario o contraseña invalidos."
         logger.warn( "\t\t\t>>>>> WARN #{Time.now} login FAILED for user #{params[:email]} <<<<< \n")
@@ -68,6 +76,7 @@ class UsersController < ApplicationController
   def logout
     if session[:user_id]
       user = User.find( session[:user_id] )
+      
       logger.info(  "\t\t\t>>>>> INFO #{Time.now} logout OK <<<<< " + 
                     "person #{user.person.full_name} " +
                     "as user #{user.username}"

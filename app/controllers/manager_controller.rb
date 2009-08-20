@@ -1,5 +1,5 @@
 class ManagerController < ApplicationController
-  before_filter :check_authentication
+  before_filter :check_authentication, :check_authorization
   
   def index
     @sections = Section.paginate :page => params[:page], :per_page => 15
