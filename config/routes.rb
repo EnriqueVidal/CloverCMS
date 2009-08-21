@@ -1,5 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.show_section_page ':section_name/:page_name.html', :controller => 'viewer', :action => 'show_section_page'
+  map.resources :viewer
+  
+
   map.profile   'profile',                :controller => 'users', :action => 'profile'
   map.activate  'users/activate/:token',  :controller => 'users', :action => 'activate'
   map.login     'login',                  :controller => 'users', :action => 'login'
@@ -33,6 +37,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :people
   map.resources :members
   map.resources :admins
+  
+  map.root  :controller => :viewer, :action => :index
 
   # The priority is based upon order of creation: first created -> highest priority.
 

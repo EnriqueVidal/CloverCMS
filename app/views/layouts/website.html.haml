@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    = javascript_include_tag  :defaults
+    = calendar_date_select_includes "silver"
+    %title
+      = @page.title || 'Clover CMS'
+  %body
+    .messages
+      - if flash[:notice]
+        #flash_notice
+          = flash[:notice]
+
+      - if flash[:error]
+        #flash_error
+          = flash[:error]
+
+      - if flash[:success]
+        #flash_success
+          = flash[:success]
+
+
+    - for section in Section.all
+      = link_to section.name, show_section_page_path( :section_name => section.name, :page_name => section.pages.first.name )
+    
+    .content
+      = yield
