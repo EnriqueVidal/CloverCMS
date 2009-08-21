@@ -1,7 +1,10 @@
+= include_yui_editor_if_used
+
+
 %h3
   Editing pages
   
-- remote_form_for( @page ) do |f|
+- form_for( @page, :url => { :action => :update } ) do |f|
   = f.error_messages
   = f.hidden_field :id
   %p
@@ -15,6 +18,6 @@
   %p
     = f.label :body
   %p
-    = f.text_area :body
+    = f.text_area :body, :class => 'rich_text_editor'
   %p
-    = submit_to_remote 'update_btn', 'Update', :url => { :action => 'update'}, :update  =>  { :success => 'rendered_items', :failure => 'rendered_items' }
+    = f.submit 'Update'

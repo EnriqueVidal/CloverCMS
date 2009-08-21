@@ -1,3 +1,5 @@
+= include_yui_editor_if_used
+
 %h3
   = "Add new Page to " + @subsection.name
   
@@ -14,7 +16,7 @@
   %br
   = f.label :body
   %br
-  = f.text_area :body
+  = f.text_area :body, :class => 'rich_text_editor'
   %br
   %br
   = f.submit 'Create'

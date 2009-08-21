@@ -1,4 +1,6 @@
 class ManagerController < ApplicationController
+
+  uses_yui_editor
   before_filter :check_authentication, :check_authorization
   
   def index

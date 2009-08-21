@@ -1,8 +1,9 @@
 class PagesController < ApplicationController
 
+  uses_yui_editor :only => :edit
+  
   before_filter :check_authentication, 
-                :check_authorization, 
-                :except => [ :show ]
+                :check_authorization
 
   def show
     @page = Page.find(params[:id])
@@ -42,10 +43,10 @@ class PagesController < ApplicationController
     respond_to do |format|
       if @page.update_attributes(params[:page])
         flash[:notice] = 'Page was successfully updated.'
-        format.html { redirect_to(@page) }
+        format.html { redirect_to :controller => :manager, :action => :index  }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to :controller => :manager, :action => :index }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end

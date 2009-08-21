@@ -1,5 +1,6 @@
 class SectionsController < ApplicationController
-  
+
+  uses_yui_editor :only => :new_page  
   before_filter :check_authentication, 
                 :check_authorization
   
