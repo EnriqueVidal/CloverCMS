@@ -4,7 +4,10 @@
 - remote_form_for( @page ) do |f|
   = f.error_messages
   = f.hidden_field :id
-  
+  %p
+    = f.label :name
+  %p
+    = f.text_field :name
   %p
     = f.label :title
   %p

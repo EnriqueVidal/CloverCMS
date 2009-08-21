@@ -4,6 +4,10 @@
 - form_for( Page.new, :url => { :controller => 'pages', :action => 'create' } ) do |f|
   = f.hidden_field :section_id, :value => @section.id
   
+  = f.label :name
+  %br
+  = f.text_field :name
+  %br
   = f.label :title
   %br
   = f.text_field :title

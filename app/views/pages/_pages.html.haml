@@ -10,4 +10,4 @@
 %ul
   - for page in pages
     %li
-      = link_to_remote page.title, :update => 'rendered_items', :url => "/pages/#{page.id}",  :after => "$('rendered_items').show();"
+      = link_to_remote page.name, :update => 'rendered_items', :url => "/pages/#{page.id}",  :after => "$('rendered_items').show();"
