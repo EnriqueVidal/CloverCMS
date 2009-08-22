@@ -1,4 +1,6 @@
-body { background-color: #fff; color: #333; }
+/** Begin Style Sheet **/
+
+html, body { background-color: #fff; color: #333; margin: 0; height: 100%;}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -50,5 +52,56 @@ a:hover { color: #fff; background-color:#000; }
 #errorExplanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+#header {
+  background: url(../images/brillo.png) repeat-x;
+  background-color: black;
+  height: 95px;
+}
+
+#decoration_top{
+  height: 20px;
+  background: url(../images/decorartion_top.png) transparent repeat-x;
+  margin: -10px 0;
+}
+
+#decoration_bottom{
+  height: 24px;
+  background-color: white;
+  margin: -5px 0;
+}
+
+#wrapper {
+  width: 960px;
+  overflow: hidden;
+  z-index: 1;
+  margin: -95px auto -120px auto;
+  background: url(../images/paper.png) transparent no-repeat;
+  background-position: 0 65px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+}
+
+#contenido {
+  margin: 15px;
+  min-height: 100%;
+}
+.rich_text_editor{
+  width: 625px;
+}
+
+#green{
+  background-color: #a5a50b;
+  height: 20px;
+}
+
+#footer, #push {
+  height: 120px;
+}
+
+#footer {
+  background-color: black;
 }
 

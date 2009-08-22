@@ -12,6 +12,7 @@
   
 #pages_menu{ :style => 'float:left;margin-left: 25px;' }
   - if @subsection.pages.count > 1
+
     = @subsection.name
     %br
     - @subsection.pages.each do |page|

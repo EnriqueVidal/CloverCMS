@@ -20,8 +20,8 @@
     
     - if @section.subsections.count >= 1
       - @section.subsections.each do |subsection|
-        %br
         - if subsection.pages.count >= 1
+          %br
           = subsection.name
           %br
           - for page in subsection.pages

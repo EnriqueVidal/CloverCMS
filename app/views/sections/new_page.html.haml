@@ -2,10 +2,10 @@
 
 %h3
   = "Add new Page to " + @section.name
-  
+
 - form_for( Page.new, :url => { :controller => 'pages', :action => 'create' } ) do |f|
   = f.hidden_field :section_id, :value => @section.id
-  
+
   = f.label :name
   %br
   = f.text_field :name
@@ -18,5 +18,5 @@
   %br
   = f.text_area :body, :class => 'rich_text_editor'
   %br
-  %br
   = f.submit 'Create'
+
