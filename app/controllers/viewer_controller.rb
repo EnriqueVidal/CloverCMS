@@ -7,10 +7,13 @@ class ViewerController < ApplicationController
   end
  
   def show_section_page
-    @page     = nil
     @section  = Section.find_by_name(params[:section_name])
-    
-    @section.pages.each { |page| @page = page if page.name = params[:page_name] }
+    @page     = @section.pages.find_by_name(params[:page_name])
   end
   
+  def show_subsection_page
+    @section    = Section.find_by_name(params[:section_name])
+    @subsection = @section.subsections.find_by_name(params[:subsection_name])
+    @page       = @subsection.pages.find_by_name(params[:page_name])
+  end
 end

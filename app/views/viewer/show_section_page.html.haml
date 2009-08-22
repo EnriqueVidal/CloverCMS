@@ -1,9 +1,29 @@
-%h6
-  You are at
-  = ' ' + @section.name  + ' > ' + @page.title
+#you_are_at
+  %h6
+    You are at
+    = ' ' + @section.name  + ' > ' + @page.title
+
+#page_content{ :style => 'float: left;' }  
+  %h3
+    = @page.title
   
-%h3
-  = @page.title
+  %p
+    = @page.body
   
-%p
-  = @page.body
+#subsection_and_pages_menu{ :style => 'float:left;margin-left: 25px;' }
+  - if @section.pages.count > 1
+    = @section.name
+    %br
+    - @section.pages.each do |page|
+      = link_to page.title, show_section_page_path( :section_name => @section.name, :page_name => page.name )
+      %br
+    
+    - if @section.subsections.count >= 1
+      - @section.subsections.each do |subsection|
+        %br
+        - if subsection.pages.count >= 1
+          = subsection.name
+          %br
+          - for page in subsection.pages
+            = link_to page.title, show_subsection_page_path( :section_name => @section.name, :subsection_name => subsection.name, :page_name => page.name )
+            %br
