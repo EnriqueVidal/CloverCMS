@@ -17,7 +17,7 @@ editor_config_javascript: "
   collapse: true,
   toolbar: {
     collapse: true,
-    titlebar: 'Text Editing Tools',
+    titlebar: 'Page Editor',
     draggable: false,
     buttonType: 'advanced',
     buttons: [

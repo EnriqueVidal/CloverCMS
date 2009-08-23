@@ -2,7 +2,9 @@
 %html
   %head
     = javascript_include_tag  :defaults
-    = javascript_include_tag "builder", "dragdrop", "cropper/cropper", "scriptaculous"
+    = javascript_include_tag 'cropper/lib/scriptaculous.js?load=builder,dragdrop'
+    = javascript_include_tag 'cropper/cropper.js'
+    
     = calendar_date_select_includes "silver"
     = stylesheet_link_tag     "scaffold"
     = include_yui_editor_if_used
@@ -10,29 +12,18 @@
     %title
       Clover CMS Manager
   %body
-    #header
-    #decoration_top
-    #wrapper
-      =image_tag('logo.png')
+    .messages
+      - if flash[:notice]
+        #flash_notice
+          = flash[:notice]
 
-      #contenido
-        .messages
-          - if flash[:notice]
-            #flash_notice
-              = flash[:notice]
+      - if flash[:error]
+        #flash_error
+          = flash[:error]
 
-          - if flash[:error]
-            #flash_error
-              = flash[:error]
+      - if flash[:success]
+        #flash_success
+          = flash[:success]
 
-          - if flash[:success]
-            #flash_success
-              = flash[:success]
-
-        .content
-          = yield
-      #push
-    #footer
-      #decoration_bottom
-      #green
-
+    .content
+      = yield
