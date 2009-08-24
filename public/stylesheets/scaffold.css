@@ -1,5 +1,30 @@
 /** Begin Style Sheet **/
 
+img.delete_photo
+{
+	margin: 	0; 
+	position: 	absolute; 
+	z-index: 	1;
+	border:		0px;
+}
+
+li.thumbnail
+{
+	height: 				50px; 
+	width: 					60px; 
+	overflow: 				hidden; 
+	background-color: 		black;
+	border:					1px solid #5F5F5F;
+	display:				block;
+	float:					left;
+	list-style-image:		none;
+	list-style-position:	inside;
+	list-style-type:		none;
+	text-align:				center;
+	margin-left: 			5px;
+	margin-top:				5px;
+}
+
 html, body { background-color: #fff; color: #333; margin: 0; height: 100%;}
 
 body, p, ol, ul, td {
@@ -16,7 +41,6 @@ pre {
 
 a { color: #000; }
 a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
 
 .fieldWithErrors {
   padding: 2px;

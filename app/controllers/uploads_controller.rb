@@ -1,5 +1,26 @@
 class UploadsController < ApplicationController
   before_filter :check_authentication, :check_authorization
+
+  def get_photos 
+    @uploads  = Upload.find_all_by_page_id params[:page_id]
+    @page     = Page.find(params[:page_id])
+    
+    respond_to do |format|
+      format.html { render :layout => false }
+    end
+  end
+
+  def create
+    @upload = Upload.new(params[:upload])
+    
+    respond_to do |format|
+      if @upload.save
+        flash[:notice] = 'Upload was successful.'
+        format.html { redirect_to :controller => :manager, :action => :index }
+        format.xml { head :ok }
+      end
+    end
+  end
   
   def edit
     @upload = Upload.find(params[:id])
@@ -25,8 +46,9 @@ class UploadsController < ApplicationController
     @upload.destroy
 
     respond_to do |format|
-      format.html { redirect_to(uploads_url) }
+      format.html { redirect_to :controller => :manager, :action => :index }
       format.xml  { head :ok }
     end
   end
+
 end

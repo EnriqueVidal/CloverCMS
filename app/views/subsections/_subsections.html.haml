@@ -1,10 +1,10 @@
 %h3
   Subsections
 
-= link_to_remote 'Add Subsection', :update => 'rendered_items', :url => "/subsection/add_subsection/#{section_id}", :after => "$('rendered_items').show();"
+= link_to_remote 'Add Subsection', :update => 'rendered_items', :url => "/subsection/add_subsection/#{section_id}", :after => "$('rendered_items').show();$('page_pictures').hide();"
 
 
 %ul
   - for subsection in subsections
     %li
-      = link_to_remote subsection.name, :update => 'rendered_items', :url => "/subsections/items/#{subsection.id}", :after => "$('rendered_items').show();"
+      = link_to_remote subsection.name, :update => 'rendered_items', :url => "/subsections/items/#{subsection.id}", :after => "$('rendered_items').show();$('page_pictures').hide();"

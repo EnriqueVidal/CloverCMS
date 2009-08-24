@@ -1,6 +1,6 @@
 %fieldset
   %legend
     Actions
-  = link_to_remote 'Edit', :update => 'rendered_items', :url => "/pages/#{page.id}/edit"
+  = link_to_remote 'Edit', :update => 'rendered_items', :url => "/pages/#{page.id}/edit", :after => "$('page_pictures').show();"
   %br
   = link_to 'Destroy', "/pages/#{page.id}/destroy", :confirm => 'Are you sure?'

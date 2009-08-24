@@ -4,9 +4,11 @@
 %h3
   Editing pages
   
-- form_for( @page, :url => { :action => :update } ) do |f|
+- form_for( @page, :url => { :action => :update }, :html => { :multipart => true } ) do |f|
   = f.error_messages
   = f.hidden_field :id
+  
+  
   %p
     = f.label :name
   %p
@@ -18,6 +20,10 @@
   %p
     = f.label :body
   %p
-    = f.text_area :body, :class => 'rich_text_editor'
+    = f.text_area :body, :class => 'rich_text_editor', :style => 'width: 100%;'
   %p
     = f.submit 'Update'
+
+%script{ :type => 'text/javascript' }
+  = remote_function :update => 'page_pictures', :url => "/uploads/get_photos/#{@page.id}"
+

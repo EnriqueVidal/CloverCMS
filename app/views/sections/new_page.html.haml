@@ -17,7 +17,7 @@
   %br
   = f.label :body
   %br
-  = f.text_area :body, :class => 'rich_text_editor'
+  = f.text_area :body, :class => 'rich_text_editor', :style => 'width: 100%;'
   %br
   #uploads
     = f.render_associated_form( @page.uploads, :new => 1 )

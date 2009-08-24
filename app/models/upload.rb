@@ -3,13 +3,17 @@ require 'RMagick'
 class Upload < ActiveRecord::Base
     belongs_to :page
     has_attached_file :photo, 
-                      :path => ":rails_root/public/images/system/:class/:attachment/:id/:style_:basename.:extension", 
+                      :path => ":rails_root/public/images/system/:class/:attachment/:id/:style_:basename.:extension",
                       :styles => {
-                                    :small  => [ "180x180#",  :png ],
-                                    :medium => [ "380x380#",  :png ]
-                                  }
+                                  :small  => "80x80>",
+                                  :medium => "180x180>"
+                                }
                                   
   attr_accessor :x1, :y1, :width, :height
+
+  cattr_reader :per_page
+  @@per_page = 3
+  
   
   def photo_url(style)
     path = self.photo.path(style).split( RAILS_ROOT + "/public" ) 
