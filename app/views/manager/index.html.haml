@@ -6,13 +6,13 @@
   = render :partial => 'sections/search_results', :locals => { :sections => @sections }
 
 #section_items{ :style  => 'margin-left: 25px; width: 150px; float: left;' }
-#rendered_items{ :style => 'margin-left: 25px; width: 350px; float: left;' }
-#page_pictures{ :style  => 'margin-left: 25px; width: 273px; float: left;' }
+#rendered_items{ :style => 'margin-left: 25px; width: 350px; float: left;display: none' }
+#page_pictures{ :style  => 'margin-left: 25px; width: 273px; float: left;display: none' }
 
 
 %script{ :type => 'text/javascript' }
   = remote_function :url => "/section/#{@sections.first.id}/items",     :update => 'section_items'
   
   - if @sections.first.pages.count >= 1
-    = remote_function :url => "/pages/#{@sections.first.pages.first.id}/edit", :update => 'rendered_items'
+    = remote_function :url => "/pages/#{@sections.first.pages.first.id}/edit", :update => 'rendered_items', :after => "$('rendered_items').show();$('page_pictures').show();"
     
