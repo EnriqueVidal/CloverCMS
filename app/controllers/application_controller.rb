@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
   
   layout 'application'
   
+  before_filter :check_authentication, 
+                :check_authorization, 
+                :except => [:login, :register, :activate, :logout, :create, :show_section_page, :show_subsection_page, :home_page]
+
+  
+  
   def check_authentication
     unless session[:user_id]
       session[:intended_controller] = controller_name

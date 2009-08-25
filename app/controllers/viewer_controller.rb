@@ -2,7 +2,7 @@ class ViewerController < ApplicationController
 
   layout 'website'
  
-  def index
+  def home_page
     redirect_to show_section_page_path( :section_name => Section.first.name, :page_name => Section.first.pages.first.name )
   end
  

@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
-
-  before_filter :check_authentication, 
-                :check_authorization, 
-                :except => [:login, :register, :activate, :logout, :create]
-  
+    
   def show
     @user = User.find_by_username(params[:username])
   end

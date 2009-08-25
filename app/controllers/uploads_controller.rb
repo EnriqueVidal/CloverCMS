@@ -1,5 +1,4 @@
 class UploadsController < ApplicationController
-  before_filter :check_authentication, :check_authorization
 
   def get_photos 
     @uploads  = Upload.find_all_by_page_id params[:page_id]

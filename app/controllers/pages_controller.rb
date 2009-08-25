@@ -1,9 +1,6 @@
 class PagesController < ApplicationController
 
   uses_yui_editor :only => :edit
-  
-  before_filter :check_authentication, 
-                :check_authorization
 
   def show
     @page = Page.find(params[:id])

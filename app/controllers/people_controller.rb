@@ -4,8 +4,6 @@ class PeopleController < ApplicationController
   in_place_edit_for :person, :middle_name
   in_place_edit_for :person, :last_name
   
-  before_filter :check_authentication
-  
   def update
     @person           = User.find(session[:user_id]).person
     
