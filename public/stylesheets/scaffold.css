@@ -2,10 +2,7 @@
 
 img.delete_photo
 {
-	margin: 	0; 
-	position: 	absolute; 
-	z-index: 	1;
-	border:		0px;
+	border: 	0; 
 }
 
 li.thumbnail
@@ -15,6 +12,18 @@ li.thumbnail
 	overflow: 				hidden; 
 	background-color: 		black;
 	border:					1px solid #5F5F5F;
+	display:				block;
+	float:					left;
+	list-style-image:		none;
+	list-style-position:	inside;
+	list-style-type:		none;
+	text-align:				center;
+	margin-left: 			0px;
+	margin-top:				5px;
+}
+
+li.thumbnail_button
+{
 	display:				block;
 	float:					left;
 	list-style-image:		none;

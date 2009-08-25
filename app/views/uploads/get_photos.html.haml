@@ -5,8 +5,9 @@
         Photos
       %ul
         - for upload in @uploads
-          %li.thumbnail
-            = link_to image_tag( 'icons/picture_delete.png', :class => 'delete_photo' ), "/uploads/#{upload.id}/destroy", :confirm => 'Are you sure?'
+          %li.thumbnail_button
+            = link_to image_tag( 'icons/picture_delete.png', :class => 'delete_photo', :title => 'Delete Photo: ' + upload.description ), "/uploads/#{upload.id}/destroy", :confirm => 'Deleting an image will make it unavailable for the rest of your site. Are you sure?'
+          %li.thumbnail  
             = image_tag upload.photo_url(:small)
 
   %fieldset{ :style => 'width: 100%' }
