@@ -21,6 +21,12 @@
     = f.label :body
   %p
     = f.text_area :body, :class => 'rich_text_editor', :style => 'width: 100%;'
+  
+  = link_to 'Etiquetas para SEO', '#seo_box', :onclick => "$('seo_box').toggle();"
+  
+  #seo_box{ :style => 'display: none;', :name => 'seo_box' }  
+    = render :partial => 'meta_tags/all_meta_tags', :locals => { :metas => @metas, :page => @page }
+          
   %p
     = f.submit 'Update'
 

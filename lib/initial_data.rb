@@ -50,11 +50,36 @@ class InitialData
                                       }
                                     ]
               }
+    meta_tags = [
+                  "Best Website Ever.",
+                  "Fast Web development.",
+                  "Smart Solutions.",
+                  "Cool Design.",
+                  "Great affordable services.",
+                  "Super Solutions."
+                ]
     
     self.create_section_and_pages( sections, pages )
+    self.create_meta_tags( meta_tags )
+    self.assign_meta_tags
     self.create_roles_and_rights( roles, rights )
     self.create_admin( user )
   
+  end
+  
+  def self.create_meta_tags( meta_tags )
+    puts ">>>>>> Creating MetaTags <<<<<"
+    meta_tags.each { |meta| MetaTag.create!( :content => meta ) }
+  end 
+  
+  def self.assign_meta_tags
+    puts ">>>>>> Assigning MetaTags <<<<<<"
+    1.upto(3) do |position|
+      page = Page.find( position )
+      page.meta_title_id        = position
+      page.meta_description_id  = ( position + 3 )
+      page.save!
+    end
   end
   
   def self.create_roles_and_rights( roles, rights )

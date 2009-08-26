@@ -3,7 +3,9 @@
 %h3
   = "Add new Page to " + @section.name
 
-- @page = Page.new
+- @page   = Page.new
+- @metas  = MetaTag.all
+
 - form_for( @page, :url => { :controller => 'pages', :action => 'create' }, :html => { :multipart => true } ) do |f|
   = f.hidden_field :section_id, :value => @section.id
 
@@ -18,12 +20,26 @@
   = f.label :body
   %br
   = f.text_area :body, :class => 'rich_text_editor', :style => 'width: 100%;'
+
+  = link_to 'SEO Meta Tags', '#seo_box', :onclick => "$('uploads').hide();$('add_photo').hide();$('seo_box').toggle();"
+  
+  #seo_box{ :style => 'display: none;', :name => 'seo_box' }
+    = render :partial => 'meta_tags/all_meta_tags', :locals => { :metas => @metas, :page => @page }
+  
   %br
-  #uploads{ :style => 'padding: 2px; border: 1px solid grey;' }
+  
+  = link_to 'Upload Photos', '#uploads', :onclick => "$('seo_box').hide();$('uploads').toggle();$('add_photo').toggle();"
+  
+  %br
+  %br
+  
+  #uploads{ :style => 'padding: 2px; border: 1px solid grey;display:none;', :name => 'uploads' }
     = f.render_associated_form( @page.uploads, :new => 1 )
+
   %br
-  = f.add_associated_link('Add another photo.', @page.uploads.build )
-  %br
+  #add_photo{ :style => 'display: none;' }  
+    = f.add_associated_link('Add another photo.', @page.uploads.build )
+    
   %br
   = f.submit 'Create', :style => 'margin-bottom: 105px;'
 

@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :meta_tags
+
 
   map.delete_upload 'uploads/:id/destroy',          :controller => 'uploads', :action => 'destroy'
   map.get_photos    'uploads/get_photos/:page_id',  :controller => 'uploads', :action => 'get_photos'

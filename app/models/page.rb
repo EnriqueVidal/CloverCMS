@@ -2,6 +2,9 @@ class Page < ActiveRecord::Base
   belongs_to :section
   belongs_to :subsection
   
+  belongs_to  :meta_title,        :class_name => 'MetaTag'
+  belongs_to  :meta_description,  :class_name => 'MetaTag'
+  
   has_many :uploads, :dependent => :destroy, :attributes => true, :discard_if => proc { |upload| upload.description.blank? }
   
   validates_presence_of   :title, :body, :name

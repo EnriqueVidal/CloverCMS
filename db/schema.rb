@@ -9,7 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090823015504) do
+ActiveRecord::Schema.define(:version => 20090826050629) do
+
+  create_table "meta_tags", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pages", :force => true do |t|
     t.string   "title"
@@ -19,6 +25,8 @@ ActiveRecord::Schema.define(:version => 20090823015504) do
     t.datetime "updated_at"
     t.integer  "subsection_id"
     t.string   "name"
+    t.integer  "meta_title_id"
+    t.integer  "meta_description_id"
   end
 
   create_table "people", :force => true do |t|
