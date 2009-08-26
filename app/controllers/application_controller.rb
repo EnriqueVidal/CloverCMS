@@ -5,13 +5,21 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
-  layout 'application'
+  layout 'application'  
+
+  before_filter :session_expiry
   
   before_filter :check_authentication, 
                 :check_authorization, 
                 :except => [:login, :register, :activate, :logout, :create, :show_section_page, :show_subsection_page, :home_page]
 
-  
+  def session_expiry
+     reset_session if session[:expiry_time] and session[:expiry_time] < Time.now
+
+     session[:expiry_time] = 10.minutes.from_now
+     return true
+  end
+
   
   def check_authentication
     unless session[:user_id]
