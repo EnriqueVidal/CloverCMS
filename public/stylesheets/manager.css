@@ -1,0 +1,41 @@
+#menu-nav ul
+{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-left: 10px;
+}
+
+#menu-nav li
+{
+	float: left;
+	margin: 0 0.15em;
+	margin-top: 2px;
+}
+
+#menu-nav li a
+{
+	color: white;
+	height: 2em;
+	line-height: 2em;
+	float: left;
+	width: 5em;
+	display: block;
+	border: 0.1em solid #dcdce9;
+	text-decoration: none;
+	text-align: center;
+}
+
+#menu-nav li a:hover
+{
+	color: #333333;
+	background-color: white;
+	height: 2em;
+	line-height: 2em;
+	float: left;
+	width: 5em;
+	display: block;
+	border: 0.1em solid #333333;
+	text-decoration: none;
+	text-align: center;
+}

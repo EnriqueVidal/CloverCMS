@@ -25,6 +25,22 @@ document.observe("dom:loaded", function() {
   }
 })
 
+function checkPresence( field ) 
+{ 
+	var hint = $F( field ).length == 0 ? "Try again!" : "Right on!"; 
+	
+	if ( $( field + '_hint' ) ) 
+	{ 
+		$( field + '_hint' ).update( hint ); 
+	} 
+	else 
+	{ 
+		content = '<span class="validation" id="' + field + '_hint">' + hint + '</span>'; 
+		new Insertion.After( field, content ); 
+	} 
+} 
+
+
 
 function showItem(element, trigger)
 {

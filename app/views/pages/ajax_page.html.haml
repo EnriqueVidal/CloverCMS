@@ -1,6 +1,27 @@
 = render :partial => 'pages_operations.html.haml', :locals => { :page => @page }
 
+%h5
+  MetaTag title:
+%p
+  - if @page.meta_title.content.length > 50
+    = @page.meta_title.content[0..49] + '...'
+  - else
+    = @page.meta_title.content
+  
+%h5
+  MetaTag description:
+%p
+  - if @page.meta_description.content.length > 50
+    = @page.meta_description.content[0..49] + '...'
+  - else
+    = @page.meta_description.content
+
+%h5
+  Title:
 %p
   = @page.title
+  
+%h5
+  Page Body:
 %p
-  = @page.body
+  = @page.body 

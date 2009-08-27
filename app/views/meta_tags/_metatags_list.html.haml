@@ -1,0 +1,47 @@
+%table{ :style => 'border: 1px solid grey;', :cellspacing => 0, :cellpadding => 5 }
+  %tr{ :style => 'color: #FFFFFF; background-color: #333333; text-align: center;' }
+    %th
+      Meta Content
+    %th
+      Actions
+
+  - for metatag in @metatags
+    %tr
+      %td
+        - if metatag.content.length > 15
+          = metatag.content[0..15] + '...'
+        - else
+          = metatag.content
+        %td
+          = link_to 'Show', meta_tag_path(metatag)
+          = link_to 'Edit', edit_meta_tag_path(metatag)
+          = link_to 'Destroy', metatag, :confirm => 'Deleting a Meta Content will make it unavailable in the whole site. Are you sure?', :method => :delete
+
+= will_paginate @metatags
+
+%br
+
+#metatags_used_in
+  %table{ :style => 'border: 1px solid grey;', :cellspacing => 0, :cellpadding => 5 }
+    %tr{ :style => 'color: #FFFFFF; background-color: #333333; text-align: center;' }
+      %th
+        Meta Content
+      %th
+        Pages used at
+        
+    - @metatags.each do |meta|
+      %tr
+        %td
+          - if meta.content.length > 15
+            = meta.content[0..15] + ' ...'
+          - else
+            = meta.content
+        %td
+          - meta.pages_meta_title.each do |page|
+            = 'Meta title of: ' + page.title
+            %br
+          - meta.pages_meta_description.each do |page|
+            = 'Meta description of: ' + page.title
+            %br
+
+%br

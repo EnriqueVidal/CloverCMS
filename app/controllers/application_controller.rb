@@ -14,10 +14,19 @@ class ApplicationController < ActionController::Base
                 :except => [:login, :register, :activate, :logout, :create, :show_section_page, :show_subsection_page, :home_page]
 
   def session_expiry
-     reset_session if session[:expiry_time] and session[:expiry_time] < Time.now
+    if session[:expiry_time] and session[:expiry_time] < Time.now
+      reset_session
+      
+      if request.xhr?
+        session[:expiry_time] = 10.minutes.from_now
+        render :update do |page| 
+          page.redirect_to :login 
+        end
+      end
+    end
 
-     session[:expiry_time] = 10.minutes.from_now
-     return true
+    session[:expiry_time] = 10.minutes.from_now
+    return true
   end
 
   

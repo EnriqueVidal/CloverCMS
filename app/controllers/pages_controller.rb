@@ -29,6 +29,7 @@ class PagesController < ApplicationController
         format.html { redirect_to :controller => :manager, :action => :index }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
+        flash[:notice] = 'Page was not created.'
         format.html { redirect_to :controller => :manager, :action => :index }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end

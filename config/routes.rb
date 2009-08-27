@@ -11,13 +11,14 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :viewer
   
 
-  map.profile   'profile',                :controller => 'users', :action => 'profile'
-  map.activate  'users/activate/:token',  :controller => 'users', :action => 'activate'
-  map.login     'login',                  :controller => 'users', :action => 'login'
-  map.logout    'logout',                 :controller => 'users', :action => 'logout'
-  map.register  'register',               :controller => 'users', :action => 'register'
-
-  map.resources :manager
+  map.profile   'profile',                :controller => 'users',   :action => 'profile'
+  map.activate  'users/activate/:token',  :controller => 'users',   :action => 'activate'
+  map.login     'login',                  :controller => 'users',   :action => 'login'
+  map.logout    'logout',                 :controller => 'users',   :action => 'logout'
+  map.register  'register',               :controller => 'users',   :action => 'register'
+  
+  map.seo_manager '/manager/seo',         :controller => 'manager', :action => 'seo'
+  map.resources   :manager
   
   map.delete_page 'pages/:id/destroy',    :controller => 'pages',   :action => 'destroy'
   map.create_page 'pages/create',         :controller => 'pages',   :action => 'create'

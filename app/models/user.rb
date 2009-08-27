@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  has_one                 :person, :dependent => :destroy
+  has_one                 :person,    :dependent => :destroy
+  delegate                :full_name, :to => :person
+  
   has_and_belongs_to_many :roles
   
   validates_presence_of     :email,     :username

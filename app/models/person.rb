@@ -1,9 +1,9 @@
 class Person < ActiveRecord::Base
   belongs_to  :user
-  belongs_to  :city
-  belongs_to  :postal_code
-  has_many    :posts
-  has_many    :comments
+#  belongs_to  :city
+#  belongs_to  :postal_code
+#  has_many    :posts
+#  has_many    :comments
   
   has_attached_file :photo, :path => ":rails_root/public/images/system/:class/:attachment/:id/:style_:basename.:extension", :styles => {
                                                                                                                                 :thumb  => "29x29#",

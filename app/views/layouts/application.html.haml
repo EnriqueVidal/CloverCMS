@@ -7,22 +7,33 @@
     
     = calendar_date_select_includes "silver"
     = stylesheet_link_tag     "scaffold"
+    = stylesheet_link_tag     "manager"
     = include_yui_editor_if_used
 
     %title
       Clover CMS Manager
   %body
-    .messages
-      - if flash[:notice]
-        #flash_notice
-          = flash[:notice]
+    .menu{ :style => 'background-color: #333333;margin-left: 0; margin-right:0; height: 32px;width: 960px; margin-top: 5px; margin-bottom: 0px;' }
+      #menu-nav
+        %ul
+          %li
+            = link_to 'Pages', '/manager'
+          %li
+            = link_to 'SEO', '/manager/seo'
+          %li
+            = link_to 'Users', '#'
+              
+    #manager{ :style => 'width: 958px; border: 1px solid grey; height: 600px;overflow: auto;' }
+      .messages
+        - if flash[:notice]
+          #flash_notice
+            = flash[:notice]
 
-      - if flash[:error]
-        #flash_error
-          = flash[:error]
+        - if flash[:error]
+          #flash_error
+            = flash[:error]
 
-      - if flash[:success]
-        #flash_success
-          = flash[:success]
-    .content
+        - if flash[:success]
+          #flash_success
+            = flash[:success]
       = yield
