@@ -1,0 +1,4 @@
+- form_for( @meta_tag, :url => { :action => "create" }, :builder => ValidatingFormBuilder ) do |f|
+  = f.text_field :content
+  = f.submit 'Send'
+

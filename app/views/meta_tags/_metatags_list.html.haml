@@ -13,11 +13,17 @@
         - else
           = metatag.content
         %td
-          = link_to 'Show', meta_tag_path(metatag)
-          = link_to 'Edit', edit_meta_tag_path(metatag)
-          = link_to 'Destroy', metatag, :confirm => 'Deleting a Meta Content will make it unavailable in the whole site. Are you sure?', :method => :delete
+          = link_to_remote 'Show',  :url => meta_tag_path(metatag), :update => :rendered_action, :after => "$('rendered_action').show();"
+          = link_to_remote 'Edit',  :url => "/meta_tags/#{metatag.id}/edit", :update => :rendered_action, :after => "$('rendered_action').show();"
+          = link_to 'Destroy', "/meta_tags/#{metatag.id}/destroy", :confirm => 'Deleting a Meta Content will make it unavailable in the whole site. Are you sure?'
 
-= will_paginate @metatags
+%br
+%br
+= link_to_remote 'New Meta Tag', :url => "/meta_tags/new", :update => :rendered_action, :after => "$('rendered_action').show();"
+
+%br
+%br
+
 
 %br
 
@@ -28,7 +34,7 @@
         Meta Content
       %th
         Pages used at
-        
+
     - @metatags.each do |meta|
       %tr
         %td
@@ -45,3 +51,6 @@
             %br
 
 %br
+
+= will_paginate @metatags
+

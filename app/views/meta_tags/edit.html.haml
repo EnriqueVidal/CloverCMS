@@ -1,0 +1,5 @@
+- form_for ( @meta_tag, :url => { :action => 'update' }, :builder => ValidatingFormBuilder ) do |f|
+  = f.hidden_field :id
+  = f.text_field :content
+  = f.submit 'Send'
+

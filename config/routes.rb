@@ -1,4 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
+
+  map.create_meta_tag   'meta_tags/create',       :controller => 'meta_tags', :action => 'create'
+  map.update_meta_tag   'meta_tags/update',       :controller => 'meta_tags', :action => 'update'
+  map.new_meta_tag      'meta_tags/new',          :controller => 'meta_tags', :action => 'new'
+  map.delete_meta_tag   'meta_tags/:id/destroy',  :controller => 'meta_tags', :action => 'destroy'
+  map.edit_meta_tag     'meta_tags/:id/edit',     :controller => 'meta_tags', :action => 'edit'
+  map.show_meta_tag     'meta_tags/:id',          :controller => 'meta_tags', :action => 'show'
   map.resources :meta_tags
 
 
@@ -9,24 +16,24 @@ ActionController::Routing::Routes.draw do |map|
   map.show_subsection_page  ':section_name/:subsection_name/:page_name.html', :controller => 'viewer', :action => 'show_subsection_page'
   map.show_section_page     ':section_name/:page_name.html',                  :controller => 'viewer', :action => 'show_section_page'
   map.resources :viewer
-  
+
 
   map.profile   'profile',                :controller => 'users',   :action => 'profile'
   map.activate  'users/activate/:token',  :controller => 'users',   :action => 'activate'
   map.login     'login',                  :controller => 'users',   :action => 'login'
   map.logout    'logout',                 :controller => 'users',   :action => 'logout'
   map.register  'register',               :controller => 'users',   :action => 'register'
-  
+
   map.seo_manager '/manager/seo',         :controller => 'manager', :action => 'seo'
   map.resources   :manager
-  
+
   map.delete_page 'pages/:id/destroy',    :controller => 'pages',   :action => 'destroy'
   map.create_page 'pages/create',         :controller => 'pages',   :action => 'create'
   map.update_page 'pages/update',         :controller => 'pages',   :action => 'update'
   map.edit_page   'pages/:id/edit',       :controller => 'pages',   :action => 'edit'
   map.show_page   'pages/:id',            :controller => 'pages',   :action => 'show'
   map.resources   :pages
-  
+
   map.delete_subsection     'subsection/:id/destroy',                 :controller => 'subsections',   :action => 'destroy'
   map.update_subsection     'subsections/update',                     :controller => 'subsections',   :action => 'update'
   map.edit_subsection       'subsection/:id/edit',                    :controller => 'subsections',   :action => 'edit'
@@ -41,11 +48,11 @@ ActionController::Routing::Routes.draw do |map|
   map.new_section       'section/new',            :controller => 'sections',      :action => 'new'
   map.section_items     'section/:id/items',      :controller => 'sections',      :action => 'items'
   map.resources         :sections
-  
+
   map.resources :people
   map.resources :members
   map.resources :admins
-  
+
   map.root  :controller => :viewer, :action => :home_page
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -66,7 +73,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments
@@ -90,3 +97,4 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
+
