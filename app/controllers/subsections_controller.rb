@@ -1,6 +1,12 @@
 class SubsectionsController < ApplicationController
   
-  uses_yui_editor :only => :new_page
+  uses_tiny_mce :only => :new_page, :options => {
+                                                  :theme => 'advanced',
+                                                  :theme_advanced_resizing => true,
+                                                  :theme_advanced_resize_horizontal => false,
+                                                  :plugins => %w{ table fullscreen }
+                                                }
+
                 
   def show
     @subsection = Subsection.find(params[:id])

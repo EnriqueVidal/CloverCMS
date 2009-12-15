@@ -2,7 +2,7 @@ ENV['RAILS_ENV'] ||= 'production'
 # Be sure to restart your server when you modify this file
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.3' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 ENV['GEM_PATH'] = "/home/cloverin/ruby/gems/:/usr/lib/ruby/gems/1.8"  if `hostname`.chop == "highbury.webserversystems.com"
 ENV['GEM_HOME'] = "/home/cloverin/ruby/gems"                          if `hostname`.chop == "highbury.webserversystems.com"
 
@@ -28,7 +28,9 @@ Rails::Initializer.run do |config|
   config.gem "redgreen"
   config.gem "mocha"
   config.gem "haml"
+  config.gem "papermill"
   config.gem "mislav-will_paginate",    :lib => 'will_paginate',  :source => 'http://gems.github.com', :version => '~> 2.3.11'
+  config.gem 'kete-tiny_mce',           :lib => 'tiny_mce',       :source => 'http://gems.github.com' 
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

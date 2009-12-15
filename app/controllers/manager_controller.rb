@@ -1,6 +1,6 @@
 class ManagerController < ApplicationController
 
-  uses_yui_editor
+  uses_tiny_mce
   
   def index
     @sections = Section.paginate :page => params[:page], :per_page => 15

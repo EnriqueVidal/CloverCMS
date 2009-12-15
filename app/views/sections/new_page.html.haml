@@ -1,4 +1,4 @@
-= include_yui_editor_if_used
+= include_tiny_mce_if_needed
 
 %h3
   = "Add new Page to " + @section.name
@@ -11,7 +11,7 @@
 
   = f.text_field :name,   :size => 17
   = f.text_field :title,  :size => 17
-  = f.text_area :body,    :class => 'rich_text_editor', :style => 'width: 100%;'
+  = f.text_area :body,    :class => 'mceEditor'
 
   = link_to 'SEO Meta Tags', '#seo_box', :onclick => "$('uploads').hide();$('add_photo').hide();$('seo_box').toggle();"
   

@@ -1,6 +1,11 @@
 class PagesController < ApplicationController
 
-  uses_yui_editor :only => :edit
+  uses_tiny_mce :only => :edit,   :options => {
+                                                  :theme => 'advanced',
+                                                  :theme_advanced_resizing => true,
+                                                  :theme_advanced_resize_horizontal => false,
+                                                  :plugins => %w{ table fullscreen }
+                                                }
 
   def show
     @page = Page.find(params[:id])

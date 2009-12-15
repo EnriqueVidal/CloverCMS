@@ -1,6 +1,11 @@
 class SectionsController < ApplicationController
 
-  uses_yui_editor :only => :new_page  
+  uses_tiny_mce :options => {
+                                :theme => 'advanced',
+                                :theme_advanced_resizing => true,
+                                :theme_advanced_resize_horizontal => false,
+                                :plugins => %w{ table fullscreen }
+                              }  
   
   def items
     @section = Section.find(params[:id])

@@ -2,18 +2,21 @@
 %html
   %head
     = javascript_include_tag  :defaults
-    = javascript_include_tag 'cropper/lib/scriptaculous.js?load=builder,dragdrop'
-    = javascript_include_tag 'cropper/cropper.js'
+    = #javascript_include_tag 'cropper/lib/scriptaculous.js?load=builder,dragdrop'
+    = #javascript_include_tag 'cropper/cropper.js'
+    
+    = papermill_stylesheet_tag
+    = papermill_javascript_tag :with_jquery => "no_conflict"
     
     = calendar_date_select_includes "silver"
-    = stylesheet_link_tag     "scaffold"
-    = stylesheet_link_tag     "manager"
-    = include_yui_editor_if_used
+    = stylesheet_link_tag           "scaffold"
+    = stylesheet_link_tag           "manager"
+    = include_tiny_mce_if_needed
 
     %title
       Clover CMS Manager
   %body
-    .menu{ :style => 'background-color: #333333;margin-left: 0; margin-right:0; height: 32px;width: 960px; margin-top: 5px; margin-bottom: 0px;' }
+    .menu{ :style => 'background-color: #333333;margin-left: 0; margin-right:0; height: 32px; margin-top: 5px; margin-bottom: 0px;' }
       #menu-nav
         %ul
           %li
@@ -23,7 +26,7 @@
           %li
             = link_to 'Users', '#'
               
-    #manager{ :style => 'width: 958px; border: 1px solid grey; height: 600px;overflow: auto;' }
+    #manager
       .messages
         - if flash[:notice]
           #flash_notice
