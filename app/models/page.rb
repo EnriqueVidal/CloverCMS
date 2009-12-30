@@ -15,15 +15,5 @@ class Page < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 5
 
-  after_create :fix_images_path
-  after_update :fix_images_path
-
-  def fix_images_path
-    #self.body.gsub!(/src=\"images\//, 'src="/images/')
-    logger.info "<<<<<" + self.body.to_s + ">>>>>"
-    body = self.body
-    body.gsub!(/src=\"images\//, 'src="/images/')
-    self.update_attributes!(:body => body)
-  end
 end
 
