@@ -2,14 +2,14 @@ class PagesController < ApplicationController
 
   uses_tiny_mce :only => :edit,   :options => {
                                                   :theme => 'advanced',
-                                                  :theme_advanced_resizing => true,
+                                                  :theme_advanced_resizing => false,
                                                   :theme_advanced_resize_horizontal => false,
                                                   :plugins => %w{ table fullscreen }
                                                 }
 
   def show
     @page = Page.find(params[:id])
-   
+
     respond_to do |format|
       format.html
       format.js { render 'ajax_page', :layout => false }
@@ -19,7 +19,7 @@ class PagesController < ApplicationController
   def edit
     @page   = Page.find(params[:id])
     @metas  = MetaTag.all
-    
+
     respond_to do |format|
       format.html { render :layout => false }
     end
@@ -67,3 +67,4 @@ class PagesController < ApplicationController
     end
   end
 end
+

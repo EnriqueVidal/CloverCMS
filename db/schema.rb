@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091215192833) do
+ActiveRecord::Schema.define(:version => 20090826223206) do
 
   create_table "meta_tags", :force => true do |t|
     t.string   "content"
@@ -27,18 +27,6 @@ ActiveRecord::Schema.define(:version => 20091215192833) do
     t.string   "name"
     t.integer  "meta_title_id"
     t.integer  "meta_description_id"
-  end
-
-  create_table "papermill_assets", :force => true do |t|
-    t.string  "file_file_name"
-    t.string  "file_content_type"
-    t.integer "file_file_size"
-    t.integer "position"
-    t.integer "assetable_id"
-    t.string  "assetable_type"
-    t.string  "assetable_key"
-    t.string  "type"
-    t.string  "title"
   end
 
   create_table "people", :force => true do |t|

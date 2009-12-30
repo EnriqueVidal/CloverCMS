@@ -25,20 +25,20 @@ document.observe("dom:loaded", function() {
   }
 })
 
-function checkPresence( field ) 
-{ 
-	var hint = $F( field ).length == 0 ? "Try again!" : "Right on!"; 
-	
-	if ( $( field + '_hint' ) ) 
-	{ 
-		$( field + '_hint' ).update( hint ); 
-	} 
-	else 
-	{ 
-		content = '<span class="validation" id="' + field + '_hint">' + hint + '</span>'; 
-		new Insertion.After( field, content ); 
-	} 
-} 
+function checkPresence( field )
+{
+	var hint = $F( field ).length == 0 ? "Try again!" : "Right on!";
+
+	if ( $( field + '_hint' ) )
+	{
+		$( field + '_hint' ).update( hint );
+	}
+	else
+	{
+		content = '<span class="validation" id="' + field + '_hint">' + hint + '</span>';
+		new Insertion.After( field, content );
+	}
+}
 
 
 
@@ -56,3 +56,14 @@ function update_hidden_value(text_field, option)
 	hidden_field.value 	= option.value;
 	block_field(tf);
 }
+
+function imageAdd(element_id, iframe_id)
+{
+    var src     = $(element_id).src.split('?')[0];
+    var img_tag = document.createElement("img")
+    img_tag.src = src;
+
+    $(iframe_id).contentDocument.body.appendChild(img_tag);
+
+}
+

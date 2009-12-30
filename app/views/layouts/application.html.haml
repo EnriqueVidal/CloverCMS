@@ -4,10 +4,7 @@
     = javascript_include_tag  :defaults
     = #javascript_include_tag 'cropper/lib/scriptaculous.js?load=builder,dragdrop'
     = #javascript_include_tag 'cropper/cropper.js'
-    
-    = papermill_stylesheet_tag
-    = papermill_javascript_tag :with_jquery => "no_conflict"
-    
+
     = calendar_date_select_includes "silver"
     = stylesheet_link_tag           "scaffold"
     = stylesheet_link_tag           "manager"
@@ -25,7 +22,7 @@
             = link_to 'SEO', '/manager/seo'
           %li
             = link_to 'Users', '#'
-              
+
     #manager
       .messages
         - if flash[:notice]
@@ -40,3 +37,4 @@
           #flash_success
             = flash[:success]
       = yield
+

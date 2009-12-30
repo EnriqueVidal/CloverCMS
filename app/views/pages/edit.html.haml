@@ -3,12 +3,12 @@
 
 %h3
   Editing pages
-  
+
 - form_for( @page, :url => { :action => :update }, :html => { :multipart => true } ) do |f|
   = f.error_messages
   = f.hidden_field :id
-  
-  
+
+
   %p
     = f.label :name
   %p
@@ -21,12 +21,12 @@
     = f.label :body
   %p
     = f.text_area :body, :class => 'mceEditor'
-  
+
   = link_to 'Etiquetas para SEO', '#seo_box', :onclick => "$('seo_box').toggle();"
-  
-  #seo_box{ :style => 'display: none;', :name => 'seo_box' }  
+
+  #seo_box{ :style => 'display: none;', :name => 'seo_box' }
     = render :partial => 'meta_tags/all_meta_tags', :locals => { :metas => @metas, :page => @page }
-          
+
   %p
     = f.submit 'Update'
 

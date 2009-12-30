@@ -5,10 +5,15 @@
         Photos
       %ul
         - for upload in @uploads
+
           %li.thumbnail_button
-            = link_to image_tag( 'icons/picture_delete.png', :class => 'delete_photo', :title => 'Delete Photo: ' + upload.description ), "/uploads/#{upload.id}/destroy", :confirm => 'Deleting an image will make it unavailable for the rest of your site. Are you sure?'
-          %li.thumbnail  
-            = image_tag upload.photo_url(:small)
+            = link_to image_tag( 'icons/picture_delete.png', :class => 'delete_photo', :title => 'Delete photo: ' + upload.description ), "/uploads/#{upload.id}/destroy", :confirm => 'Deleting an image will make it unavailable for the rest of your site. Are you sure?'
+
+          %li.thumbnail_button
+            = image_tag 'icons/picture_add.png', :class => 'delete_photo', :title => 'Add photo to page: ' + upload.description, :onclick => "imageAdd('image_" + upload.id.to_s + "', 'page_body_ifr' );"
+
+          %li.thumbnail
+            = image_tag upload.photo_url(:small), :id => 'image_' + upload.id.to_s
 
   %fieldset{ :style => 'width: 100%' }
     %legend
@@ -24,3 +29,6 @@
       = f.file_field :photo, :size => 10, :style => 'margin: 5px;'
       %br
       = f.submit  'Upload', :style => 'margin: 5px;'
+
+#temp_element_parent{ :style => 'display: none;'}
+
