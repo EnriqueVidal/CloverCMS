@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090826223206) do
+ActiveRecord::Schema.define(:version => 20091231155439) do
 
   create_table "meta_tags", :force => true do |t|
     t.string   "content"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(:version => 20090826223206) do
     t.string   "last_name",          :limit => 40, :default => "", :null => false
     t.date     "date_of_birth"
     t.integer  "user_id"
-    t.string   "type"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -113,6 +112,7 @@ ActiveRecord::Schema.define(:version => 20090826223206) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
+    t.boolean  "admin"
   end
 
 end

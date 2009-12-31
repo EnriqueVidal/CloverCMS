@@ -26,11 +26,10 @@ Rails::Initializer.run do |config|
 
   config.gem "calendar_date_select"
   config.gem "redgreen"
-  config.gem "mocha"
   config.gem "haml"
-  config.gem "papermill"
+  config.gem 'gravtastic',              :version => '>= 2.1.0'
   config.gem "mislav-will_paginate",    :lib => 'will_paginate',  :source => 'http://gems.github.com', :version => '~> 2.3.11'
-  config.gem 'kete-tiny_mce',           :lib => 'tiny_mce',       :source => 'http://gems.github.com' 
+  config.gem 'kete-tiny_mce',           :lib => 'tiny_mce',       :source => 'http://gems.github.com'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -42,7 +41,7 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
-  config.active_record.observers = :user_observer 
+  config.active_record.observers = :user_observer
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
@@ -51,7 +50,7 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
-  
+
   config.action_mailer.smtp_settings =  {
                                           :address        => "smtp.gmail.com",
                                           :port           =>  587,
@@ -60,5 +59,6 @@ Rails::Initializer.run do |config|
                                           :user_name      => "dont-reply@cloverinteractive.com",
                                           :password       => "H@Nn@L1v3$C10v3R1N73r@kT1v3"
                                         }
-  
+
 end
+
