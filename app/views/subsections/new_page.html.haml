@@ -9,18 +9,13 @@
 - form_for( @page, :url => { :controller => 'pages', :action => 'create' }, :html => { :multipart => true } ) do |f|
   = f.hidden_field :subsection_id, :value => @subsection.id
 
-  = f.label      :name
-  = f.text_field :name,   :size => 17
-
-  %br
-
   = f.label      :title
   = f.text_field :title,  :size => 17
 
   %br
+  %br
 
-  = f.label     :body
-  = f.text_area :body,    :class => 'mceEditor'
+  = f.text_area :body,    :class => 'mceEditor', :rows => 25
 
   = link_to 'SEO Meta Tags', '#seo_box', :onclick => "$('keywords').hide();$('uploads').hide();$('add_photo').hide();$('seo_box').toggle();"
 

@@ -1,6 +1,6 @@
 %p
   SEO Title:
-  
+
 %p
   %select{ :name => 'page[meta_title_id]', :size => 5 }
     - metas.each do |meta|
@@ -13,13 +13,14 @@
 
 %p
   SEO Description:
-        
+
 %p
-  %select{ :name => 'page[meta_description_id]', :size => 5 }      
+  %select{ :name => 'page[meta_description_id]', :size => 5 }
     - metas.each do |meta|
-      - if !page.meta_description_id.nil? && meta.id == page.meta_description.id
+      - if !page.meta_description_id.nil? && meta.id == page.meta_description_id
         %option{ :value => meta.id, :selected => 'selected' }
           = meta.content
       - else
         %option{ :value => meta.id }
           = meta.content
+

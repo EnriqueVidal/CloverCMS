@@ -15,4 +15,4 @@
 
   - if @sections.first.pages.count >= 1
     = #remote_function :url => "/pages/#{@sections.first.pages.first.id}/edit", :update => 'rendered_items', :after => "$('rendered_items').show();$('page_pictures').show();"
-  
+
