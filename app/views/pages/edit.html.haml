@@ -22,10 +22,15 @@
   %p
     = f.text_area :body, :class => 'mceEditor'
 
-  = link_to 'Etiquetas para SEO', '#seo_box', :onclick => "$('seo_box').toggle();"
-
+  = link_to 'Etiquetas para SEO', '#seo_box', :onclick => "$('seo_box').toggle();$('keywords').hide();"
   #seo_box{ :style => 'display: none;', :name => 'seo_box' }
     = render :partial => 'meta_tags/all_meta_tags', :locals => { :metas => @metas, :page => @page }
+
+  %br
+
+  = link_to 'Palabras claves para SEO', '#keywords', :onclick => "$('keywords').toggle();$('seo_box').hide();"
+  #keywords{ :style => 'display: none;', :name => 'keywords' }
+    = render :partial => 'page_keywords', :locals => { :f => f }
 
   %p
     = f.submit 'Update'

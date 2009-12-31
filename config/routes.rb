@@ -27,11 +27,11 @@ ActionController::Routing::Routes.draw do |map|
   map.seo_manager '/manager/seo',         :controller => 'manager', :action => 'seo'
   map.resources   :manager
 
-  map.delete_page 'pages/:id/destroy',    :controller => 'pages',   :action => 'destroy'
-  map.create_page 'pages/create',         :controller => 'pages',   :action => 'create'
-  map.update_page 'pages/update',         :controller => 'pages',   :action => 'update'
-  map.edit_page   'pages/:id/edit',       :controller => 'pages',   :action => 'edit'
-  map.show_page   'pages/:id',            :controller => 'pages',   :action => 'show'
+  map.delete_page   'pages/:id/destroy',    :controller => 'pages',   :action => 'destroy'
+  map.create_page   'pages/create',         :controller => 'pages',   :action => 'create'
+  map.update_page   'pages/update',         :controller => 'pages',   :action => 'update'
+  map.edit_page     'pages/:id/edit',       :controller => 'pages',   :action => 'edit'
+  map.show_page     'pages/:id',            :controller => 'pages',   :action => 'show'
   map.resources   :pages
 
   map.delete_subsection     'subsection/:id/destroy',                 :controller => 'subsections',   :action => 'destroy'

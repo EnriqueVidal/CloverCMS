@@ -2,25 +2,41 @@
 
 %h3
   = "Add new Page to " + @subsection.name
-  
+
 - @page   = Page.new
 - @metas  = MetaTag.all
 
-- form_for( @page, :url => { :controller => 'pages', :action => 'create' }, :html => { :multipart => true }, :builder => ValidatingFormBuilder ) do |f|
+- form_for( @page, :url => { :controller => 'pages', :action => 'create' }, :html => { :multipart => true } ) do |f|
   = f.hidden_field :subsection_id, :value => @subsection.id
-  
+
+  = f.label      :name
   = f.text_field :name,   :size => 17
+
+  %br
+
+  = f.label      :title
   = f.text_field :title,  :size => 17
+
+  %br
+
+  = f.label     :body
   = f.text_area :body,    :class => 'mceEditor'
-  
-  = link_to 'SEO Meta Tags', '#seo_box', :onclick => "$('uploads').hide();$('add_photo').hide();$('seo_box').toggle();"
+
+  = link_to 'SEO Meta Tags', '#seo_box', :onclick => "$('keywords').hide();$('uploads').hide();$('add_photo').hide();$('seo_box').toggle();"
 
   #seo_box{ :style => 'display: none;', :name => 'seo_box' }
     = render :partial => 'meta_tags/all_meta_tags', :locals => { :metas => @metas, :page => @page }
 
   %br
 
-  = link_to 'Upload Photos', '#uploads', :onclick => "$('seo_box').hide();$('uploads').toggle();$('add_photo').toggle();"
+  = link_to 'Palabras claves para SEO', '#keywords', :onclick => "$('keywords').toggle();$('seo_box').hide();$('uploads').hide();"
+
+  #keywords{ :style => 'display: none;', :name => 'keywords' }
+    = render :partial => 'pages/page_keywords', :locals => { :f => f }
+
+  %br
+
+  = link_to 'Upload Photos', '#uploads', :onclick => "$('keywords').hide();$('seo_box').hide();$('uploads').toggle();$('add_photo').toggle();"
 
   %br
   %br
@@ -29,8 +45,9 @@
     = f.render_associated_form( @page.uploads, :new => 1 )
 
   %br
-  #add_photo{ :style => 'display: none;' }  
+  #add_photo{ :style => 'display: none;' }
     = f.add_associated_link('Add another photo.', @page.uploads.build )
 
   %br
   = f.submit 'Create', :style => 'margin-bottom: 105px;'
+

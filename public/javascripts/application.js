@@ -67,3 +67,15 @@ function imageAdd(element_id, iframe_id)
 
 }
 
+function addKeyWord(element)
+{
+  var option = document.createElement("option");
+  var tag_list = $('page_tag_list');
+
+  option.innerHTML   = element.value;
+  tag_list.value    += ( tag_list.value.replace(/^\s*/, "").replace(/\s*$/, "") != "" ) ? ', ' + element.value : element.value;
+
+  $('page_tag_list_visuals').appendChild(option);
+  element.value = '';
+}
+

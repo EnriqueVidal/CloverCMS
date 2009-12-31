@@ -6,7 +6,6 @@ class PagesController < ApplicationController
                                                   :theme_advanced_resize_horizontal => false,
                                                   :plugins => %w{ table fullscreen }
                                                 }
-
   def show
     @page = Page.find(params[:id])
 
