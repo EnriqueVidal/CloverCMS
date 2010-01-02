@@ -1,3 +1,8 @@
+%script{ :type => 'text/javascript'}
+  //<![[CDADA
+  var page_boxes =  new Array('seo_box', 'keywords', 'uploads', 'add_another_photo_link');
+  //]]>
+
 %h2
   New Page
 
@@ -15,15 +20,25 @@
   %p
     = f.text_area :body, :class => 'mceEditor'
 
-  = link_to 'Etiquetas para SEO', '#seo_box', :onclick => "$('seo_box').toggle();$('keywords').hide();"
+  = link_to 'SEO Meta Tags', '#seo_box', :onclick => "TogglePageBoxes('seo_box');"
   #seo_box{ :style => 'display: none;', :name => 'seo_box' }
     = render :partial => 'meta_tags/all_meta_tags', :locals => { :metas => @metas, :page => @page }
 
   %br
 
-  = link_to 'Palabras claves para SEO', '#keywords', :onclick => "$('keywords').toggle();$('seo_box').hide();"
+  = link_to 'SEO keywords', '#keywords', :onclick => "TogglePageBoxes('keywords');"
   #keywords{ :style => 'display: none;', :name => 'keywords' }
     = render :partial => 'page_keywords', :locals => { :f => f }
+
+  %br
+
+  = link_to 'Upload Photos', '#uploads', :onclick => "TogglePageBoxes(['uploads', 'add_another_photo_link']);"
+  #uploads{ :style => 'padding: 2px; border: 1px solid grey;display:none;', :name => 'uploads' }
+    = f.render_associated_form( @page.uploads, :new => 1 )
+
+
+  #add_another_photo_link{:style => 'display: none;'}
+    = f.add_associated_link('Add another photo.', @page.uploads.build )
 
   %p
     = f.submit 'Create'

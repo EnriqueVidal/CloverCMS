@@ -40,7 +40,14 @@ class PagesController < ApplicationController
     respond_to do |format|
       if @page.save
         flash[:notice] = 'Page was successfully created.'
-        format.html { redirect_to :controller => :sections, :action => :index }
+        format.html {
+          if @page.uploads.count >= 1
+            redirect_to edit_page_path(@page)
+          else
+            redirect_to :controller => :sections, :action => :index
+          end
+        }
+
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
         flash[:notice] = 'Page was not created.'

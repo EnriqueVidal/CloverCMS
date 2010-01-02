@@ -79,3 +79,31 @@ function addKeyWord(element)
   element.value = '';
 }
 
+function TogglePageBoxes(box)
+{
+  for(var i = 0; i < page_boxes.length; i++)
+  {
+    if (typeof box == 'string')
+    {
+      if (page_boxes[i] != box)
+        $(page_boxes[i]).hide();
+    }
+    else
+    {
+      var conditions = "";
+
+      for(var j = 0; j < box.length; j++)
+      {
+        conditions += (conditions != "") ? " && '" + page_boxes[i] + "' != '" + box[j] + "'" : "'" + page_boxes[i] + "' != '" + box[j] + "'";
+      }
+
+      if (eval(conditions)) { $(page_boxes[i]).hide(); }
+    }
+  }
+
+  if (typeof box == 'string')
+    $(box).toggle();
+  else
+    box.each(Element.toggle);
+}
+

@@ -1,0 +1,35 @@
+#image_container{ :style => 'float: left;' }
+  %h3
+    Pages Uploads
+
+  - if @uploads.count >= 1
+    %fieldset{ :style => 'width:379px;' }
+      %legend
+        Photos
+      %ul
+        - for upload in @uploads
+
+          %li.thumbnail_button
+            = link_to image_tag( 'icons/picture_delete.png', :class => 'delete_photo', :title => 'Delete photo: ' + upload.description ), "/uploads/#{upload.id}/destroy", :confirm => 'Deleting an image will make it unavailable for the rest of your site. Are you sure?'
+
+          %li.thumbnail
+            = image_tag upload.photo_url(:small), :onclick => "imageAdd(this, 'page_body_ifr' );"
+
+  %fieldset{ :style => 'width: 379px;' }
+    %legend
+      Upload new Photo
+
+    - form_for ( Upload.new, :url => { :controller => :uploads, :action => :create }, :html => { :multipart => true, :target => :uploadPhoto } ) do |f|
+
+      %iframe{ :name => 'uploadPhoto', :style => 'display: none;width 0px;'}
+
+      = f.hidden_field :page_id, :value => @page.id
+
+      = f.label 'Name'
+      = f.text_field :description, :size => 10, :style => 'margin: 5px;'
+      %br
+      = f.label 'Photo'
+      = f.file_field :photo, :size => 10, :style => 'margin: 5px;'
+      %br
+      = f.submit  'Upload', :style => 'margin: 5px;'
+

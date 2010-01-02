@@ -1,31 +1,34 @@
-%h3
-  Editing pages
+#edit_page_container{:style => 'float: left;'}
+  %h3
+    Editing pages
 
-- form_for( @page, :url => { :action => :update }, :html => { :multipart => true } ) do |f|
-  = f.error_messages
+  - form_for( @page, :url => { :action => :update }, :html => { :multipart => true } ) do |f|
+    = f.error_messages
 
-  %p
-    = f.label :title
-  %p
-    = f.text_field :title
-  %p
-    = f.label :body
-  %p
-    = f.text_area :body, :class => 'mceEditor'
+    %p
+      = f.label :title
+    %p
+      = f.text_field :title
+    %p
+      = f.label :body
+    %p
+      = f.text_area :body, :class => 'mceEditor'
 
-  = link_to 'Etiquetas para SEO', '#seo_box', :onclick => "$('seo_box').toggle();$('keywords').hide();"
-  #seo_box{ :style => 'display: none;', :name => 'seo_box' }
-    = render :partial => 'meta_tags/all_meta_tags', :locals => { :metas => @metas, :page => @page }
+    = link_to 'Etiquetas para SEO', '#seo_box', :onclick => "$('seo_box').toggle();$('keywords').hide();"
+    #seo_box{ :style => 'display: none;', :name => 'seo_box' }
+      = render :partial => 'meta_tags/all_meta_tags', :locals => { :metas => @metas, :page => @page }
 
-  %br
+    %br
 
-  = link_to 'Palabras claves para SEO', '#keywords', :onclick => "$('keywords').toggle();$('seo_box').hide();"
-  #keywords{ :style => 'display: none;', :name => 'keywords' }
-    = render :partial => 'page_keywords', :locals => { :f => f }
+    = link_to 'Palabras claves para SEO', '#keywords', :onclick => "$('keywords').toggle();$('seo_box').hide();"
+    #keywords{ :style => 'display: none;', :name => 'keywords' }
+      = render :partial => 'page_keywords', :locals => { :f => f }
 
-  %p
-    = f.submit 'Update'
+    %p
+      = f.submit 'Update'
 
-%script{ :type => 'text/javascript' }
-  = #remote_function :update => 'page_pictures', :url => "/uploads/get_photos/#{@page.id}"
+  %script{ :type => 'text/javascript' }
+    = remote_function :update => 'page_pictures', :url => "/uploads/get_photos/#{@page.id}"
+
+#page_pictures{:style => 'float: left;margin-left: 5px;'}
 

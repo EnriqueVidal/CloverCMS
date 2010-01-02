@@ -1,26 +1,41 @@
 class UploadsController < ApplicationController
 
-  def get_photos 
+  def get_photos
     @uploads  = Upload.find_all_by_page_id params[:page_id]
     @page     = Page.find(params[:page_id])
-    
+
     respond_to do |format|
       format.html { render :layout => false }
     end
   end
 
   def create
-    @upload = Upload.new(params[:upload])
-    
-    respond_to do |format|
+    @upload   = Upload.new(params[:upload])
+    @page     = @upload.page
+    @uploads  = @page.uploads
+
+    responds_to_parent do
       if @upload.save
-        flash[:notice] = 'Upload was successful.'
-        format.html { redirect_to :controller => :manager, :action => :index }
-        format.xml { head :ok }
+        render :update do |page|
+          page.replace_html 'image_container', :partial => 'get_photos'
+        end
       end
     end
   end
-  
+
+  def destroy
+    @upload = Upload.find(params[:id])
+    page    = @upload.page
+
+    @upload.destroy
+
+    respond_to do |format|
+      format.html { redirect_to edit_page_path(page) }
+      format.xml  { head :ok }
+    end
+  end
+
+  # Must revisit to enable cropping
   def edit
     @upload = Upload.find(params[:id])
   end
@@ -40,14 +55,5 @@ class UploadsController < ApplicationController
     end
   end
 
-  def destroy
-    @upload = Upload.find(params[:id])
-    @upload.destroy
-
-    respond_to do |format|
-      format.html { redirect_to :controller => :manager, :action => :index }
-      format.xml  { head :ok }
-    end
-  end
-
 end
+
