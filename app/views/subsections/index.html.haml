@@ -1,0 +1,33 @@
+%h2
+  Subsections
+
+#sections_help
+  %p
+    This is the subsections page, here is the list of sections within your website, to watch the pages within each subsection, you only need to click a subsection name from the list, and you will be redirected to that particular subsection page where you will be able to add pages, edit the section name, and adding subsections.
+    %br
+    To go to that particular subsection section page just click on the subsection name.
+
+
+#subsections_box
+  %table
+    %tr
+      %td
+        Name
+      %td
+        Sections
+      %td
+        Operations
+
+    - @subsections.each do |subsection|
+      %tr
+        %td
+          = subsection.name
+        %td
+          = link_to subsection.section.name, section_path(subsection.section)
+        %td
+          = link_to 'Show', subsection_path(subsection)
+          = link_to 'Edit', edit_subsection_path(subsection)
+          = link_to 'Destroy', subsection, :confirm => 'Are you sure?', :method => :delete
+
+  = will_paginate @subsections
+

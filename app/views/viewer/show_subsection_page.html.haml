@@ -3,13 +3,13 @@
     You are at
     = ' ' + @section.name  + ' > ' + @subsection.name + ' > ' + @page.title
 
-#page_content{ :style => 'float: left;' }  
+#page_content{ :style => 'float: left;' }
   %h3
     = @page.title
-  
+
   %p
-    =fix_images_path( @page.body )
-  
+    = @page.body
+
 #pages_menu{ :style => 'float:left;margin-left: 25px;' }
   - if @subsection.pages.count > 1
 
@@ -18,4 +18,4 @@
     - @subsection.pages.each do |page|
       = link_to page.title, show_subsection_page_path( :section_name => @section.name, :subsection_name => @subsection.name, :page_name => page.name )
       %br
-    
+

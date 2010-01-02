@@ -15,7 +15,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.show_subsection_page  ':section_name/:subsection_name/:page_name.html', :controller => 'viewer', :action => 'show_subsection_page'
   map.show_section_page     ':section_name/:page_name.html',                  :controller => 'viewer', :action => 'show_section_page'
-  map.resources :viewer
 
 
   map.profile   'profile',                :controller => 'users',   :action => 'profile'
@@ -27,27 +26,9 @@ ActionController::Routing::Routes.draw do |map|
   map.seo_manager '/manager/seo',         :controller => 'manager', :action => 'seo'
   map.resources   :manager
 
-  map.delete_page   'pages/:id/destroy',    :controller => 'pages',   :action => 'destroy'
-  map.create_page   'pages/create',         :controller => 'pages',   :action => 'create'
-  map.update_page   'pages/update',         :controller => 'pages',   :action => 'update'
-  map.edit_page     'pages/:id/edit',       :controller => 'pages',   :action => 'edit'
-  map.show_page     'pages/:id',            :controller => 'pages',   :action => 'show'
-  map.resources   :pages
-
-  map.delete_subsection     'subsection/:id/destroy',                 :controller => 'subsections',   :action => 'destroy'
-  map.update_subsection     'subsections/update',                     :controller => 'subsections',   :action => 'update'
-  map.edit_subsection       'subsection/:id/edit',                    :controller => 'subsections',   :action => 'edit'
-  map.add_subsection_page   'subsection/new_page/:id',                :controller => 'subsections',   :action => 'new_page'
-  map.add_subsection        'subsection/add_subsection/:section_id',  :controller => 'subsections',   :action => 'add_subsection'
-  map.subsection_items      'subsection/:id/items',                   :controller => 'subsections',   :action => 'items'
-  map.resources             :subsections
-
-  map.delete_section    'section/:id/destroy',    :controller => 'sections',      :action => 'destroy'
-  map.edit_section      'section/:id/edit',       :controller => 'sections',      :action => 'edit'
-  map.add_section_page  'section/new_page/:id',   :controller => 'sections',      :action => 'new_page'
-  map.new_section       'section/new',            :controller => 'sections',      :action => 'new'
-  map.section_items     'section/:id/items',      :controller => 'sections',      :action => 'items'
-  map.resources         :sections
+  map.resources   :sections,    :has_many   => [ :pages, :subsections ]
+  map.resources   :subsections, :has_many   => :pages, :belongs_to => :section
+  map.resources   :pages,       :belongs_to => [ :section, :subsection ]
 
   map.resources :people
   map.resources :members

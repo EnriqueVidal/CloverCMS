@@ -6,13 +6,7 @@
 
 - form_for( @page, :url => { :action => :update }, :html => { :multipart => true } ) do |f|
   = f.error_messages
-  = f.hidden_field :id
 
-
-  %p
-    = f.label :name
-  %p
-    = f.text_field :name
   %p
     = f.label :title
   %p
@@ -36,5 +30,5 @@
     = f.submit 'Update'
 
 %script{ :type => 'text/javascript' }
-  = remote_function :update => 'page_pictures', :url => "/uploads/get_photos/#{@page.id}"
+  = #remote_function :update => 'page_pictures', :url => "/uploads/get_photos/#{@page.id}"
 

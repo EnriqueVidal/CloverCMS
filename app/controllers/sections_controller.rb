@@ -1,41 +1,34 @@
 class SectionsController < ApplicationController
 
-  uses_tiny_mce :options => {
-                                :theme => 'advanced',
-                                :theme_advanced_resizing => true,
-                                :theme_advanced_resize_horizontal => false,
-                                :plugins => %w{ table fullscreen }
-                              }  
-  
-  def items
-    @section = Section.find(params[:id])
-    
+  def index
+    @sections = Section.paginate :page => params[:sections_page], :per_page => 15
+
     respond_to do |format|
-      format.html { render :layout => false}
+      format.html
+      format.xml { render :xml => @sections }
     end
   end
-  
-  def new_page
-    @section = Section.find(params[:id])
-    respond_to do |format|
-      format.html { render :layout => false }
-    end
+
+  def show
+    @section      = Section.find(params[:id])
+    @pages        = @section.pages.paginate       :page => params[:section_pages_page], :per_page => 15
+    @subsections  = @section.subsections.paginate :page => params[:subsections_page],   :per_page => 15
   end
-  
+
   def new
     @section = Section.new
 
     respond_to do |format|
-      format.html { render :layout => false }
+      format.html
       format.xml  { render :xml => @section }
     end
   end
 
   def edit
     @section = Section.find(params[:id])
-    
+
     respond_to do |format|
-      format.html { render :layout => false }
+      format.html
     end
   end
 
@@ -45,25 +38,25 @@ class SectionsController < ApplicationController
     respond_to do |format|
       if @section.save
         flash[:notice] = 'Section was successfully created.'
-        format.html { redirect_to :controller => :manager, :action => :index }
+        format.html { redirect_to :action => :index }
         format.xml  { render :xml => @section, :status => :created, :location => @section }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => :new }
         format.xml  { render :xml => @section.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   def update
-    @section = Section.find(params[:section][:id])
+    @section = Section.find(params[:id])
 
     respond_to do |format|
       if @section.update_attributes(params[:section])
         flash[:notice] = 'Section was successfully updated.'
-        format.html { redirect_to :controller => :manager, :action => :index }
+        format.html { redirect_to @section }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => :edit }
         format.xml  { render :xml => @section.errors, :status => :unprocessable_entity }
       end
     end
@@ -74,8 +67,9 @@ class SectionsController < ApplicationController
     @section.destroy
 
     respond_to do |format|
-      format.html { redirect_to :controller => :manager, :action => :index }
+      format.html { redirect_to :action => :index }
       format.xml  { head :ok }
     end
   end
 end
+

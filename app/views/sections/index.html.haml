@@ -1,0 +1,30 @@
+%h3
+  Sections
+
+#sections_help
+  %p
+    This is the sections page, here is the list of sections within your website, to watch the pages within each section, you only need to click a section name, and you will be redirected to that particular section page where you will be able to add pages, edit the section name, and adding subsections.
+
+
+#sections_box
+  %table
+    %tr
+      %td
+        Name
+      %td
+        Operations
+
+    - @sections.each do |section|
+      %tr
+        %td
+          = section.name
+        %td
+          = link_to 'Show', section_path(section)
+          = link_to 'Edit', edit_section_path(section)
+          = link_to 'Destroy', section, :confirm => 'Are you sure?', :method => :delete
+
+  = will_paginate @sections
+
+#section_operations
+  = link_to 'Add a new Section', new_section_path()
+

@@ -1,0 +1,40 @@
+%h2
+  = 'Subsection ' + @subsection.name
+
+%h4
+  = 'Subsection ' + @subsection.name + ' operations.'
+
+#subsection_operations
+  %table
+    %tr
+      %td
+        = link_to 'Edit', edit_subsection_path(@subsection), :class => 'edit'
+    %tr
+      %td
+        = link_to 'Destroy',  @subsection, :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
+    %tr
+      %td
+        = link_to 'Add Page', new_subsection_page_path(@subsection), :class => 'add'
+
+%h4
+  = 'Subsection ' + @subsection.name + ' pages.'
+
+#subsection_pages
+  %table
+    %tr
+      %td
+        Name
+      %td
+        Operations
+
+      - @pages.each do |page|
+        %tr
+          %td
+            = page.title
+          %td
+            = link_to 'Show',       page_path(page)
+            = link_to 'Edit',       edit_page_path(page)
+            = link_to 'Destroy',    page, :confirm => 'Are you sure?', :method => :delete
+
+  = will_paginate @pages
+

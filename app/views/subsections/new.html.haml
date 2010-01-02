@@ -1,0 +1,11 @@
+%h2
+  New Subsection
+
+#new_subsection_box
+  - form_for @subsection do |f|
+    = f.hidden_field :section_id
+
+    = f.label :name
+    = f.text_field :name
+    = f.submit 'Create'
+

@@ -1,9 +1,11 @@
 %h3
   = 'Edit ' + @section.name
-  
+
 - form_for( @section, :url => { :action => :update } ) do |f|
   = f.error_messages
-  = f.hidden_field :id
-  = f.label :name
+
+  = f.label      :name
   = f.text_field :name
+
   = f.submit 'Update'
+
