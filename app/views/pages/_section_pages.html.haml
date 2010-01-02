@@ -1,0 +1,23 @@
+#section_pages
+  %table
+    %tr
+      %td
+        Name
+      %td
+        Section
+      %td
+        Opetations
+
+    - @section_pages.each do |section_page|
+      %tr
+        %td
+          = section_page.title
+        %td
+          = link_to section_page.section.name, section_path(section_page.section)
+        %td
+          = link_to 'Show', '/' + section_page.section.name + '/' + section_page.name + '.html', :target => :_blank
+          = link_to 'Edit', edit_page_path(section_page)
+          = link_to 'Destroy', section_page, :confirm => 'Are you sure?', :method => :delete
+
+  = will_paginate @section_pages
+

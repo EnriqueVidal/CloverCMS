@@ -37,7 +37,7 @@
           %td
             = page.title
           %td
-            = link_to 'Show',       page_path(page)
+            = link_to 'Show',       '/' + @section.name + '/' + page.name + '.html', :target => '_blank'
             = link_to 'Edit',       edit_page_path(page)
             = link_to 'Destroy',    page, :confirm => 'Are you sure?', :method => :delete
 

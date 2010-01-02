@@ -1,13 +1,15 @@
-%h3
-  Editing pages
+%h2
+  New Page
 
-- form_for( @page, :url => { :action => :update }, :html => { :multipart => true } ) do |f|
-  = f.error_messages
+- form_for(@page, :html => { :multipart => :true }) do |f|
+  = f.hidden_field :section_id
+  = f.hidden_field :subsection_id
 
   %p
     = f.label :title
   %p
     = f.text_field :title
+
   %p
     = f.label :body
   %p
@@ -24,8 +26,5 @@
     = render :partial => 'page_keywords', :locals => { :f => f }
 
   %p
-    = f.submit 'Update'
-
-%script{ :type => 'text/javascript' }
-  = #remote_function :update => 'page_pictures', :url => "/uploads/get_photos/#{@page.id}"
+    = f.submit 'Create'
 
