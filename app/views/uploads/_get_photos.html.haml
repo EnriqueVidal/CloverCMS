@@ -1,6 +1,4 @@
 #image_container{ :style => 'float: left;' }
-  %h3
-    Pages Uploads
 
   - if @uploads.count >= 1
     %fieldset{ :style => 'width:379px;' }
@@ -19,7 +17,7 @@
     %legend
       Upload new Photo
 
-    - form_for ( Upload.new, :url => { :controller => :uploads, :action => :create }, :html => { :multipart => true, :target => :uploadPhoto } ) do |f|
+    - form_for (Upload.new, :url => { :controller => :uploads, :action => :create }, :html => { :multipart => true, :target => :uploadPhoto } ) do |f|
 
       %iframe{ :name => 'uploadPhoto', :style => 'display: none;width 0px;'}
 
