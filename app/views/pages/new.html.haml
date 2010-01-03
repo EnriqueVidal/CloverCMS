@@ -1,14 +1,21 @@
 %script{ :type => 'text/javascript'}
   //<![[CDADA
   var page_boxes =  new Array('seo_box', 'keywords', 'uploads', 'add_another_photo_link');
+  $('new_page_menu_link').addClassName('selected');
   //]]>
 
 %h2
   New Page
 
 - form_for(@page, :html => { :multipart => :true }) do |f|
-  = f.hidden_field :section_id
-  = f.hidden_field :subsection_id
+  = f.error_messages
+  
+  - if @subsections.nil? && @sections.nil?
+    = f.hidden_field :section_id
+    = f.hidden_field :subsection_id
+  - else
+    = render :partial => 'section_or_subsection', :locals => { :f => f }
+    
 
   %p
     = f.label :title

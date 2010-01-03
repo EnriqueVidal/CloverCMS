@@ -1,11 +1,29 @@
+%script{ :type => 'text/javascript' }
+  //<![[CDATA
+  $('new_subsection_menu_link').addClassName('selected');
+  //]]>
+
 %h2
   New Subsection
 
 #new_subsection_box
   - form_for @subsection do |f|
-    = f.hidden_field :section_id
+    = f.error_messages
+    
+    - if @sections.nil?
+      = f.hidden_field :section_id
+    - else
+      %p
+        = f.label :section_id
+        %select{ :name => 'subsection[section_id]' }
+          %option{ :value => '0', :slected => 'selected' }
+            Please choose a value
+          - @sections.each do |section|
+            %option{ :value => section.id }
+              = section.name
 
-    = f.label :name
-    = f.text_field :name
+    %p
+      = f.label :name
+      = f.text_field :name
     = f.submit 'Create'
 

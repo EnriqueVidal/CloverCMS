@@ -17,16 +17,16 @@ class PagesController < ApplicationController
   end
 
   def new
-    if params[:section_id].nil? && params[:subsection_id].nil?
-      flash[:notice] = 'All pages must belong to either one section or subsection.'
-      redirect_to :controller => :sections, :action => :index
-    end
-
     @page   = Page.new
     @metas  = MetaTag.all
 
     @page.section_id    = params[:section_id]
     @page.subsection_id = params[:subsection_id]
+    
+    if params[:section_id].nil? && params[:subsection_id].nil?
+      @sections     = Section.all
+      @subsections  = Subsection.all
+    end
   end
 
   def edit
@@ -36,22 +36,18 @@ class PagesController < ApplicationController
 
   def create
     @page = Page.new(params[:page])
+    
+    @page.section_id    = nil if params[:page][:section_id].nil? || params[:page][:section_id].to_i == 0
+    @page.subsection_id = nil if params[:page][:section_id].nil? || params[:page][:subsection_id].to_i == 0
 
     respond_to do |format|
       if @page.save
         flash[:notice] = 'Page was successfully created.'
-        format.html {
-          if @page.uploads.count >= 1
-            redirect_to edit_page_path(@page)
-          else
-            redirect_to :controller => :sections, :action => :index
-          end
-        }
-
+        format.html { redirect_to (@page.uploads.count >= 1) ? edit_page_path(@page) : { :controller => :sections, :action => :index } }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
-        flash[:notice] = 'Page was not created.'
-        format.html { redirect_to :controller => :sections, :action => :index }
+        flash[:notice] = 'Please fill out all the required fields.'
+        format.html { redirect_to :action => :new }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end
@@ -66,7 +62,7 @@ class PagesController < ApplicationController
         format.html { redirect_to :controller => :manager, :action => :index  }
         format.xml  { head :ok }
       else
-        format.html { redirect_to :controller => :manager, :action => :index }
+        format.html { render :action => :update }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end

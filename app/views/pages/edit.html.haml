@@ -1,3 +1,8 @@
+%script{ :type => 'text/javascript' }
+  //<![[CDATA
+  $('sidebar').addClassName('white');
+  //]]>
+
 #edit_page_container{:style => 'float: left;'}
   %h3
     Editing pages
@@ -28,7 +33,6 @@
       = f.submit 'Update'
 
   %script{ :type => 'text/javascript' }
-    = remote_function :update => 'page_pictures', :url => "/uploads/get_photos/#{@page.id}"
+    = remote_function :update => 'sidebar', :url => "/uploads/get_photos/#{@page.id}"
 
-#page_pictures{:style => 'float: left;margin-left: 5px;'}
 

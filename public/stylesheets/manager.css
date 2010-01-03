@@ -1,42 +1,314 @@
-#menu-nav ul
+#header, #top-menu 
 {
-	list-style: none;
-	padding: 0;
 	margin: 0;
-	margin-left: 10px;
 }
 
-#menu-nav li
+fieldset label
 {
-	float: left;
-	margin: 0 0.15em;
-	margin-top: 2px;
+	font-weight: bold;
 }
 
-#menu-nav li a
+.white
+{
+	background: #FFFFFF;
+	border:			1px solid #DDDDDD;
+}
+
+#header 
+{
+	height:						7em;
+	padding:					8px 8px 0;
+	background:				#000000 url(../images/brillo.png) repeat-x scroll 0 0;
+	position:					relative;
+}
+
+#account 
+{
+	float:	right;
+}
+
+#top-menu ul 
+{
+	padding:	0 21px;
+	margin: 	0;
+}
+
+#top-menu 
+{
+	-moz-background-clip:						border;
+	-moz-background-inline-policy:	continuous;
+	-moz-background-origin:					padding;
+	background:											#000000 repeat-x scroll 0 0;
+	color:													#FFFFFF;
+	font-size:											10px;
+	height:													21px;
+	padding:												0;
+	position:												relative;
+}
+
+#top-menu li, #top-menu #loggedas 
+{
+	color:				#DDDDDD;
+	line-height:	21px;
+	margin-right:	4px;
+}
+
+#top-menu li 
+{
+	float:						left;
+	list-style-type:	none;
+	margin:						0;
+	padding:					0;
+	white-space:			nowrap;
+}
+
+#top-menu li a {
+	color:				#999999;
+	font-weight:	normal;
+	padding:			4px 5px;
+}
+
+#top-menu a 
+{
+	color:				#FFFFFF;
+	font-weight:	bold;
+	margin-right:	8px;
+}
+
+#top-menu a:hover
 {
 	color: white;
-	height: 2em;
-	line-height: 2em;
-	float: left;
-	width: 7em;
-	display: block;
-	border: 0.1em solid #dcdce9;
-	text-decoration: none;
-	text-align: center;
 }
 
-#menu-nav li a:hover
+#header, #top-menu { margin: 0; }
+
+#main {
+	background-color:	#EEEEEE;
+}
+
+#main {
+	-moz-background-clip:						border;
+	-moz-background-inline-policy:	continuous;
+	-moz-background-origin:					padding;
+	background:											#EEEEEE none repeat scroll 0 0;
+	margin:8px 24px 0;
+}
+
+#main-menu 
 {
-	color: #333333;
-	background-color: white;
-	height: 2em;
-	line-height: 2em;
-	float: left;
-	width: 7em;
-	display: block;
-	border: 0.1em solid #333333;
-	text-decoration: none;
-	text-align: center;
+	margin:	0 24px;
 }
 
+#main-menu 
+{
+	bottom:				0;
+	left:					6px;
+	margin-right:	-500px;
+	position:			absolute;
+}
+
+#main-menu ul {
+	margin:		0;
+	padding:	0;
+}
+
+#main-menu li {
+	float:						left;
+	list-style-type:	none;
+	margin:						0 2px 0 0;
+	padding:					0;
+	white-space:			nowrap;
+}
+
+#main-menu li a.selected, #main-menu li a.selected:hover {
+	background-color:	#EEEEEE;
+	color:						#111111;
+	font-weight:			bold;
+}
+
+#main-menu li a.selected, #main-menu li a.selected:hover {
+	-moz-background-clip:						border;
+	-moz-background-inline-policy:	continuous;
+	-moz-background-origin:					padding;
+	background:											#EEEEEE none repeat scroll 0 0;
+	color:													#000000;
+}
+
+#main-menu li a {
+	background-color:	#666666;
+	font-weight:			normal;
+	padding:					4px 8px 6px;
+	margin:						0;
+}
+
+#main-menu li a:hover {
+	-moz-background-clip:						border;
+	-moz-background-inline-policy:	continuous;
+	-moz-background-origin:					padding;
+	background:											#999999 none repeat scroll 0 0;
+	text-decoration:								none;
+}
+
+#main-menu li a {
+color:#FFFFFF;
+display:block;
+font-weight:bold;
+margin:0;
+padding:4px 10px;
+text-decoration:none;
+}
+
+table td 
+{
+	padding:	2px;
+}
+
+
+#login-form table td {
+	padding: 6px;
+}
+
+#login-form label
+{
+	font-weight: bold;
+}
+
+#login-form table
+{
+	background-color:	#FFEBC1;
+	border:						2px solid #FDBF3B;
+	margin-left:			auto;
+	margin-right:			auto;
+	margin-top:				5em;
+	padding:					1em;
+}
+
+input, select {
+	margin-bottom:	1px;
+	margin-top:			1px;
+	vertical-align:	middle;
+}
+
+body {
+	color:				#484848;
+	font-family:	Verdana,sans-serif;
+	font-size:		12px;
+	margin:				0;
+	min-width:		900px;
+	padding:			0;
+}
+
+#main.nosidebar #sidebar 
+{
+	display:	none;
+}
+
+#sidebar 
+{
+	width:	26%;
+}
+
+#sidebar 
+{
+	float:			right;
+	margin:			0;
+	min-height:	600px;
+	padding:		0;
+	position:		relative;
+	width:			22%;
+	z-index:		9;
+}
+
+#content {
+	-moz-background-clip:						border;
+	-moz-background-inline-policy:	continuous;
+	-moz-background-origin:					padding;
+	background:											#FFFFFF none repeat scroll 0 0;
+	border-bottom:									1px solid #BBBBBB;
+	border-right:										1px solid #BBBBBB;
+	overflow:												auto;
+	width:													70%;
+}
+
+#content 
+{
+	background-color:	#FFFFFF;
+	border-right:			1px solid #DDDDDD;
+	margin:						0;
+	padding:					6px 10px 10px;
+	width:						75%;
+	z-index:					10;
+}
+
+#main.nosidebar #content {
+	border-right: 0 none;
+	width:				auto;
+}
+
+html > body #content 
+{
+	min-height: 600px;
+}
+
+#wrapper {
+	-moz-background-clip:						border;
+	-moz-background-inline-policy:	continuous;
+	-moz-background-origin:					padding;
+	background:											white none repeat scroll 0 0;
+}
+
+body, #wrapper 
+{
+	background-color:	#EEEEEE;
+	font-family:			"Lucida Grande",verdana,arial,helvetica,sans-serif;
+}
+
+form {
+	display:	inline;
+}
+
+
+a:hover, a:active { color: #2A5685; }
+a:hover { text-decoration: underline; }
+a:hover, a:active { color: #C61A1A; text-decoration: underline; }
+a, a:link, a:visited { color:#2A5685; text-decoration:none; }
+
+table p 
+{
+	margin:	0;
+}
+
+
+img.delete_photo
+{
+	border: 	0; 
+}
+
+li.thumbnail
+{
+	height: 				50px; 
+	width: 					60px; 
+	overflow: 				hidden; 
+	background-color: 		black;
+	border:					1px solid #5F5F5F;
+	display:				block;
+	float:					left;
+	list-style-image:		none;
+	list-style-position:	inside;
+	list-style-type:		none;
+	text-align:				center;
+	margin-left: 			0px;
+	margin-top:				5px;
+}
+
+li.thumbnail_button
+{
+	display:				block;
+	float:					left;
+	list-style-image:		none;
+	list-style-position:	inside;
+	list-style-type:		none;
+	text-align:				center;
+	margin-left: 			5px;
+	margin-top:				5px;
+}

@@ -1,7 +1,7 @@
-#image_container{ :style => 'float: left;' }
+#image_container{ :style => 'float: left; margin-left: 40px;' }
 
   - if @uploads.count >= 1
-    %fieldset{ :style => 'width:379px;' }
+    %fieldset{ :style => 'width:209px; border: 1px solid #DDDDDD;' }
       %legend
         Photos
       %ul
@@ -13,7 +13,7 @@
           %li.thumbnail
             = image_tag upload.photo_url(:small), :onclick => "imageAdd(this, 'page_body_ifr' );"
 
-  %fieldset{ :style => 'width: 379px;' }
+  %fieldset{ :style => 'width:209px; border: 1px solid #DDDDDD;' }
     %legend
       Upload new Photo
 

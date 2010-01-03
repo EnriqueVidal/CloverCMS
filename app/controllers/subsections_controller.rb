@@ -21,6 +21,10 @@ class SubsectionsController < ApplicationController
   def new
     @subsection             = Subsection.new
     @subsection.section_id  = params[:section_id]
+    
+    if params[:section_id].nil? || params[:sections_id].to_i == 0
+      @sections               = Section.all
+    end
 
     respond_to do |format|
       format.html
@@ -36,7 +40,10 @@ class SubsectionsController < ApplicationController
   end
 
   def create
-    @subsection = Subsection.new(params[:subsection])
+    @subsection             = Subsection.new(params[:subsection])
+    @subsection.section_id  = nil if params[:subsection][:section_id].nil? || params[:subsection][:section_id].to_i == 0
+    
+    @sections = Section.all if @subsection.section_id.nil?
 
     respond_to do |format|
       if @subsection.save

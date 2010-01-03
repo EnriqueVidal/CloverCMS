@@ -10,6 +10,8 @@ class Page < ActiveRecord::Base
 
   validates_presence_of   :title, :body
   validates_uniqueness_of :title, :name
+  
+  validate                :check_section_and_subsection
 
   before_create :create_page_name, :add_metatags, :fix_images_path
   before_update :create_page_name, :add_metatags, :fix_images_path
@@ -30,6 +32,10 @@ class Page < ActiveRecord::Base
   def fix_images_path
     self.body.gsub!(/src=\"images\//, 'src="/images/')
   end
-
+  
+  def check_section_and_subsection
+    errors.add("All pages must belong to either one section or subsection.") if self.section_id.nil? && self.subsection_id.nil?
+  end
+  
 end
 

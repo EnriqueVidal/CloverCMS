@@ -6,15 +6,16 @@
     = #javascript_include_tag 'cropper/cropper.js'
 
     = calendar_date_select_includes "silver"
-    = stylesheet_link_tag           "scaffold"
     = stylesheet_link_tag           "manager"
     = include_tiny_mce_if_needed
 
     %title
       Clover CMS Manager
   %body
-    .menu{ :style => 'background-color: #333333;margin-left: 0; margin-right:0; height: 32px; margin-top: 5px; margin-bottom: 0px;' }
-      #menu-nav
+    #wrapper
+      #top-menu
+        #account
+          = render :partial => 'layouts/account_menu'
         %ul
           %li
             = link_to 'Pages', '/pages'
@@ -26,19 +27,18 @@
             = link_to 'SEO', '/manager/seo'
           %li
             = link_to 'Users', '#'
-
-    #manager
-      .messages
-        - if flash[:notice]
-          #flash_notice
-            = flash[:notice]
-
-        - if flash[:error]
-          #flash_error
-            = flash[:error]
-
-        - if flash[:success]
-          #flash_success
-            = flash[:success]
-      = yield
+      
+      #header
+        = image_tag '/images/logo.png'
+        #main-menu
+          = render :partial => 'layouts/main_menu'
+          
+      #main
+        #sidebar
+        #content
+          = flash[:notice]  unless flash[:notice].nil?
+          = flash[:error]   unless flash[:error].nil?
+          = flash[:success] unless flash[:success].nil?
+        
+          = yield
 
