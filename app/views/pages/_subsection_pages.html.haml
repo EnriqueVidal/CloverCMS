@@ -1,23 +1,38 @@
 #subsection_pages
-  %table
-    %tr
-      %td
-        Name
-      %td
-        Subsection
-      %td
-        Operations
+  %table.list
+    %thead
+      %tr
+        %th
+          Name
+        %th
+          Subsection
+        %th
+          Created at
+        %th
+          Last updated at
+        %th
+          Operations
 
-      - @subsection_pages.each do |subsection_page|
-        %tr
-          %td
-            = subsection_page.title
-          %td
-            = link_to subsection_page.subsection.name, subsection_path(subsection_page.subsection)
-          %td
-            = link_to 'Show', '/' + subsection_page.subsection.section.name + '/' + subsection_page.subsection.name + '/' + subsection_page.name + '.html', :target => :_blank
-            = link_to 'Edit', edit_page_path(subsection_page)
-            = link_to 'Destroy', subsection_page, :confirm => 'Are you sure?', :method => :delete
+    - oddity = 1
+    - @subsection_pages.each do |subsection_page|
+      - page_url        = '/' + subsection_page.subsection.section.name + '/' + subsection_page.subsection.name + '/' + subsection_page.name + '.html'
+      - page_title      = subsection_page.title
+      - subsection_name = subsection_page.subsection.name
+
+      %tr{ :class => ( oddity % 2 == 0 )? '' : 'odd' }
+        - oddity = oddity + 1
+
+        %td
+          = link_to page_title, page_url, :target => :_blank
+        %td
+          = link_to subsection_name, subsection_path(subsection_page.subsection)
+        %td
+          = subsection_page.created_at.strftime("%B, %d %Y")
+        %td
+          = subsection_page.created_at.strftime("%B, %d %Y")
+        %td
+          = link_to 'Edit', edit_page_path(subsection_page)
+          = link_to 'Destroy', subsection_page, :confirm => 'Are you sure?', :method => :delete
 
   = will_paginate @subsection_pages
 

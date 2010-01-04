@@ -2,16 +2,17 @@
   //<![[CDATA
   $('new_section_menu_link').addClassName('selected');
   //]]>
-  
-%h3
+
+%h2
   Add Section
-  
+
 - form_for ( @section, :url => { :action => 'create' }, :method => 'post' ) do |f|
   = f.error_messages
-  
+
   = f.label :name
   = f.text_field :name
-  
+
   %br
   %br
   = f.submit 'Create'
+
