@@ -1,3 +1,53 @@
+html > body .tabular p 
+{
+	overflow:	hidden;
+}
+
+.tabular p 
+{
+	clear:		left;
+	height:		1%;
+	margin:		0;
+	padding:	5px 0 8px 180px;
+}
+
+.tabular label {
+	float:				left;
+	font-weight:	bold;
+	margin-left:	-180px;
+	text-align:		right;
+	width:				175px;
+}
+
+hr 
+{
+	-moz-background-clip:						border;
+	-moz-background-inline-policy:	continuous;
+	-moz-background-origin:					padding;
+	background:											#EEEEEE none repeat scroll 0 0;
+	border:													0 none;
+	height:													1px;
+	width:													100%;
+}
+
+input[type="text"], textarea, select 
+{
+	border:		1px solid #D7D7D7;
+	padding:	4px;
+}
+
+input, select 
+{
+	margin-bottom:	1px;
+	margin-top:			1px;
+	vertical-align:	middle;
+}
+
+.required 
+{
+	color:	#BB0000;
+}
+
 table.list
 {
     border:             medium none;
@@ -141,11 +191,6 @@ fieldset label
 	font-weight: bold;
 }
 
-.white
-{
-	background: #FFFFFF;
-	border:			1px solid #DDDDDD;
-}
 
 #header
 {

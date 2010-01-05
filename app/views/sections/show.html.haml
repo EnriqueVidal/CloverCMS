@@ -1,69 +1,30 @@
 %h2
   = 'Section ' + @section.name
-
-%h4
-  = 'Section ' + @section.name + ' operations.'
-
-#section_operations
-  %table
-    %tr
-      %td
-        = link_to 'Edit', edit_section_path(@section), :class => 'edit'
-    %tr
-      %td
-        = link_to 'Destroy',  @section, :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
-    %tr
-      %td
-        = link_to 'Add Page',       new_section_page_path(@section), :class => 'add'
-    %tr
-      %td
-        = link_to 'Add Subsection', new_section_subsection_path(@section)
-
-
-
-%h4
+%h3
   = 'Section ' + @section.name + ' pages.'
-
-#section_pages
-  %table
-    %tr
-      %td
-        Name
-      %td
-        Operations
-
-      - @pages.each do |page|
-        %tr
-          %td
-            = page.title
-          %td
-            = link_to 'Show',       '/' + @section.name + '/' + page.name + '.html', :target => '_blank'
-            = link_to 'Edit',       edit_page_path(page)
-            = link_to 'Destroy',    page, :confirm => 'Are you sure?', :method => :delete
-
-= will_paginate @pages
+= render 'pages'
 
 %br
 
-%h4
+%h3
   = 'Section ' + @section.name + ' subsections.'
+= render 'subsections'
 
-#section_subsections
-  %table
-    %tr
-      %td
-        Name
-      %td
-        Operations
-
-      - @subsections.each do |subsection|
-        %tr
-          %td
-            = subsection.name
-          %td
-            = link_to 'Show',       subsection_path(subsection)
-            = link_to 'Edit',       edit_subsection_path(subsection)
-            = link_to 'Destroy',    subsection, :confirm => 'Are you sure?', :method => :delete
-
-= will_paginate @subsections
-
+#section_operations{ :style => 'display: none;' }
+  %h3
+    Section Operations
+    
+  = link_to 'Edit', edit_section_path(@section), :class => 'edit'
+  %br
+  = link_to 'Destroy',  @section, :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
+  %h3
+    Page Operations
+  = link_to 'Add Page',       new_section_page_path(@section), :class => 'add'
+  %h3
+    Subsection Operations
+  = link_to 'Add Subsection', new_section_subsection_path(@section)
+%script{ :type => 'text/javascript' }
+  //<![[CDATA
+  $('sidebar').appendChild($('section_operations'));
+  $('section_operations').toggle();
+  //]]>

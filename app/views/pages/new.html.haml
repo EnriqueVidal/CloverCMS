@@ -1,52 +1,65 @@
 %script{ :type => 'text/javascript'}
   //<![[CDADA
-  var page_boxes =  new Array('seo_box', 'keywords', 'uploads', 'add_another_photo_link');
+  function init() 
+  {
+  $('main').addClassName('nosidebar');
   $('new_page_menu_link').addClassName('selected');
+  var table = document.getElementsByTagName('table');
+  table[0].style.width = '100%';
+  }
+  window.onload = init;
+  var page_boxes =  new Array('seo_box', 'keywords', 'uploads', 'add_another_photo_link');
   //]]>
 
 %h2
   New Page
 
-- form_for(@page, :html => { :multipart => :true }) do |f|
+- form_for(@page, :html => { :multipart => :true, :class => 'tabular' }) do |f|
   = f.error_messages
-  
-  - if @subsections.nil? && @sections.nil?
-    = f.hidden_field :section_id
-    = f.hidden_field :subsection_id
-  - else
-    = render :partial => 'section_or_subsection', :locals => { :f => f }
+
+  #new_page_form.box  
+    - if @subsections.nil? && @sections.nil?
+      = f.hidden_field :section_id
+      = f.hidden_field :subsection_id
+    - else
+      = render :partial => 'section_or_subsection', :locals => { :f => f }
     
 
-  %p
-    = f.label :title
-  %p
-    = f.text_field :title
+    %p
+      = f.label :title
+      %span.required
+        *
+      = f.text_field :title
+    %hr
+    
+    #page_body_div.splitcontentleft
+      %p
+        = f.label :body
+        %span.required
+          *
+        = f.text_area :body, :class => 'mceEditor'
+          
+    #additional_options.list.splitcontentright
+      %p
+        %label
+          = link_to 'SEO Meta Tags', '#seo_box', :onclick => "TogglePageBoxes('seo_box');"
+      #seo_box{ :style => 'display: none;', :name => 'seo_box' }
+        = render :partial => 'meta_tags/all_meta_tags', :locals => { :metas => @metas, :page => @page }
+    
+      %p
+        %label
+          = link_to 'SEO keywords', '#keywords', :onclick => "TogglePageBoxes('keywords');"
+      #keywords{ :style => 'display: none;', :name => 'keywords' }
+        = render :partial => 'page_keywords', :locals => { :f => f }
 
-  %p
-    = f.label :body
-  %p
-    = f.text_area :body, :class => 'mceEditor'
+      %p
+        %label
+          = link_to 'Upload Photos', '#uploads', :onclick => "TogglePageBoxes(['uploads', 'add_another_photo_link']);"
+      #uploads{ :style => 'padding: 2px; border: 1px solid grey;display:none;', :name => 'uploads' }
+        = f.render_associated_form( @page.uploads, :new => 1 )
 
-  = link_to 'SEO Meta Tags', '#seo_box', :onclick => "TogglePageBoxes('seo_box');"
-  #seo_box{ :style => 'display: none;', :name => 'seo_box' }
-    = render :partial => 'meta_tags/all_meta_tags', :locals => { :metas => @metas, :page => @page }
+      #add_another_photo_link{:style => 'display: none;'}
+        = f.add_associated_link('Add another photo.', @page.uploads.build )
 
-  %br
-
-  = link_to 'SEO keywords', '#keywords', :onclick => "TogglePageBoxes('keywords');"
-  #keywords{ :style => 'display: none;', :name => 'keywords' }
-    = render :partial => 'page_keywords', :locals => { :f => f }
-
-  %br
-
-  = link_to 'Upload Photos', '#uploads', :onclick => "TogglePageBoxes(['uploads', 'add_another_photo_link']);"
-  #uploads{ :style => 'padding: 2px; border: 1px solid grey;display:none;', :name => 'uploads' }
-    = f.render_associated_form( @page.uploads, :new => 1 )
-
-
-  #add_another_photo_link{:style => 'display: none;'}
-    = f.add_associated_link('Add another photo.', @page.uploads.build )
-
-  %p
-    = f.submit 'Create'
-
+    %p
+  = f.submit 'Create Page'

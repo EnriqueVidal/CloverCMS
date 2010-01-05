@@ -1,38 +1,57 @@
+
 %h2
   Register
   
-#register_tab
-  = link_to 'Registrar', register_path
-#login_tab
-  = link_to 'Login', login_path, :class => 'green_links'
-  
 %br.clear
-    
-- form_for @user, :url => { :action => :create } do |f|
-  #errors
-    = f.error_messages
-  #register_box
-    #username_label
-      = f.label :username, 'Usuario', :class => 'blue_text'
-    #username_input
-      = f.text_field :username, :size => 20
-  
-    #email_label
-      = f.label :email, 'Email', :class => 'blue_text'
-    #email_input
-      = f.text_field :email, :size => 20
 
-    #password_label
-      = f.label :contraseña, 'Contraseña', :class => 'blue_text'
-    #password_input
-      = f.password_field :pass, :size => 20
-  
-    #password_confirmation_label
-      = f.label :confirmar_contraseña, 'Confirmar Contraseña', :class => 'blue_text'
-    #password_confirmation_input
-      = f.password_field :pass_confirmation, :size => 20
+- form_for @user, :url => { :action => :create }, :html => { :class => 'tabular' } do |f|
+  = f.error_messages
+  #container.splitcontentleft{ :style => 'width: 66%;' }
+    #registration_form.box
+      %p    
+        %label
+          Username
+          %span.required
+            *
+        = f.text_field :username, :size => 20
     
-    %br 
+      %p
+        %label
+          Email
+          %span.required
+            *    
+        = f.text_field :email, :size => 20
+      
+      %p
+        %label
+          Password
+          %span.required
+            *
+        = f.password_field :pass, :size => 20
+      
+      %p  
+        %label
+          Confirm
+          %span.required
+            *
+          
+        = f.password_field :pass_confirmation, :size => 20
+    = f.submit :Submit
     
-    #register_button
-      = f.submit :Enviar, { :class => 'button_bg', :id => "green_button"}
+#tips_content.splitcontentright.box{ :style => 'width: 29%;' }
+  %h3
+    Easy Registration
+  %p
+    CloverInteractive believes in registration that don't kill, and because of that we separete account information from people's information, you are only required to type an username, email and password to get registered and you can fill the rest of the personal fields later on. That's registration tha doesn't hurt.
+  %p
+    Stop losing audience because of long and tedious forms.
+    
+#operations_placeholder{ :style => 'display: none;' }
+  %h3
+    Already have an user account?
+  = link_to 'Sing in', login_path()
+%script{ :type => 'text/javascript' }
+  //<![[CDATA
+  $('sidebar').appendChild($('operations_placeholder'));
+  $('operations_placeholder').toggle();
+  //]]>

@@ -1,4 +1,4 @@
-#image_container{ :style => 'float: left; margin-left: 40px;' }
+#image_container
 
   - if @uploads.count >= 1
     %fieldset{ :style => 'width:209px; border: 1px solid #DDDDDD;' }
@@ -17,17 +17,15 @@
     %legend
       Upload new Photo
 
-    - form_for (Upload.new, :url => { :controller => :uploads, :action => :create }, :html => { :multipart => true, :target => :uploadPhoto } ) do |f|
-
+    - form_for (Upload.new, :url => { :controller => :uploads, :action => :create }, :html => { :multipart => true, :target => :uploadPhoto  } ) do |u|
       %iframe{ :name => 'uploadPhoto', :style => 'display: none;width 0px;'}
 
-      = f.hidden_field :page_id, :value => @page.id
-
-      = f.label 'Name'
-      = f.text_field :description, :size => 10, :style => 'margin: 5px;'
+      = u.hidden_field :page_id, :value => @page.id
+      
+      Name
+      = u.text_field :description, :size => 10, :style => 'margin: 5px;'
       %br
-      = f.label 'Photo'
-      = f.file_field :photo, :size => 10, :style => 'margin: 5px;'
+      Photo
+      = u.file_field :photo, :size => 10, :style => 'margin: 5px;'
       %br
-      = f.submit  'Upload', :style => 'margin: 5px;'
-
+      = u.submit  'Upload', :style => 'margin: 5px;'

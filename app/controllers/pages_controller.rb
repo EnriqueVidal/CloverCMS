@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
 
   uses_tiny_mce :only => [:edit, :new], :options => {
-                                                  :theme => 'advanced',
-                                                  :theme_advanced_resizing => false,
+                                                  :theme => 'simple',
+                                                  :theme_advanced_resizing => true,
                                                   :theme_advanced_resize_horizontal => false,
                                                   :plugins => %w{ table fullscreen }
                                                 }

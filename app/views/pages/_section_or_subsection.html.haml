@@ -1,21 +1,21 @@
-%table
-  %tr
-    %td
-      = f.label :section_id
-    %td
-      %select{ :name => 'page[section_id]', :width => '150px;', :id => 'sections_drop_down', :onchange => '$("subsections_drop_down").value = 0;' }
-        %option{ :value => 0, :selected => 'selected' }
-          Please choose a value
-        - @sections.each do |section|
-          %option{ :value => section.id }
-            = section.name
-  %tr
-    %td
-      = f.label :subsection_id
-    %td
-      %select{ :name => 'page[subsection_id]', :width => '150px;', :id => 'subsections_drop_down', :onchange => '$("sections_drop_down").value = 0;' }
-        %option{ :value => 0, :selected => 'selected' }
-          Please choose a value
-        - @subsections.each do |subsection|
-          %option{ :value => subsection.id }
-            = subsection.name
+%p
+  = f.label :section_id
+  %span.required
+    *
+  %select{ :name => 'page[section_id]', :width => '150px;', :id => 'sections_drop_down', :onchange => '$("subsections_drop_down").value = 0;' }
+    %option{ :value => 0, :selected => 'selected' }
+      Please choose a value
+    - @sections.each do |section|
+      %option{ :value => section.id }
+        = section.name
+
+%p
+  = f.label :subsection_id
+  %span.required
+    *
+  %select{ :name => 'page[subsection_id]', :width => '150px;', :id => 'subsections_drop_down', :onchange => '$("sections_drop_down").value = 0;' }
+    %option{ :value => 0, :selected => 'selected' }
+      Please choose a value
+    - @subsections.each do |subsection|
+      %option{ :value => subsection.id }
+        = subsection.name
