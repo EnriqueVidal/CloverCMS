@@ -39,8 +39,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  helper_method :logged_in?
+  def logged_in?
+    !! current_user
+  end
+
+  helper_method :current_user
   def current_user
-    User.find(session[:user_id]) unless session[:user_id].nil?
+    if !@current_user.present?
+      @current_user = User.find(session[:user_id]) unless session[:user_id].nil?
+    end
+    @current_user
   end
 
   def check_authorization

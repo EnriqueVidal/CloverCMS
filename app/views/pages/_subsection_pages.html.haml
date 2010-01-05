@@ -2,16 +2,11 @@
   %table.list
     %thead
       %tr
-        %th
-          Name
-        %th
-          Subsection
-        %th
-          Created at
-        %th
-          Last updated at
-        %th
-          Operations
+        %th Name
+        %th Subsection
+        %th Created at
+        %th Last updated at
+        %th Operations
 
     - oddity = 1
     - @subsection_pages.each do |subsection_page|
@@ -22,14 +17,10 @@
       %tr{ :class => ( oddity % 2 == 0 )? '' : 'odd' }
         - oddity = oddity + 1
 
-        %td
-          = link_to page_title, page_url, :target => :_blank
-        %td
-          = link_to subsection_name, subsection_path(subsection_page.subsection)
-        %td
-          = subsection_page.created_at.strftime("%B, %d %Y")
-        %td
-          = subsection_page.created_at.strftime("%B, %d %Y")
+        %td= link_to page_title, page_url, :target => :_blank
+        %td= link_to subsection_name, subsection_path(subsection_page.subsection)
+        %td= subsection_page.created_at.strftime("%B, %d %Y")
+        %td= subsection_page.created_at.strftime("%B, %d %Y")
         %td
           = link_to 'Edit', edit_page_path(subsection_page)
           = link_to 'Destroy', subsection_page, :confirm => 'Are you sure?', :method => :delete

@@ -1,6 +1,4 @@
-- username = current_user(session[:user_id])
-
-- if !username.nil? && username.admin?
+- if !current_user.nil? && current_user.admin?
   %ul
     %li
       = link_to 'New Section',    new_section_path(),     :id => "new_section_menu_link"
@@ -8,3 +6,4 @@
       = link_to 'New Subsection', new_subsection_path(),  :id => "new_subsection_menu_link"
     %li
       = link_to 'New Page',       new_page_path(),        :id => "new_page_menu_link"
+

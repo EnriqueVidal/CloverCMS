@@ -1,32 +1,25 @@
-%h2
-  Site Pages
+%h2 Site Pages
 
 #page_content.splitcontentleft{ :style => 'width: 66%;' }
-  %p
-    To keep everything in place and organized, CloverInteractive's Clever CMS does not allow orphan pages, by orphan pages we mean pages that are not assigned to an specific section or subsection. Orphan pages make your site look messy and disorganized.
+  %p To keep everything in place and organized, CloverInteractive's Clever CMS does not allow orphan pages, by orphan pages we mean pages that are not assigned to an specific section or subsection. Orphan pages make your site look messy and disorganized.
 
-  %h3
-    Pages By Section
+  %h3 Pages By Section
   %br
   = render 'section_pages'
 
   %br
   %br
 
-  %h3
-    Pages By Subsection
+  %h3 Pages By Subsection
   %br
   = render 'subsection_pages'
 
 #tips_content.box.splitcontentright{ :style => 'width: 29%;' }
-  %h3
-    Did you know?
-  %p
-    In this latest version of CloverInteractive's Clever CMS, many page creating, editing and displaying issues have been resolved, now you no longer need to think how to name pages as names are taken out of your page title. That way the page name both the user and the Search Engine see is consistent with your content.
+  %h3 Did you know?
+  %p In this latest version of CloverInteractive's Clever CMS, many page creating, editing and displaying issues have been resolved, now you no longer need to think how to name pages as names are taken out of your page title. That way the page name both the user and the Search Engine see is consistent with your content.
 
 #operations_placeholder{ :style => 'display: none;' }
-  %h3
-    Operations
+  %h3 Operations
 
   = link_to 'Add a new Page', new_page_path()
 %script{ :type => 'text/javascript' }

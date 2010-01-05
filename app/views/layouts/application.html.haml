@@ -9,36 +9,30 @@
     = stylesheet_link_tag           "manager"
     = include_tiny_mce_if_needed
 
-    %title
-      Clover CMS Manager
+    %title CloverInteractive's Clever CMS Manager
   %body
     #wrapper
       #top-menu
         #account
           = render :partial => 'layouts/account_menu'
         %ul
-          %li
-            = link_to 'Pages', '/pages'
-          %li
-            = link_to 'Sections', '/sections'
-          %li
-            = link_to 'Subsections', '/subsections'
-          %li
-            = link_to 'SEO', '/manager/seo'
-          %li
-            = link_to 'Users', '#'
-      
+          %li= link_to 'Pages', '/pages'
+          %li= link_to 'Sections', '/sections'
+          %li= link_to 'Subsections', '/subsections'
+          %li= link_to 'SEO', '/manager/seo'
+          %li= link_to 'Users', '#'
+
       #header
         = image_tag '/images/logo.png'
         #main-menu
           = render :partial => 'layouts/main_menu'
-          
+
       #main
         #sidebar
         #content
           = flash[:notice]  unless flash[:notice].nil?
           = flash[:error]   unless flash[:error].nil?
           = flash[:success] unless flash[:success].nil?
-        
+
           = yield
 

@@ -38,7 +38,7 @@ class SectionsController < ApplicationController
     respond_to do |format|
       if @section.save
         flash[:notice] = 'Section was successfully created.'
-        format.html { redirect_to :action => :index }
+        format.html { redirect_to new_section_page_path(@section) }
         format.xml  { render :xml => @section, :status => :created, :location => @section }
       else
         format.html { render :action => :new }

@@ -1,14 +1,8 @@
-- user = current_user(session[:user_id])
 %ul
-  - if user.nil?
-    %li
-      = link_to 'Login', login_path()
-    %li
-      = link_to 'Register', register_path()
+  - if current_user.nil?
+    %li= link_to 'Login', login_path
+    %li= link_to 'Register', register_path
   - else
-    %li
-      Welcome 
-      = link_to ' ' + user.username, profile_path()
-    %li
-      Not you?
-      = link_to ' logout', logout_path()
+    %li= 'Welcome '     + link_to(current_user.username, profile_path)
+    %li= 'Not you? '    + link_to('logout', logout_path)
+

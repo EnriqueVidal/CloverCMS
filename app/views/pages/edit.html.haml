@@ -1,52 +1,43 @@
 %script{ :type => 'text/javascript'}
   //<![[CDADA
-  function init() 
+  function init()
   {
-  //$('main').addClassName('nosidebar');
   var table = document.getElementsByTagName('table');
   table[0].style.width = '100%';
   }
-  window.onload = init;
+  window.onload     = init;
+  var page_boxes    =  new Array('seo_box', 'keywords');
   //]]>
 
-%h2
-  Edit Page
+%h2 Edit Page
 
 - form_for( @page, :url => { :action => :update }, :html => { :multipart => true, :class => 'tabular' } ) do |f|
   = f.error_messages
-    
+
   #edit_page_container.box
     %p
       = f.label :title
-      %span.required
-        *
+      %span.required *
       = f.text_field :title
     %hr
-  
-    #page_body_div
-      %p
-        = f.label :body
-        %span.required
-          *
-        = f.text_area :body, :class => 'mceEditor'
+    %p
+      = f.label :body
+      %span.required *
+      = f.text_area :body, :class => 'mceEditor'
 
     #additional_options.list
       %p
-        %label
-          = link_to 'SEO Meta Tags', '#seo_box', :onclick => "$('seo_box').toggle();$('keywords').hide();$('uploads').hide();"
+        %label= link_to 'SEO Meta Tags', '#seo_box', :onclick => "TogglePageBoxes('seo_box')"
       #seo_box{ :style => 'display: none;', :name => 'seo_box' }
         = render :partial => 'meta_tags/all_meta_tags', :locals => { :metas => @metas, :page => @page }
-    
+
       %p
-        %label
-          = link_to 'SEO keywords', '#keywords', :onclick => "$('keywords').toggle();$('seo_box').hide();$('uploads').hide();"
+        %label= link_to 'SEO keywords', '#keywords', :onclick => "TogglePageBoxes('keywords')"
       #keywords{ :style => 'display: none;', :name => 'keywords' }
         = render :partial => 'page_keywords', :locals => { :f => f }
     %p
-    %br 
+    %br
   = f.submit 'Update'
-
-
 
 %script{ :type => 'text/javascript' }
   = remote_function :update => 'sidebar', :url => "/uploads/get_photos/#{@page.id}"

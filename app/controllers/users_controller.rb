@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
-    
+
   def show
     @user = User.find_by_username(params[:username])
   end
-  
-  def register 
+
+  def register
     @user = User.new
-    
+
     respond_to do |format|
       format.html
       format.xml { render :xml => @user }
     end
   end
-  
+
   def create
     @user = User.new(params[:user])
     respond_to do |format|
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       end
     end
   end
-  
+
   def activate
     @user = User.find_by_token(params[:token])
     if @user && @user.activate
@@ -42,25 +42,25 @@ class UsersController < ApplicationController
       redirect_to :action => :register
     end
   end
-  
+
   def login
     if request.post?
       user = User.authenticate(params[:email_or_username], params[:pass])
       if user
-        
+
         session[:user_id] = user.id
-        
+
         logger.info( "\t\t\t>>>>> INFO #{Time.now} login OK <<<<< " +
                       "id #{request.session_options[:id]} " +
                       "as user #{User.find(session[:user_id]).email}"
                     )
-                    
+
         if !session[:intended_action].nil? && !session[:intended_controller].nil?
             redirect_to :controller => session[:intended_controller], :action => session[:intended_action]
-        else          
+        else
           redirect_to( :controller => :users, :action => :profile )
         end
-        
+
       else
         flash[:error] = "Información de login invalida, usuario o contraseña invalidos."
         logger.warn( "\t\t\t>>>>> WARN #{Time.now} login FAILED for user #{params[:email]} <<<<< \n")
@@ -68,32 +68,33 @@ class UsersController < ApplicationController
       end
     end
   end
-  
+
   def logout
-    if session[:user_id]
-      user = User.find( session[:user_id] )
-      
-      logger.info(  "\t\t\t>>>>> INFO #{Time.now} logout OK <<<<< " + 
+    if logged_in?
+      user = current_user
+
+      logger.info(  "\t\t\t>>>>> INFO #{Time.now} logout OK <<<<< " +
                     "person #{user.person.full_name} " +
                     "as user #{user.username}"
                   )
     else
       logger.warn("\t\t\t>>>>> WARN #{Time.now} logout FAILED <<<<< \n")
     end
-    session[:user_id] = nil
+    reset_session
     flash.discard(:reset_password_token)
     redirect_to login_path
   end
 
   def profile
-    @user = User.find(session[:user_id])
+    @user = current_user
     @person = @user.person
   end
 
   private
-  
+
   def init_session
     session[:user_id] = nil
   end
-  
+
 end
+

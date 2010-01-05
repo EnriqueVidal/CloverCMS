@@ -21,7 +21,7 @@ class SubsectionsController < ApplicationController
   def new
     @subsection             = Subsection.new
     @subsection.section_id  = params[:section_id]
-    
+
     if params[:section_id].nil? || params[:sections_id].to_i == 0
       @sections               = Section.all
     end
@@ -42,13 +42,13 @@ class SubsectionsController < ApplicationController
   def create
     @subsection             = Subsection.new(params[:subsection])
     @subsection.section_id  = nil if params[:subsection][:section_id].nil? || params[:subsection][:section_id].to_i == 0
-    
+
     @sections = Section.all if @subsection.section_id.nil?
 
     respond_to do |format|
       if @subsection.save
         flash[:notice] = 'Subsection was successfully created.'
-        format.html { redirect_to @subsection }
+        format.html { redirect_to new_subsection_page_path( @subsection ) }
         format.xml  { render :xml => @subsection, :status => :created, :location => @subsection }
       else
         format.html { render :action => "new" }
