@@ -1,0 +1,19 @@
+%table.list
+  %thead
+    %tr
+      - sort_headers_for :meta_tag, %w{content used_as_title used_as_description created_at updated_at operations} do |header|
+        - "Last Changed" if header == 'updated_at'
+  - @meta_tags.each do |meta_tag|
+    %tr{ :class => cycle(:odd, :even) }
+      %td= meta_tag.content
+    
+      - used_as_title = []
+      - meta_tag.pages_meta_title.each { |page| used_as_title << page.title }
+      %td= used_as_title.join(', ')
+      
+      - used_as_description = []
+      - meta_tag.pages_meta_description.each { |page| used_as_description << page.title }
+      %td= used_as_description.join(', ')
+      
+      %td= meta_tag.created_at.strftime("%B, %d %Y")
+      %td= meta_tag.updated_at.strftime("%B, %d %Y")

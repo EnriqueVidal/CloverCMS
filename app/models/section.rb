@@ -13,9 +13,7 @@ class Section < ActiveRecord::Base
 
   def self.paginate_and_sort(page, sort)
     options = self.sort_by(sort) || {}
-    params = {}
-    params[:sections_page] = page || 1
-    return self.paginate( options.merge( :per_page => @@per_page, :page => params[:sections_page])) rescue []
+    return self.paginate( options.merge( :per_page => @@per_page, :page => page || 1)) rescue []
   end
 
 end

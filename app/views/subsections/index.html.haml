@@ -1,56 +1,27 @@
-%h2
-  Subsections
+- section = @subsections.first.section
+
+%h2= 'Subsections of ' + section.name
 
 #subsections_box.splitcontentleft{ :style => 'width: 66%;' }
-  %p
-    This is the subsections page, here is the list of sections within your website, to watch the pages within each subsection, you only need to click a subsection name from the list, and you will be redirected to that particular subsection page where you will be able to add pages, edit the section name, and adding subsections.
-  %p
-    To go to that particular subsection section page just click on the subsection name.
+  %p This is the subsections page, here is the list of sections within your website, to watch the pages within each subsection, you only need to click a subsection name from the list, and you will be redirected to that particular subsection page where you will be able to add pages, edit the section name, and adding subsections.
+  %p To go to that particular subsection section page just click on the subsection name.
 
   %br
   %br
-
-  %table.list
-    %thead
-      %tr
-        %th
-          Name
-        %th
-          Section
-        %th
-          Created at
-        %th
-          Last updated at
-        %th
-          Operations
-    - oddity = 1
-    - @subsections.each do |subsection|
-      %tr{ :class => ( oddity % 2 == 0 )? '' : 'odd' }
-        - oddity = oddity + 1
-        %td
-          = link_to subsection.name, subsection_path(subsection)
-        %td
-          = link_to subsection.section.name, section_path(subsection.section)
-        %td
-          = subsection.created_at.strftime("%B, %d %Y")
-        %td
-          = subsection.updated_at.strftime("%B, %d %Y")
-        %td
-          = link_to 'Edit', edit_subsection_path(subsection)
-          = link_to 'Destroy', subsection, :confirm => 'Are you sure?', :method => :delete
-
-  = will_paginate @subsections
-
+  
+  #subsections
+    = render :partial => 'subsections'
+  #spinner
+  
 #tips_content.box.splitcontentright{ :style => 'width: 29%' }
-  %h3
-    Did you know?
-  %p
-    Thanks to CloverInteractive's Clever CMS even though all the information you type in gets completely dynamically displayed from database, it's clever way to form urls using your pages content, let everyone know that you are organized, and gives both the search engine an the user the sense that they are truly navigating within folders and files.
+  %h3 Did you know?
+  %p Thanks to CloverInteractive's Clever CMS even though all the information you type in gets completely dynamically displayed from database, it's clever way to form urls using your pages content, let everyone know that you are organized, and gives both the search engine an the user the sense that they are truly navigating within folders and files.
 
 #operations_placeholder{ :style => 'display: none;' }
-  %h3
-    Operaciones
-  = link_to 'Add new Subsection', new_subsection_path()
+  %h3 Operaciones
+  = link_to 'Add new Subsection', new_section_subsection_path(section)
+  %br
+  = link_to 'Back to Sections', sections_path
 
 %script{ :type => 'text/javascript' }
   //<![[CDATA

@@ -1,5 +1,10 @@
 class MetaTagsController < ApplicationController
 
+  def index
+    @meta_tags = MetaTag.paginate_and_sort(params[:page], params[:sort])
+    return render :partial => 'metatags' if request.xhr?
+  end
+
   def show
     @meta_tag = MetaTag.find(params[:id])
 

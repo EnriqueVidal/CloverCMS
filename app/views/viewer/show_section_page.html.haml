@@ -1,14 +1,9 @@
 #you_are_at
-  %h6
-    You are at
-    = ' ' + @section.name  + ' > ' + @page.title
+  %h6= 'You are at ' + @section.name  + ' > ' + @page.title
 
 #page_content{ :style => 'float: left;' }
-  %h3
-    = @page.title
-
-  %p
-    =  @page.body
+  %h3= @page.title
+  %p=  @page.body
 
 #subsection_and_pages_menu{ :style => 'float:left;margin-left: 25px;' }
   - if @section.pages.count > 1

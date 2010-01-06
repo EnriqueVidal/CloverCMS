@@ -35,7 +35,7 @@
 
 
           - for section in Section.all
-            = link_to section.name, show_section_page_path( :section_name => section.name, :page_name => section.pages.first.name )
+            = link_to(section.name, show_section_page_path( :section_name => section.name, :page_name => section.pages.first.name )) if !section.pages.blank?
 
         .content
           = yield

@@ -1,30 +1,15 @@
 class SubsectionsController < ApplicationController
 
   def index
-    @subsections = Subsection.paginate :page => params[:subsections_page], :per_page => 15
-
-    respond_to do |format|
-      format.html
-      format.xml { render :xml => @subsections }
-    end
-  end
-
-  def show
-    @subsection = Subsection.find(params[:id])
-    @pages      = @subsection.pages.paginate :page => params[:subsection_pages_page], :per_page => 15
-
-    respond_to do |format|
-      format.html
-    end
+    @subsections = Subsection.paginate_and_sort_by_section_id(params[:page], params[:sort], params[:section_id])
+    
+    return render :partial => 'subsections' if request.xhr?
   end
 
   def new
     @subsection             = Subsection.new
     @subsection.section_id  = params[:section_id]
-
-    if params[:section_id].nil? || params[:sections_id].to_i == 0
-      @sections               = Section.all
-    end
+    @sections               = Section.all unless !@subsection.section_id.blank?
 
     respond_to do |format|
       format.html

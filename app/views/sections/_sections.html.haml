@@ -1,13 +1,26 @@
 %table.list
   %thead
     %tr
-      - sort_headers_for :section, %w{name created_at updated_at operations} do |header|
+      - sort_headers_for :section, %w{name pages subsections created_at updated_at operations} do |header|
         - "Last Changed" if header == 'updated_at'
 
   - @sections.each do |section|
     %tr{ :class => cycle(:odd, :even) }
 
-      %td= link_to section.name, section_path(section)
+      %td= section.name
+      
+      %td
+        - if section.pages.count >= 1
+          = link_to 'Pages', section_pages_path(section)
+        - else
+          = link_to 'New Page', new_section_page_path(section)
+      
+      %td
+        - if section.subsections.count >= 1
+          = link_to 'Subsections', section_subsections_path(section)
+        - else
+          = link_to 'New Subsection', new_section_subsection_path(section)
+          
       %td= section.created_at.strftime("%B, %d %Y")
       %td= section.updated_at.strftime("%B, %d %Y")
       %td

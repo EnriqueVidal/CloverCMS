@@ -1,19 +1,14 @@
 class PagesController < ApplicationController
 
   uses_tiny_mce :only => [:edit, :new], :options => {
-                                                  :theme => 'simple',
-                                                  :theme_advanced_resizing => true,
-                                                  :theme_advanced_resize_horizontal => false,
-                                                  :plugins => %w{ table fullscreen }
+                                                  :theme  => 'simple',
+                                                  :skin   => 'o2k7'
                                                 }
 
   def index
-    @section_pages    = Page.paginate :page => params[:pages_by_section_page],    :per_page => 10, :conditions => 'section_id IS NOT NULL'
-    @subsection_pages = Page.paginate :page => params[:pages_by_subsection_page], :per_page => 10, :conditions => 'subsection_id IS NOT NULL'
-
-    respond_to do |format|
-      format.html
-    end
+    @pages = Page.paginate_and_sort_by_section_or_subsection(params[:page], params[:sort], params[:section_id], params[:subsection_id])
+    
+    return render :partial => 'pages' if request.xhr?
   end
 
   def new

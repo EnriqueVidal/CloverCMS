@@ -8,12 +8,6 @@ class SectionsController < ApplicationController
     end
   end
 
-  def show
-    @section      = Section.find(params[:id])
-    @pages        = @section.pages.paginate       :page => params[:section_pages_page], :per_page => 15
-    @subsections  = @section.subsections.paginate :page => params[:subsections_page],   :per_page => 15
-  end
-
   def new
     @section = Section.new
 
@@ -52,7 +46,7 @@ class SectionsController < ApplicationController
     respond_to do |format|
       if @section.update_attributes(params[:section])
         flash[:notice] = 'Section was successfully updated.'
-        format.html { redirect_to @section }
+        format.html { redirect_to :action => :index }
         format.xml  { head :ok }
       else
         format.html { render :action => :edit }
