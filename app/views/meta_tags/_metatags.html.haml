@@ -17,3 +17,8 @@
       
       %td= meta_tag.created_at.strftime("%B, %d %Y")
       %td= meta_tag.updated_at.strftime("%B, %d %Y")
+      %td
+        = link_to_remote 'Edit', :url => "/meta_tags/#{meta_tag.id}/edit", :update => :operations, :after => "$('operations').show();"
+        = link_to 'Destroy', meta_tag, :confirm => 'Are you sure?', :method => :delete
+
+= will_paginate @meta_tags

@@ -1,4 +1,8 @@
-- form_for( @meta_tag, :url => { :action => "create" }, :builder => ValidatingFormBuilder ) do |f|
-  = f.text_field :content
-  = f.submit 'Send'
+- form_for( @meta_tag, :url => { :action => "create" }, :builder => ValidatingFormBuilder, :html => { :class => 'tabular' } ) do |f|
+  
+  %p
+    = f.text_area :content, :rows => 5
+  %p
+    = f.submit 'Send'
+    = link_to :Cancel, 'javascript:void(null);', :onclick => '$("operations").toggle();'
 

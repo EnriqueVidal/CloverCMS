@@ -38,7 +38,7 @@ private
   end
 
   def required_mark(field)
-    required_field?(field) ? ' (*)' : ''
+    required_field?(field) ? ' <span class="required">*</span>' : ''
   end
 
   def required_field?(field)

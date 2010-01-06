@@ -5,15 +5,6 @@ class MetaTagsController < ApplicationController
     return render :partial => 'metatags' if request.xhr?
   end
 
-  def show
-    @meta_tag = MetaTag.find(params[:id])
-
-    respond_to do |format|
-      format.html { render :layout => false }
-      format.xml  { render :xml => @meta_tag }
-    end
-  end
-
   def new
     @meta_tag = MetaTag.new
 
@@ -37,7 +28,7 @@ class MetaTagsController < ApplicationController
     respond_to do |format|
       if @meta_tag.save
         flash[:notice] = 'MetaTag was successfully created.'
-        format.html { redirect_to :controller => :manager, :action => :seo }
+        format.html { redirect_to :action => :index }
       else
         format.html { render :action => "new" }
       end
@@ -51,7 +42,7 @@ class MetaTagsController < ApplicationController
     respond_to do |format|
       if @meta_tag.update_attributes(params[:meta_tag])
         flash[:notice] = 'MetaTag was successfully updated.'
-        format.html { redirect_to :controller => :manager, :action => :seo }
+        format.html { redirect_to :action => :index }
       else
         format.html { render :action => "edit" }
       end
@@ -64,7 +55,7 @@ class MetaTagsController < ApplicationController
     @meta_tag.destroy
 
     respond_to do |format|
-      format.html { redirect_to :controller => :manager, :action => :seo }
+      format.html { redirect_to :action => :index }
       format.xml  { head :ok }
     end
   end
