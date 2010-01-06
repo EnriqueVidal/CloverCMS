@@ -28,7 +28,8 @@ Rails::Initializer.run do |config|
   config.gem "redgreen"
   config.gem "haml"
   config.gem 'gravtastic',              :version => '>= 2.1.0'
-  config.gem "mislav-will_paginate",    :lib => 'will_paginate',  :source => 'http://gems.github.com', :version => '~> 2.3.11'
+  config.gem "will_paginate",           :source => 'http://gemscutter.org', :version => '~> 2.3.11'
+  config.gem 'JasonKing-good_sort',     :lib => 'good_sort',      :source => 'http://gems.github.com'
   config.gem 'kete-tiny_mce',           :lib => 'tiny_mce',       :source => 'http://gems.github.com'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
@@ -45,7 +46,7 @@ Rails::Initializer.run do |config|
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
-  config.time_zone = 'UTC'
+  config.time_zone = 'Tijuana'
 
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]

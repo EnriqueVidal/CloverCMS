@@ -1,11 +1,10 @@
 class SectionsController < ApplicationController
 
   def index
-    @sections = Section.paginate :page => params[:sections_page], :per_page => 15
+    @sections = Section.paginate_and_sort(params[:page], params[:sort])
 
-    respond_to do |format|
-      format.html
-      format.xml { render :xml => @sections }
+    if request.xhr?
+      return render :partial => 'sections'
     end
   end
 

@@ -1,0 +1,18 @@
+%table.list
+  %thead
+    %tr
+      - sort_headers_for :section, %w{name created_at updated_at operations} do |header|
+        - "Last Changed" if header == 'updated_at'
+
+  - @sections.each do |section|
+    %tr{ :class => cycle(:odd, :even) }
+
+      %td= link_to section.name, section_path(section)
+      %td= section.created_at.strftime("%B, %d %Y")
+      %td= section.updated_at.strftime("%B, %d %Y")
+      %td
+        = link_to 'Edit', edit_section_path(section)
+        = link_to 'Destroy', section, :confirm => 'Are you sure?', :method => :delete
+
+= will_paginate @sections
+
