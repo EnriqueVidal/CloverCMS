@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.paginate_and_sort(params[:page], params[:sort])
+    @users = User.paginate_and_sort params[:page], params[:sort]
     
     return render :partial => 'users' if request.xhr?
+  end
+  
+  def edit
+    @users = User.find params[:id]
   end
   
   def show

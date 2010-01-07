@@ -1,17 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.resources :meta_tags
-  map.create_meta_tag   'meta_tags/create',       :controller => 'meta_tags', :action => 'create'
-  map.update_meta_tag   'meta_tags/update',       :controller => 'meta_tags', :action => 'update'
-  map.new_meta_tag      'meta_tags/new',          :controller => 'meta_tags', :action => 'new'
-  map.delete_meta_tag   'meta_tags/:id/destroy',  :controller => 'meta_tags', :action => 'destroy'
   map.edit_meta_tag     'meta_tags/:id/edit',     :controller => 'meta_tags', :action => 'edit'
-  map.show_meta_tag     'meta_tags/:id',          :controller => 'meta_tags', :action => 'show'
 
-
+  map.resources     :uploads
   map.delete_upload 'uploads/:id/destroy',          :controller => 'uploads', :action => 'destroy'
   map.get_photos    'uploads/get_photos/:page_id',  :controller => 'uploads', :action => 'get_photos'
-  map.resources     :uploads
+
 
   map.show_subsection_page  ':section_name/:subsection_name/:page_name.html', :controller => 'viewer', :action => 'show_subsection_page'
   map.show_section_page     ':section_name/:page_name.html',                  :controller => 'viewer', :action => 'show_section_page'
@@ -24,7 +19,6 @@ ActionController::Routing::Routes.draw do |map|
   map.logout    'logout',                 :controller => 'users',   :action => 'logout'
   map.register  'register',               :controller => 'users',   :action => 'register'
 
-  map.seo_manager '/manager/seo',         :controller => 'manager', :action => 'seo'
   map.resources   :manager
 
   map.resources   :sections,    :has_many   => [ :pages, :subsections ]

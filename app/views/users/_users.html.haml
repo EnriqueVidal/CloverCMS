@@ -1,7 +1,9 @@
 %table.list
   %thead
     %tr
-      - sort_headers_for :user, %w( username email created_at roles admin )
+      - sort_headers_for :user, %w( username email created_at roles admin active ) do |header|
+        - "Signed up at" if header == 'created_at'
+        
   - @users.each do |user|
     %tr{ :class => cycle(:odd, :even) }
       %td= link_to user.username, show_user_path(user.username)
@@ -11,5 +13,6 @@
       - user.roles.each { |role| roles << minimize_text(role.name, 15) }
       %td= roles.join("<br />")
       %td= (user.admin?) ? 'Yes' : 'No'
+      %td= (user.activation_date.blank?) ? 'No' : 'Yes'
       
 = will_paginate @users
