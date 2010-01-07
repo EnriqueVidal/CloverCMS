@@ -9,12 +9,12 @@
     
       - used_as_title = []
       - meta_tag.pages_meta_title.each { |page| used_as_title << page.title }
-      %td= used_as_title.join(', ')
+      %td= used_as_title.join('<br/>')
       
       - used_as_description = []
       - meta_tag.pages_meta_description.each { |page| used_as_description << page.title }
-      %td= used_as_description.join(', ')
-      
+
+      %td= used_as_description.join('<br/>')      
       %td= meta_tag.created_at.strftime("%B, %d %Y")
       %td= meta_tag.updated_at.strftime("%B, %d %Y")
       %td

@@ -16,7 +16,8 @@ ActionController::Routing::Routes.draw do |map|
   map.show_subsection_page  ':section_name/:subsection_name/:page_name.html', :controller => 'viewer', :action => 'show_subsection_page'
   map.show_section_page     ':section_name/:page_name.html',                  :controller => 'viewer', :action => 'show_section_page'
 
-
+  map.resources :users
+  map.show_user 'users/:username',        :controller => 'users',   :action => 'show'
   map.profile   'profile',                :controller => 'users',   :action => 'profile'
   map.activate  'users/activate/:token',  :controller => 'users',   :action => 'activate'
   map.login     'login',                  :controller => 'users',   :action => 'login'

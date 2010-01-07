@@ -6,7 +6,8 @@ class PagesController < ApplicationController
                                                 }
 
   def index
-    @pages = Page.paginate_and_sort_by_section_or_subsection(params[:page], params[:sort], params[:section_id], params[:subsection_id])
+    key   = (params.key?(:section_id)) ? :section_id : :subsection_id
+    @pages = Page.paginate_and_sort(params[:page], params[:sort], { key => params[:section_id] || params[:subsection_id] } )
     
     return render :partial => 'pages' if request.xhr?
   end

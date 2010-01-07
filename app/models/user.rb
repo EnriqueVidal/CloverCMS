@@ -17,10 +17,14 @@ class User < ActiveRecord::Base
 
   before_create :make_token
   after_create  :create_person, :assign_roles
-
+  
+  sort_on :username, :email, :created_at, :admin
+  
+  cattr_reader :per_page
+  @@per_page = 15
+  
   named_scope :active,    :conditions => 'activation_date IS NOT NULL'
   named_scope :latest,    lambda { |limit|  { :limit => limit, :order => 'activation_date DESC' } }
-
 
   def create_person
     person = Person.create!( { :user_id => self.id } )
@@ -76,6 +80,11 @@ class User < ActiveRecord::Base
 
   def self.encrypted_password(password, salt)
     string_to_hash = Digest::SHA1.hexdigest( password + "grandma's recipe" + salt )
+  end
+  
+  def self.paginate_and_sort(page, sort)
+    options = self.sort_by(sort) || {}
+    return self.paginate( options.merge( :per_page => @@per_page, :page => page || 1)) rescue []
   end
 end
 

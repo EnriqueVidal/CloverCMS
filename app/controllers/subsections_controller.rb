@@ -1,7 +1,7 @@
 class SubsectionsController < ApplicationController
 
   def index
-    @subsections = Subsection.paginate_and_sort_by_section_id(params[:page], params[:sort], params[:section_id])
+    @subsections = Subsection.paginate_and_sort(params[:page], params[:sort], { :section_id => params[:section_id] })
     
     return render :partial => 'subsections' if request.xhr?
   end
@@ -64,7 +64,7 @@ class SubsectionsController < ApplicationController
     @subsection.destroy
 
     respond_to do |format|
-      format.html { redirect_to '/sections/' + section_id.to_s }
+      format.html { redirect_to :controller => :sections, :action => :index }
       format.xml  { head :ok }
     end
   end

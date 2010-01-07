@@ -1,6 +1,6 @@
-- section = @subsections.first.section
+- section = @subsections.first.section if !@subsections.blank?
 
-%h2= 'Subsections of ' + section.name
+%h2= (@subsections.blank?) ? 'Subsections' : 'Subsections of ' + section.name
 
 #subsections_box.splitcontentleft{ :style => 'width: 66%;' }
   %p This is the subsections page, here is the list of sections within your website, to watch the pages within each subsection, you only need to click a subsection name from the list, and you will be redirected to that particular subsection page where you will be able to add pages, edit the section name, and adding subsections.

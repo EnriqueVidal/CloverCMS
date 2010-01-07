@@ -1,0 +1,15 @@
+%table.list
+  %thead
+    %tr
+      - sort_headers_for :user, %w( username email created_at roles admin )
+  - @users.each do |user|
+    %tr{ :class => cycle(:odd, :even) }
+      %td= link_to user.username, show_user_path(user.username)
+      %td= user.email
+      %td= user.created_at.strftime("%h, %d %Y")
+      - roles = []
+      - user.roles.each { |role| roles << minimize_text(role.name, 15) }
+      %td= roles.join("<br />")
+      %td= (user.admin?) ? 'Yes' : 'No'
+      
+= will_paginate @users

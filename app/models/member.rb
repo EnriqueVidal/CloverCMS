@@ -1,2 +1,0 @@
-class Member < Person
-end

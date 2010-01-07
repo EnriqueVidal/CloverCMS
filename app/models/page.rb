@@ -1,4 +1,6 @@
 class Page < ActiveRecord::Base
+  extend PaginateAndSort::ClassMethods
+  
   acts_as_taggable
 
   belongs_to  :section
@@ -17,9 +19,6 @@ class Page < ActiveRecord::Base
   before_update :create_page_name, :add_metatags, :fix_images_path
   
   sort_on :title, :created_at, :updated_at
-  
-  cattr_reader :per_page
-  @@per_page = 15
 
   def add_metatags
     self.meta_title_id        = MetaTag.first.id unless !self.meta_title_id.nil?
@@ -39,15 +38,5 @@ class Page < ActiveRecord::Base
     errors.add("All pages must belong to either one section or subsection.") if self.section_id.nil? && self.subsection_id.nil?
   end
   
-  def self.paginate_and_sort_by_section_or_subsection(page, sort, section_id, subsection_id)
-    options = self.sort_by(sort) || {}
-    
-    if !section_id.blank?
-      return self.paginate_by_section_id(section_id,        options.merge( :per_page => @@per_page, :page => page || 1)) rescue []
-    else
-      return self.paginate_by_subsection_id(subsection_id,  options.merge( :per_page => @@per_page, :page => page || 1)) rescue []
-    end
-    
-  end
 end
 

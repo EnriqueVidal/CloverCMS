@@ -10,7 +10,7 @@ class InitialData
 
     user      = {
                   :username => 'admin',
-                  :email    => 'webmaster@cloverinteractive.com',
+                  :email    => 'enrique@cloverinteractive.com',
                   :pass     => 'admin'
                 }
 
@@ -44,9 +44,39 @@ class InitialData
 
                 :member         =>  [
                                       {
-                                        :name       => 'Edit own Profile',
+                                        :name       => 'View own Profile',
                                         :controller => 'users',
                                         :action     => 'profile'
+                                      },
+                
+                                      {
+                                        :name       => 'Edit own first name',
+                                        :controller => 'people',
+                                        :action     => 'set_person_first_name'
+                                      },
+                
+                                      {
+                                        :name       => 'Edit own middle name',
+                                        :controller => 'people',
+                                        :action     => 'set_person_middle_name'
+                                      },
+                
+                                      {
+                                        :name       => 'Edit own last name',
+                                        :controller => 'people',
+                                        :action     => 'set_person_last_name'
+                                      },
+                
+                                      {
+                                        :name       => 'Edit avatar, gender and date of birth',
+                                        :controller => 'people',
+                                        :action     => 'update'
+                                      },
+                
+                                      {
+                                        :name       => 'View other users profile',
+                                        :controller => 'users',
+                                        :action     => 'show'
                                       }
                                     ]
               }
@@ -59,8 +89,8 @@ class InitialData
                   "Super Solutions."
                 ]
 
-    self.create_section_and_pages( sections, pages )
     self.create_meta_tags( meta_tags )
+    self.create_section_and_pages( sections, pages )
     self.assign_meta_tags
     self.create_roles_and_rights( roles, rights )
     self.create_admin( user )
