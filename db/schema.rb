@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091231155439) do
+ActiveRecord::Schema.define(:version => 20100109014434) do
 
   create_table "meta_tags", :force => true do |t|
     t.string   "content"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20091231155439) do
     t.datetime "updated_at"
     t.string   "username"
     t.boolean  "admin"
+    t.date     "token_expiry"
   end
 
 end

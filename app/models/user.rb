@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  extend PaginateAndSort::ClassMethods
+  
   has_one                 :person,    :dependent => :destroy
   delegate                :full_name, :to => :person
 
@@ -80,11 +82,6 @@ class User < ActiveRecord::Base
 
   def self.encrypted_password(password, salt)
     string_to_hash = Digest::SHA1.hexdigest( password + "grandma's recipe" + salt )
-  end
-  
-  def self.paginate_and_sort(page, sort)
-    options = self.sort_by(sort) || {}
-    return self.paginate( options.merge( :per_page => @@per_page, :page => page || 1)) rescue []
   end
 end
 

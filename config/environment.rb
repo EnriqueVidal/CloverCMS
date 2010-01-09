@@ -28,7 +28,7 @@ Rails::Initializer.run do |config|
   config.gem "redgreen"
   config.gem "haml"
   config.gem 'gravtastic',              :version => '>= 2.1.0'
-  config.gem "will_paginate",           :source => 'http://gemscutter.org', :version => '~> 2.3.11'
+  config.gem "will_paginate",           :source => 'http://gemcutter.org', :version => '~> 2.3.11'
   config.gem 'JasonKing-good_sort',     :lib => 'good_sort',      :source => 'http://gems.github.com'
   config.gem 'kete-tiny_mce',           :lib => 'tiny_mce',       :source => 'http://gems.github.com'
 

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :check_authentication,
                 :check_authorization,
-                :except => [:login, :register, :activate, :logout, :create, :show_section_page, :show_subsection_page, :home_page]
+                :except => [:login, :register, :lost_password, :activate, :logout, :create, :show_section_page, :show_subsection_page, :home_page]
 
   def session_expiry
     if session[:expiry_time] and session[:expiry_time] < Time.now
