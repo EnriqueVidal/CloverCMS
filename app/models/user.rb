@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  extend PaginateAndSort::ClassMethods
-  
+  extend PaginateAndSort
+
   has_one                 :person,    :dependent => :destroy
   delegate                :full_name, :to => :person
 
@@ -19,12 +19,12 @@ class User < ActiveRecord::Base
 
   before_create :make_token
   after_create  :create_person, :assign_roles
-  
+
   sort_on :username, :email, :created_at, :admin
-  
+
   cattr_reader :per_page
   @@per_page = 15
-  
+
   named_scope :active,    :conditions => 'activation_date IS NOT NULL'
   named_scope :latest,    lambda { |limit|  { :limit => limit, :order => 'activation_date DESC' } }
 
@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
 
   def activate
     @activated = true
-    update_attributes!(:activation_date => Time.now.utc, :token => nil )
+    update_attributes!(:activation_date => Time.now.utc, :token => nil ) if self.activation_date.nil?
   end
 
   private

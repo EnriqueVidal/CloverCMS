@@ -1,6 +1,6 @@
-%script{ :type => 'text/javascript'}
-  //<![[CDADA
-  function init() 
+%script{ :type => 'text/javascript' }
+  //<![[CDATA
+  function init()
   {
   $('main').addClassName('nosidebar');
   $('new_page_menu_link').addClassName('selected');
@@ -14,47 +14,35 @@
 %h2
   New Page
 
-- form_for(@page, :html => { :multipart => :true, :class => 'tabular' }) do |f|
+- form_for([@pageable, Page.new], :html => { :multipart => :true, :class => 'tabular' }) do |f|
   = f.error_messages
 
-  #new_page_form.box  
-    - if @subsections.nil? && @sections.nil?
-      = f.hidden_field :section_id
-      = f.hidden_field :subsection_id
-    - else
-      = render :partial => 'section_or_subsection', :locals => { :f => f }
-    
-
+  #new_page_form.box
     %p
       = f.label :title
-      %span.required
-        *
+      %span.required *
       = f.text_field :title
     %hr
-    
+
     #page_body_div.splitcontentleft
       %p
         = f.label :body
-        %span.required
-          *
+        %span.required *
         = f.text_area :body, :class => 'mceEditor'
-          
+
     #additional_options.list.splitcontentright
       %p
-        %label
-          = link_to 'SEO Meta Tags', '#seo_box', :onclick => "TogglePageBoxes('seo_box');"
+        %label= link_to 'SEO Meta Tags', '#seo_box', :onclick => "TogglePageBoxes('seo_box');"
       #seo_box{ :style => 'display: none;', :name => 'seo_box' }
         = render :partial => 'meta_tags/all_meta_tags', :locals => { :metas => @metas, :page => @page }
-    
+
       %p
-        %label
-          = link_to 'SEO keywords', '#keywords', :onclick => "TogglePageBoxes('keywords');"
+        %label= link_to 'SEO keywords', '#keywords', :onclick => "TogglePageBoxes('keywords');"
       #keywords{ :style => 'display: none;', :name => 'keywords' }
         = render :partial => 'page_keywords', :locals => { :f => f }
 
       %p
-        %label
-          = link_to 'Upload Photos', '#uploads', :onclick => "TogglePageBoxes(['uploads', 'add_another_photo_link']);"
+        %label= link_to 'Upload Photos', '#uploads', :onclick => "TogglePageBoxes(['uploads', 'add_another_photo_link']);"
       #uploads{ :style => 'padding: 2px; border: 1px solid grey;display:none;', :name => 'uploads' }
         = f.render_associated_form( @page.uploads, :new => 1 )
 
@@ -63,3 +51,4 @@
 
     %p
   = f.submit 'Create Page'
+

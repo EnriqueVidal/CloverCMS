@@ -5,12 +5,12 @@
         - "Last Changed" if header == 'updated_at'
   - @pages.each do |page|
     %tr{ :class => cycle(:odd, :even) }
-      
-      - if !page.section.blank?
-        %td= link_to page.title, show_section_page_path(page.section.name, page.name), :target => :_blank
+
+      - if page.pageable.class == Section
+        %td= link_to page.title, show_section_page_path(page.pageable.name, page.name), :target => :_blank
       - else
-        %td= link_to page.title, show_subsection_page_path(page.subsection.section.name, page.subsection.name, page.name), :target => :_blank
-        
+        %td= link_to page.title, show_subsection_page_path(page.pageable.section.name, page.pageable.name, page.name), :target => :_blank
+
       %td= page.created_at.strftime("%B, %d %Y")
       %td= page.updated_at.strftime("%B, %d %Y")
       %td
@@ -18,3 +18,4 @@
         = link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete
 
 = will_paginate @pages
+

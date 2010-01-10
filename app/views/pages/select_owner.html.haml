@@ -1,0 +1,33 @@
+%h2 Select an owner for this new Page
+
+%p Each page must belong a rightful owner.
+
+%form{ :action => '/pages/new', :method => :get, :id => 'owner_form' }
+
+  %h3 Sections
+
+  %select{ :name => 'section_id', :onchange => 'validateSelection(this);'}
+    %option{ :value => 0 } Select an option
+    - @sections.each do |section|
+      %option{ :value => section.id }
+        = section.name
+
+  %h3 Subsections
+
+  %select{ :name => 'subsection_id', :onchange => 'validateSelection(this);' }
+    %option{ :value => 0 } Select an option
+    - @subsections.each do |subsection|
+      %option{ :value => subsection.id }
+        = subsection.name
+
+
+
+%script{ :type => 'text/javascript' }
+  //<![[CDATA
+  function validateSelection(element)
+  {
+  if (element.value != 0)
+  $('owner_form').submit();
+  }
+  //]]>
+

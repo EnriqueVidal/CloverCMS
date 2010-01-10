@@ -1,5 +1,4 @@
-- place   = @pages.first.section
-- place ||= @pages.first.subsection
+- place   = @pages.first.pageable
 
 %h2= 'Site Pages of ' + place.name
 
@@ -9,25 +8,24 @@
   #pages
     = render :partial => 'pages'
   #spinner
-  
+
 #tips_content.box.splitcontentright{ :style => 'width: 29%;' }
   %h3 Did you know?
   %p In this latest version of CloverInteractive's Clever CMS, many page creating, editing and displaying issues have been resolved, now you no longer need to think how to name pages as names are taken out of your page title. That way the page name both the user and the Search Engine see is consistent with your content.
 
 #operations_placeholder{ :style => 'display: none;' }
-  - section     = @pages.first.section    if !@pages.first.section.nil?
-  - subsection  = @pages.first.subsection if !@pages.first.subsection.nil?
-  
+  - owner     = @pages.first.pageable
+
   %h3 Operations
-  - if !section.nil?
-    = link_to 'Add a new Page', new_section_page_path(section) 
+  - if owner.class == Section
+    = link_to 'Add a new Page', new_section_page_path(owner)
   - else
-    = link_to 'Add a new Page', new_subsection_page_path(subsection)
+    = link_to 'Add a new Page', new_subsection_page_path(owner)
     %br
-    = link_to 'Back to Subsections', section_subsections_path(subsection.section)
+    = link_to 'Back to Subsections', section_subsections_path(owner.section)
   %br
   = link_to 'Back to Sections', sections_path()
-  
+
 %script{ :type => 'text/javascript' }
   //<![[CDATA
   $('sidebar').appendChild($('operations_placeholder'));

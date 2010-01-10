@@ -1,7 +1,7 @@
 class Section < ActiveRecord::Base
-  extend PaginateAndSort::ClassMethods
-  
-  has_many :pages,        :dependent => :destroy
+  extend PaginateAndSort
+
+  has_many :pages,         :as       => :pageable,  :dependent => :destroy
   has_many :subsections,  :dependent => :destroy
 
   validates_uniqueness_of :name

@@ -6,23 +6,29 @@ class PagesController < ApplicationController
                                                 }
 
   def index
-    key   = (params.key?(:section_id)) ? :section_id : :subsection_id
-    @pages = Page.paginate_and_sort(params[:page], params[:sort], { key => params[:section_id] || params[:subsection_id] } )
-    
+    lists = find_pageable true
+    @pageable, @pages = lists[0], lists[1]
     return render :partial => 'pages' if request.xhr?
   end
 
   def new
+    @pageable = find_pageable
     @page   = Page.new
     @metas  = MetaTag.all
 
-    @page.section_id    = params[:section_id]
-    @page.subsection_id = params[:subsection_id]
-    
-    if params[:section_id].nil? && params[:subsection_id].nil?
-      @sections     = Section.all
-      @subsections  = Subsection.all
+    continue = params[:section_id] || params[:subsection_id]
+    redirect_to pick_onwer_path if continue.nil?
+
+    if @pageable.nil?
+      flash[:error] = "You have tried to add this page to an element that does not exist yet."
+      redirect_to sections_path()
     end
+
+  end
+
+  def select_owner
+    @sections     = Section.all
+    @subsections  = Subsection.all
   end
 
   def edit
@@ -31,10 +37,8 @@ class PagesController < ApplicationController
   end
 
   def create
-    @page = Page.new(params[:page])
-    
-    @page.section_id    = nil if params[:page][:section_id].nil? || params[:page][:section_id].to_i == 0
-    @page.subsection_id = nil if params[:page][:section_id].nil? || params[:page][:subsection_id].to_i == 0
+    @pageable = find_pageable
+    @page = @pageable.pages.build(params[:page])
 
     respond_to do |format|
       if @page.save
@@ -66,13 +70,28 @@ class PagesController < ApplicationController
 
   def destroy
     @page       = Page.find(params[:id])
-
     @page.destroy
 
     respond_to do |format|
       flash[:success] = 'Page was successfully removed.'
       format.html { redirect_to :controller => :sections, :action => :index }
       format.xml  { head :ok }
+    end
+  end
+
+  private
+
+  def find_pageable(paginate=false)
+    params.each do |name, value|
+      if name =~ /(.+)_id$/ and value.to_i > 0
+        type      = $1.classify
+        custom    = { :pageable_id => value, :pageable_type => type }
+        pageable  = type.constantize.find(value) rescue nil
+
+        list      = [ pageable, Page.paginate_and_sort(params[:page], params[:sort], custom) ]
+
+        return ( paginate ) ? list : list[0]
+      end
     end
   end
 end

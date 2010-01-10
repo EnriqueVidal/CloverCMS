@@ -12,21 +12,24 @@ ActionController::Routing::Routes.draw do |map|
   map.show_section_page     ':section_name/:page_name.html',                  :controller => 'viewer', :action => 'show_section_page'
 
 
-  map.resources       :users
-  map.show_user       'users/:username',        :controller => 'users',   :action => 'show'
-  map.profile         'profile',                :controller => 'users',   :action => 'profile'
-  map.activate        'users/activate/:token',  :controller => 'users',   :action => 'activate'
-  map.login           'login',                  :controller => 'users',   :action => 'login'
-  map.logout          'logout',                 :controller => 'users',   :action => 'logout'
-  map.register        'register',               :controller => 'users',   :action => 'register'
-  map.lost_password   'lost_password',          :controller => 'users',   :action => 'lost_password'
-  map.change_password 'change_password',        :controller => 'users',   :action => 'change_password'
+  map.resources           :users
+  map.show_user           'users/:username',        :controller => 'users',   :action => 'show'
+  map.profile             'profile',                :controller => 'users',   :action => 'profile'
+  map.activate            'users/activate/:token',  :controller => 'users',   :action => 'activate'
+  map.login               'login',                  :controller => 'users',   :action => 'login'
+  map.logout              'logout',                 :controller => 'users',   :action => 'logout'
+  map.register            'register',                :controller => 'users',   :action => 'register'
+  map.lost_password       'lost_password',          :controller => 'users',   :action => 'lost_password'
+  map.change_password     'change_password',        :controller => 'users',   :action => 'change_password'
+
 
   map.resources   :manager
 
   map.resources   :sections,    :has_many   => [ :pages, :subsections ]
   map.resources   :subsections, :has_many   => :pages, :belongs_to => :section
-  map.resources   :pages,       :belongs_to => [ :section, :subsection ]
+
+  map.pick_onwer 'select_owner',  :controller => 'pages',   :action => 'select_owner'
+  map.resources   :pages,         :belongs_to => [ :section, :subsection ]
 
   map.resources :people
   map.resources :members
