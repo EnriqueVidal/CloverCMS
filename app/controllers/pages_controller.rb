@@ -17,13 +17,13 @@ class PagesController < ApplicationController
     @metas  = MetaTag.all
 
     continue = params[:section_id] || params[:subsection_id]
-    redirect_to pick_onwer_path if continue.nil?
 
-    if @pageable.nil?
-      flash[:error] = "You have tried to add this page to an element that does not exist yet."
-      redirect_to sections_path()
+    if continue.nil?
+      redirect_to pick_onwer_path
+    elsif @pageable.nil?
+      flash[:error] = "You have tried to add this page to an element that does not exist."
+      redirect_to sections_path
     end
-
   end
 
   def select_owner
@@ -38,12 +38,12 @@ class PagesController < ApplicationController
 
   def create
     @pageable = find_pageable
-    @page = @pageable.pages.build(params[:page])
+    @page     = @pageable.pages.build(params[:page])
 
     respond_to do |format|
       if @page.save
         flash[:notice] = 'Page was successfully created.'
-        format.html { redirect_to (@page.uploads.count >= 1) ? edit_page_path(@page) : { :controller => :sections, :action => :index } }
+        format.html { redirect_to (@page.uploads.count >= 1) ? edit_page_path(@page) : sections_path }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
         flash[:notice] = 'Please fill out all the required fields.'
@@ -74,7 +74,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       flash[:success] = 'Page was successfully removed.'
-      format.html { redirect_to :controller => :sections, :action => :index }
+      format.html { redirect_to sections_path }
       format.xml  { head :ok }
     end
   end
@@ -93,6 +93,8 @@ class PagesController < ApplicationController
         return ( paginate ) ? list : list[0]
       end
     end
+
+    return nil
   end
 end
 

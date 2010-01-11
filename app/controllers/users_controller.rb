@@ -2,10 +2,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate_and_sort params[:page], params[:sort]
-    
+
     return render :partial => 'users' if request.xhr?
   end
-  
+
   def change_password
     if request.post?
       @user = current_user
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       end
     end
   end
-  
+
   def show
     @user = User.find_by_username(params[:username])
   end
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     respond_to do |format|
       if @user.save
-        flash[:success] =  "Usuario #{@user.email} creado. Por favor revisa tu bandeja de entrada."
+        flash[:success] =  "User #{@user.username} created. Please check your inbox for activation instructions."
 
         format.html { redirect_to :action => :login }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     @user = User.find_by_token(params[:token])
     if @user && @user.activate
       session[:user_id] = @user.id
-      
+
       if @user.activation_date.nil?
         flash[:success] = "Account for #{@user.email} activated"
         redirect_to :action => :profile
@@ -69,25 +69,25 @@ class UsersController < ApplicationController
       redirect_to :action => :register
     end
   end
-  
+
   def lost_password
     if request.post?
       user    = User.find_by_username(params[:email_or_username])
       user  ||= User.find_by_password(params[:email_or_username])
-      
+
       if user
         user.make_token
         user.token_expiry = Time.now + 1.days
         user.save!
-        
+
         UserMailer.deliver_password_recovery(user)
-        
+
         flash[:notice] = "An Email has just been sent to #{user.email}"
         redirect_to :action => :login
       else
         flash[:notice] = "The username or email you entered are invalid."
       end
-      
+
     end
   end
 
@@ -111,7 +111,7 @@ class UsersController < ApplicationController
         end
 
       else
-        flash[:error] = "Información de login invalida, usuario o contraseña invalidos."
+        flash[:error] = "Username or password incorrect."
         logger.warn( "\t\t\t>>>>> WARN #{Time.now} login FAILED for user #{params[:email]} <<<<< \n")
         redirect_to(:action => :login)
       end
@@ -144,7 +144,7 @@ class UsersController < ApplicationController
   def init_session
     session[:user_id] = nil
   end
-  
+
 
 end
 
