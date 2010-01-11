@@ -24,7 +24,7 @@ class Page < ActiveRecord::Base
 
   def create_page_name
     title     = self.title.gsub(/\s{2,}/, ' ').gsub(/\t/, ' ')
-    self.name = title.downcase.gsub(/(\s|\t)+/, '_').gsub(/_{2,}/, '_').gsub(/[^a-z_]/, '')
+    self.name = title.downcase.gsub(/(\s|\t)+/, '-').gsub(/_{2,}/, '-').gsub(/[^a-z-]/, '')
   end
 
   def fix_images_path
