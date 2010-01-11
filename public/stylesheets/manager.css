@@ -1,9 +1,28 @@
-html > body .tabular p 
+html > body .tabular p
 {
 	overflow:	hidden;
 }
 
-.tabular p 
+.icon {
+    background-position:    0 40%;
+    background-repeat:      no-repeat;
+    padding-bottom:         3px;
+    padding-left:           20px;
+    padding-top:            2px;
+}
+
+.icon_add               { background-image: url(../images/icons/add.png); }
+.icon_edit              { background-image: url(../images/icons/pencil.png); }
+.icon_delete            { background-image: url(../images/icons/delete.png); }
+.icon_bullet_delete     { background-image: url(../images/icons/bullet_delete.png); }
+.icon_bullet_add        { background-image: url(../images/icons/bullet_add.png); }
+.icon_bullet_pencil     { background-image: url(../images/icons/bullet_pencil.png); }
+.icon_bullet_page       { background-image: url(../images/icons/bullet_page.png); }
+.icon_bullet_page_world { background-image: url(../images/icons/bullet_page_world.png); }
+.icon_page_add          { background-image: url(../images/icons/page_add.png); }
+.icon_back              { background-image: url(../images/icons/resultset_previous.png); }
+
+.tabular p
 {
 	clear:		left;
 	height:		1%;
@@ -19,7 +38,7 @@ html > body .tabular p
 	width:				175px;
 }
 
-hr 
+hr
 {
 	-moz-background-clip:						border;
 	-moz-background-inline-policy:	continuous;
@@ -30,20 +49,20 @@ hr
 	width:													100%;
 }
 
-input[type="text"], textarea, select 
+input[type="text"], textarea, select
 {
 	border:		1px solid #D7D7D7;
 	padding:	4px;
 }
 
-input, select 
+input, select
 {
 	margin-bottom:	1px;
 	margin-top:			1px;
 	vertical-align:	middle;
 }
 
-.required 
+.required
 {
 	color:	#BB0000;
 }

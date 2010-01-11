@@ -7,17 +7,20 @@
   - @subsections.each do |subsection|
     %tr{ :class => cycle(:odd, :even) }
       %td= subsection.name
-      
+
       - if subsection.pages.count >= 1
-        %td= link_to 'Pages', subsection_pages_path(subsection)
+        %td
+          %span.icon.icon_bullet_page= link_to 'View Pages', subsection_pages_path(subsection)
       - else
-        %td= link_to 'New Page', new_subsection_page_path(subsection)
-      
+        %td
+          %span.icon.icon_bullet_add= link_to 'New Page', new_subsection_page_path(subsection)
+
       %td= subsection.section.name
       %td= subsection.created_at.strftime("%B, %d %Y")
       %td= subsection.updated_at.strftime("%B, %d %Y")
       %td
-        = link_to 'Edit', edit_subsection_path(subsection)
-        = link_to 'Destroy', subsection, :confirm => 'Are you sure?', :method => :delete
+        %span.icon.icon_bullet_pencil= link_to 'Edit', edit_subsection_path(subsection)
+        %span.icon.icon_bullet_delete= link_to 'Destroy', subsection, :confirm => 'Are you sure?', :method => :delete
 
 = will_paginate @subsections
+

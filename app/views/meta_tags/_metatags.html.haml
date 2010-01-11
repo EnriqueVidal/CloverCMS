@@ -6,19 +6,20 @@
   - @meta_tags.each do |meta_tag|
     %tr{ :class => cycle(:odd, :even) }
       %td= meta_tag.content
-    
+
       - used_as_title = []
       - meta_tag.pages_meta_title.each { |page| used_as_title << page.title }
       %td= used_as_title.join('<br/>')
-      
+
       - used_as_description = []
       - meta_tag.pages_meta_description.each { |page| used_as_description << page.title }
 
-      %td= used_as_description.join('<br/>')      
+      %td= used_as_description.join('<br/>')
       %td= meta_tag.created_at.strftime("%B, %d %Y")
       %td= meta_tag.updated_at.strftime("%B, %d %Y")
       %td
-        = link_to_remote 'Edit', :url => "/meta_tags/#{meta_tag.id}/edit", :update => :operations, :after => "$('operations').show();"
-        = link_to 'Destroy', meta_tag, :confirm => 'Are you sure?', :method => :delete
+        %span.icon.icon_bullet_pencil= link_to_remote 'Edit', :url => "/meta_tags/#{meta_tag.id}/edit", :update => :operations, :after => "$('operations').show();"
+        %span.icon.icon_bullet_delete= link_to 'Destroy', meta_tag, :confirm => 'Are you sure?', :method => :delete
 
 = will_paginate @meta_tags
+

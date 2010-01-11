@@ -1,7 +1,8 @@
 %h2 Sections
 
 #sections_box.splitcontentleft{ :style => 'width: 66%;' }
-  %p This is the sections page, here is the list of sections within your website, to watch the pages within each section, you only need to click a section name, and you will be redirected to that particular section page where you will be able to add pages, edit the section name, and adding subsections.
+  %p This is the sections page, here is the list of sections within your website, to watch the pages within each section, you only need to click the 'View Pages' link from the list in each section, and you will be redirected to that particular section pages page where you will be able to add more pages, edit them or delete them.
+  %p You can edit a given section name just by clicking on the 'Edit' link in each subsection, or delete them by clicking the 'Destroy' link.
   %br
 
   #sections
@@ -16,7 +17,7 @@
 #operations_placeholder{ :style => 'display: none;'}
   %h3 Section Operations
 
-  = link_to 'Add a new Section', new_section_path()
+  %span.icon.icon_add= link_to 'Add a new Section', new_section_path()
 
 %script{ :type => 'text/javascript' }
   //<![[CDATA

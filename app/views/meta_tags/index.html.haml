@@ -7,10 +7,11 @@
 #operations.box{ :style => 'display: none;', :name => 'operations' }
 #operations_placeholder{ :style => 'display: none;' }
   %h3 Operations
-  = link_to_remote 'New Meta Tag', :url => "/meta_tags/new", :update => :operations, :after => "$('operations').show();"
-  
+  %span.icon.icon_add= link_to_remote 'New Meta Tag', :url => "/meta_tags/new", :update => :operations, :after => "$('operations').show();"
+
 %script{ :type => 'text/javascript' }
   //<![[CDATA
   $('sidebar').appendChild($('operations_placeholder'));
   $('operations_placeholder').toggle();
   //]]>
+

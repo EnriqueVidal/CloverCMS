@@ -3,25 +3,25 @@
 %h2= (@subsections.blank?) ? 'Subsections' : 'Subsections of ' + section.name
 
 #subsections_box.splitcontentleft{ :style => 'width: 66%;' }
-  %p This is the subsections page, here is the list of sections within your website, to watch the pages within each subsection, you only need to click a subsection name from the list, and you will be redirected to that particular subsection page where you will be able to add pages, edit the section name, and adding subsections.
-  %p To go to that particular subsection section page just click on the subsection name.
+  %p This is the subsections page, here is the list of subsections within your website, to watch the pages within each subsection, you only need to click the 'View Pages' link from the list in each subsection, and you will be redirected to that particular subsection pages page where you will be able to add more pages, edit them or delete them.
+  %p You can edit a given subsection name just by clicking on the 'Edit' link in each subsection, or delete them by clicking the 'Destroy' link.
 
   %br
   %br
-  
+
   #subsections
     = render :partial => 'subsections'
   #spinner
-  
+
 #tips_content.box.splitcontentright{ :style => 'width: 29%' }
   %h3 Did you know?
   %p Thanks to CloverInteractive's Clever CMS even though all the information you type in gets completely dynamically displayed from database, it's clever way to form urls using your pages content, let everyone know that you are organized, and gives both the search engine an the user the sense that they are truly navigating within folders and files.
 
 #operations_placeholder{ :style => 'display: none;' }
   %h3 Operaciones
-  = link_to 'Add new Subsection', new_section_subsection_path(section)
+  %span.icon.icon_add= link_to 'Add new Subsection', new_section_subsection_path(section)
   %br
-  = link_to 'Back to Sections', sections_path
+  %span.icon.icon_back= link_to 'Back to Sections', sections_path
 
 %script{ :type => 'text/javascript' }
   //<![[CDATA

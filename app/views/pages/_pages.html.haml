@@ -14,8 +14,8 @@
       %td= page.created_at.strftime("%B, %d %Y")
       %td= page.updated_at.strftime("%B, %d %Y")
       %td
-        = link_to 'Edit', edit_page_path(page)
-        = link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete
+        %span.icon.icon_bullet_pencil= link_to 'Edit', edit_page_path(page)
+        %span.icon.icon_bullet_delete= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete
 
 = will_paginate @pages
 
