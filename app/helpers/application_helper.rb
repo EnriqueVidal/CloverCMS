@@ -7,5 +7,13 @@ module ApplicationHelper
       return text
     end
   end
+  
+  def render_flash_messages
+    message = ''
+    flash.each do |key, value|
+      message << content_tag('div', value, :class => "flash #{key}", :id => "flash#{key.to_s.classify}" )
+    end
+    message
+  end
 end
 

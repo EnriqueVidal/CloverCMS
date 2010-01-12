@@ -11,6 +11,88 @@ html > body .tabular p
     padding-top:            2px;
 }
 
+div.flash.error, #errorExplanation {
+	text-indent:										25px;
+	color:													brown;
+	min-height:											35px;
+}
+
+div.flash.success {
+	color:													#005F00;
+	text-indent:										25px;
+	min-height:											35px;
+}
+
+div.flash.notice {
+	text-indent:										25px;
+	min-height:											35px;
+}
+
+div#flashError {
+	-moz-background-clip:						border;
+	-moz-background-inline-policy:	continuous;
+	-moz-background-origin:					padding;
+	background:											#FFE3E3 url(../images/icons/exclamation.png) no-repeat scroll 8px 5px;
+	border-color:										#DD0000;
+	border-style:										solid none;
+	border-width:										2px medium;
+	clear:													both;
+	font-weight:										bold;
+	margin:													0 0 0.2em;
+	padding:												1em;
+}
+
+/* Since. 'success'.classify returns Succes for now the two are required.*/
+div#flashSuccess, div#flashSucces {
+	-moz-background-clip:						border;
+	-moz-background-inline-policy:	continuous;
+	-moz-background-origin:					padding;
+	background:											#DFFFDF url(../images/icons/accept.png) no-repeat scroll 8px 5px;
+	border-color:										#9FCF9F;
+	border-style:										solid none;
+	border-width:										2px medium;
+	clear:													both;
+	font-weight:										bold;
+	margin:													0 0 0.2em;
+	padding:												1em;
+}
+
+div#flashNotice
+{
+	-moz-background-clip:						border;
+	-moz-background-inline-policy:	continuous;
+	-moz-background-origin:					padding;
+	background:											#CFF2FF url(../images/icons/information.png) no-repeat scroll 8px 5px;
+	border-color:										#00BCFF;
+	border-style:										solid none;
+	border-width:										2px medium;
+	clear:													both;
+	font-weight:										bold;
+	margin:													0 0 0.2em;
+	padding:												1em;
+}
+
+#errorExplanation
+{
+	-moz-background-clip:						border;
+	-moz-background-inline-policy:	continuous;
+	-moz-background-origin:					padding;
+	background:											#FFE3E3 url(../images/icons/exclamation.png) no-repeat scroll 8px 5px;
+	color:													#550000
+	border:													#DD0000 2px solid;
+	font-size:											1.1em;
+	margin-bottom:									12px;
+	padding:												4px 4px 4px 30px;
+}
+
+#errorExplanation h2
+{
+	padding:		0;
+	margin: 		0;
+	color: 			brown;
+	background: #FFE3E3;
+}
+
 .icon_add               { background-image: url(../images/icons/add.png); }
 .icon_edit              { background-image: url(../images/icons/pencil.png); }
 .icon_delete            { background-image: url(../images/icons/delete.png); }

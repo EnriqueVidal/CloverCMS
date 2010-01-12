@@ -32,9 +32,17 @@
       #main
         #sidebar
         #content
-          = flash[:notice]  unless flash[:notice].nil?
-          = flash[:error]   unless flash[:error].nil?
-          = flash[:success] unless flash[:success].nil?
-
+          = render_flash_messages
           = yield
+          
+    %script{ :type => 'text/javascript' }
+      //<![[CDATA
+      var messages = new Array('flashError', 'flashSucces', 'flashNotice');
+      for (var i = 0; i < messages.length; i++)
+      try
+      {
+      $(messages[i]).fade({ duration: 6 });
+      }
+      catch(e) {}
+      //]]>
 

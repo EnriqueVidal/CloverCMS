@@ -42,11 +42,11 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        flash[:notice] = 'Page was successfully created.'
+        flash[:success] = 'Page was successfully created.'
         format.html { redirect_to (@page.uploads.count >= 1) ? edit_page_path(@page) : sections_path }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
-        flash[:notice] = 'Please fill out all the required fields.'
+        flash[:error] = 'Please fill out all the required fields.'
         format.html { redirect_to :action => :new }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
