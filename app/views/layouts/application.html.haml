@@ -37,12 +37,14 @@
           
     %script{ :type => 'text/javascript' }
       //<![[CDATA
+      document.observe("dom:loaded", function(){
       var messages = new Array('flashError', 'flashSucces', 'flashNotice');
       for (var i = 0; i < messages.length; i++)
       try
       {
-      $(messages[i]).fade({ duration: 6 });
+      setTimeout("$('" + messages[i] + "').fade({ duration: 1.5 })", 5000);
       }
       catch(e) {}
+      });
       //]]>
 
