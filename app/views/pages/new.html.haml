@@ -8,7 +8,7 @@
   table[0].style.width = '100%';
   }
   window.onload = init;
-  var page_boxes =  new Array('seo_box', 'keywords', 'upload_photo', 'add_another_photo_link', 'upload_document', 'add_another_document_link');
+  var page_boxes =  new Array('seo_box', 'keywords', 'photos', 'add_another_photo_link', 'documents', 'add_another_document_link');
   //]]>
 
 %h2
@@ -42,21 +42,21 @@
         = render :partial => 'page_keywords', :locals => { :f => f }
 
       %p
-        %label= link_to 'Upload Photos', '#upload_photo', :onclick => "TogglePageBoxes(['upload_photo', 'add_another_photo_link']);"
-      #upload_photo{ :style => 'padding: 2px; border: 1px solid grey;display:none;', :name => 'upload_photo' }
+        %label= link_to 'Upload Photos', '#upload_photo', :onclick => "TogglePageBoxes(['photos', 'add_another_photo_link']);"
+      #photos{ :style => 'padding: 2px; border: 1px solid grey;display:none;', :name => 'upload_photo' }
         = f.render_associated_form( @page.photos, :new => 1 )
 
       #add_another_photo_link{:style => 'display: none;'}
         = f.add_associated_link('Add another photo.', @page.photos.build )
 
       %p
-        %label= link_to 'Upload Documents', '#upload_document', :onclick => "TogglePageBoxes(['upload_document', 'add_another_document_link']);"
-      #upload_document{ :style => 'padding: 2px; border: 1px solid grey;display:none;', :name => 'upload_photo' }
+        %label= link_to 'Upload Documents', '#upload_document', :onclick => "TogglePageBoxes(['documents', 'add_another_document_link']);"
+      #documents{ :style => 'padding: 2px; border: 1px solid grey;display:none;', :name => 'upload_document' }
         = f.render_associated_form( @page.documents, :new => 1 )
 
       #add_another_document_link{:style => 'display: none;'}
         = f.add_associated_link('Add another document.', @page.documents.build )
-          
+
     %p
     %p
   = f.submit 'Create Page'
