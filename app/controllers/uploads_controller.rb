@@ -10,8 +10,8 @@ class UploadsController < ApplicationController
     end
   end
 
-  def create    
-    @upload   = check_for_photos
+  def create
+    @upload   = upload_type
     @page     = @upload.page
 
     responds_to_parent do
@@ -35,15 +35,15 @@ class UploadsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   private
-  
-  def check_for_photos
-    content_type  = params[:upload][:upload].content_type.split('/')[1].downcase
-    images        = %w( png jpg jpeg gif png )
-    
-    return Photo.new(params[:upload]) if images.include? content_type
-    return Document.new(params[:upload])
+
+  def upload_type
+    content_type  = params[:upload][:upload].content_type.split('/')[0].downcase
+
+    return Photo.new(params[:upload])    if content_type == 'image'
+    return Document.new(params[:upload]) if content_type == 'application'
+    return nil
   end
 end
 
