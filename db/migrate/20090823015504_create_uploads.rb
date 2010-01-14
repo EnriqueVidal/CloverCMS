@@ -3,8 +3,9 @@ class CreateUploads < ActiveRecord::Migration
     create_table :uploads do |t|
       t.column  :description,     :string
       t.column  :page_id,         :integer
-      t.column  :photo_file_name, :string
-      t.column  :photo_file_size, :integer
+      t.column  :upload_file_name, :string
+      t.column  :upload_file_size, :integer
+      t.column  :type,            :string
       
       t.timestamps
     end

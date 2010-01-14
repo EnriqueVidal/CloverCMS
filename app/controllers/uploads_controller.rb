@@ -1,24 +1,25 @@
 class UploadsController < ApplicationController
 
   def get_photos
-    @uploads  = Upload.find_all_by_page_id params[:page_id]
-    @page     = Page.find(params[:page_id])
+    @page     = Page.find( params[:page_id] )
+    @uploads  = @page.photos
+
 
     respond_to do |format|
       format.html { render :layout => false }
     end
   end
 
-  def create
-    @upload   = Upload.new(params[:upload])
+  def create    
+    @upload   = check_for_photos
     @page     = @upload.page
-    @uploads  = @page.uploads
 
     responds_to_parent do
       if @upload.save
+        @uploads  = @page.uploads.find_all_by_type 'Photo'
         render :update do |page|
-          page.replace_html 'image_container', :partial => 'get_photos'
-        end
+           page.replace_html 'image_container', :partial => 'get_photos'
+         end
       end
     end
   end
@@ -34,26 +35,15 @@ class UploadsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
-  # Must revisit to enable cropping
-  def edit
-    @upload = Upload.find(params[:id])
+  
+  private
+  
+  def check_for_photos
+    content_type  = params[:upload][:upload].content_type.split('/')[1].downcase
+    images        = %w( png jpg jpeg gif png )
+    
+    return Photo.new(params[:upload]) if images.include? content_type
+    return Document.new(params[:upload])
   end
-
-  def update
-    @upload = Upload.find(params[:id])
-
-    respond_to do |format|
-      if @upload.update_attributes(params[:upload])
-        flash[:notice] = 'Upload was successfully updated.'
-        format.html { render :action => "edit" }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @upload.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
 end
 

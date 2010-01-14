@@ -97,8 +97,9 @@ ActiveRecord::Schema.define(:version => 20100109014434) do
   create_table "uploads", :force => true do |t|
     t.string   "description"
     t.integer  "page_id"
-    t.string   "photo_file_name"
-    t.integer  "photo_file_size"
+    t.string   "upload_file_name"
+    t.integer  "upload_file_size"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

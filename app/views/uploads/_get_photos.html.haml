@@ -8,7 +8,7 @@
 
           %li.thumbnail_button= link_to image_tag( 'icons/picture_delete.png', :class => 'delete_photo', :title => 'Delete photo: ' + upload.description ), "/uploads/#{upload.id}/destroy", :confirm => 'Deleting an image will make it unavailable for the rest of your site. Are you sure?'
 
-          %li.thumbnail= image_tag upload.photo_url(:small), :onclick => "imageAdd(this, 'page_body_ifr' );"
+          %li.thumbnail= image_tag upload.upload_url(:small), :onclick => "imageAdd(this, 'page_body_ifr' );"
 
   %fieldset{ :style => 'width:209px; border: 1px solid #DDDDDD;' }
     %legend Upload new Photo
@@ -22,6 +22,6 @@
       = u.text_field :description, :size => 10, :style => 'margin: 5px;'
       %br
       Photo
-      = u.file_field :photo, :size => 10, :style => 'margin: 5px;'
+      = u.file_field :upload, :size => 10, :style => 'margin: 5px;'
       %br
       = u.submit  'Upload', :style => 'margin: 5px;'

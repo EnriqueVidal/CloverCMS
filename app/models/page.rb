@@ -7,7 +7,9 @@ class Page < ActiveRecord::Base
   belongs_to  :meta_title,          :class_name => 'MetaTag'
   belongs_to  :meta_description,    :class_name => 'MetaTag'
 
-  has_many    :uploads, :dependent => :destroy, :attributes => true, :discard_if => proc { |upload| upload.description.blank? }
+  has_many    :uploads
+  has_many    :photos,    :dependent => :destroy, :attributes => true, :discard_if => proc { |upload| upload.description.blank? }
+  has_many    :documents, :dependent => :destroy, :attributes => true, :discard_if => proc { |upload| upload.description.blank? }
 
   validates_presence_of   :title, :body
   validates_uniqueness_of :title, :name
