@@ -19,9 +19,9 @@
 
 #operations_placeholder{ :style => 'display: none;' }
   %h3 Operaciones
-  %span.icon.icon_add= link_to 'Add new Subsection', new_section_subsection_path(section)
+  = link_to 'Add new Subsection', new_section_subsection_path(section), :class => 'icon icon_add'
   %br
-  %span.icon.icon_back= link_to 'Back to Sections', sections_path
+  = link_to 'Back to Sections', sections_path, :class => 'icon icon_back'
 
 %script{ :type => 'text/javascript' }
   //<![[CDATA

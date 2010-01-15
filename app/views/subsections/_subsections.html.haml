@@ -10,17 +10,17 @@
 
       - if subsection.pages.count >= 1
         %td
-          %span.icon.icon_bullet_page= link_to 'View Pages', subsection_pages_path(subsection)
+          = link_to 'View Pages', subsection_pages_path(subsection), :class => 'icon icon_bullet_page'
       - else
         %td
-          %span.icon.icon_bullet_add= link_to 'New Page', new_subsection_page_path(subsection)
+          = link_to 'New Page', new_subsection_page_path(subsection), :class => 'icon icon_bullet_add'
 
       %td= subsection.section.name
       %td= subsection.created_at.strftime("%B, %d %Y")
       %td= subsection.updated_at.strftime("%B, %d %Y")
       %td
-        %span.icon.icon_bullet_pencil= link_to 'Edit', edit_subsection_path(subsection)
-        %span.icon.icon_bullet_delete= link_to 'Destroy', subsection, :confirm => 'Are you sure?', :method => :delete
+        = link_to 'Edit', edit_subsection_path(subsection), :class => 'icon icon_bullet_pencil'
+        = link_to 'Destroy', subsection, :confirm => 'Are you sure?', :method => :delete, :class => 'icon icon_bullet_delete'
 
 = will_paginate @subsections
 

@@ -18,13 +18,13 @@
 
   %h3 Operations
   - if owner.class == Section
-    %span.icon.icon_page_add= link_to 'Add a new Page', new_section_page_path(owner)
+    = link_to 'Add a new Page', new_section_page_path(owner), :class => 'icon icon_page_add'
   - else
-    %span.icon.icon_page_add= link_to 'Add a new Page', new_subsection_page_path(owner)
+    = link_to 'Add a new Page', new_subsection_page_path(owner),  :class => 'icon icon_page_add'
     %br
-    %span.icon.icon_back= link_to 'Back to Subsections', section_subsections_path(owner.section)
+    = link_to 'Back to Subsections', section_subsections_path(owner.section), :class => 'icon icon_back'
   %br
-  %span.icon.icon_back= link_to 'Back to Sections', sections_path()
+  = link_to 'Back to Sections', sections_path, :class => 'icon icon_back'
 
 %script{ :type => 'text/javascript' }
   //<![[CDATA

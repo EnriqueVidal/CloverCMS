@@ -11,21 +11,21 @@
 
       %td
         - if section.pages.count >= 1
-          %span.icon.icon_bullet_page= link_to 'View Pages', section_pages_path(section)
+          = link_to 'View Pages', section_pages_path(section), :class => 'icon icon_bullet_page'
         - else
-          %span.icon.icon_bullet_add= link_to 'New Page', new_section_page_path(section)
+          = link_to 'New Page', new_section_page_path(section), :class => 'icon icon_bullet_add'
 
       %td
         - if section.subsections.count >= 1
-          %span.icon.icon_bullet_page= link_to ' View Subsections', section_subsections_path(section)
+          = link_to ' View Subsections', section_subsections_path(section), :class => 'icon icon_bullet_page'
         - else
-          %span.icon.icon_bullet_add= link_to 'New Subsection', new_section_subsection_path(section)
+          = link_to 'New Subsection', new_section_subsection_path(section), :class => 'icon icon_bullet_add'
 
       %td= section.created_at.strftime("%B, %d %Y")
       %td= section.updated_at.strftime("%B, %d %Y")
       %td
-        %span.icon.icon_bullet_pencil= link_to 'Edit', edit_section_path(section)
-        %span.icon.icon_bullet_delete= link_to 'Destroy', section, :confirm => 'Are you sure?', :method => :delete
+        = link_to 'Edit', edit_section_path(section), :class => 'icon icon_bullet_pencil'
+        = link_to 'Destroy', section, :confirm => 'Are you sure?', :method => :delete, :class => 'icon icon_bullet_delete'
 
 = will_paginate @sections
 
