@@ -67,6 +67,22 @@ function imageAdd(element_id, iframe_id)
 
 }
 
+function documentAdd(element_id, iframe_id)
+{
+	var href						= $(element_id).href.split('?')[0];
+	var extension 			= href.split('.')[ href.split('.').length - 1 ]
+	var link_tag				= document.createElement('a');
+	var line_break			= document.createElement('br')
+	link_tag.href 			= href;
+	link_tag.innerHTML 	= $(element_id).innerHTML
+		
+	link_tag.addClassName('icon');
+	link_tag.addClassName(extension);
+	
+	$(iframe_id).contentDocument.body.appendChild(line_break);
+	$(iframe_id).contentDocument.body.appendChild(link_tag);
+}
+
 function addKeyWord(element)
 {
   var option = document.createElement("option");

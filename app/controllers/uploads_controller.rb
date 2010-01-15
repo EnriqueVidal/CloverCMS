@@ -1,8 +1,9 @@
 class UploadsController < ApplicationController
 
-  def get_photos
-    @page     = Page.find( params[:page_id] )
-    @uploads  = @page.photos
+  def get_uploads
+    @page       = Page.find( params[:page_id] )
+    @photos     = @page.photos
+    @documents  = @page.documents
 
 
     respond_to do |format|
@@ -16,9 +17,12 @@ class UploadsController < ApplicationController
 
     responds_to_parent do
       if @upload.save
-        @uploads  = @page.uploads.find_all_by_type 'Photo'
+        
+        @photos    = @page.photos
+        @documents = @page.documents
+        
         render :update do |page|
-           page.replace_html 'image_container', :partial => 'get_photos'
+           page.replace_html 'uploads_container', :partial => 'get_uploads'
          end
       end
     end

@@ -20,16 +20,11 @@ class Document < Upload
                                                               ]                                                            
   validates_attachment_size           :upload, :less_tan => 20.megabytes
   validate :check_file_extension
-  
-  # Excel extensions 	xls, xlc, xll, xlm, xlw, xlsx
-  # Word extensions doc, docx
-  # Powerpoint extensions ppt, ppz, pps, pot, pptx
-  # Acrobat PDF Reader Extensions pdf
-  
+
   private
   
   def check_file_extension
-    extensions = %w( xls xlc xll xlm xlw xlsx doc docx ppt ppz pps pot pptx pdf )
+    extensions = %w( xls xlsx doc docx ppt pptx pdf )
     errors.add("File extension is invalid.") unless extensions.include? File.extname( upload.original_filename ).gsub( '.', '' ).downcase
   end
                                                                 

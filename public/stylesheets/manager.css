@@ -106,6 +106,10 @@ div#flashNotice
 .icon_bullet_page_world { background-image: url(../images/icons/bullet_page_world.png); }
 .icon_page_add          { background-image: url(../images/icons/page_add.png); }
 .icon_back              { background-image: url(../images/icons/resultset_previous.png); }
+.pdf										{ background-image: url(../images/icons/page_white_acrobat.png); }
+.doc, .docx							{ background-image: url(../images/icons/page_white_word.png); }
+.xls, .xlsx							{ background-image: url(../images/icons/page_excel.png); }
+.ppt, .pptx							{ background-image: url(../images/icons/page_white_powerpoint.png); }
 
 .tabular p
 {
