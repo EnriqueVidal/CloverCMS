@@ -6,7 +6,7 @@
       %ul
         - @photos.each do |photo|
 
-          %li.thumbnail_button= link_to image_tag( 'icons/picture_delete.png', :class => 'delete_photo', :title => 'Delete photo: ' + photo.description ), "/uploads/#{photo.id}/destroy", :confirm => 'Deleting an image will make it unavailable for the rest of your site. Are you sure?'
+          %li.thumbnail_button= link_to image_tag( 'icons/picture_delete.png', :class => 'delete_photo', :title => 'Delete photo: ' + photo.description ), "/uploads/#{photo.id}/destroy", :confirm => 'Deleting an image will make it unavailable for the rest of your site. Are you sure?', :target => :uploadPhoto
 
           %li.thumbnail= image_tag photo.upload_url(:small), :onclick => "imageAdd(this, 'page_body_ifr' );"
 
@@ -27,7 +27,7 @@
     - form_for (Upload.new, :url => { :controller => :uploads, :action => :create }, :html => { :multipart => true, :target => :uploadPhoto  } ) do |u|
       %iframe{ :name => 'uploadPhoto', :style => 'display: none;width 0px;'}
 
-      = u.hidden_field :page_id, :value => @page.id
+      = hidden_field_tag :page_id, @page.id
       
       Name
       = u.text_field :description, :size => 10, :style => 'margin: 5px;'

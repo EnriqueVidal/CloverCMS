@@ -1,8 +1,9 @@
 class PagesController < ApplicationController
 
   uses_tiny_mce :only => [:edit, :new], :options => {
-                                                  :theme  => 'simple',
-                                                  :skin   => 'o2k7'
+                                                  :theme  => 'advanced',
+                                                  :skin   => 'o2k7',
+                                                  :plugins => %w( media print emotions searchreplace inlinepopups safari flash )
                                                 }
 
   def index

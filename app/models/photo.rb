@@ -1,5 +1,5 @@
 class Photo < Upload
-  belongs_to :page
+  belongs_to  :uploadable, :polymorphic => true  
   
   has_attached_file :upload,
                     :path     => ":rails_root/public/system/uploads/photos/:id/:style_:basename.:extension",

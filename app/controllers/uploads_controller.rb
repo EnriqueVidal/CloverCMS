@@ -12,8 +12,11 @@ class UploadsController < ApplicationController
   end
 
   def create
-    @upload   = upload_type
-    @page     = @upload.page
+    @uploadable = find_uploadable
+    @upload     = @uploadable.photos.build(params[:upload])     if upload_type == 'image'
+    @upload     = @uploadable.documents.build(params[:upload])  if upload_type == 'application'
+
+    @page       = @upload.uploadable
 
     responds_to_parent do
       if @upload.save
@@ -30,13 +33,14 @@ class UploadsController < ApplicationController
 
   def destroy
     @upload = Upload.find(params[:id])
-    page    = @upload.page
+    @page    = @upload.uploadable
 
-    @upload.destroy
-
-    respond_to do |format|
-      format.html { redirect_to edit_page_path(page) }
-      format.xml  { head :ok }
+    responds_to_parent do
+      if @upload.destroy
+        @photos     = @page.photos
+        @documents  = @page.documents
+        render(:update){ |page| page.replace_html 'uploads_container', :partial => 'get_uploads'}
+      end
     end
   end
 
@@ -44,10 +48,14 @@ class UploadsController < ApplicationController
 
   def upload_type
     content_type  = params[:upload][:upload].content_type.split('/')[0].downcase
-
-    return Photo.new(params[:upload])    if content_type == 'image'
-    return Document.new(params[:upload]) if content_type == 'application'
-    return nil
   end
+  
+  def find_uploadable
+    params.each do |name, value|
+      return $1.classify.constantize.find(value) if name =~ /(.+)_id$/
+    end
+    nil
+  end
+
 end
 

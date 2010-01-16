@@ -1,5 +1,6 @@
 class Document < Upload
-  belongs_to :page
+  belongs_to  :uploadable, :polymorphic => true  
+
   has_attached_file :upload, :path  => ":rails_root/public/system/uploads/documents/:id/:style_:basename.:extension"
   
   validates_attachment_presence     :upload
