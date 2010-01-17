@@ -1,13 +1,13 @@
 %table.list
   %thead
     %tr
-      - sort_headers_for :section, %w{name pages subsections created_at updated_at operations} do |header|
+      - sort_headers_for :section, %w{title pages subsections created_at updated_at operations} do |header|
         - "Last Changed" if header == 'updated_at'
 
   - @sections.each do |section|
     %tr{ :class => cycle(:odd, :even) }
 
-      %td= section.name
+      %td= section.title
 
       %td
         - if section.pages.count >= 1

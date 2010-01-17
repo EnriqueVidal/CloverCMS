@@ -3,9 +3,9 @@ class InitialData
   def self.import_data
     sections  = [ :home, :about, :contact ]
     pages     = {
-                  :home     => [ 'why_us',      'Why us?',      'Because we rock!' ],
-                  :about    => [ 'who_are_we',  'Who are we?',  'A company that rocks!' ],
-                  :contact  => [ 'contact_us',  'Contact us',   'Contact us.' ]
+                  :home     => [  'Why us?',      'Because we rock!' ],
+                  :about    => [  'Who are we?',  'A company that rocks!' ],
+                  :contact  => [  'Contact us',   'Contact us.' ]
                 }
 
     user      = {
@@ -138,8 +138,8 @@ class InitialData
     puts ">>>>> Creating demo Sections and Pages <<<<<"
 
     sections.each do |section|
-      @section = Section.create!( { :name => section.to_s.capitalize } )
-      @section.pages.create!( :name => pages[section][0], :title => pages[section][1], :body => pages[section][2] )
+      @section = Section.create!( { :title => section.to_s.capitalize } )
+      @section.pages.create!( :title => pages[section][0], :body => pages[section][1] )
     end
   end
 

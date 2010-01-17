@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
-  extend PaginateAndSort
+  extend  PaginateAndSort
+  include GenerateUrlName
 
   acts_as_taggable
 
@@ -14,19 +15,14 @@ class Page < ActiveRecord::Base
   validates_presence_of   :title, :body
   validates_uniqueness_of :title, :name
 
-  before_create :create_page_name, :add_metatags, :fix_images_path
-  before_update :create_page_name, :add_metatags, :fix_images_path
+  before_create :create_name, :add_metatags, :fix_images_path
+  before_update :create_name, :add_metatags, :fix_images_path
 
   sort_on :title, :created_at, :updated_at
 
   def add_metatags
     self.meta_title_id        = MetaTag.first.id unless !self.meta_title_id.nil?
     self.meta_description_id  = MetaTag.first.id unless !self.meta_description_id.nil?
-  end
-
-  def create_page_name
-    title     = self.title.gsub(/\s{2,}/, ' ').gsub(/\t/, ' ')
-    self.name = title.downcase.gsub(/(\s|\t)+/, '-').gsub(/_{2,}/, '-').gsub(/[^a-z-]/, '')
   end
 
   def fix_images_path

@@ -15,15 +15,15 @@
     %option{ :value => 0 } Select an option
     - @sections.each do |section|
       %option{ :value => section.id }
-        = section.name
+        = section.title
 
-  %h3 Subsections
-
-  %select{ :name => 'subsection_id', :onchange => 'validateSelection(this);' }
-    %option{ :value => 0 } Select an option
-    - @subsections.each do |subsection|
-      %option{ :value => subsection.id }
-        = subsection.name
+  - if @subsections.count >= 1
+    %h3 Subsections
+    %select{ :name => 'subsection_id', :onchange => 'validateSelection(this);' }
+      %option{ :value => 0 } Select an option
+      - @subsections.each do |subsection|
+        %option{ :value => subsection.id }
+          = subsection.title
 
 
 
