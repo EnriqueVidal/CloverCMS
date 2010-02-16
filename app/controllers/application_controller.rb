@@ -39,6 +39,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def referrer
+    request.env["HTTP_REFERER"]
+  end
+
   helper_method :logged_in?
   def logged_in?
     !! current_user

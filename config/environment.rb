@@ -8,7 +8,6 @@ ENV['GEM_HOME'] = "/home/cloverin/ruby/gems"                          if `hostna
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
-require File.join(File.dirname(__FILE__), '../lib/smtp_tls')
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
@@ -24,13 +23,14 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
 
-  config.gem "calendar_date_select"
-  config.gem "redgreen"
-  config.gem "haml"
+  config.gem 'calendar_date_select'
+  config.gem 'redgreen'
+  config.gem 'haml'
   config.gem 'gravtastic',              :version => '>= 2.1.0'
-  config.gem "will_paginate",           :source => 'http://gemcutter.org', :version => '~> 2.3.11'
-  config.gem 'JasonKing-good_sort',     :lib => 'good_sort',      :source => 'http://gems.github.com'
-  config.gem 'kete-tiny_mce',           :lib => 'tiny_mce',       :source => 'http://gems.github.com'
+  config.gem 'will_paginate',           :source => 'http://gemcutter.org',  :version => '~> 2.3.11'
+  config.gem 'JasonKing-good_sort',     :lib => 'good_sort',                :source => 'http://gems.github.com'
+  config.gem 'kete-tiny_mce',           :lib => 'tiny_mce',                 :source => 'http://gems.github.com'
+  config.gem 'tlsmail'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -51,15 +51,25 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
-
-  config.action_mailer.smtp_settings =  {
-                                          :address        => "smtp.gmail.com",
-                                          :port           =>  587,
-                                          :domain         => "cloverinteractive.com",
-                                          :authentication => :plain,
-                                          :user_name      => "dont-reply@cloverinteractive.com",
-                                          :password       => "H@Nn@L1v3$C10v3R1N73r@kT1v3"
-                                        }
+  
 
 end
 
+
+require 'tlsmail'
+
+Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
+
+ActionMailer::Base.delivery_method        = :smtp
+ActionMailer::Base.perform_deliveries     = true
+ActionMailer::Base.default_charset        = "utf-8"
+ActionMailer::Base.raise_delivery_errors  = true
+ActionMailer::Base.smtp_settings          = {
+                                              :domain          => "cloverinteractive.com",
+                                              :address         => 'smtp.gmail.com',
+                                              :port            => 587,
+                                              :tls             => true,
+                                              :authentication  => :plain,
+                                              :user_name       => 'dont-reply@cloverinteractive.com',
+                                              :password        => 'H@Nn@L1v3$C10v3R1N73r@kT1v3'
+                                            }

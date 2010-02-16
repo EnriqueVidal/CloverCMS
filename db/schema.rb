@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100116214627) do
+ActiveRecord::Schema.define(:version => 20100214233614) do
+
+  create_table "contact_forms", :force => true do |t|
+    t.string   "email"
+    t.string   "name"
+    t.string   "phone"
+    t.string   "subject"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "meta_tags", :force => true do |t|
     t.string   "content"
@@ -27,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20100116214627) do
     t.string   "name"
     t.integer  "meta_title_id"
     t.integer  "meta_description_id"
+    t.boolean  "has_contact"
   end
 
   create_table "people", :force => true do |t|
@@ -39,6 +50,15 @@ ActiveRecord::Schema.define(:version => 20100116214627) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.string   "gender",             :limit => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.string   "name"
+    t.text     "body"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

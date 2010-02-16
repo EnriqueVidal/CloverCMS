@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :contact_forms
+  map.new_email 'contact', :controller => 'contact_forms', :action => 'new'
+  
 
   map.resources :meta_tags
   map.edit_meta_tag     'meta_tags/:id/edit',     :controller => 'meta_tags', :action => 'edit'

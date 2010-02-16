@@ -103,7 +103,6 @@ class UsersController < ApplicationController
                       "as user #{User.find(session[:user_id]).email}"
                     )
 
-        logger.info "<<<<<<" + session.inspect + ">>>>>"
         if !session[:intended_action].nil? && !session[:intended_controller].nil?
             redirect_to :controller => session[:intended_controller], :action => session[:intended_action]
         else

@@ -36,6 +36,8 @@
       #keywords{ :style => 'display: none;', :name => 'keywords' }
         = render :partial => 'page_keywords', :locals => { :f => f }
     %p
+      = f.label :has_contact
+      = f.check_box :has_contact
     %br
   = f.submit 'Update'
 

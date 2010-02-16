@@ -1,11 +1,11 @@
 class UserMailer < ActionMailer::Base
 
-  @from = 'dont-reply@cloverinteractive.com'
+  @from           = 'dont-reply@cloverinteractive.com'
   
   def welcome_email(user)
-    url = "http://www.cloverineractive.com/users/activate/" + user.token
+    url =         "http://www.cloverineractive.com/users/activate/" + user.token
     recipients    user.email
-    from          "dont-reply@cloverinteractive.com"
+    from          'dont-reply@cloverinteractive.com'
     subject       "Bienvenido a CloverInteractive"
     sent_on       Time.now
     body({ :user => user, :url => url })

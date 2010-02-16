@@ -56,6 +56,9 @@
 
       #add_another_document_link{:style => 'display: none;'}
         = f.add_associated_link('Add another document.', @page.documents.build )
+    %p
+      = f.label :has_contact
+      = f.check_box :has_contact
 
     %p
     %p
