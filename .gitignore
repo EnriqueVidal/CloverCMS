@@ -8,4 +8,5 @@ db/*.sqlite3
 *~
 .DS_Store
 public/images/system
+public/system
 config/database.yml
