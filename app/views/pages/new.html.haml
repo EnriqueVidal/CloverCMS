@@ -14,7 +14,7 @@
 %h2
   New Page
 
-- form_for([@pageable, Page.new], :html => { :multipart => :true, :class => 'tabular' }) do |f|
+- form_for([@pageable, @page], :html => { :multipart => :true, :class => 'tabular' }) do |f|
   = f.error_messages
 
   #new_page_form.box
@@ -40,22 +40,25 @@
         %label= link_to 'SEO keywords', '#keywords', :onclick => "TogglePageBoxes('keywords');"
       #keywords{ :style => 'display: none;', :name => 'keywords' }
         = render :partial => 'page_keywords', :locals => { :f => f }
-
+      
       %p
         %label= link_to 'Upload Photos', '#upload_photo', :onclick => "TogglePageBoxes(['photos', 'add_another_photo_link']);"
-      #photos{ :style => 'padding: 2px; border: 1px solid grey;display:none;', :name => 'upload_photo' }
-        = f.render_associated_form( @page.photos, :new => 1 )
-
+      #photos{ :style => 'margin-left: -20px; display:none;', :name => 'upload_photo' }
+        - f.fields_for :photos do |photo|
+          = render 'photo_fields', :f => photo
+          
       #add_another_photo_link{:style => 'display: none;'}
-        = f.add_associated_link('Add another photo.', @page.photos.build )
-
+        = link_to_add_fields 'Add another photo', f, :photos
+        
       %p
         %label= link_to 'Upload Documents', '#upload_document', :onclick => "TogglePageBoxes(['documents', 'add_another_document_link']);"
-      #documents{ :style => 'padding: 2px; border: 1px solid grey;display:none;', :name => 'upload_document' }
-        = f.render_associated_form( @page.documents, :new => 1 )
-
+      #documents{ :style => 'margin-left: -20px;display:none;', :name => 'upload_document' }
+        - f.fields_for :documents do |document|
+          = render 'document_fields', :f => document
+          
       #add_another_document_link{:style => 'display: none;'}
-        = f.add_associated_link('Add another document.', @page.documents.build )
+        = link_to_add_fields 'Add another document.', f, :documents
+        
     %p
       = f.label :has_contact
       = f.check_box :has_contact

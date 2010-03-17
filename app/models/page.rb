@@ -18,6 +18,9 @@ class Page < ActiveRecord::Base
   before_create :create_name, :add_metatags, :fix_images_path
   before_update :create_name, :add_metatags, :fix_images_path
 
+  accepts_nested_attributes_for :documents, :reject_if => lambda { |a| a[:description].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :photos,    :reject_if => lambda { |a| a[:description].blank? }, :allow_destroy => true
+
   sort_on :title, :created_at, :updated_at
 
   def add_metatags

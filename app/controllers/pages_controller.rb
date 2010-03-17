@@ -14,9 +14,14 @@ class PagesController < ApplicationController
 
   def new
     @pageable = find_pageable
-    @page   = Page.new
-    @metas  = MetaTag.all
-
+    @page     = Page.new
+    @metas    = MetaTag.all
+    
+    2.times do
+      @page.photos.build
+      @page.documents.build
+    end
+    
     continue = params[:section_id] || params[:subsection_id]
 
     if continue.nil?
@@ -39,6 +44,9 @@ class PagesController < ApplicationController
 
   def create
     @pageable = find_pageable
+    
+    logger.info @pageable.inspect
+    
     @page     = @pageable.pages.build(params[:page])
 
     respond_to do |format|

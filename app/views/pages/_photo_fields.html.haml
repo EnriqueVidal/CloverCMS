@@ -1,4 +1,4 @@
-%p.photo
+%p.fields
 
   %label{ :for => 'upload_description' }
     Name:
@@ -8,5 +8,5 @@
     File:
   = f.file_field  :upload, :size => 10, :style => 'margin-top: 5px;'
 
-  = f.remove_link 'Remove'
+  = link_to_remove_fields 'Remove', f
 
