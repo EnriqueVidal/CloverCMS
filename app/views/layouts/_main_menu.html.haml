@@ -3,6 +3,5 @@
     %li= link_to 'Profile',        profile_path,         :id => 'profile_menu_link'
   - if logged_in? && current_user.admin?  
     %li= link_to 'New Section',    new_section_path,     :id => "new_section_menu_link"
-    %li= link_to 'New Subsection', new_subsection_path,  :id => "new_subsection_menu_link"
     %li= link_to 'New Page',       new_page_path,        :id => "new_page_menu_link"
 

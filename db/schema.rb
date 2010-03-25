@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100214233614) do
+ActiveRecord::Schema.define(:version => 20100325173531) do
 
   create_table "contact_forms", :force => true do |t|
     t.string   "email"
@@ -63,6 +63,11 @@ ActiveRecord::Schema.define(:version => 20100214233614) do
     t.datetime "updated_at"
   end
 
+  create_table "related_pages", :force => true do |t|
+    t.integer "related_page"
+    t.integer "main_page"
+  end
+
   create_table "rights", :force => true do |t|
     t.string   "name"
     t.string   "controller"
@@ -92,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20100214233614) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
+    t.integer  "main_section_id"
   end
 
   create_table "subsections", :force => true do |t|

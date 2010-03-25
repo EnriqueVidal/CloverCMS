@@ -9,7 +9,8 @@ class SectionsController < ApplicationController
   end
 
   def new
-    @section = Section.new
+    @section            = Section.new
+    @select_collection  = Section.all.collect { |section| [ section.title, section.id ] }
 
     respond_to do |format|
       format.html
@@ -18,7 +19,8 @@ class SectionsController < ApplicationController
   end
 
   def edit
-    @section = Section.find(params[:id])
+    @section            = Section.find(params[:id])
+    @select_collection  = Section.all(:conditions => "id != #{@section.id}").collect { |section| [ section.title, section.id ] }
 
     respond_to do |format|
       format.html

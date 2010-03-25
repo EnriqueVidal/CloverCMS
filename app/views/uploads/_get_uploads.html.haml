@@ -24,7 +24,7 @@
   %fieldset{ :style => 'width:209px; border: 1px solid #DDDDDD;' }
     %legend Upload new photo or document
 
-    - form_for (Upload.new, :url => { :controller => :uploads, :action => :create }, :html => { :multipart => true, :target => :uploadPhoto  } ) do |u|
+    - form_for(Upload.new, :html => { :multipart => true, :target => :uploadPhoto  } ) do |u|
       %iframe{ :name => 'uploadPhoto', :style => 'display: none;width 0px;'}
 
       = hidden_field_tag :page_id, @page.id

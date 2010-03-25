@@ -24,7 +24,6 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
 
   config.gem 'calendar_date_select'
-  config.gem 'redgreen'
   config.gem 'haml'
   config.gem 'gravtastic',              :version => '>= 2.1.0'
   config.gem 'will_paginate',           :source => 'http://gemcutter.org',  :version => '~> 2.3.11'

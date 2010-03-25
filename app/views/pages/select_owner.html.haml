@@ -7,7 +7,7 @@
 
 %p Each page must belong a rightful owner.
 
-%form{ :action => '/pages/new', :method => :get, :id => 'owner_form' }
+%form#owner_form{ :action => '/pages/new', :method => :get }
 
   %h3 Sections
 
@@ -16,15 +16,6 @@
     - @sections.each do |section|
       %option{ :value => section.id }
         = section.title
-
-  - if @subsections.count >= 1
-    %h3 Subsections
-    %select{ :name => 'subsection_id', :onchange => 'validateSelection(this);' }
-      %option{ :value => 0 } Select an option
-      - @subsections.each do |subsection|
-        %option{ :value => subsection.id }
-          = subsection.title
-
 
 
 %script{ :type => 'text/javascript' }

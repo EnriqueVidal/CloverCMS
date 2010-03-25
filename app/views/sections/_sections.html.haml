@@ -1,7 +1,7 @@
 %table.list
   %thead
     %tr
-      - sort_headers_for :section, %w{title pages subsections created_at updated_at operations} do |header|
+      - sort_headers_for :section, %w{title pages subsection_of created_at updated_at operations} do |header|
         - "Last Changed" if header == 'updated_at'
 
   - @sections.each do |section|
@@ -16,10 +16,9 @@
           = link_to 'New Page', new_section_page_path(section), :class => 'icon icon_bullet_add'
 
       %td
-        - if section.subsections.count >= 1
-          = link_to ' View Subsections', section_subsections_path(section), :class => 'icon icon_bullet_page'
-        - else
-          = link_to 'New Subsection', new_section_subsection_path(section), :class => 'icon icon_bullet_add'
+        -if section.main_section.present?
+          = section.main_section.title
+        
 
       %td= section.created_at.strftime("%B, %d %Y")
       %td= section.updated_at.strftime("%B, %d %Y")

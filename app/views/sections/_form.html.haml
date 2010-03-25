@@ -1,0 +1,14 @@
+- form_for @section do |f|
+  = f.error_messages
+  #section_container.splitcontentleft
+    .row
+      %span.label= f.label       :title
+      %span.formw= f.text_field  :title
+    .row
+      %span.label= f.label  :main_section_id, 'Seccion Principal'
+      %span.formw= f.select :main_section_id, @select_collection, { :include_blank => true }
+
+  .spacer
+  %br
+  %br
+  = f.submit 'Submit'

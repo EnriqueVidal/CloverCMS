@@ -34,7 +34,6 @@ class PagesController < ApplicationController
 
   def select_owner
     @sections     = Section.all
-    @subsections  = Subsection.all
   end
 
   def edit
@@ -44,9 +43,6 @@ class PagesController < ApplicationController
 
   def create
     @pageable = find_pageable
-    
-    logger.info @pageable.inspect
-    
     @page     = @pageable.pages.build(params[:page])
 
     respond_to do |format|
@@ -105,5 +101,6 @@ class PagesController < ApplicationController
 
     return nil
   end
+  
 end
 

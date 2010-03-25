@@ -2,6 +2,14 @@ class Page < ActiveRecord::Base
   extend  PaginateAndSort
   include GenerateUrlName
 
+  has_and_belongs_to_many :related_pages, :class_name => "Page", :join_table => :related_pages,
+                          :foreign_key  => :main_page, :association_foreign_key => :related_page
+                          
+  has_and_belongs_to_many :child_pages, :class_name => "Page", :join_table => :related_pages,
+                          :foreign_key  => :related_page, :association_foreign_key => :main_page
+                          
+                          
+  
   acts_as_taggable
 
   belongs_to  :pageable,            :polymorphic => true

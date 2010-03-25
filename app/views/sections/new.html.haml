@@ -3,16 +3,8 @@
   $('new_section_menu_link').addClassName('selected');
   //]]>
 
+
 %h2
   Add Section
 
-- form_for ( @section, :url => { :action => 'create' }, :method => 'post' ) do |f|
-  = f.error_messages
-
-  = f.label :title
-  = f.text_field :title
-
-  %br
-  %br
-  = f.submit 'Create'
-
+= render 'form'

@@ -186,6 +186,27 @@ table.list tbody tr:hover
     width:  49%;
 }
 
+div.row {
+  clear: both;
+  padding-top: 5px;
+  }
+
+div.row span.label {
+  float: left;
+  width: 170px;
+  text-align: right;
+  }
+
+div.row span.formw {
+  float: right;
+  width: 335px;
+  text-align: left;
+  }
+div.spacer {
+  clear: both;
+  }
+
+
 #sidebar h3
 {
     border-bottom:  1px solid #DCDCDC;
