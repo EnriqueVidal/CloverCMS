@@ -4,21 +4,22 @@
     = render 'layouts/website/document_headers'
     
     = stylesheet_link_tag           "website_css/main.css"
-    = javascript_include_tag        "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
-    
     = render 'layouts/website/slider_javascript'
     
     %title= 'CloverInteractive'
-  %body
+  %body{ :class => (current_page.main_page? ? "" : "section" ) }
     #wrapper
       = render 'layouts/website/top'
       = render 'layouts/website/banner'
      
+      - section_pages = current_section.pages.find(:all, :conditions => "name != '#{params[:page_name]}'")
       #mid
-        #content
-          = yield
-        
-        - section = Section.find_by_name(params[:section_name])
-        = render 'layouts/website/right_menu', :pages => section.pages
+        - if current_section.name == 'conoce'
+          = render 'layouts/website/about_box'
+        - elsif !current_page.main_page?
+          = render 'layouts/website/left_menu', :pages => section_pages
+        - else    
+          #content= yield
+          = render 'layouts/website/right_menu', :pages => section_pages
       
       = render 'layouts/website/bottom'

@@ -64,7 +64,17 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+  
+  helper_method :current_section
+  def current_section
+    Section.find_by_name(params[:section_name])
+  end
 
+  helper_method :current_page
+  def current_page
+    Page.find_by_name(params[:page_name]) 
+  end
+  
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :pass
 

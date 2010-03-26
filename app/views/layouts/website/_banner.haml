@@ -1,17 +1,21 @@
 #banner
-  #intro
-    %h1
-      We are a software development company, that specializes in custom software, our services range from web development, interactive media, and server applications.
-  #slider
-    #slider_left= link_to image_tag("website_images/scroll_left.gif", :alt => "Scroll left"), "#", :class => "previous"
-    .container
-      .slides
-        .first_slide
-          = image_tag "website_images/content/preview.jpg", :alt => ""
-          .preview_intro
-            = link_to image_tag("website_images/view_project_btn.jpg", :alt => ""), "#", :class => "view_project"
-            %p Welcome page for Clover interactive!
-            %p Webdesign + Rails or PHP + MySQL
-        .second_slide 2
-        .third_slide 3
-    #slider_right= link_to image_tag("website_images/scroll_right.gif", :alt => "Scroll right"), "#", :class => "next"
+  - if current_page.main_page
+    #intro
+      %h1
+        We are a software development company, that specializes in custom software, our services range from web development, interactive media, and server applications.
+    #slider
+      #slider_left= link_to image_tag("website_images/scroll_left.gif", :alt => "Scroll left"), "#", :class => "previous"
+      .container
+        .slides
+          .first_slide
+            = image_tag "website_images/content/preview.jpg", :alt => ""
+            .preview_intro
+              = link_to image_tag("website_images/view_project_btn.jpg", :alt => ""), "#", :class => "view_project"
+              %p Welcome page for Clover interactive!
+              %p Webdesign + Rails or PHP + MySQL
+          .second_slide 2
+          .third_slide 3
+      #slider_right= link_to image_tag("website_images/scroll_right.gif", :alt => "Scroll right"), "#", :class => "next"
+  - else
+    %h1= current_section.title
+    %h2= current_page.title

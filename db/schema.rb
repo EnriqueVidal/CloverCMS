@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100325173531) do
+ActiveRecord::Schema.define(:version => 20100326064937) do
 
   create_table "contact_forms", :force => true do |t|
     t.string   "email"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20100325173531) do
     t.integer  "meta_title_id"
     t.integer  "meta_description_id"
     t.boolean  "has_contact"
+    t.boolean  "main_page",           :default => false
   end
 
   create_table "people", :force => true do |t|
