@@ -1,0 +1,10 @@
+#top
+  #website_name
+    %h1 CloverInteractive
+  #navigation
+    %ul#nav
+      - current_section = Section.find_by_name params[:section_name]
+      - Section.all.each do |section|
+        %li{ :id => section.name, :class => (section.name == current_section.name ? 'active' : '') }
+          = link_to((section.name == 'negocio' ? 'haz negocio' : section.name), show_section_page_path(section.name, section.pages.first.name))
+.hline1

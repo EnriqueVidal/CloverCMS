@@ -1,0 +1,10 @@
+= javascript_include_tag        "website_js/loopedslider.min.js"
+%script{ :type => "text/javascript"}
+  //<![[CDATA
+  if (typeof jQuery != 'undefined') {  
+  $(document).ready(function() {
+  $.fn.loopedSlider.defaults.addPagination = true;
+  $('#slider').loopedSlider();
+  });	
+  }
+  //]]>

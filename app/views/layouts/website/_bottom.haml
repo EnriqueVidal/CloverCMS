@@ -1,0 +1,26 @@
+.hline2
+#footer
+  #contact_box.b360
+    %h2 Hi, you can contact us!
+    %ul
+      %li
+        %span.hl1 Email:
+        info@cloverinteractive.com
+      %li
+        %span.hl1 Phone:
+        7777777777
+      %li
+        %span.hl1 Skype:
+        cloverinteractive
+  #proposal_box.b360
+    %h2 Submit a Proposal
+    %p 
+      We would love to work with you, drop us a 
+      = link_to "line", "#"
+      to get your project started!
+  #newsletter_box.b360
+    %h2 Suscribe to our newsletter
+    %form.forms#newsletter{ :action => :suscribe, :method => :post}
+      %label= text_field_tag :email, "Email", :class => :input_text
+      %label.right= link_to "<span>Suscribe</span>", "#", :class => :button1
+#footer2
