@@ -56,6 +56,9 @@ end
 
 begin  
   require 'tlsmail'
+rescue LoadError
+  puts "tlsmail not yet installed"
+else
 
   Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
 
@@ -72,4 +75,4 @@ begin
                                                 :user_name       => 'dont-reply@cloverinteractive.com',
                                                 :password        => 'H@Nn@L1v3$C10v3R1N73r@kT1v3'
                                               }
-end rescue "tlsmail not yet installed"
+end
