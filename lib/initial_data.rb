@@ -1,7 +1,7 @@
 class InitialData
 
   def self.import_data
-    sections  = [ :hola, :conoce, :crece, :negocio, :contact ]
+    sections  = [ :hola, :conoce, :crece, :negocio, :contacto ]
     pages     = {
                   :hola       => [  'Why us?',            'Because we rock!' ],
                   :conoce     => [  'Who are we?',        'A company that rocks!' ],
