@@ -35,9 +35,9 @@ namespace :deploy do
     cloverinteractive::link_public_html
     cloverinteractive::restart_txt
   end
- 
+  
   desc "Restart Passenger app"
-  task :restart do
+  task :restart_txt do
     cloverinteractive::restart_txt
   end
  
@@ -45,7 +45,7 @@ namespace :deploy do
     
     desc "It install all the missing gems needed for our app"
     task :fix_missing_gems_and_db do
-      run "cd #{deploy_to}/current && RAILS_ENV=production rake gems:install db:schema:load -q"
+      run "cd #{deploy_to}/current && RAILS_ENV=production rake gems:install db:schema:load db:initial_data --trace"
     end
     
     desc "Links public_html to current_release/public"

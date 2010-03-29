@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
   before_create :make_token
   after_create  :create_person, :assign_roles
 
-  sort_on :username, :email, :created_at, :admin
+  # it makes schema:load fail, must revisit later
+  #sort_on :username, :email, :created_at, :admin
 
   cattr_reader :per_page
   @@per_page = 15
