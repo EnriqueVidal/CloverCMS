@@ -142,7 +142,7 @@ class InitialData
     sections.each do |section|
       @section    = Section.create!( { :title => section.to_s.capitalize } )
       main_page   = pages[section][0] == "Why us?" 
-      has_contact = pages[section][0] == "Contac us"
+      has_contact = pages[section][0] == "Contact us"
       @section.pages.create!( :title => pages[section][0], :body => pages[section][1], :main_page => main_page, :has_contact => has_contact)
     end
   end
