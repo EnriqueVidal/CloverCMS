@@ -14,9 +14,9 @@ set :deploy_to,   "/home/#{user}/etc/rails_apps/#{application}"
 
 role :app,  domain
 role :web,  domain
+role :db,   domain, :primary => true
 
 namespace :deploy do
-
   
   desc <<-DESC
     Deploys and starts a `cold' application. This is useful if you have not \
@@ -28,16 +28,16 @@ namespace :deploy do
 
   task :cold do
     update
-    put File.read(File.join(File.dirname(__FILE__), 'database.yml')), File.join(current_release, 'config', 'database.yml')
-    put File.read(File.join(File.dirname(__FILE__), '../public/.htaccess')), File.join(current_release, 'public', '.htaccess')
+    put File.read(File.join(File.dirname(__FILE__), 'database.yml')),         File.join(current_release, 'config', 'database.yml')
+    put File.read(File.join(File.dirname(__FILE__), '../public/.htaccess')),  File.join(current_release, 'public', '.htaccess')
     cloverinteractive::create_shared_folders
     cloverinteractive::fix_missing_gems_and_db
     cloverinteractive::link_public_html
-    cloverinteractive::restart_txt
+    #cloverinteractive::restart_txt
   end
   
   desc "Restart Passenger app"
-  task :restart_txt do
+  task :restart do
     cloverinteractive::restart_txt
   end
  
@@ -45,12 +45,12 @@ namespace :deploy do
     
     desc "It install all the missing gems needed for our app"
     task :fix_missing_gems_and_db do
-      run "cd #{deploy_to}/current && RAILS_ENV=production rake gems:install db:schema:load > ~/deploy.log"
+      run "cd #{deploy_to}/current && RAILS_ENV=production rake gems:install db:create db:schema:load &> ~/deploy.log"
     end
     
     desc "Links public_html to current_release/public"
     task :link_public_html do
-      run "cd /home/#{user}/public_html; rm -fr #{subdomain}; ln -s #{current_path}/public /home/#{user}/public_html/#{subdomain}"
+      run "cd /home/#{user}/public_html; mv #{subdomain} #{subdomain}.old; ln -s #{current_path}/public /home/#{user}/public_html/#{subdomain}"
     end
  
     desc "Create log folder in shared"

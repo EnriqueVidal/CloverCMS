@@ -3,7 +3,7 @@
   %head
     = render 'layouts/website/document_headers'
     
-    = stylesheet_link_tag           "website_css/main.css"
+    = stylesheet_link_tag "website_css/main.css"
     = render 'layouts/website/slider_javascript'
     
     %title= 'CloverInteractive'
@@ -17,9 +17,9 @@
         - if current_section.name == 'conoce'
           = render 'layouts/website/about_box'
         - elsif !current_page.main_page?
-          = render 'layouts/website/left_menu', :pages => section_pages
+          = render 'layouts/website/left_menu', :pages => section_pages, :section => current_section
         - else    
           #content= yield
-          = render 'layouts/website/right_menu', :pages => section_pages
+          = render 'layouts/website/right_menu', :pages => section_pages, :section => current_section
       
       = render 'layouts/website/bottom'

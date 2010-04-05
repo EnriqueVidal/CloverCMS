@@ -1,24 +1,23 @@
-- form_for(@contact_form) do |f|
+- form_for @contact_form, :html => { :class => 'forms' } do |f|
   = f.error_messages
-  %p
-    = f.label :email
-    %br
-    = f.text_field :email
-  %p
-    = f.label :name
-    %br
-    = f.text_field :name
-  %p
-    = f.label :phone
-    %br
-    = f.text_field :phone
-  %p
-    = f.label :subject
-    %br
-    = f.text_field :subject
-  %p
-    = f.label :message
-    %br
-    = f.text_area :message
-  %p
-    = f.submit 'Send Email'
+  .row
+    %span.label= f.label :email
+    %span.formw= f.text_field :email, :class => :shadowed
+  .row
+    %span.label= f.label :name
+    %span.formw= f.text_field :name, :class => :shadowed
+  .row
+    %span.label= f.label :phone
+    %span.formw= f.text_field :phone, :class => :shadowed
+  .row
+    %span.label= f.label :subject
+    %span.formw= f.text_field :subject, :class => :shadowed
+  .row
+    %span.label= f.label :message
+    %span.formw= f.text_area :message, :class => 'textarea', :rows => 8
+  .row
+    %span.formw= recaptcha_tags :display => { :theme => :clean, :tabindex => 0 }, :ssl => true
+  .row
+    %span.formw= f.submit 'Send Email', :class => :shadowed
+  = hidden_field_tag "return_page", show_section_page_path( :section_name => current_section.name, :page_name => current_page.name )
+  .spacer

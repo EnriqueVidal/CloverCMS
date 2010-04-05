@@ -4,7 +4,13 @@
     .sidebar
       %ul.services
         - pages.each do |page|
-          %li= link_to page.title, show_section_page_path( :section_name => page.pageable.name, :page_name => page.name)
+          %li= link_to page.title, show_section_page_path( section.name, page.name )
+          
+        - section.subsections.each do |subsection|
+          - subsection.pages.each do |page|
+            - if current_page.name != page.name
+              %li= link_to page.title, show_subsection_page_path( section.name, subsection.name, page.name )
+        
       %p.right= link_to "<span>More</span>", "#", :class => "button2"
     .sidebar_bottom
     

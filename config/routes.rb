@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.get_photos    'uploads/get_uploads/:page_id',  :controller => 'uploads', :action => 'get_uploads'
 
 
-  map.show_subsection_page  ':section_name/:subsection_name/:page_name.html', :controller => 'viewer', :action => 'show_subsection_page'
+  map.show_subsection_page  ':section_name/:subsection_name/:page_name.html', :controller => 'viewer', :action => 'show_section_page'
   map.show_section_page     ':section_name/:page_name.html',                  :controller => 'viewer', :action => 'show_section_page'
 
 

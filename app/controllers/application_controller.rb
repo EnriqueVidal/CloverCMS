@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def referrer
+  def referer
     request.env["HTTP_REFERER"]
   end
 

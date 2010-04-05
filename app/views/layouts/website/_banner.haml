@@ -17,5 +17,5 @@
           .third_slide 3
       #slider_right= link_to image_tag("website_images/scroll_right.gif", :alt => "Scroll right"), "#", :class => "next"
   - else
-    %h1= current_section.title
+    %h1= current_page.pageable.title
     %h2= current_page.title
