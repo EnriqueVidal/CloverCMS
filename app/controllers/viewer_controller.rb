@@ -1,5 +1,4 @@
 class ViewerController < ApplicationController
-
   layout 'website'
   
   def home_page
@@ -12,10 +11,12 @@ class ViewerController < ApplicationController
     @subsection = @section.subsections.find_by_name(params[:subsection_name]) if params[:subsection_name].present?
     
     if @subsection.present?
-      @page = @subsection.pages.find_by_name(params[:page_name])
+      @page = @subsection.pages.find_by_name(params[:page_name]) rescue nil
     else
-      @page = @section.pages.find_by_name(params[:page_name])
+      @page = @section.pages.find_by_name(params[:page_name]) rescue nil
     end
+    
+    render :file => 'public/404.html' if @page.blank?
     
     @contact  = get_contact_forms
   end

@@ -1,23 +1,23 @@
 - form_for @contact_form, :html => { :class => 'forms' } do |f|
   = f.error_messages
   .row
-    %span.label= f.label :email
+    = f.label :email, "Email", :class => "label"
     %span.formw= f.text_field :email, :class => :shadowed
   .row
-    %span.label= f.label :name
+    = f.label :name, "Nombre", :class => "label"
     %span.formw= f.text_field :name, :class => :shadowed
   .row
-    %span.label= f.label :phone
+    = f.label :phone, "Telefono", :class => "label"
     %span.formw= f.text_field :phone, :class => :shadowed
   .row
-    %span.label= f.label :subject
+    = f.label :subject, "Asunto", :class => "label"
     %span.formw= f.text_field :subject, :class => :shadowed
   .row
-    %span.label= f.label :message
+    = f.label :message, "Mensaje", :class => "label"
     %span.formw= f.text_area :message, :class => 'textarea', :rows => 8
   .row
     %span.formw= recaptcha_tags :display => { :theme => :clean, :tabindex => 0 }, :ssl => true
   .row
-    %span.formw= f.submit 'Send Email', :class => :shadowed
+    %span.formw= f.submit 'Enviar Correo', :class => :shadowed
   = hidden_field_tag "return_page", show_section_page_path( :section_name => current_section.name, :page_name => current_page.name )
   .spacer

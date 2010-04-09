@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+
+  map.resources :email_lists, :collection => { :add_to_list => :post }
+  
   map.resources :contact_forms
   map.new_email 'contact', :controller => 'contact_forms', :action => 'new'
   
@@ -21,14 +24,14 @@ ActionController::Routing::Routes.draw do |map|
   map.activate            'users/activate/:token',  :controller => 'users',   :action => 'activate'
   map.login               'login',                  :controller => 'users',   :action => 'login'
   map.logout              'logout',                 :controller => 'users',   :action => 'logout'
-  map.register            'register',                :controller => 'users',   :action => 'register'
+  map.register            'register',               :controller => 'users',   :action => 'register'
   map.lost_password       'lost_password',          :controller => 'users',   :action => 'lost_password'
   map.change_password     'change_password',        :controller => 'users',   :action => 'change_password'
 
 
-  map.resources   :manager
-
   map.resources   :sections,    :has_many   => [ :pages, :subsections ]
+  map.manager     'manager',    :controller => 'sections', :action => 'index'
+  
   map.resources   :subsections, :has_many   => :pages, :belongs_to => :section
 
   map.pick_onwer 'select_owner',  :controller => 'pages',   :action => 'select_owner'

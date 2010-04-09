@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   def current_user
-    if !@current_user.present?
+    if @current_user.blank?
       @current_user = User.find(session[:user_id]) unless session[:user_id].nil?
     end
     @current_user

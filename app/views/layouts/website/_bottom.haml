@@ -20,7 +20,11 @@
       to get your project started!
   #newsletter_box.b360
     %h2 Suscribe to our newsletter
-    %form.forms_footer#newsletter{ :action => :suscribe, :method => :post}
-      %label= text_field_tag :email, "Email", :class => :input_text
-      %label.right= link_to "<span>Suscribe</span>", "#", :class => :button1
+
+    - form_for EmailList.new, :url => "/email_lists/add_to_list", :html => { :id => "newsletter", :class => "forms_footer" } do |f|
+      %label= f.text_field :email, :value => "Email", :class => "input_text"
+      %label.right
+        %a.button1{ :href => "javascript:void(null);" }
+          %span{ :onclick => "$('#newsletter')[0].submit();" } Suscribe
+    
 #footer2
