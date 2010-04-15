@@ -11,3 +11,4 @@ public/images/system
 public/system
 public/.htaccess
 config/database.yml
+*.bak
