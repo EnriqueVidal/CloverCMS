@@ -114,6 +114,7 @@ a.button2 span{
 }
 #banner{
 	background:transparent url('../../images/website_images/banner_bg.jpg') no-repeat;
+	background-color:#558c15;
 	height:280px;
 }
 #banner #intro{
@@ -502,10 +503,10 @@ body.section .sidebar_bottom{
 body.section #mid{
 	padding-bottom:0px;
 	background-image: url('../../images/website_images/separator_style2.jpg ');
-	background-position:301px 0px;
+	background-position:302px 0px;
 	background-repeat:repeat-y;
 	padding:0px;
-	background-color: #f5f5f5;
+	background-color:white;
 	
 }
 body.section #imid{
@@ -516,6 +517,7 @@ body.section #imid{
 	
 	overflow:hidden;
 	padding:40px 0px;
+	
 }
 .slides div{
 	background-color:#101801;
