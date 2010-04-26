@@ -216,8 +216,24 @@ a.button2 span{
 	overflow:hidden;
 	height:100%;
 	background:white url('../../images/website_images/mid_bg.jpg') repeat-x;
-	
-	
+}
+#mid ul{
+list-style-position:inside;
+	text-indent:-20px;
+	list-style-type:disc;
+	margin-left:24px;
+	list-style-image: url('../../images/website_images/bullet_whitebg.gif');
+}
+#mid ul li, #mid ol li{
+	margin:6px 0px;
+}
+#mid ol{
+	list-style-position:inside;
+	text-indent:-20px;
+	margin-left:26px;
+}
+#column ul, #column ol{
+	list-style-type:none;
 }
 #slider{
 	width:560px;
