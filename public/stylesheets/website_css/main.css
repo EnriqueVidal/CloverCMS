@@ -39,7 +39,6 @@ h1{
 }
 h2{
 	font-size:1em;
-	
 	font-family:"century gothic", Helvetica, Sans-serif;
 }
 h3{
@@ -47,9 +46,6 @@ h3{
 	font-family:"century gothic", Helvetica, Sans-serif;
 }
 /* === */
-
-
-
 div.hline1{
 	background-image: url('../../images/website_images/hline_bg.jpg ');
 	height:10px;
@@ -61,7 +57,6 @@ div.hline2{
 	height:10px;
 	width:960px;
 	overflow:hidden;
-	
 }
 .hl1{ /*highlight 1 class*/
 	color:#53860E;
@@ -129,7 +124,6 @@ body{
 	margin:60px 0px 0px 70px;
 	text-shadow: #4f5a43 2px 2px;
 }
-
 #navigation{
 	float:left;
 	display:inline;
@@ -139,7 +133,6 @@ body{
 }
 /* navigation */
 #nav{
-	
 }
 #nav a, #nav a:active, #nav a:visited{
 	text-transform:uppercase;
@@ -148,14 +141,12 @@ body{
 	font-size:14px;
 }
 #nav a:hover{
-	
 }
 #nav li{
 	float:left;
 	display:block;
 	margin-left:5px;
 	display:inline;
-	
 }
 #nav li a{
 	padding:8px 0px;
@@ -170,13 +161,11 @@ body{
 	text-align:center;
 }
 #nav #hola.active a, #nav #hola a:hover{
-	
 	background:transparent url('../../images/website_images/home_button.gif') no-repeat top center;
 	width:54px;
 	text-align:center;
 }
 #nav #hola a:hover{
-	
 }
 #nav #conoce a{
 	width:76px;
@@ -187,7 +176,6 @@ body{
 	width:76px;
 	text-align:center;
 }
-
 #nav #crece{
 	width:64px;
 	text-align:center;
@@ -266,14 +254,12 @@ body{
 }
 #slider_right{
 	margin-left:10px;
-	
 }
 
 /*
- * Required 
+ * Required for slider
 */
 .container { 
-	
 	float:left;
 	overflow:hidden; 
 	position:relative; 
@@ -293,27 +279,40 @@ body{
 	display:none; 
 }
 /*
- * Optional
+ * Optional slider styles
 */
-#loopedSlider,#newsSlider { margin:0 auto; width:500px; position:relative; clear:both; }
-ul.pagination { list-style:none; padding:0; margin:0; }
-ul.pagination li  { float:left; }
-ul.pagination li a { padding:2px 4px; }
-ul.pagination li.active a { background:blue; color:white; }
+#loopedSlider,#newsSlider { 
+	margin:0 auto; 
+	width:500px; 
+	position:relative; 
+	clear:both; 
+}
+ul.pagination { 
+	list-style:none; 
+	padding:0; 
+	margin:0; 
+}
+ul.pagination li  { 
+	float:left; 
+}
+ul.pagination li a { 
+	padding:2px 4px; 
+}
+ul.pagination li.active a { 
+	background:blue; 
+	color:white; 
+}
 #mid a, #mid a:active, #mid a:visited{
-
-	
 }
 #content, #column{
 	float:left;
 	display:inline;
 	margin:0px 10px;
-	
 }
 #content{
 	width:520px;
 	margin-left:60px;
-	
+	overflow:hidden;
 }
 #content h1{
 	font-family:"century gothic", Helvetica, Sans-serif;
@@ -324,6 +323,11 @@ ul.pagination li.active a { background:blue; color:white; }
 }
 #content p{
 	padding:10px 0px;
+}
+#content .photo{
+	background-color:white;
+	padding:10px;
+	border:1px solid #d5d5d5;
 }
 #column{
 	width:230px;
@@ -356,8 +360,6 @@ ul.pagination li.active a { background:blue; color:white; }
 }
 .sidebar ul, .sidebar p, .sidebar ol{
 	padding:10px 20px ;
-	
-	
 }
 .sidebar_bottom{
 	background-image: url('../../images/website_images/side_bottom.gif ');
@@ -371,10 +373,8 @@ ul.services li{
 	padding:0px;
 	border:1px solid #79af15;
 	list-style-image:none;
-	
 }
 ul.services li a{
-	
 	line-height:14px;
 	font-size:14px;
 	padding:5px 5px 5px 5px;
@@ -387,11 +387,8 @@ ul.services li a:hover{
 	display:block;
 	padding:3px 5px 5px 10px;
 	border:1px solid #578702;
-	
-	
 }
 #content a, #content a:active, #content a:visited{
-	
 }
 #footer a, #footer a:active, #footer a:visited{
 	color:#7fb919;
@@ -487,20 +484,16 @@ body.section #banner h2{
 	font-size:14px;
 	font-weight:normal;
 }
-
 body.section #column{
 	width:281px;
 	margin:0px;
 	padding:0px;
 	margin-left:20px;
-	
 }
 body.section #content{
 	width:520px;
 	margin:0px;
 	margin-left:60px;
-	
-	
 }
 body.section #content h1{
 	margin-left:10px;
@@ -510,7 +503,6 @@ body.section #content p{
 	padding-right:10px;
 }
 body.section #column{
-	
 	/* background-image: url('../../images/website_images/ '); */
 }
 
@@ -522,12 +514,10 @@ body.section .sidebar{
 	background-image: url('../../images/website_images/sidebar2_bg.jpg ');
 	width:258px;
 	padding-bottom:10px;
-	
 }
 body.section .sidebar_bottom{
 	background-image: url('../../images/website_images/sidebar2_bottom.jpg ');
 	height:9px;
-	
 }
 .sidebar .separate{
 	background-image: url('../../images/website_images/sidebar_separator.jpg ');
@@ -542,17 +532,13 @@ body.section #mid{
 	background-repeat:repeat-y;
 	padding:0px;
 	background-color:white;
-	
 }
 body.section #imid{
 	background-image: url('../../images/website_images/mid_style2.jpg ');
 	background-repeat:no-repeat;
-	
 	height:100%;
-	
 	overflow:hidden;
 	padding:40px 0px;
-	
 }
 .slides div{
 	background-color:#101801;
@@ -562,7 +548,6 @@ body.section #imid{
 .slides .preview_intro{
 	padding-top:5px;
 	height:50px;
-	
 }
 .slides div div{
 	background-color:transparent;
@@ -580,9 +565,7 @@ body.section #imid{
 
 /* table styles*/
 table{
-	
 }
-
 table.bordered{
 	width:520px;
 	border-top:1px solid #badb89;
@@ -600,7 +583,6 @@ table.bordered td{
 	border-bottom:1px solid #badb89;
 	border-right:1px solid #badb89;
 }
-
 table.bordered tr.alt{
 	background-color:#ecffc9;
 }
@@ -610,29 +592,24 @@ table.bordered tr.alt{
 	font-size:1.9em;
 	color:#4c4b4b;
 	font-family:
-	
 }
 #content h3{
 	font-family:"century gothic", Helvetica, Sans-serif;
 	font-size:1.6em;
 	color:#4c4b4b;
 	font-family:
-	
 }
 #content h4{
 	font-family:"century gothic", Helvetica, Sans-serif;
 	font-size:1.4em;
 	color:#4c4b4b;
 	font-family:
-	
 }
-
 #content h5{
 	font-family:"century gothic", Helvetica, Sans-serif;
 	font-size:1.3em;
 	color:#4c4b4b;
 	font-family:
-	
 }
 #content h6{
 	font-family:"century gothic", Helvetica, Sans-serif;
@@ -654,14 +631,10 @@ table.bordered tr.alt{
 	background-image: url('../../images/website_images/input_bg.jpg ');
 	background-repeat:repeat-x;
 }
-
-.forms .recaptchatable #recaptcha_response_field
-{
-		background-image: url('../../images/website_images/input_bg.jpg ');
-		padding: 3px;
+.forms .recaptchatable #recaptcha_response_field{
+	background-image: url('../../images/website_images/input_bg.jpg ');
+	padding: 3px;
 }
-
-
 .forms label{
 	display:block;
 	clear:both;
@@ -677,7 +650,6 @@ table.bordered tr.alt{
 .forms .input_checkbox{
 	text-align:left;
 	width:20px;
-	
 }
 .forms .input_radio{
 	text-align:left;
@@ -710,22 +682,21 @@ table.bordered tr.alt{
 div.row {
   clear: both;
   padding-top: 5px;
-  }
-
+}
 div.row label.label {
   float: left;
   width: 65px;
   text-align: left;
-  }
+}
 
 div.row span.formw {
   float: right;
   width: 420px;
   text-align: left;
-  }
+}
 div.spacer {
   clear: both;
-  }
+}
 /* ------ 404 styles ------- */
 html.p404{
 	background-color:#e9ffed;
