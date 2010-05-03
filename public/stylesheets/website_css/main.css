@@ -12,7 +12,7 @@ ul{
 a{
 	outline:0px;
 }
-/*============*/
+/*====== general usage ======*/
 .clear{
 	clear:both;
 	line-height:1px;
@@ -35,23 +35,21 @@ a{
 }
 h1{
 	font-size:1.12em;
+	font-family:"century gothic", Helvetica, Sans-serif;
 }
 h2{
 	font-size:1em;
+	
+	font-family:"century gothic", Helvetica, Sans-serif;
 }
 h3{
 	font-size:.93em;
+	font-family:"century gothic", Helvetica, Sans-serif;
 }
-html{
-	background-image: url('../../images/website_images/html_bg.jpg ');
-	background-repeat:repeat-x;
-	background-color:#3b5061;
-}
-body{
-	font-size:.88em;
-	font-family:Arial, Helvetica, "Sans-serif";
-	text-align:center;
-}
+/* === */
+
+
+
 div.hline1{
 	background-image: url('../../images/website_images/hline_bg.jpg ');
 	height:10px;
@@ -66,21 +64,17 @@ div.hline2{
 	
 }
 .hl1{ /*highlight 1 class*/
-	color:#7fb919;
+	color:#53860E;
 }
-div.hl1{
-	
-}
-.hl2{
+.hl2{ /*highlight 2 class*/
 	background-color:#d9f0b3;
 	border:1px solid #badb89;
-	
 }
+/* button styles */
 a.button1{
 	background:transparent url('../../images/website_images/button_bg.gif') no-repeat right;
 	padding:10px 5px 10px 0px;
 	outline:0px;
-	
 }
 a.button1 span{
 	background:transparent url('../../images/website_images/button_span.gif') no-repeat left;
@@ -91,12 +85,22 @@ a.button2{
 	background:transparent url('../../images/website_images/button2_bg.gif') no-repeat right;
 	padding:10px 5px 10px 0px;
 	outline:0px;
-	
 }
 a.button2 span{
 	background:transparent url('../../images/website_images/button2_span.gif') no-repeat left;
 	padding:10px 5px 10px 10px;
 	color:#666565;
+}
+/*site styles*/
+html{
+	background-image: url('../images/html_bg.jpg ');
+	background-repeat:repeat-x;
+	background-color:#3b5061;
+}
+body{
+	font-size:.88em;
+	font-family:Arial, Helvetica, "Sans-serif";
+	text-align:center;
 }
 #wrapper{
 	width:960px;
@@ -104,7 +108,6 @@ a.button2 span{
 	text-align:left;
 }
 #top{
-	
 	background:transparent url('../../images/website_images/top_bg.jpg') no-repeat ;
 	width:960px;
 	height:100px;
@@ -125,7 +128,6 @@ a.button2 span{
 	font-size:1.3em;
 	margin:60px 0px 0px 70px;
 	text-shadow: #4f5a43 2px 2px;
-	
 }
 
 #navigation{
@@ -135,6 +137,7 @@ a.button2 span{
 	margin-left:525px;
 	margin-top:36px;
 }
+/* navigation */
 #nav{
 	
 }
@@ -211,6 +214,8 @@ a.button2 span{
 	width:93px;
 	text-align:center;
 }
+/* middle styles */
+
 #mid{
 	padding:40px 0px;
 	overflow:hidden;
@@ -218,7 +223,7 @@ a.button2 span{
 	background:white url('../../images/website_images/mid_bg.jpg') repeat-x;
 }
 #mid ul{
-list-style-position:inside;
+	list-style-position:inside;
 	text-indent:-20px;
 	list-style-type:disc;
 	margin-left:24px;
@@ -234,6 +239,8 @@ list-style-position:inside;
 }
 #column ul, #column ol{
 	list-style-type:none;
+	margin-left:0px;
+	text-indent:0px;
 }
 #slider{
 	width:560px;
@@ -332,6 +339,13 @@ ul.pagination li.active a { background:blue; color:white; }
 	background-image: url('../../images/website_images/side_header.gif ');
 	background-repeat:no-repeat;
 }
+#column p{
+	padding:10px 20px;
+}
+#column h2{
+	font-size:16px;
+	color:#4c4b4b;
+}
 #content .hl1{
 	color:#53860e;
 }
@@ -356,6 +370,7 @@ ul.services li{
 	margin:0px;
 	padding:0px;
 	border:1px solid #79af15;
+	list-style-image:none;
 	
 }
 ul.services li a{
@@ -441,6 +456,7 @@ ul.services li a:hover{
 	color:#ababab;
 	padding:4px 10px;
 	display:inline;
+	background-image: none;
 }
 #footer2{
 	background-image: url('../../images/website_images/footer_bottom.gif ');
@@ -459,7 +475,7 @@ body.section #banner{
 body.section #banner h1{
 	color:#e7e7e7;
 	margin-left:72px;
-	font-size:40px;
+	font-size:32px;
 	margin-top:20px;
 }
 body.section #banner h2{
@@ -568,10 +584,6 @@ table.bordered{
 	width:520px;
 	border-top:1px solid #badb89;
 	border-left:1px solid #badb89;
-	
-	
-	
-	
 }
 table.bordered th{
 	padding:10px;
@@ -589,7 +601,7 @@ table.bordered td{
 table.bordered tr.alt{
 	background-color:#ecffc9;
 }
-/*heading styles*/
+/*heading styles for content*/
 #content h2{
 	font-family:"century gothic", Helvetica, Sans-serif;
 	font-size:1.9em;
@@ -624,16 +636,12 @@ table.bordered tr.alt{
 	font-size:1.2em;
 	color:#4c4b4b;
 	font-family:
-	
 }
-
-
-
 /* form styles */
 .forms{
 	
 }
-.forms input.shadowed, .forms select{
+.forms input.shadowed, .forms input, .forms select{
 	width:200px;
 	text-align:left;
 	float:left;
@@ -656,7 +664,6 @@ table.bordered tr.alt{
 	clear:both;
 	overflow:hidden;
 	padding:10px 0px;
-	
 }
 .forms label span{
 	display:block;
@@ -684,7 +691,6 @@ table.bordered tr.alt{
 	border:1px solid #badb89;
 	padding:10px 20px;
 	margin:10px 0px;
-	
 }
 .forms legend{
 	color:#4c4b4b;
@@ -717,3 +723,13 @@ div.row span.formw {
 div.spacer {
   clear: both;
   }
+/* ------ 404 styles ------- */
+html.p404{
+	background-color:#e9ffed;
+	background-image: url('../images/p404bg.jpg ');
+}
+html.p404 h1.center{ 
+	font-family: "Century gothic", Arial, Helvetica;
+	font-size:22px;
+	margin:20px;
+}
