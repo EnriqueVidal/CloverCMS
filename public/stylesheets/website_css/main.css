@@ -401,7 +401,7 @@ ul.services li a:hover{
 	text-decoration:none;
 }
 
-
+/*footer*/
 #footer{
 	background:transparent url('../../images/website_images/footer_bg.jpg');
 	overflow:hidden;
@@ -409,6 +409,9 @@ ul.services li a:hover{
 	color:#ababab;
 	padding-top:20px;
 	padding-bottom:20px;
+}
+#footer .hl1{
+	color:#7Fb919;
 }
 #footer #subscribe{
 	color:#fefefe;
