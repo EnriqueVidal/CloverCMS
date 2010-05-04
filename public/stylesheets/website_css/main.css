@@ -696,13 +696,3 @@ div.row span.formw {
 div.spacer {
   clear: both;
 }
-/* ------ 404 styles ------- */
-html.p404{
-	background-color:#e9ffed;
-	background-image: url('../images/p404bg.jpg ');
-}
-html.p404 h1.center{ 
-	font-family: "Century gothic", Arial, Helvetica;
-	font-size:22px;
-	margin:20px;
-}
