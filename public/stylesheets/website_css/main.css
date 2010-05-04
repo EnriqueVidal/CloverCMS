@@ -88,7 +88,7 @@ a.button2 span{
 }
 /*site styles*/
 html{
-	background-image: url('../images/html_bg.jpg ');
+	background-image: url('../../images/website_images/html_bg.jpg ');
 	background-repeat:repeat-x;
 	background-color:#3b5061;
 }
