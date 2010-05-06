@@ -1,4 +1,5 @@
 class MetaTagsController < ApplicationController
+  before_filter :check_authentication, :check_authorization
 
   def index
     @meta_tags = MetaTag.paginate_and_sort(params[:page], params[:sort])

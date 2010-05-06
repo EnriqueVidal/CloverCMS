@@ -16,7 +16,10 @@ class ViewerController < ApplicationController
       @page = @section.pages.find_by_name(params[:page_name]) rescue nil
     end
     
-    render :file => 'public/404.html' if @page.blank?
+    if @page.blank? 
+      FourOhFour.add_request(request.host, request.path, request.env['HTTP_REFERER'] || '')
+      render 'four_oh_fours/index'
+    end
     
     @contact  = get_contact_forms
   end

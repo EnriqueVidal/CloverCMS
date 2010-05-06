@@ -6,8 +6,8 @@ ActionController::Routing::Routes.draw do |map|
   map.new_email 'contact', :controller => 'contact_forms', :action => 'new'
   
 
-  map.resources :meta_tags
-  map.edit_meta_tag     'meta_tags/:id/edit',     :controller => 'meta_tags', :action => 'edit'
+  map.resources     :meta_tags
+  map.edit_meta_tag 'meta_tags/:id/edit',     :controller => 'meta_tags', :action => 'edit'
 
   map.resources     :uploads
   map.delete_upload 'uploads/:id/destroy',          :controller => 'uploads', :action => 'destroy'
@@ -82,6 +82,7 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
+  map.connect '*path', :controller => 'four_oh_fours'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

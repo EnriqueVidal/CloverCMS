@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-
+  before_filter :check_authentication,
+                :check_authorization,
+                :except => [:login, :register, :lost_password, :activate, :logout, :create ]
   def index
     @users = User.paginate_and_sort params[:page], params[:sort]
 

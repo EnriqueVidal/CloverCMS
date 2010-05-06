@@ -9,10 +9,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :session_expiry
 
-  before_filter :check_authentication,
-                :check_authorization,
-                :except => [:login, :register, :lost_password, :activate, :logout, :create, :show_section_page, :show_subsection_page, :home_page]
-
   def session_expiry
     if session[:expiry_time] and session[:expiry_time] < Time.now
       reset_session
@@ -67,12 +63,12 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_section
   def current_section
-    Section.find_by_name(params[:section_name])
+    Section.find_by_name(params[:section_name]) rescue nil
   end
 
   helper_method :current_page
   def current_page
-    Page.find_by_name(params[:page_name]) 
+    Page.find_by_name(params[:page_name]) rescue nil
   end
   
   # Scrub sensitive parameters from your log

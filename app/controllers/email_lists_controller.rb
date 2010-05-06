@@ -1,4 +1,6 @@
 class EmailListsController < ApplicationController
+  before_filter :check_authentication
+                
   def add_to_list
     @email = EmailList.new(params[:email_list])
     respond_to do |format|

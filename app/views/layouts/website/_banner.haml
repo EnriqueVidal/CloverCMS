@@ -1,5 +1,5 @@
 #banner
-  - if current_page.main_page
+  - if current_page.present? && current_page.main_page
     #intro
       %h1
         We are a software development company, that specializes in custom software, our services range from web development, interactive media, and server applications.
@@ -17,5 +17,9 @@
           .third_slide 3
       #slider_right= link_to image_tag("website_images/scroll_right.gif", :alt => "Scroll right"), "#", :class => "next"
   - else
-    %h1= current_page.pageable.title
-    %h2= current_page.title
+    - if current_page.present?
+      %h1= current_page.pageable.title
+      %h2= current_page.title
+    - else
+      %h1 Page not found
+      %h2 You have tried to reach a page that does not exist.

@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_filter :check_authentication, :check_authorization
 
   uses_tiny_mce :only => [:edit, :new], :options => {
                                                   :theme  => 'advanced',

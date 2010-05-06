@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100409185446) do
+ActiveRecord::Schema.define(:version => 20100505055600) do
 
   create_table "contact_forms", :force => true do |t|
     t.string   "email"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(:version => 20100409185446) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "four_oh_fours", :force => true do |t|
+    t.string   "host"
+    t.string   "path"
+    t.string   "referer"
+    t.integer  "count",      :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "four_oh_fours", ["host", "path", "referer"], :name => "index_four_oh_fours_on_host_and_path_and_referer", :unique => true
+  add_index "four_oh_fours", ["path"], :name => "index_four_oh_fours_on_path"
 
   create_table "meta_tags", :force => true do |t|
     t.string   "content"
