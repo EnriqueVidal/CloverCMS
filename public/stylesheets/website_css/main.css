@@ -48,12 +48,14 @@ h3{
 /* === */
 div.hline1{
 	background-image: url('../../images/website_images/hline_bg.jpg ');
+	background-color:white;
 	height:10px;
 	width:960px;
 	overflow:hidden;
 }
 div.hline2{
 	background-image: url('../../images/website_images/hline2_bg.jpg ');
+	background-color:white;
 	height:10px;
 	width:960px;
 	overflow:hidden;
@@ -103,7 +105,7 @@ body{
 	text-align:left;
 }
 #top{
-	background:transparent url('../../images/website_images/top_bg.jpg') no-repeat ;
+	background:#2d2d2d url('../../images/website_images/top_bg.jpg') no-repeat ;
 	width:960px;
 	height:100px;
 }
@@ -399,7 +401,7 @@ ul.services li a:hover{
 
 /*footer*/
 #footer{
-	background:transparent url('../../images/website_images/footer_bg.jpg');
+	background:#2d2d2d url('../../images/website_images/footer_bg.jpg');
 	overflow:hidden;
 	height:100%;
 	color:#ababab;
