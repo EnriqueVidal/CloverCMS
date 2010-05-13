@@ -1,30 +1,37 @@
 .hline2
 #footer
   #contact_box.b360
-    %h2 Hi, you can contact us!
+    %h2 Hola, puedes contactarnos!
     %ul
       %li
         %span.hl1 Email:
         info@cloverinteractive.com
       %li
-        %span.hl1 Phone:
-        7777777777
-      %li
         %span.hl1 Skype:
         cloverinteractive
+    %br
+    %h2 Llamanos
+    %ul
+      %li
+        %span.hl1 Desde US:
+        6194892425
+      %li
+        %span.hl1 Desde MX:
+        6642311374
+
   #proposal_box.b360
-    %h2 Submit a Proposal
+    %h2 Envianos tu propuesta
     %p 
-      We would love to work with you, drop us a 
-      = link_to "line", "#"
-      to get your project started!
+      Nos encantaría trabajar contigo, envianos un 
+      = link_to "mensaje", "#"
+      para iniciar tu proyecto!
   #newsletter_box.b360
-    %h2 Suscribe to our newsletter
+    %h2 Subscribete al newsletter
 
     - form_for EmailList.new, :url => "/email_lists/add_to_list", :html => { :id => "newsletter", :class => "forms_footer" } do |f|
       %label= f.text_field :email, :value => "Email", :class => "input_text"
       %label.right
         %a.button1{ :href => "javascript:void(null);" }
-          %span{ :onclick => "$('#newsletter')[0].submit();" } Suscribe
+          %span{ :onclick => "$('#newsletter')[0].submit();" } Subscribir
     
 #footer2
