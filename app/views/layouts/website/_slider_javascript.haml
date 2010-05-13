@@ -5,7 +5,10 @@
   if (typeof jQuery != 'undefined') {  
   $(document).ready(function() {
   $.fn.loopedSlider.defaults.addPagination = true;
-  $('#slider').loopedSlider();
+  $('#slider').loopedSlider({
+  autoStart:5000,
+  containerClick:false
+  });
   });	
   }
   //]]>

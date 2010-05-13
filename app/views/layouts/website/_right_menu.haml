@@ -10,7 +10,8 @@
           - subsection.pages.each do |page|
             - if current_page.name != page.name
               %li= link_to page.title, show_subsection_page_path( section.name, subsection.name, page.name )
-        
-      %p.right= link_to "<span>More</span>", "#", :class => "button2"
+      
+      /  
+        %p.right= link_to "<span>More</span>", "#", :class => "button2"
     .sidebar_bottom
     
