@@ -12,3 +12,4 @@ public/system
 public/.htaccess
 config/database.yml
 *.bak
+Thumbs.db

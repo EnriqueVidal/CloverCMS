@@ -696,3 +696,16 @@ div.row span.formw {
 div.spacer {
   clear: both;
 }
+/* ------ 500 styles ------- */
+html.p500{
+	background-color:#e9ffed;
+	background-image: url('../../images/website_images/p500bg.jpg ');
+}
+html.p500 h1.center{ 
+	font-family: "Century gothic", Arial, Helvetica;
+	font-size:22px;
+	margin:20px;
+}
+html.p500 p{
+	padding:10px 0px;
+}
