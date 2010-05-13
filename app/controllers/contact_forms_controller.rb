@@ -1,4 +1,6 @@
 class ContactFormsController < ApplicationController
+  before_filter :check_authentication, :check_authorization, :except => [ :create ]
+
   def new
     @contact_form = ContactForm.new
   end

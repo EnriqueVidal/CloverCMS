@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
-
+  before_filter :check_authentication, :check_authorization
+                
   in_place_edit_for :person, :first_name
   in_place_edit_for :person, :middle_name
   in_place_edit_for :person, :last_name
