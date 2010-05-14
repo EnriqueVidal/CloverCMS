@@ -18,6 +18,7 @@
   .row
     %span.formw= recaptcha_tags :display => { :theme => :clean, :tabindex => 0 }, :ssl => true
   .row
-    %span.formw= f.submit 'Enviar Correo', :class => :shadowed
+    %span.formw= f.submit 'Enviar Correo', :class => :input_submit
   = hidden_field_tag "return_page", show_section_page_path( :section_name => current_section.name, :page_name => current_page.name )
   .spacer
+

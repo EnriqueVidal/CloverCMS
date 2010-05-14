@@ -1,14 +1,21 @@
 = javascript_include_tag        "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
 = javascript_include_tag        "website_js/loopedslider.min.js"
+
+/ Sexy Lightbox starts here
+= javascript_include_tag        "jquery.easing.1.3.js"
+= javascript_include_tag        "sexylightbox.v2.3.jquery.js"
+
 %script{ :type => "text/javascript"}
   //<![[CDATA
-  if (typeof jQuery != 'undefined') {  
+  if (typeof jQuery != 'undefined') {
   $(document).ready(function() {
+  SexyLightbox.initialize();
   $.fn.loopedSlider.defaults.addPagination = true;
   $('#slider').loopedSlider({
   autoStart:5000,
   containerClick:false
   });
-  });	
+  });
   }
   //]]>
+
