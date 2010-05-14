@@ -72,6 +72,7 @@ a.button1{
 	background:transparent url('../../images/website_images/button_bg.gif') no-repeat right;
 	padding:10px 5px 10px 0px;
 	outline:0px;
+	text-decoration:none;
 }
 a.button1 span{
 	background:transparent url('../../images/website_images/button_span.gif') no-repeat left;
@@ -312,8 +313,8 @@ ul.pagination li.active a {
 	margin:0px 10px;
 }
 #content{
-	width:520px;
-	margin-left:60px;
+	width:540px;
+	margin-left:40px;
 	overflow:hidden;
 }
 #content h1{
@@ -380,14 +381,18 @@ ul.services li a{
 	font-size:14px;
 	padding:5px 5px 5px 5px;
 	display:block;
+	text-decoration:underline;
 }
 ul.services li a:hover{
 	line-height:14px;
 	font-size:14px;
 	background-image: url('../../images/website_images/sb_item_bg.gif ');
+	background-repeat:repeat-x;
+	background-color:#619504;
 	display:block;
 	padding:3px 5px 5px 10px;
 	border:1px solid #578702;
+	text-decoration:none;
 }
 #content a, #content a:active, #content a:visited{
 }
@@ -482,8 +487,9 @@ body.section #banner h1{
 body.section #banner h2{
 	color:#e7e7e7;
 	margin-left:72px;
-	font-size:14px;
-	font-weight:normal;
+	font-size:16px;
+	font-weight:bold;
+	
 }
 body.section #column{
 	width:281px;
@@ -492,9 +498,9 @@ body.section #column{
 	margin-left:20px;
 }
 body.section #content{
-	width:520px;
+	width:540px;
 	margin:0px;
-	margin-left:60px;
+	margin-left:40px;
 }
 body.section #content h1{
 	margin-left:10px;
@@ -631,6 +637,13 @@ table.bordered tr.alt{
 	outline:0px;
 	background-image: url('../../images/website_images/input_bg.jpg ');
 	background-repeat:repeat-x;
+}
+.forms #contact_form_submit, .forms .input_submit{
+	background-image: none;
+	width:auto;
+	float:none;
+	padding:12px 6px;
+	font-weight:bold;
 }
 .forms .recaptchatable #recaptcha_response_field{
 	background-image: url('../../images/website_images/input_bg.jpg ');
