@@ -38,7 +38,7 @@
 			image : ['image_desc', 'mceImage'],
 			cleanup : ['cleanup_desc', 'mceCleanup'],
 			//help : ['help_desc', 'mceHelp'],
-			//code : ['code_desc', 'mceCodeEditor'],
+			code : ['code_desc', 'mceCodeEditor'],
 			//hr : ['hr_desc', 'InsertHorizontalRule'],
 			removeformat : ['removeformat_desc', 'RemoveFormat'],
 			sub : ['sub_desc', 'subscript'],
@@ -58,7 +58,7 @@
 
 		init : function(ed, url) {
 			var t = this, s, v, o;
-	
+
 			t.editor = ed;
 			t.url = url;
 			t.onResolveName = new tinymce.util.Dispatcher(this);
@@ -81,13 +81,13 @@
 				theme_advanced_resize_horizontal : 1,
 				theme_advanced_resizing_use_cookie : 1,
 				theme_advanced_font_sizes : "1,2,3,4,5,6,7",
-				
+
 				extended_valid_elements : "img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|obj|param|embed]",
 				flash_external_list_url : "example_flash_list.js", // Optional URL to a list of SWF movies
 				flash_wmode : "transparent",
 				flash_quality : "high",
 				flash_menu : "false",
-				
+
 				readonly : ed.settings.readonly
 			}, ed.settings);
 
@@ -431,7 +431,7 @@
 			if (DOM.get(ed.id + '_path_row')) {
 				Event.add(ed.id + '_tbl', 'mouseover', function(e) {
 					var re;
-	
+
 					e = e.target;
 
 					if (e.nodeName == 'SPAN' && DOM.hasClass(e.parentNode, 'mceButton')) {
@@ -1161,3 +1161,4 @@
 
 	tinymce.ThemeManager.add('advanced', tinymce.themes.AdvancedTheme);
 }(tinymce));
+

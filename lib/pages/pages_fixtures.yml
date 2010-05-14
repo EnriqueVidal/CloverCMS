@@ -1,0 +1,57 @@
+---
+- - Hola
+  - 
+    title: Bienvenido a Clover Interactive
+    body: 
+      '<p>Permitenos dise&ntilde;ar una soluci&oacute;n para tu empresa, trabajando en conjunto impulsaremos tu negocio explotando los beneficios que ofrece internet, para potenciar tus productos y reducir costos, mejorando as&iacute; tu economia.</p>'
+  -
+    title: Aplicaciones listas para llevar
+    body:
+      "<p>En CloverInteractive nos complace poner a tu disposición una fina selección de aplicaciones que potenciaran tu productividad:</p><ul><li>CloverCMS es un exquisito manejador de contenido ligero y elegante. Disponible para publicar tu contenido de modo fácil e inmediato. </li><li>Rick, es un aplicación similar a un chat. Imagine tener a un agente de ventas conocedor de toda la información de su empresa y disponible 24 hrs., 7 días a la semana… eso es RICK, nuestro sistema automático de soporte y atención al cliente. Conoce a RICK, él sabrá responder tus dudas. Da click en este <a class=\"hl1\" href=\"#\" onclick=\"window.open('http://bot.cloverinteractive.com/conversation', 'RICK', 'width=360,height=300,scrollbars=NO');\">enlace</a>. </li></ul><p>Actualmente estamos desarrollando un CRM, una aplicación para el mas eficiente manejo de tus clientes: información de contacto, facturación, volúmenes de compra, entre otra información de utilidad. <br><br>De igual manera, en nuestros laboratorios de desarrollo estamos trabajando en una tienda en línea (eShop) apegada a estándares de programación, de modo que la calidad de cada proyecto destaque por sí misma.&nbsp; <br><br>Toma ventaja de nuestra marca blanca, es decir, incorpora el logotipo de tu empresa en nuestras aplicaciones, de modo que tus clientes nunca sabrán de nosotros. <br><br>¡Doble wow! …y todo por 20 USD mensuales por cada aplicación. ¡Wow!</p>"
+
+
+- - Conoce
+  -
+    title: Who are we?
+    body: A company that rocks! and kicks ass
+  -
+    title: 'Telefonía IP & PBX, el dúo dinámico'
+    body:
+      '<p>Como tal vez usted ya sabe, la Voz sobre IP - mejor conocida como VoIP - es una tecnolog&iacute;a que permite hacer llamadas telef&oacute;nicas a trav&eacute;s de una conexi&oacute;n a Internet de banda ancha. Con el servicio VoIP se puede hacer llamadas nacionales e internacionales a muy bajo costo, generando valor, ahorro y econom&iacute;a. <br /><br />Nuestra telefon&iacute;a IP es hospedada en nuestros servidores de modo que nuestros clientes solo necesitan una computadora, un tel&eacute;fono IP&nbsp; o un adaptador ATA para conectar sus tel&eacute;fonos anal&oacute;gicos al servicio digital.&nbsp;</p>\r\n<p><img class="photo" src="../../images/website_images/content/map.jpg" alt="VoIP" width="500" height="300" /><br /><br />Nos complace ofrecerte minutos de tiempo aire en llamadas a Estados Unidos a costos altamente competitivos. De igual manera, nos complace ofrecerte n&uacute;meros telef&oacute;nicos en M&eacute;xico.</p>'
+
+
+- - Crece
+  -
+    title: Hospedaje Deluxe
+    body:
+      '<p>Beneficios diseñados por programadores, para programadores.<br>Toma ventaja de nuestro hospedaje:</p><ul><li>Acceso shell</li><li>Compatibles con Git, Mercurial o SVN</li><li>Soporte Ruby, Rails, Python, Django, PHP</li><li>CPanel disponible</li><li>2 cuentas para acceso FTP</li></ul><p>&nbsp;</p><h3>Facilidad de uso, automatización a la carta</h3><p>Si has utilizado <a class="hl1" href="http://www.capify.org/index.php/Capistrano" target="_blank">Capistrano</a>, sabrás que con Git, SVN y Shell es posible realizar deployments de modo fácil y eficiente.</p><p>Utiliza las palabras mágicas <strong><span class="hl1"><em>cap deploy</em></span></strong>… y ¡Voilá! tu aplicación se sube, se crea el schema de bases de datos y se inicia tu app… sin realizar procesos manuales.</p><p>En CloverInteractive ponemos a tu disposición exquisitas recetas escritas y aprobadas para Sinatra y Rails.</p>'
+  -
+    title: Queremos verte satisfecho
+    body:
+      '<p>Si eres programador o sysadmin, cuéntanos tu proyecto y disfruta de la libertad de diseñar un plan de hospedaje de acuerdo a las necesidades especificas de tu cliente o proyecto. Si ya formas parte de nuestra familia de afiliados, recuerda que puedes utilizar nuestro sistema de soporte técnico en tickets a través de <a target="_blank" class="hl1" href="http://www.thinktankhost.com/">aqui</a>… claro, aunque todos sabemos que nunca ha habido problemas :) <br>&nbsp;<br></p><h3>Desarrollo Web Profesional… y a medida</h3><p>Desarrollamos en Rails, Sinatra, PHP, ASP.NET, C# y gracias a Mono, también desarrollamos en .NET multiplataforma. Nuestras ventajas son mas que una delicia: <br><br></p><ul><li>Código Versionado, limpio y escalable.</li><li>Administración de proyectos en conjunto. Tu o tu cliente estarían siempre involucrados en el desarrollo y podrán ver los commits o pushes en el repositorio asignado, así como abrir tickets en cada característica.</li><li>Acceso a gráficas de Gantt que ilustran el avance por commit.</li></ul>'
+  -
+    title: Administración de sistemas
+    body:
+      '<p>Administramos Linux, Windows Server y BSD (OpenBSD &amp; FreeBSD). Nuestra gama de servicios se extiende (pero no se limita) a:&nbsp; <br /><br /></p><ul><li>Servidores DHCP y Archivos </li><li>Firewall de Linux </li><li>Proxy con Cache </li><li>Servidor Apache </li><li>Servidor MySQL </li><li>Servidor de correos (Linux y BSD) </li><li>Servidor DNS MS DNS, BIND, djbdns </li><li>Servidor FTP </li><li>Servidores de Telefon&iacute;a (exclusivamente Linux y Asterisk) </li><li>Deployment PHP </li><li>Deployment Rails (Linux &amp; BSD) </li><li>Administraci&oacute;n de Sistemas a nivel de usuarios, grupos, accesos y seguridad.</li></ul><p>&nbsp;</p><h3>Asesor&iacute;a &amp; Consultor&iacute;a</h3><p>Nos complace apoyarte con nuestro expertise, ya sea en persona o a distancia. Entra en contacto con nosotros y d&eacute;janos saber los detalles de nuestra visita a tu empresa: transporte, hospedaje y vi&aacute;ticos&hellip; hagamos negocios juntos, hagamos Internet.</p>'
+  -
+    title: Desarrollo gráfico premium
+    body:
+      '<p>Nuestros desarrollos son apoyados por un equipo de dise&ntilde;adores listos para entregar en tiempo, en forma y con calidad superior. Conoce algunos de los proyectos en los que hemos tenido el placer de estar profundamente involucrados: levelup.com, tarreo.com, playboy.com.mx, dxt1.com, aloboutique.com, clover CMS y Rick, nuestro Sistema de Soporte Automatizado.</p>'
+
+
+- - Negocio
+  -
+    title: 'PBX, la magia de la telefonía IP'
+    body:
+      '<p>Un PBX es un conmutador telefónico, es decir, un dispositivo automático para realizar y canalizar llamadas… justo como si tuviese una ”operadora” en su oficina. Para ilustrar como funciona un PBX, he aquí mayor información proveniente de uno de los mayores <a target="_blank" href="http://www.asterisk.org/applications/pbx" class="hl1">proveedores</a>. <br>&nbsp;<br>En CloverInteractive ofrecemos PBX hospedados en nuestros servidores. De igual manera, ofrecemos PBX dedicados a marcación predictiva - una solución inteligente&nbsp; para Call Centers - así como PBX para PyMES. Nuestros PBX están hospedados en la nube y en varios nodos, algo así como muchas celdas en un delicioso panal de miel. Antes bien, para todos aquellos clientes quienes deseen sus propios nodos con características especiales, podemos perfectamente desarrollar proyectos a medida.</p><p><img class="photo" src="../../images/website_images/content/map2.jpg" alt="VoIP - Callcenter"></p>'
+  -
+    title: Servidores Virtuales Privados
+    body:
+      '<p>&iquest;Necesitas nodos propios? &iexcl;Cuenta con ello! Por s&oacute;lo 16 USD al mes por nodo. Los nodos de VPS pueden ser usados virtualmente para lo que sea y en CloverInteractive son provistos al instante; adem&aacute;s, vienen con una lista de plantillas (templates) de instalaci&oacute;n de OS (todos Linux, pues Windows es viable para este tipo de virtualizaci&oacute;n).<br /><br />&nbsp;<br />Configuramos tu servidor como servidor de telefon&iacute;a, DNS , Web o correo. Nuestro expertise a tu servicio.</p>'
+
+
+- - Contacto
+  -
+    title: Contactanos
+    body: 
+      '<p>Tienes un proyecto pendiente? te gustaría trabajar con nosotros? tienes alguna sugerencia para mejorar nuestros servicios? haznos lo saber.</p>   '

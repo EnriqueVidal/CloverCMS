@@ -157,7 +157,7 @@ body{
 	outline: 0;
 }
 #nav li a:active{
-	
+
 }
 #nav #hola a{
 	width:54px;
@@ -262,48 +262,48 @@ body{
 /*
  * Required for slider
 */
-.container { 
+.container {
 	float:left;
-	overflow:hidden; 
-	position:relative; 
-	cursor:pointer; 
+	overflow:hidden;
+	position:relative;
+	cursor:pointer;
 	margin-top:40px;
 	width:400px;
 	height:190px;
 	border:10px solid white;
 }
 .slides {
-	position:absolute; top:0; left:0; 
+	position:absolute; top:0; left:0;
 }
-.slides > div { 
-	position:absolute; 
-	top:0; 
-	width:400px; 
-	display:none; 
+.slides > div {
+	position:absolute;
+	top:0;
+	width:400px;
+	display:none;
 }
 /*
  * Optional slider styles
 */
-#loopedSlider,#newsSlider { 
-	margin:0 auto; 
-	width:500px; 
-	position:relative; 
-	clear:both; 
+#loopedSlider,#newsSlider {
+	margin:0 auto;
+	width:500px;
+	position:relative;
+	clear:both;
 }
-ul.pagination { 
-	list-style:none; 
-	padding:0; 
-	margin:0; 
+ul.pagination {
+	list-style:none;
+	padding:0;
+	margin:0;
 }
-ul.pagination li  { 
-	float:left; 
+ul.pagination li  {
+	float:left;
 }
-ul.pagination li a { 
-	padding:2px 4px; 
+ul.pagination li a {
+	padding:2px 4px;
 }
-ul.pagination li.active a { 
-	background:blue; 
-	color:white; 
+ul.pagination li.active a {
+	background:blue;
+	color:white;
 }
 #mid a, #mid a:active, #mid a:visited{
 }
@@ -327,9 +327,9 @@ ul.pagination li.active a {
 #content p{
 	padding:10px 0px;
 }
-#content .photo{
+#content .photo, #content img{
 	background-color:white;
-	padding:10px;
+	padding:5px;
 	border:1px solid #d5d5d5;
 }
 #column{
@@ -431,9 +431,9 @@ ul.services li a:hover{
 	margin:0px 10px;
 	padding:30px 0px 30px 0px;
 }
-.b360 ul,.b360 ol, 
+.b360 ul,.b360 ol,
 .b360 p,.b360 form,
-.b360 h1,.b360 h2,.b360 h3, 
+.b360 h1,.b360 h2,.b360 h3,
 .b360 h4,.b360 h5,.b360 h6{
 	margin-right:60px;
 }
@@ -469,7 +469,7 @@ ul.services li a:hover{
 	background-repeat:no-repeat;
 	padding:25px 20px 10px 20px;
 	color:white;
-	
+
 }
 /**** section styles ****/
 
@@ -626,7 +626,7 @@ table.bordered tr.alt{
 }
 /* form styles */
 .forms{
-	
+
 }
 .forms input.shadowed, .forms input, .forms select{
 	width:200px;
@@ -716,7 +716,7 @@ html.p500{
 	background-color:#e9ffed;
 	background-image: url('../../images/website_images/p500bg.jpg ');
 }
-html.p500 h1.center{ 
+html.p500 h1.center{
 	font-family: "Century gothic", Arial, Helvetica;
 	font-size:22px;
 	margin:20px;
@@ -724,3 +724,4 @@ html.p500 h1.center{
 html.p500 p{
 	padding:10px 0px;
 }
+
