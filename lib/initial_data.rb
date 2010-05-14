@@ -1,87 +1,78 @@
 class InitialData
 
   def self.import_data
-    sections  = [ :hola, :conoce, :crece, :negocio, :contacto ]
-    pages     = {
-                  :hola       => [  'Why us?',            'Because we rock!' ],
-                  :conoce     => [  'Who are we?',        'A company that rocks!' ],
-                  :crece      => [  'Uploading is dead',  'Try capistrano for a change.'],
-                  :negocio    => [  'Happy Deploy',       'We are crazy about deploying apps.' ],
-                  :contacto    => [  'Contact us',         'Contact us.' ]
+    content_fixture = File.new(Dir.pwd + '/lib/pages/pages_fixtures.yml')
+    data            = YAML::load(content_fixture)
+
+    user      = { :username => 'admin', :email    => 'enrique@cloverinteractive.com', :pass     => 'admin' }
+
+    roles     = [ :post_editor, :post_comenter, :member ]
+    rights    = {
+                    :post_editor  =>  [
+                                        {
+                                          :name       => 'Create Post',
+                                          :controller => 'posts',
+                                          :action     => 'create'
+                                        },
+                                        {
+                                          :name       => 'Render new Post form',
+                                          :controller => 'posts',
+                                          :action     => 'new'
+                                        },
+                                        {
+                                          :name       => 'Delete Post',
+                                          :controller => 'posts',
+                                          :action     => 'destroy'
+                                        }
+                                      ],
+
+                   :post_comenter =>  [
+                                        {
+                                          :name       => 'Create Comment',
+                                          :controller => 'comments',
+                                          :action     => 'create'
+                                        }
+                                      ],
+
+                  :member         =>  [
+                                        {
+                                          :name       => 'View own Profile',
+                                          :controller => 'users',
+                                          :action     => 'profile'
+                                        },
+                
+                                        {
+                                          :name       => 'Edit own first name',
+                                          :controller => 'people',
+                                          :action     => 'set_person_first_name'
+                                        },
+                
+                                        {
+                                          :name       => 'Edit own middle name',
+                                          :controller => 'people',
+                                          :action     => 'set_person_middle_name'
+                                        },
+                
+                                        {
+                                          :name       => 'Edit own last name',
+                                          :controller => 'people',
+                                          :action     => 'set_person_last_name'
+                                        },
+                
+                                        {
+                                          :name       => 'Edit avatar, gender and date of birth',
+                                          :controller => 'people',
+                                          :action     => 'update'
+                                        },
+                
+                                        {
+                                          :name       => 'View other users profile',
+                                          :controller => 'users',
+                                          :action     => 'show'
+                                        }
+                                      ]
                 }
-
-    user      = {
-                  :username => 'admin',
-                  :email    => 'enrique@cloverinteractive.com',
-                  :pass     => 'admin'
-                }
-
-    roles   = [ :post_editor, :post_comenter, :member ]
-    rights  = {
-                  :post_editor  =>  [
-                                      {
-                                        :name       => 'Create Post',
-                                        :controller => 'posts',
-                                        :action     => 'create'
-                                      },
-                                      {
-                                        :name       => 'Render new Post form',
-                                        :controller => 'posts',
-                                        :action     => 'new'
-                                      },
-                                      {
-                                        :name       => 'Delete Post',
-                                        :controller => 'posts',
-                                        :action     => 'destroy'
-                                      }
-                                    ],
-
-                 :post_comenter =>  [
-                                      {
-                                        :name       => 'Create Comment',
-                                        :controller => 'comments',
-                                        :action     => 'create'
-                                      }
-                                    ],
-
-                :member         =>  [
-                                      {
-                                        :name       => 'View own Profile',
-                                        :controller => 'users',
-                                        :action     => 'profile'
-                                      },
                 
-                                      {
-                                        :name       => 'Edit own first name',
-                                        :controller => 'people',
-                                        :action     => 'set_person_first_name'
-                                      },
-                
-                                      {
-                                        :name       => 'Edit own middle name',
-                                        :controller => 'people',
-                                        :action     => 'set_person_middle_name'
-                                      },
-                
-                                      {
-                                        :name       => 'Edit own last name',
-                                        :controller => 'people',
-                                        :action     => 'set_person_last_name'
-                                      },
-                
-                                      {
-                                        :name       => 'Edit avatar, gender and date of birth',
-                                        :controller => 'people',
-                                        :action     => 'update'
-                                      },
-                
-                                      {
-                                        :name       => 'View other users profile',
-                                        :controller => 'users',
-                                        :action     => 'show'
-                                      }
-                                    ]
-              }
     meta_tags = [
                   "Best Website Ever.",
                   "Fast Web development.",
@@ -92,7 +83,7 @@ class InitialData
                 ]
 
     self.create_meta_tags( meta_tags )
-    self.create_section_and_pages( sections, pages )
+    self.create_section_and_pages( data )
     self.assign_meta_tags
     self.create_roles_and_rights( roles, rights )
     self.create_admin( user )
@@ -136,18 +127,24 @@ class InitialData
     @user.save!
   end
 
-  def self.create_section_and_pages( sections, pages )
+  def self.create_section_and_pages( data )
     puts ">>>>> Creating demo Sections and Pages <<<<<"
 
-    sections.each do |section|
-      @section    = Section.create!( { :title => section.to_s.capitalize } )
-      
-      puts ">>>>>> " + pages.inspect + "<<<<<<<"
-      
-      main_page   = pages[section][0] == "Why us?" 
-      has_contact = pages[section][0] == "Contact us"
-      @section.pages.create!( :title => pages[section][0], :body => pages[section][1], :main_page => main_page, :has_contact => has_contact)
+    data.flatten.each do |page|
+      if page.class == String
+        @section = Section.find_or_create_by_title(page)
+        @section.save!
+      else
+        page_attr   = { :title => page["title"], :body => page["body"], :pageable_id => @section.id, :pageable_type => "Section" }
+        @page       = Page.create(page_attr) if !Page.exists?(page_attr)
+        @page.body  = page["body"]
+        @page.save!
+        
+        @page.update_attributes!(:main_page   => true) if @page.id == 1
+        @page.update_attributes!(:has_contact => true) if @page.pageable.name == "contacto" 
+      end
     end
+    
   end
 
 end

@@ -74,15 +74,6 @@ ActiveRecord::Schema.define(:version => 20100505055600) do
     t.datetime "updated_at"
   end
 
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.string   "name"
-    t.text     "body"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "related_pages", :force => true do |t|
     t.integer "related_page"
     t.integer "main_page"
@@ -118,14 +109,6 @@ ActiveRecord::Schema.define(:version => 20100505055600) do
     t.datetime "updated_at"
     t.string   "title"
     t.integer  "main_section_id"
-  end
-
-  create_table "subsections", :force => true do |t|
-    t.string   "name"
-    t.integer  "section_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "title"
   end
 
   create_table "taggings", :force => true do |t|
