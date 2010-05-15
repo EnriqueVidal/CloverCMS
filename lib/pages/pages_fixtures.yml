@@ -1,8 +1,8 @@
 ---
 - - Hola
-  - 
+  -
     title: Bienvenido a Clover Interactive
-    body: 
+    body:
       '<p>Permitenos dise&ntilde;ar una soluci&oacute;n para tu empresa, trabajando en conjunto impulsaremos tu negocio explotando los beneficios que ofrece internet, para potenciar tus productos y reducir costos, mejorando as&iacute; tu economia.</p>'
   -
     title: Aplicaciones listas para llevar
@@ -43,7 +43,7 @@
   -
     title: 'PBX, la magia de la telefonía IP'
     body:
-      '<p>Un PBX es un conmutador telefónico, es decir, un dispositivo automático para realizar y canalizar llamadas… justo como si tuviese una ”operadora” en su oficina. Para ilustrar como funciona un PBX, he aquí mayor información proveniente de uno de los mayores <a target="_blank" href="http://www.asterisk.org/applications/pbx" class="hl1">proveedores</a>. <br>&nbsp;<br>En CloverInteractive ofrecemos PBX hospedados en nuestros servidores. De igual manera, ofrecemos PBX dedicados a marcación predictiva - una solución inteligente&nbsp; para Call Centers - así como PBX para PyMES. Nuestros PBX están hospedados en la nube y en varios nodos, algo así como muchas celdas en un delicioso panal de miel. Antes bien, para todos aquellos clientes quienes deseen sus propios nodos con características especiales, podemos perfectamente desarrollar proyectos a medida.</p><p><img class="photo" src="../../images/website_images/content/map2.jpg" alt="VoIP - Callcenter"></p>'
+      '<p>Un PBX es un conmutador telefónico, es decir, un dispositivo automático para realizar y canalizar llamadas… justo como si tuviese una ”operadora” en su oficina. Para ilustrar como funciona un PBX, he aquí mayor información proveniente de <a target="_blank" href="http://www.asterisk.org/applications/pbx" class="hl1">asterisk</a>, uno de los mayores proveedores. <br>&nbsp;<br>En CloverInteractive ofrecemos PBX hospedados en nuestros servidores. De igual manera, ofrecemos PBX dedicados a marcación predictiva - una solución inteligente&nbsp; para Call Centers - así como PBX para PyMES. Nuestros PBX están hospedados en la nube y en varios nodos, algo así como muchas celdas en un delicioso panal de miel. Antes bien, para todos aquellos clientes quienes deseen sus propios nodos con características especiales, podemos perfectamente desarrollar proyectos a medida.</p><p><img class="photo" src="../../images/website_images/content/map2.jpg" alt="VoIP - Callcenter"></p>'
   -
     title: Servidores Virtuales Privados
     body:
@@ -53,5 +53,6 @@
 - - Contacto
   -
     title: Contactanos
-    body: 
+    body:
       '<p>Tienes un proyecto pendiente? te gustaría trabajar con nosotros? tienes alguna sugerencia para mejorar nuestros servicios? haznos lo saber.</p>   '
+
