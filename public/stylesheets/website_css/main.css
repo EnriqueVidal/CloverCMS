@@ -642,6 +642,7 @@ table.bordered tr.alt{
 	background-image: url('../../images/website_images/input_submit_bg.jpg');
 	background-color:#5e9203;
 	border:1px solid #a2c628;
+	width:auto;
 	color:white;
 }
 .forms .recaptchatable #recaptcha_response_field{
