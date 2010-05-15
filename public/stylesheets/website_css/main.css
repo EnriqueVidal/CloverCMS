@@ -639,12 +639,10 @@ table.bordered tr.alt{
 	background-repeat:repeat-x;
 }
 .forms #contact_form_submit, .forms .input_submit{
-	background-image: none;
-	width:auto;
-	float:none;
-	padding:12px 6px;
-	font-weight:bold;
-	border:0px;
+	background-image: url('../../images/website_images/input_submit_bg.jpg');
+	background-color:#5e9203;
+	border:1px solid #a2c628;
+	color:white;
 }
 .forms .recaptchatable #recaptcha_response_field{
 	background-image: url('../../images/website_images/input_bg.jpg ');
