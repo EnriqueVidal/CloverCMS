@@ -401,7 +401,7 @@ ul.services li a:hover{
 }
 .sidebar a, .sidebar a:active, .sidebar a:visited{
 	color:white;
-	text-decoration:none;
+	
 }
 
 /*footer*/
@@ -644,6 +644,7 @@ table.bordered tr.alt{
 	float:none;
 	padding:12px 6px;
 	font-weight:bold;
+	border:0px;
 }
 .forms .recaptchatable #recaptcha_response_field{
 	background-image: url('../../images/website_images/input_bg.jpg ');
