@@ -3,8 +3,7 @@ set :group_writable,  false
 set :keep_releases,   2
 
 set :application, "clovercms"
-set :subdomain,   "demo-cms"
-set :domain,      "#{subdomain}.cloverinteractive.com"
+set :domain,      "cloverinteractive.com"
 set :user,        "cloverin"
 
 set :scm,         :git
@@ -33,7 +32,7 @@ namespace :deploy do
     cloverinteractive::create_shared_folders
     cloverinteractive::fix_missing_gems_and_db
     cloverinteractive::link_public_html
-    #cloverinteractive::restart_txt
+    cloverinteractive::restart_txt
   end
   
   desc "Restart Passenger app"
@@ -50,7 +49,7 @@ namespace :deploy do
     
     desc "Links public_html to current_release/public"
     task :link_public_html do
-      run "cd /home/#{user}/public_html; mv #{subdomain} #{subdomain}.old; ln -s #{current_path}/public /home/#{user}/public_html/#{subdomain}"
+      run "cd /home/#{user};unlink www; ln -s #{current_path}/public www; unlink public_html; ln -s www public_html"
     end
  
     desc "Create log folder in shared"
