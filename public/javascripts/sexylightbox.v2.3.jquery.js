@@ -24,7 +24,7 @@ jQuery.bind = function(object, method){
       return {
         name          : 'SLB',
         zIndex        : 32000,
-        color         : 'black',
+        color         : 'blanco',
         find          : 'sexylightbox',
         dir           : '/images/sexyimages',
         emergefrom    : 'top',

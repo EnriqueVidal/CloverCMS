@@ -4,8 +4,8 @@ class Photo < Upload
   has_attached_file :upload,
                     :path     => ":rails_root/public/system/uploads/photos/:id/:style_:basename.:extension",
                     :styles   => {
-                                    :small  => "180x180>",
-                                    :medium => "500x300>"
+                                    :small  => "120x80>",
+                                    :medium => "180x120>"
                                   }
 
   validates_attachment_presence     :upload
