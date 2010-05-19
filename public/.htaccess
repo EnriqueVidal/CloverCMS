@@ -1,0 +1,9 @@
+PassengerEnabled on
+PassengerAppRoot /home/cloverin/etc/rails_apps/clovercms/current
+RailsEnv production
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule (.*) http://www.cloverinteractive.com/$1 [R=301,L]
+
+Options -Indexes

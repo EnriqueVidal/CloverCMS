@@ -12,6 +12,8 @@
 
     %title= 'CloverInteractive'
   %body{ :class => (current_page.present? && current_page.main_page? ? "" : "section" ) }
+    = render 'layouts/website/google_analytics'
+    
     #wrapper
       = render 'layouts/website/top'
       = render 'layouts/website/banner'
