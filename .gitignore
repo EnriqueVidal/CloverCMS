@@ -9,7 +9,5 @@ db/*.sqlite3
 .DS_Store
 public/images/system
 public/system
-public/.htaccess
-config/database.yml
 *.bak
 Thumbs.db
