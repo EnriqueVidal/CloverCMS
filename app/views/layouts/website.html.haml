@@ -4,11 +4,6 @@
     %link{ :rel => "shortcut icon", :href => "/favicon.ico" }
 
     = render 'layouts/website/document_headers'
-    = stylesheet_link_tag "website_css/main.css"
-    / Sexy lightbox stylesheets
-    = stylesheet_link_tag "sexylightbox.css"
-
-    = render 'layouts/website/slider_javascript'
 
     %title= 'CloverInteractive'
   %body{ :class => (current_page.present? && current_page.main_page? ? "" : "section" ) }
@@ -35,5 +30,9 @@
         - else
           = render 'layouts/website/left_404_info'
 
+      / Javascript 
+      = stylesheet_link_tag "website_css/main.css"
+      = stylesheet_link_tag "sexylightbox.css"
+      = render 'layouts/website/slider_javascript'
+      
       = render 'layouts/website/bottom'
-
