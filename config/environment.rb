@@ -29,7 +29,7 @@ Rails::Initializer.run do |config|
   config.gem 'will_paginate',           :source   => 'http://gemcutter.org',  :version => '~> 2.3.11'
   config.gem 'JasonKing-good_sort',     :lib      => 'good_sort',             :source => 'http://gems.github.com'
   config.gem 'kete-tiny_mce',           :lib      => 'tiny_mce',              :source => 'http://gems.github.com'
-  config.gem "ambethia-recaptcha",      :lib => "recaptcha/rails",            :source => "http://gems.github.com"
+  config.gem "ambethia-recaptcha",      :lib      => "recaptcha/rails",       :source => "http://gems.github.com"
   config.gem 'tlsmail'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
@@ -51,6 +51,4 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
-  
-
 end
