@@ -2,6 +2,8 @@
 %html{ :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
     %link{ :rel => "shortcut icon", :href => "/favicon.ico" }
+    = stylesheet_link_tag "website_css/main.css"
+    = stylesheet_link_tag "sexylightbox.css"
 
     = render 'layouts/website/document_headers'
 
@@ -30,9 +32,5 @@
         - else
           = render 'layouts/website/left_404_info'
 
-      / Javascript 
-      = stylesheet_link_tag "website_css/main.css"
-      = stylesheet_link_tag "sexylightbox.css"
-      = render 'layouts/website/slider_javascript'
-      
+      = render 'layouts/website/slider_javascript'      
       = render 'layouts/website/bottom'
