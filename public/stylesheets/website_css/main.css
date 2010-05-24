@@ -401,7 +401,7 @@ ul.services li a:hover{
 }
 .sidebar a, .sidebar a:active, .sidebar a:visited{
 	color:white;
-	
+
 }
 
 /*footer*/
@@ -489,7 +489,7 @@ body.section #banner h2{
 	margin-left:72px;
 	font-size:16px;
 	font-weight:bold;
-	
+
 }
 body.section #column{
 	width:281px;
@@ -692,25 +692,6 @@ table.bordered tr.alt{
 	float:none;
 }
 
-/* Row alignment */
-div.row {
-  clear: both;
-  padding-top: 5px;
-}
-div.row label.label {
-  float: left;
-  width: 65px;
-  text-align: left;
-}
-
-div.row span.formw {
-  float: right;
-  width: 420px;
-  text-align: left;
-}
-div.spacer {
-  clear: both;
-}
 /* ------ 500 styles ------- */
 html.p500{
 	background-color:#e9ffed;

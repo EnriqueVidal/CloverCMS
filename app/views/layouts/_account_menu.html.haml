@@ -3,6 +3,6 @@
     %li= link_to 'Login', new_user_session_path
     %li= link_to 'Register', new_user_registration_path
   - else
-    %li= 'Welcome '     + link_to(current_user.username, '#')
-    %li= ' Not you? '    + link_to('logout', destroy_user_session_path)
+    %li= 'Welcome '   + link_to(current_user.username, profile_path)
+    %li= ' Not you? ' + link_to('logout', destroy_user_session_path)
 

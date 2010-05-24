@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   validates_length_of       :password, :in => 6..20
   validates_uniqueness_of   :username
 
+   is_gravtastic :email, :secure => true, :filetype => :gif
 
 
   # Setup accessible (or protected) attributes for your model

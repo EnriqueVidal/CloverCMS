@@ -620,3 +620,23 @@ li.thumbnail_button
 	margin-top:				5px;
 }
 
+/* Row alignment */
+div.row {
+  clear: both;
+  padding-top: 5px;
+}
+div.row label.label {
+  float: left;
+  width: 65px;
+  text-align: left;
+}
+
+div.row span.formw {
+  float: right;
+  width: 420px;
+  text-align: left;
+}
+div.spacer {
+  clear: both;
+}
+

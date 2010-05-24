@@ -1,6 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   map.devise_for :users
 
+  map.profile       'profile',      :controller => :users,  :action => :show
+  map.edit_profile  'edit_profile', :controller => :people, :action => :edit
+
+  map.resources :users
 
   map.resources :email_lists, :collection => { :add_to_list => :post }
 
@@ -29,8 +33,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources   :pages,         :belongs_to => [ :section, :subsection ]
 
   map.resources :people
-  map.resources :members
-  map.resources :admins
+  #map.resources :members
+  #map.resources :admins
 
   map.root  :controller => :viewer, :action => :home_page
 
