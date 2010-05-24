@@ -1,13 +1,13 @@
 class ContactFormsController < ApplicationController
-  before_filter :check_authentication, :check_authorization, :except => [ :create ]
+  before_filter :authenticate_user!, :check_authorization, :except => [ :create ]
 
   def new
     @contact_form = ContactForm.new
   end
-  
+
   def create
     @contact_form = ContactForm.new( params[:contact_form] )
-    
+
     if verify_recaptcha( :model => @contact_form, :message => 'Recaptcha error' ) && @contact_form.valid?
       flash[:success] = "Your email has been sent."
 
@@ -20,3 +20,4 @@ class ContactFormsController < ApplicationController
     end
   end
 end
+

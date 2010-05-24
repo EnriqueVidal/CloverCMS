@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_filter :check_authentication, :check_authorization
+  before_filter :authenticate_user!, :check_authorization
 
   uses_tiny_mce :only => [:edit, :new], :options => {
                                                   :theme  => 'advanced',
@@ -17,12 +17,12 @@ class PagesController < ApplicationController
     @pageable = find_pageable
     @page     = Page.new
     @metas    = MetaTag.all
-    
+
     2.times do
       @page.photos.build
       @page.documents.build
     end
-    
+
     continue = params[:section_id] || params[:subsection_id]
 
     if continue.nil?
@@ -102,6 +102,6 @@ class PagesController < ApplicationController
 
     return nil
   end
-  
+
 end
 

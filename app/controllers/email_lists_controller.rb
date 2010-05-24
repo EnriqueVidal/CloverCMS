@@ -1,4 +1,4 @@
-class EmailListsController < ApplicationController                
+class EmailListsController < ApplicationController
   def add_to_list
     @email = EmailList.new(params[:email_list])
     respond_to do |format|
@@ -9,3 +9,4 @@ class EmailListsController < ApplicationController
     end
   end
 end
+

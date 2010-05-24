@@ -2,7 +2,7 @@ ENV['RAILS_ENV'] ||= 'production'
 # Be sure to restart your server when you modify this file
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.6' unless defined? RAILS_GEM_VERSION
 ENV['GEM_PATH'] = "/home/cloverin/ruby/gems/:/usr/lib/ruby/gems/1.8"  if `hostname`.chop == "highbury.webserversystems.com"
 ENV['GEM_HOME'] = "/home/cloverin/ruby/gems"                          if `hostname`.chop == "highbury.webserversystems.com"
 
@@ -31,6 +31,8 @@ Rails::Initializer.run do |config|
   config.gem 'kete-tiny_mce',           :lib      => 'tiny_mce',              :source => 'http://gems.github.com'
   config.gem "ambethia-recaptcha",      :lib      => "recaptcha/rails",       :source => "http://gems.github.com"
   config.gem 'tlsmail'
+  config.gem 'devise'
+  config.gem 'paperclip'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -42,7 +44,7 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
-  config.active_record.observers = :user_observer
+  #config.active_record.observers = :user_observer
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
@@ -52,3 +54,4 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+

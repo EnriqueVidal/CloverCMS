@@ -1,6 +1,6 @@
 class SectionsController < ApplicationController
-  before_filter :check_authentication, :check_authorization
-  
+  before_filter :authenticate_user!, :check_authorization
+
   def index
     @sections = Section.paginate_and_sort(params[:page], params[:sort])
 

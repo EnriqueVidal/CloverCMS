@@ -2,7 +2,7 @@
 %html
   %head
     %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
-    
+
     = javascript_include_tag        :defaults
     = calendar_date_select_includes "silver"
     = stylesheet_link_tag           "manager"
@@ -14,8 +14,8 @@
       #top-menu
         #account= render :partial => 'layouts/account_menu'
         %ul
-          - if logged_in? && current_user.admin?
-            %li= link_to 'Sections', '/sections'            
+          - if user_signed_in? && current_user.admin?
+            %li= link_to 'Sections', '/sections'
             %li= link_to 'SEO', '/meta_tags'
             %li= link_to 'Users', '/users'
 
@@ -28,7 +28,7 @@
         #content
           = render_flash_messages
           = yield
-          
+
     %script{ :type => 'text/javascript' }
       //<![[CDATA
       document.observe("dom:loaded", function(){
@@ -41,3 +41,4 @@
       catch(e) {}
       });
       //]]>
+

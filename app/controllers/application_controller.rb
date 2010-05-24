@@ -25,42 +25,19 @@ class ApplicationController < ActionController::Base
     return true
   end
 
-
-  def check_authentication
-    unless session[:user_id]
-      session[:intended_controller] = controller_name
-      session[:intended_action]     = action_name
-      flash[:error] = 'Necesitas iniciar session para entrar a esta area.'
-      redirect_to login_path
-    end
-  end
-
   def referer
     request.env["HTTP_REFERER"]
-  end
-
-  helper_method :logged_in?
-  def logged_in?
-    !! current_user
-  end
-
-  helper_method :current_user
-  def current_user
-    if @current_user.blank?
-      @current_user = User.find(session[:user_id]) unless session[:user_id].nil?
-    end
-    @current_user
   end
 
   def check_authorization
     unless !current_user.nil? && (current_user.admin? || current_user.roles.detect  { |role| role.rights.detect  { |right| right.action == action_name && right.controller ==  self.class.controller_path } } )
 
       flash[:notice] = "No estas autorizado para ver la pagina que haz solicitado"
-      request.env["HTTP_REFERER"] ? (redirect_to :back) : (redirect_to :login)
+      request.env["HTTP_REFERER"] ? (redirect_to :back) : (redirect_to new_user_session_path )
       return false
     end
   end
-  
+
   helper_method :current_section
   def current_section
     Section.find_by_name(params[:section_name]) rescue nil
@@ -70,7 +47,7 @@ class ApplicationController < ActionController::Base
   def current_page
     Page.find_by_name(params[:page_name]) rescue nil
   end
-  
+
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :pass
 

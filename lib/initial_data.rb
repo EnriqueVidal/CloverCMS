@@ -4,7 +4,7 @@ class InitialData
     content_fixture = File.new(Dir.pwd + '/lib/pages/pages_fixtures.yml')
     data            = YAML::load(content_fixture)
 
-    user      = { :username => 'admin', :email    => 'enrique@cloverinteractive.com', :pass     => 'admin' }
+    user      = { :username => 'admin', :email    => 'enrique@cloverinteractive.com', :password => 'administrator' }
 
     roles     = [ :post_editor, :post_comenter, :member ]
     rights    = {
@@ -40,31 +40,31 @@ class InitialData
                                           :controller => 'users',
                                           :action     => 'profile'
                                         },
-                
+
                                         {
                                           :name       => 'Edit own first name',
                                           :controller => 'people',
                                           :action     => 'set_person_first_name'
                                         },
-                
+
                                         {
                                           :name       => 'Edit own middle name',
                                           :controller => 'people',
                                           :action     => 'set_person_middle_name'
                                         },
-                
+
                                         {
                                           :name       => 'Edit own last name',
                                           :controller => 'people',
                                           :action     => 'set_person_last_name'
                                         },
-                
+
                                         {
                                           :name       => 'Edit avatar, gender and date of birth',
                                           :controller => 'people',
                                           :action     => 'update'
                                         },
-                
+
                                         {
                                           :name       => 'View other users profile',
                                           :controller => 'users',
@@ -72,7 +72,7 @@ class InitialData
                                         }
                                       ]
                 }
-                
+
     meta_tags = [
                   "Best Website Ever.",
                   "Fast Web development.",
@@ -118,7 +118,6 @@ class InitialData
     puts ">>>>> Creating Admin User <<<<<"
 
     @user                 = User.create!( user )
-    @user.activation_date = Time.now
     @user.save!
 
 
@@ -139,12 +138,12 @@ class InitialData
         @page       = Page.create(page_attr) if !Page.exists?(page_attr)
         @page.body  = page["body"]
         @page.save!
-        
+
         @page.update_attributes!(:main_page   => true) if @page.id == 1
-        @page.update_attributes!(:has_contact => true) if @page.pageable.name == "contacto" 
+        @page.update_attributes!(:has_contact => true) if @page.pageable.name == "contacto"
       end
     end
-    
+
   end
 
 end
