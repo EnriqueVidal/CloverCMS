@@ -3,6 +3,8 @@
   $('main').addClassName('nosidebar');
   $('profile_menu_link').addClassName('selected');
   //]]>
+
+%h2= "Datos personales de " + @user.username
 = render 'user_data'
 
 #person_box
@@ -10,7 +12,7 @@
     #first=         'First Name: '  + @user.person.first_name
     #middle_name=   'Middle Name: ' + @user.person.middle_name
     #last_name=     'Last Name: '   + @user.person.last_name
-
+    
     - if @user.person.gender.present?
       #gender
       Gender:
@@ -21,6 +23,6 @@
     - edit_message = 'Something is not right?'
   - else
     - edit_message = 'No data has been entered'
-
+%br
 #edit_personal_data= edit_message + ' click ' + link_to('here', edit_profile_path) + ' to edit.'
 

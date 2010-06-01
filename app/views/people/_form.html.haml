@@ -16,5 +16,11 @@
       %span.label= 'Gender'
       %span.formw= f.select :gender, [ 'male', 'female' ], :include_blank => true
     .row
+      %span.label= 'Bio'
+      %span.formw= f.text_area :bio, :rows => 10, :cols => 50
+    .row
+      %span.label= 'Likes'
+      %span.formw= f.text_area :likes, :rows => 10, :cols => 50
+    .row
       %span.formw= f.submit 'Submit'
 

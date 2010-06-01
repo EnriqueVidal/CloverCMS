@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :comments
+
+
+  map.article 'articles/:article_name.html', :controller => :articles, :action => :show
+  map.resources :articles
+
   map.devise_for :users
 
   map.profile       'profile',      :controller => :users,  :action => :show
@@ -16,8 +22,8 @@ ActionController::Routing::Routes.draw do |map|
   map.edit_meta_tag 'meta_tags/:id/edit',     :controller => 'meta_tags', :action => 'edit'
 
   map.resources     :uploads
-  map.delete_upload 'uploads/:id/destroy',          :controller => 'uploads', :action => 'destroy'
-  map.get_photos    'uploads/get_uploads/:page_id',  :controller => 'uploads', :action => 'get_uploads'
+  map.resources     :photos
+  map.get_photos    'uploads/get_uploads/:related_id/:related_type',  :controller => 'uploads', :action => 'get_uploads'
 
 
   map.show_subsection_page  ':section_name/:subsection_name/:page_name.html', :controller => 'viewer', :action => 'show_section_page'

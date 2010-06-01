@@ -621,6 +621,10 @@ li.thumbnail_button
 }
 
 /* Row alignment */
+div.half {
+	float:	left;
+	width: 	50%;
+}
 div.row {
   clear: both;
   padding-top: 5px;

@@ -9,7 +9,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100521214917) do
+ActiveRecord::Schema.define(:version => 20100601042945) do
+
+  create_table "articles", :force => true do |t|
+    t.string   "title"
+    t.string   "crest"
+    t.text     "body"
+    t.integer  "user_id"
+    t.boolean  "show_in_homepage"
+    t.boolean  "is_news"
+    t.boolean  "is_post"
+    t.boolean  "is_review"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "comments_count",   :default => 0
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "article_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "contact_forms", :force => true do |t|
     t.string   "email"
@@ -72,6 +95,8 @@ ActiveRecord::Schema.define(:version => 20100521214917) do
     t.string   "gender",             :limit => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "bio"
+    t.text     "likes"
   end
 
   create_table "related_pages", :force => true do |t|

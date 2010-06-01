@@ -6,7 +6,7 @@ class InitialData
 
     user      = { :username => 'admin', :email    => 'enrique@cloverinteractive.com', :password => 'administrator' }
 
-    roles     = [ :post_editor, :post_comenter, :member ]
+    roles     = [ :post_editor, :post_commenter, :member ]
     rights    = {
                     :post_editor  =>  [
                                         {
@@ -18,6 +18,16 @@ class InitialData
                                           :name       => 'Render new Post form',
                                           :controller => 'posts',
                                           :action     => 'new'
+                                        },
+                                        {
+                                          :name       => 'Render edit Post',
+                                          :controller => 'posts',
+                                          :action     => 'edit'
+                                        },
+                                        {
+                                          :name       => 'Update Post',
+                                          :controller => 'posts',
+                                          :action     => 'update'
                                         },
                                         {
                                           :name       => 'Delete Post',
@@ -39,24 +49,6 @@ class InitialData
                                           :name       => 'View own Profile',
                                           :controller => 'users',
                                           :action     => 'profile'
-                                        },
-
-                                        {
-                                          :name       => 'Edit own first name',
-                                          :controller => 'people',
-                                          :action     => 'set_person_first_name'
-                                        },
-
-                                        {
-                                          :name       => 'Edit own middle name',
-                                          :controller => 'people',
-                                          :action     => 'set_person_middle_name'
-                                        },
-
-                                        {
-                                          :name       => 'Edit own last name',
-                                          :controller => 'people',
-                                          :action     => 'set_person_last_name'
                                         },
 
                                         {

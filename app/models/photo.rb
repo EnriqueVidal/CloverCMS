@@ -4,8 +4,9 @@ class Photo < Upload
   has_attached_file :upload,
                     :path     => ":rails_root/public/system/uploads/photos/:id/:style_:basename.:extension",
                     :styles   => {
-                                    :small  => "120x80>",
-                                    :medium => "180x120>"
+                                    :squared  => "120x80#",
+                                    :small    => "120x80>",
+                                    :medium   => "180x120>"
                                   }
 
   validates_attachment_presence     :upload
@@ -19,9 +20,9 @@ class Photo < Upload
 
   private
 
-  def check_file_extension
+  def check_file_extension  
     extensions = %w( png gif jpg jpeg )
-    errors.add("File extension is invalid.") unless extensions.include? File.extname( upload.original_filename).gsub('.', '').downcase
+    errors.add("File extension is invalid.") unless extensions.include? File.extname(upload.original_filename).gsub('.', '').downcase
   end
 end
 

@@ -42,5 +42,5 @@
   = f.submit 'Update'
 
 %script{ :type => 'text/javascript' }
-  = remote_function :update => 'sidebar', :url => "/uploads/get_uploads/#{@page.id}"
+  = remote_function :update => 'sidebar', :url => "/uploads/get_uploads/#{@page.id}/page"
 

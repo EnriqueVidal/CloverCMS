@@ -1,0 +1,7 @@
+%h1= @article.title
+%span.small-text
+  = "Escrito por " + link_to( @article.user.username, '#', :class => 'hl1' ) + " hace " + say_it_in_spanish( time_ago_in_words( @article.created_at ) )
+%p= @article.body
+
+%br.clear
+= link_to 'Volver a la lista', articles_path, :class => 'hl1'

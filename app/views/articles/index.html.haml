@@ -1,0 +1,19 @@
+%h1 Ultimos articulos
+- @articles.each do |article|
+  .post
+    %table
+      %tr
+        %td.image{ :style => "float: left;width: 130px;margin: 0 10px" }
+          = link_to image_tag(article.photos.first.present? ? article.photos.first.upload_url(:squared) : 'default_pic'), article_path(article.name)
+        %td
+          .content
+            %h6= link_to article.title, article_path(article.name), :class => "hl1"
+            %strong= article.crest
+            %br
+            %span.small-text
+              = "Escrito hace por "
+              = link_to(article.user.username, '#', :class =>"hl1") + " hace " + say_it_in_spanish( time_ago_in_words( article.created_at ) )
+            %br
+            = minimize_text strip_html(article.body), 100
+    
+= will_paginate @articles

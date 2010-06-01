@@ -1,11 +1,16 @@
 #imid
   #column
-    %h2.sb_header Acerca de mi
+    %h2.sb_header= "Acerca del autor "
     .sidebar
-      %p.center.separate= image_tag "website_images/content/photo.jpg", :alt => ""
-      %p Lorem Ipsum has been the industry's standard dummy text
+      %p.center.separate= image_tag @article.user.gravatar_url, :alt => @article.user.username, :class => "profile_pic"
       %p
-        %strong Likes:
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type.
+        %strong= "Nombre:"
+        =h @article.user.full_name
+      %p
+        %strong= "Biografía:"
+        = minimize_text h( @article.user.bio ), 50
+      %p
+        %strong= "Gustos:"
+        = minimize_text h( @article.user.likes ), 50
     .sidebar_bottom
   #content= yield

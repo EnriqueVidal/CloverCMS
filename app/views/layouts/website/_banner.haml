@@ -7,13 +7,19 @@
       %h3
         Consigue aqui desde un consejo hasta una solución de telefonia
     #slider
-      #slider_left= link_to image_tag("website_images/scroll_left.gif", :alt => "Scroll left"), "#", :class => "previous"
+      #slider_left= link_to image_tag("website_images/scroll_left.gif",   :alt => "Scroll left"), "#", :class => "previous"
       = render 'layouts/website/slides'
       #slider_right= link_to image_tag("website_images/scroll_right.gif", :alt => "Scroll right"), "#", :class => "next"
   - else
     - if current_page.present?
       %h1= current_page.pageable.title
       %h2= current_page.title
+    - elsif current_article.present?
+      %h1= current_article.title
+      %h2= current_article.crest
+    - elsif current_controller == 'articles'
+      %h1 Articulos
+      %h2 Estos son los articulos de Clover interactive.
     - else
       %h1 Page not found
       %h2 You have tried to reach a page that does not exist.

@@ -44,7 +44,7 @@ class PagesController < ApplicationController
 
   def create
     @pageable = find_pageable
-    @page     = @pageable.pages.build(params[:page])
+    @page     = @pageable.pages.build( params[:page] )
 
     respond_to do |format|
       if @page.save

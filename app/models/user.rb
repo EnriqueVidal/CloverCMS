@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
-
-  has_one :person
+  has_many  :articles
+  has_one   :person
   has_and_belongs_to_many :roles
+  
+  delegate :full_name,  :to => :person
+  delegate :bio,        :to => :person
+  delegate :likes,      :to => :person
+  
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :confirmable, :lockable, :timeoutable and :activatable
   devise :registerable, :database_authenticatable, :recoverable, :activatable, :timeoutable,
@@ -16,10 +21,15 @@ class User < ActiveRecord::Base
   validates_length_of       :password, :in => 6..20
   validates_uniqueness_of   :username
 
-   is_gravtastic :email, :secure => true, :filetype => :gif
-
+   is_gravtastic :email, :secure => true, :filetype => :gif, :size => 90
+  
+  after_save :add_commenter_role
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :email, :password, :password_confirmation
+  
+  def add_commenter_role
+    self.roles << Role.find_by_name('Post commenter')
+  end
 end
 

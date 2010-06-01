@@ -692,6 +692,28 @@ table.bordered tr.alt{
 	float:none;
 }
 
+/* ------ small text ------- */
+
+.small-text {
+	font-size: 			80%;
+	padding:				0;
+}
+
+/* ------ author box ------- */
+
+.profile_pic {
+	background-color:	#FFFFFF;
+	border:						1px solid;
+	padding:					8px;
+}
+
+/* ------ Post 			 ------- */
+.post {
+	border-top: 1px solid #CCCCCC;
+	padding: 10px;
+}
+
+
 /* ------ 500 styles ------- */
 html.p500{
 	background-color:#e9ffed;

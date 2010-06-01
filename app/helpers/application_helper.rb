@@ -28,5 +28,13 @@ module ApplicationHelper
     link_to_function(name, h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"))
   end
   
+  def say_it_in_spanish(time)
+    time_in_spanish = time.gsub(/minute/, 'minuto').gsub(/hour/, 'hora').gsub(/day/, 'día').gsub(/less than a/, 'menos de un').gsub(/about/, '')
+    time_in_spanish.gsub(/months/, 'meses').gsub(/month/, 'mes').gsub(/year/, 'año')
+  end
+  
+  def strip_html(text)
+    text.gsub(/<\/?[^>]*>/, "")
+  end
 end
 

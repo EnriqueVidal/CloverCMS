@@ -1,0 +1,34 @@
+- form_for @article, :url => { :action => ((params[:action] == "new") ? :create : :update) }, :html => { :multipart => :true, :class => 'tabular' } do |f|
+  = f.error_messages  
+  = f.hidden_field :user_id,    :value => current_user.id
+
+  = f.hidden_field :is_post,    :value => 1 if params[:is_post].present?
+  = f.hidden_field :is_news,    :value => 1 if params[:is_news].present?
+  = f.hidden_field :is_review,  :value => 1 if params[:is_review].present?
+  
+  .half
+    .row
+      %span.label= 'Title'
+      %span.formw= f.text_field :title
+    .row
+      %span.label= 'Crest'
+      %span.formw= f.text_field :crest
+    .row
+      %span.label= 'Body'
+      %span.formw= f.text_area :body, :class => :mceEditor
+    .row
+      %span.formw=''
+    .row
+      %span.label= 'Show in home page?'
+      %span.formw= f.check_box :show_in_homepage
+    .row
+      %span.formw=''
+    .row
+      %span.formw= f.submit
+  
+  - if params[:action] == "new"
+    .half
+      %h3= "Photos"
+      - f.fields_for :photos do |photo|
+        = render 'photo_fields', :f => photo
+      #add_another_photo_link= link_to_add_fields 'Add another photo', f, :photos

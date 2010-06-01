@@ -1,0 +1,13 @@
+%script{ :type => 'text/javascript' }
+  //<![[CDATA
+  $('main').addClassName('nosidebar');
+  - if params[:is_post].present?
+    $('new_post_menu_link').addClassName('selected');
+  - elsif params[:is_news].present?
+    $('new_news_menu_link').addClassName('selected');
+  - else
+    $('new_review_menu_link').addClassName('selected');
+  //]]>
+
+%h2= "New article"
+= render 'form'

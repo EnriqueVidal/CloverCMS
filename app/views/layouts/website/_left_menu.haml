@@ -1,15 +1,23 @@
 #imid
   #column
-    %h2.sb_header= current_page.title.length > 33 ? "Descubre más" : current_page.title
-    .sidebar
-      %ul.services
-        - pages.each do |page|
-          %li= link_to page.title, show_section_page_path( section.name, page.name)
-        
-        - section.subsections.each do |subsection|
-          - subsection.pages.each do |page|
-            - if current_page.name != page.name
-              %li= link_to page.title, show_subsection_page_path( section.name, subsection.name, page.name )
+    - if current_page.present?
+      %h2.sb_header= current_page.title.length > 33 ? "Descubre más" : current_page.title
+      .sidebar
+        %ul.services
+          - pages.each do |page|
+            %li= link_to page.title, show_section_page_path( section.name, page.name)
+
+          - section.subsections.each do |subsection|
+            - subsection.pages.each do |page|
+              - if current_page.name != page.name
+                %li= link_to page.title, show_subsection_page_path( section.name, subsection.name, page.name )
+    - elsif current_controller == 'articles'
+      %h2.sb_header= 'Articulos'
+      .sidebar
+        %ul.services
+          %li= link_to 'Blog',      '#'
+          %li= link_to 'Noticias',  '#'
+          %li= link_to 'Reseñas',   '#'
              
       /
         %p.right= link_to "<span>More</span>", "#", :class => "button2"
