@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many  :comments#, :as => :commentable
   has_many  :articles
   has_one   :person
   has_and_belongs_to_many :roles

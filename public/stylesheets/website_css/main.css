@@ -728,3 +728,19 @@ html.p500 p{
 	padding:10px 0px;
 }
 
+div.comment
+{
+	padding: 10px 5px 10px 5px;
+	min-height: 56px;
+	border-bottom: 1px solid #e3e3e3;
+	color: #333333;
+	font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+	font-size: 13px;
+}
+
+.comment .gravatar
+{
+	width: 72px;
+	height: 62px;
+	float: left;
+}

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100601042945) do
+ActiveRecord::Schema.define(:version => 20100601043409) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(:version => 20100601042945) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "article_id"
     t.text     "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -183,6 +184,8 @@ ActiveRecord::Schema.define(:version => 20100601042945) do
     t.boolean  "admin",                               :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comments_count",                      :default => 0
+    t.integer  "articles_count",                      :default => 0
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

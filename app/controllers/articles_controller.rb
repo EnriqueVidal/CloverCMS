@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!, :check_authorization, :except => [ :index, :show ]
-  uses_tiny_mce :only => [:edit, :new], :options => {
+  uses_tiny_mce :only => [ :edit, :new, :show ], :options => {
                                                   :theme  => 'advanced',
                                                   :skin   => 'o2k7',
                                                   :plugins => %w( media print emotions searchreplace inlinepopups safari flash )
@@ -20,8 +20,9 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.xml
   def show
-    @article = Article.find_by_name(params[:article_name])
-
+    @article  = Article.find_by_name(params[:article_name])
+    @comments = @article.comments.paginate(:page => params[:page], :per_page => 5, :order => "created_at DESC")
+    
     respond_to do |format|
       format.html { render :layout => "website" }
       format.xml  { render :xml => @article }

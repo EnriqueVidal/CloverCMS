@@ -1,11 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :comments
-
-
   map.article 'articles/:article_name.html', :controller => :articles, :action => :show
-  map.resources :articles
+  map.resources :articles, :has_many => [ :comments ]
 
-  map.devise_for :users
+  map.devise_for :users, :has_many => [ :articles, :comments ]
 
   map.profile       'profile',      :controller => :users,  :action => :show
   map.edit_profile  'edit_profile', :controller => :people, :action => :edit

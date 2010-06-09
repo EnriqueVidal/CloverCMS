@@ -1,10 +1,11 @@
 class Article < ActiveRecord::Base
   include GenerateUrlName
   
-  belongs_to  :user
+  belongs_to  :user,      :counter_cache => true
   has_many    :uploads,   :as => :uploadable
   has_many    :photos,    :as => :uploadable, :dependent => :destroy
   has_many    :documents, :as => :uploadable, :dependent => :destroy
+  has_many    :comments,  :as => :commentable
   
   validates_uniqueness_of :title
   validates_presence_of   :title, :body, :crest
