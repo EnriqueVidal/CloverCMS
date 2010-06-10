@@ -12,7 +12,7 @@
   - @comments.each do |comment|
     .comment{ :style => ( iteration == 0 ? 'border-top: 1px solid #e3e3e3;' : '' ) }
       .gravatar
-        = image_tag @article.user.gravatar_url(:size => 50), :alt => @article.user.username, :class => "profile_pic"
+        = image_tag comment.user.gravatar_url(:size => 50), :alt => comment.user.username, :class => "profile_pic"
       .content
         %span.hl1= comment.user.username + ":"
         = comment.content
