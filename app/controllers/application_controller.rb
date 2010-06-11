@@ -1,7 +1,7 @@
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::Base  
   layout 'application'
   helper :all
   helper_method :referer, :current_section, :current_page, :current_article, :current_controller

@@ -10,11 +10,14 @@ class Photo < Upload
                                   }
 
   validates_attachment_presence     :upload
-  validates_attachment_content_type :upload, :content_type => [
-                                                                'image/jpeg',
-                                                                'image/png',
-                                                                'image/gif'
-                                                              ]
+  
+  # Possibly deprecated
+  #validates_attachment_content_type :upload, :content_type => [
+  #                                                              'image/jpeg',
+  #                                                              'image/png',
+  #                                                              'image/gif'
+  #                                                            ]
+  
   validates_attachment_size         :upload,  :less_than => 20.megabytes
   validate :check_file_extension
 
