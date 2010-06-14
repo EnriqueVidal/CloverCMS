@@ -18,7 +18,8 @@ class Document < Upload
                                                                 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
                                                                 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
                                                                 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' 
-                                                              ]                                                            
+                                                              ], :if => Proc.new { |d| d.kind_of?(Document) }
+                                                              
   validates_attachment_size           :upload, :less_tan => 20.megabytes
   validate :check_file_extension
 
