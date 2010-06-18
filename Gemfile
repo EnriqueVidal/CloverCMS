@@ -15,6 +15,7 @@ gem "ambethia-recaptcha",      :require => 'recaptcha/rails'
 
 group :development do
   gem 'metric_fu', '1.3.0', :require => 'metric_fu'
+  gem 'redgreen'
 end
 
 group :test do

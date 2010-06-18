@@ -1,9 +1,9 @@
 mysql:
   :adapter: mysql
   :host: localhost
-  :username: rails
-  :password:
-  :database: rails_plugin_test
+  :username: clover
+  :password: H@Nn@L1v3$
+  :database: cloverinteractive_test
 
 sqlite3:
   :adapter: sqlite3

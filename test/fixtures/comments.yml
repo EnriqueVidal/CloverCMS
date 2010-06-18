@@ -2,10 +2,10 @@
 
 one:
   user_id: 1
-  article_id: 1
+  commentable_id: 1
   content: MyText
 
 two:
   user_id: 1
-  article_id: 1
+  commentable_id: 1
   content: MyText
