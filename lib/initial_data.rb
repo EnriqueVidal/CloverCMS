@@ -36,7 +36,7 @@ class InitialData
                                         }
                                       ],
 
-                   :post_comenter =>  [
+                   :post_commenter =>  [
                                         {
                                           :name       => 'Create Comment',
                                           :controller => 'comments',

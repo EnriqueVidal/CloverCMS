@@ -5,12 +5,13 @@
       %p.center.separate= image_tag @article.user.gravatar_url, :alt => @article.user.username, :class => "profile_pic"
       %p
         %strong= "Nombre:"
-        =h @article.user.full_name
+        =h @article.user.full_name if @article.user.person.present?
       %p
         %strong= "Biografía:"
-        = minimize_text h( @article.user.bio ), 50
+        = minimize_text( h( @article.user.bio ), 50 ) if @article.user.person.present?
       %p
         %strong= "Gustos:"
-        = minimize_text h( @article.user.likes ), 50
+        = minimize_text( h( @article.user.likes ), 50 ) if @article.user.person.present?
     .sidebar_bottom
   #content= yield
+

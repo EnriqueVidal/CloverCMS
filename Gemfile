@@ -12,6 +12,7 @@ gem 'haml'
 gem 'JasonKing-good_sort',     :require => 'good_sort'
 gem 'kete-tiny_mce',           :require => 'tiny_mce'
 gem "ambethia-recaptcha",      :require => 'recaptcha/rails'
+gem 'coderay'
 
 group :development do
   gem 'metric_fu', '1.3.0', :require => 'metric_fu'

@@ -83,10 +83,10 @@
 				theme_advanced_font_sizes : "1,2,3,4,5,6,7",
 
 				extended_valid_elements : "img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|obj|param|embed]",
-				flash_external_list_url : "example_flash_list.js", // Optional URL to a list of SWF movies
-				flash_wmode : "transparent",
-				flash_quality : "high",
-				flash_menu : "false",
+				//flash_external_list_url : "example_flash_list.js", // Optional URL to a list of SWF movies
+				//flash_wmode : "transparent",
+				//flash_quality : "high",
+				//flash_menu : "false",
 
 				readonly : ed.settings.readonly
 			}, ed.settings);

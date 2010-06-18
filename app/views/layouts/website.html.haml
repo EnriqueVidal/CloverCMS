@@ -4,6 +4,7 @@
     %link{ :rel => "shortcut icon", :href => "/favicon.ico" }
     = stylesheet_link_tag "website_css/main.css"
     = stylesheet_link_tag "sexylightbox.css"
+    = stylesheet_link_tag "coderay/style.css"
     = include_sexy_bookmarks_if_needed
 
     = render 'layouts/website/document_headers'
@@ -11,7 +12,7 @@
     %title= 'CloverInteractive'
   %body{ :class => (current_page.present? && current_page.main_page? ? "" : "section" ) }
     = render 'layouts/website/google_analytics'
-    
+
     #wrapper
       = render 'layouts/website/top'
       = render 'layouts/website/banner'
@@ -33,5 +34,6 @@
           = render 'layouts/website/left_404_info'
 
       = include_tiny_mce_if_needed
-      = render 'layouts/website/slider_javascript'      
+      = render 'layouts/website/slider_javascript'
       = render 'layouts/website/bottom'
+

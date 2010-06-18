@@ -1,7 +1,7 @@
 %h1= @article.title
 %span.small-text
   = "Escrito por " + link_to( @article.user.username, '#', :class => 'hl1' ) + " hace " + say_it_in_spanish( time_ago_in_words( @article.created_at ) )
-%p= @article.body
+%p= coderay @article.body
 
 = show_sexy_bookmarks({ :title => @article.title, :permalink => permalink, :post_summary => @article.crest, :site_name => 'CloverInteractive' }, [ :facebook, :twitter, :blogger, :digg, :delicious, :meneame, :stumbleupon, :slashdot, :linkedin, :googlebuzz, :myspace, :googlebookmarks, :friendfeed, :orkut ] )
 
@@ -26,7 +26,8 @@
   - form_for [ @article, Comment.new ], :html => { :class => 'forms' } do |f|
     %p= f.text_area :content, :class => 'mceEditor'
     %p= f.submit 'Crear Comentario', :class => 'input_submit'
-    
+
 %br
 %br
 = link_to 'Volver a la lista', articles_path, :class => 'hl1'
+
