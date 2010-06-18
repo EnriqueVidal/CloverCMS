@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
                                                   :skin   => 'o2k7',
                                                   :plugins => %w( media print emotions searchreplace inlinepopups safari flash )
                                                 }
+  uses_sexy_bookmarks :only => [ :show ]
   
   # GET /articles
   # GET /articles.xml

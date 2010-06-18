@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::Base  
   layout 'application'
   helper :all
-  helper_method :referer, :current_section, :current_page, :current_article, :current_controller
+  helper_method :referer, :current_section, :current_page, :current_article, :current_controller, :permalink
   protect_from_forgery 
 
 
@@ -41,6 +41,9 @@ class ApplicationController < ActionController::Base
     params[:controller]
   end
 
+  def permalink
+    'http://' + request.host + request.request_uri
+  end
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :pass
 

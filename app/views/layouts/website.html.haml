@@ -4,7 +4,7 @@
     %link{ :rel => "shortcut icon", :href => "/favicon.ico" }
     = stylesheet_link_tag "website_css/main.css"
     = stylesheet_link_tag "sexylightbox.css"
-    = include_tiny_mce_if_needed
+    = include_sexy_bookmarks_if_needed
 
     = render 'layouts/website/document_headers'
 
@@ -18,6 +18,7 @@
 
       - section_pages = current_section.pages.find(:all, :conditions => "name != '#{params[:page_name]}'") if current_section.present?
       #mid
+        = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'
         - if current_section.present? && current_page.present?
           - if !current_page.main_page?
             = render 'layouts/website/left_menu', :pages => section_pages, :section => current_section
@@ -31,5 +32,6 @@
         - else
           = render 'layouts/website/left_404_info'
 
+      = include_tiny_mce_if_needed
       = render 'layouts/website/slider_javascript'      
       = render 'layouts/website/bottom'
