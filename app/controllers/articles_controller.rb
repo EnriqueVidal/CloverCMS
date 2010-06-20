@@ -1,10 +1,12 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!, :check_authorization, :except => [ :index, :show ]
-  uses_tiny_mce :only => [ :edit, :new, :show ], :options => {
-                                                  :theme  => 'advanced',
-                                                  :skin   => 'o2k7',
-                                                  :plugins => %w( media print emotions searchreplace inlinepopups safari flash )
+  uses_tiny_mce :only => [ :edit, :new ], :options => {
+                                                  :theme    => 'advanced',
+                                                  :skin     => 'o2k7',
+                                                  :plugins  => %w( emotions inlinepopups  ),
+                                                  :cleanup  => false
                                                 }
+  uses_tiny_mce       :only => [ :show ], :options => { :theme  => 'simple', :skin   => 'o2k7' }
   uses_sexy_bookmarks :only => [ :show ]
   
   # GET /articles

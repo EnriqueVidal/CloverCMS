@@ -1,7 +1,6 @@
 %h1= @article.title
-%span.small-text
-  = "Escrito por " + link_to( @article.user.username, '#', :class => 'hl1' ) + " hace " + say_it_in_spanish( time_ago_in_words( @article.created_at ) )
-%p= coderay @article.body
+%span.small-text= "Escrito por " + link_to( @article.user.username, '#', :class => 'hl1' ) + " hace " + say_it_in_spanish( time_ago_in_words( @article.created_at ) )
+= coderay @article.body
 
 = show_sexy_bookmarks({ :title => @article.title, :permalink => permalink, :post_summary => @article.crest, :site_name => 'CloverInteractive' }, [ :facebook, :twitter, :blogger, :digg, :delicious, :meneame, :stumbleupon, :slashdot, :linkedin, :googlebuzz, :myspace, :googlebookmarks, :friendfeed, :orkut ] )
 
@@ -30,4 +29,3 @@
 %br
 %br
 = link_to 'Volver a la lista', articles_path, :class => 'hl1'
-

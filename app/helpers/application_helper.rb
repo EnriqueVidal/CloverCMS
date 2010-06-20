@@ -38,10 +38,10 @@ module ApplicationHelper
   end
 
   def coderay(text)
-  text.gsub(/\<code( lang="(.+?)")?\>(.+?)\<\/code\>/m) do
-    CodeRay.scan($3, $2).div(:css => :class)
+    text.gsub(/\<code( lang="(.+?)")?\>(.+?)\<\/code\>/m) do
+      CodeRay.scan($3, $2).div(:css => :class, :line_numbers => :inline).gsub(/&amp;lt;/, "&lt;").gsub(/&amp;gt;/, "&gt;").gsub(/\n/, "\r")
+    end
   end
-end
 
 end
 
