@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :snippets, :member => { :delete => :get }
+
   map.article 'articles/:article_name.html', :controller => :articles, :action => :show
-  map.resources :articles, :has_many => [ :comments ]
+  map.resources :articles, :has_many => [ :comments, :snippets ]
 
   map.devise_for :users, :has_many => [ :articles, :comments ]
 

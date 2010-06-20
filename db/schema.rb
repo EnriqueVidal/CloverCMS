@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100601043409) do
+ActiveRecord::Schema.define(:version => 20100620164931) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -135,6 +135,15 @@ ActiveRecord::Schema.define(:version => 20100601043409) do
     t.datetime "updated_at"
     t.string   "title"
     t.integer  "main_section_id"
+  end
+
+  create_table "snippets", :force => true do |t|
+    t.string   "lang"
+    t.text     "code"
+    t.integer  "snippetable_id"
+    t.string   "snippetable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", :force => true do |t|

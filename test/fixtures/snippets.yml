@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  lang: MyString
+  code: MyText
+  snippetable_id: 
+  snippetable_type: MyString
+
+two:
+  lang: MyString
+  code: MyText
+  snippetable_id: 
+  snippetable_type: MyString

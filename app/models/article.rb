@@ -6,6 +6,7 @@ class Article < ActiveRecord::Base
   has_many    :photos,    :as => :uploadable, :dependent => :destroy
   has_many    :documents, :as => :uploadable, :dependent => :destroy
   has_many    :comments,  :as => :commentable
+  has_many    :snippets,  :as => :snippetable
   
   validates_uniqueness_of :title
   validates_presence_of   :title, :body, :crest

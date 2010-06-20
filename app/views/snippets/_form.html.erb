@@ -1,0 +1,18 @@
+<% form_for(@snippet) do |f| %>
+  <% lang_collect = [ %w( Ruby ruby ), %w( RHTML/ERB rhtml ),  %w( C c ),  %w( C++ cpp  ), %w( Java java ), %w(HTML html) ] %>
+  <%= f.error_messages %>
+  <%= hidden_field_tag :article_id, params[:article_id] %>
+  
+  <p>
+    <%= f.label :lang %><br />
+    <%= f.select :lang, lang_collect  %>
+  </p>
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_area( :code, :style => 'width: 90%;') %>
+  </p>
+  
+  <p>
+    <%= f.submit 'Submit' %>
+  </p>
+<% end %>

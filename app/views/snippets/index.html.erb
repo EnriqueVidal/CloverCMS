@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag "coderay/style.css" %>
+
+<h1>Listing snippets for <%= @snippetable.title %></h1>
+
+
+<% @snippets.each do |snippet| %>
+  <%= coderay snippet.code, snippet.lang %>
+  <%= link_to 'Show',   article_snippet_path(@snippetable.id, snippet) %> | 
+  <%= link_to 'Delete', delete_snippet_path( snippet ) %>
+<% end %>
+
+
+<br />
+<br />
+<%= link_to 'New snippet', new_article_snippet_path( @snippetable ) %>
