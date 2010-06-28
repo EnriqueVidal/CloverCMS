@@ -126,13 +126,13 @@ class InitialData
         @section = Section.find_or_create_by_title(page)
         @section.save!
       else
-        page_attr   = { :title => page["title"], :body => page["body"], :pageable_id => @section.id, :pageable_type => "Section" }
-        @page       = Page.create(page_attr) if !Page.exists?(page_attr)
-        @page.body  = page["body"]
-        @page.save!
+        @page = @section.pages.build( :title => page["title"], :body => page["body"] )
 
-        @page.update_attributes!(:main_page   => true) if @page.id == 1
-        @page.update_attributes!(:has_contact => true) if @page.pageable.name == "contacto"
+        if @page.valid?
+          @page.save!         
+          @page.update_attributes!(:main_page   => true) if @page.id == 1
+          @page.update_attributes!(:has_contact => true) if @page.section.name== "contacto"
+        end
       end
     end
 

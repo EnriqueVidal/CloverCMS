@@ -3,8 +3,7 @@ class CreatePages < ActiveRecord::Migration
     create_table :pages do |t|
       t.column  :title,         :string
       t.column  :body,          :text
-      t.column  :pageable_id,   :integer
-      t.column  :pageable_type, :string
+      t.column  :section_id,    :integer
       t.timestamps
     end
   end

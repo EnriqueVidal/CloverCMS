@@ -1,15 +1,17 @@
 %table.list
   %thead
     %tr
-      - sort_headers_for :page, %w{title created_at updated_at operations} do |header|
-        - "Last Changed" if header == 'updated_at'
+      %th title
+      %th created at
+      %th last changed
+      %th operations
   - @pages.each do |page|
     %tr{ :class => cycle(:odd, :even) }
 
-      - if page.pageable.main_section.blank?
-        %td= link_to page.title, show_section_page_path(page.pageable.name, page.name), :target => :_blank
+      - if @section.main_section.blank?
+        %td= link_to page.title, show_section_page_path(@section.name, page.name), :target => :_blank
       - else
-        %td= link_to page.title, show_subsection_page_path(page.pageable.main_section.name, page.pageable.name, page.name), :target => :_blank
+        %td= link_to page.title, show_subsection_page_path(section.main_section.name, @section.name, page.name), :target => :_blank
 
       %td= page.created_at.strftime("%B, %d %Y")
       %td= page.updated_at.strftime("%B, %d %Y")

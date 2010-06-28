@@ -1,17 +1,12 @@
-%script{ :type => 'text/javascript' }
-  //<![[CDATA
-  $('main').addClassName('nosidebar');
-  $('profile_menu_link').addClassName('selected');
-  //]]>
-
 %h2= "Datos personales de " + @user.username
 = render 'user_data'
 
 #person_box
   - if @user.person.present?
-    #first=         'First Name: '  + @user.person.first_name
-    #middle_name=   'Middle Name: ' + @user.person.middle_name
-    #last_name=     'Last Name: '   + @user.person.last_name
+    #first=         'First Name: '    + @user.person.first_name
+    #middle_name=   'Middle Name: '   + @user.person.middle_name
+    #last_name=     'Last Name: '     + @user.person.last_name
+    #date_of_birth= 'Date of birth: ' + @user.person.date_of_birth.to_s
     
     - if @user.person.gender.present?
       #gender
@@ -26,3 +21,8 @@
 %br
 #edit_personal_data= edit_message + ' click ' + link_to('here', edit_profile_path) + ' to edit.'
 
+%script{ :type => 'text/javascript' }
+  $(document).ready(function() {
+  $('#main').addClass('nosidebar');
+  $('#profile_menu_link').addClass('selected');
+  });

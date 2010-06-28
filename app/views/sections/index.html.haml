@@ -20,8 +20,6 @@
   = link_to 'Add a new Section', new_section_path(), :class => 'icon icon_add'
 
 %script{ :type => 'text/javascript' }
-  //<![[CDATA
-  $('sidebar').appendChild($('operations_placeholder'));
-  $('operations_placeholder').toggle();
-  //]>
+  $('#sidebar').append($('#operations_placeholder'));
+  $('#operations_placeholder').toggle();
 

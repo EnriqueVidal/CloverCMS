@@ -1,10 +1,9 @@
-%script{ :type => 'text/javascript' }
-  //<![[CDATA
-  $('new_section_menu_link').addClassName('selected');
-  //]]>
-
-
-%h2
-  Add Section
-
+%h2 Add Section
 = render 'form'
+
+%script{ :type => 'text/javascript' }
+  $(document).ready(function(){
+  $('#new_section_menu_link').addClass('selected');
+  $('#main').addClass('nosidebar');
+  submit_button();
+  });

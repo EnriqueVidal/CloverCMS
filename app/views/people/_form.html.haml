@@ -1,4 +1,4 @@
-- form_for(@person) do |f|
+- form_for(@person, :html => { :class => 'form' } ) do |f|
   = f.error_messages
   = f.hidden_field :user_id
 
@@ -16,11 +16,22 @@
       %span.label= 'Gender'
       %span.formw= f.select :gender, [ 'male', 'female' ], :include_blank => true
     .row
+      %span.label= 'Date of birth'
+      %span.formw= f.text_field :date_of_birth, :size => 15
+    .row
       %span.label= 'Bio'
       %span.formw= f.text_area :bio, :rows => 10, :cols => 50
     .row
       %span.label= 'Likes'
-      %span.formw= f.text_area :likes, :rows => 10, :cols => 50
+      %span.formw= f.text_area :likes, :rows => 10, :cols => 50    
     .row
-      %span.formw= f.submit 'Submit'
+      %span.formw
+        %button.submit Submit
 
+
+%script{ :type => 'text/javascript' }
+  $(document).ready(function() { 
+  $('#person_date_of_birth').datepicker( { changeYear: true, yearRange: '1950:2005' } );
+  $("#page_has_contact").button( { icons: { primary: 'ui-icon-mail-closed' } } );  
+  submit_button();
+  } );

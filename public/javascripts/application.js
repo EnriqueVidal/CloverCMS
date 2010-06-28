@@ -1,139 +1,195 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
-
-document.observe("dom:loaded", function() {
-  // the element in which we will observe all clicks and capture
-  // ones originating from pagination links
-  var container = $(document.body)
-
-  if (container) {
-    var img = new Image
-    img.src = '/images/spinner.gif'
-
-    function createSpinner() {
-      return new Element('img', { src: img.src, 'class': 'spinner' })
-    }
-
-    container.observe('click', function(e) {
-      var el = e.element()
-      if (el.match('.pagination a')) {
-        el.up('.pagination').insert(createSpinner())
-        new Ajax.Request(el.href, { method: 'get' })
-        e.stop()
-      }
-    })
-  }
-})
-
-function checkPresence( field )
+// Add images to editor
+function add_images()
 {
-	var hint = $F( field ).length == 0 ? "Try again!" : "Right on!";
-
-	if ( $( field + '_hint' ) )
-	{
-		$( field + '_hint' ).update( hint );
-	}
-	else
-	{
-		content = '<span class="validation" id="' + field + '_hint">' + hint + '</span>';
-		new Insertion.After( field, content );
-	}
+	$(".galleria-thumbnails .galleria-image img").each(function(){
+	    $(this).dblclick(function(){
+	      image_operations({ element: this, title: 'Add image', text: 'Would you like to add this image to the page?' })
+	    });
+	});
 }
 
-function remove_fields(link) {
-  $(link).previous("input[type=hidden]").value = "1";
-  $(link).up(".fields").hide();
-}
+// Add documents to editor
 
-function add_fields(link, association, content) {
-  var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g")
-  $(link).up().insert({
-    before: content.replace(regexp, new_id)
-  });
-}
-
-
-
-
-function showItem(element, trigger)
+function add_documents()
 {
-	if (element != null)
-		element.show();
-	if (trigger != null )
-		trigger.hide();
+	$("#documents a").each(function(){
+	    $(this).click(function(){
+	        document_operations({ element: this, title: 'Add document', text: 'Would you like to add this document to the page?' } );
+	        return false;
+	    });
+	});
 }
 
-function update_hidden_value(text_field, option)
+// Keywords box functions
+
+function existing_keywords()
 {
-	var hidden_field 	= $(text_field).previous('.hidden_for_autocomplete');
-	hidden_field.value 	= option.value;
-	block_field(tf);
+	$('#tag_list').children().each(function(){
+		$(this).dblclick(function(){
+		    delete_confirmation_dialog({ 
+																			element: 	this, 
+																			title: 		'Delete tag from tag list', 
+																			text: 		'Are you sure you want to delete ' + this.value + ' from your tag list?', 
+																			onsuccess: 'keyword_list' 
+																		});
+		});
+	});
 }
 
-function imageAdd(element_id, iframe_id)
+function add_keywords()
 {
-    var src     = $(element_id).src.split('?')[0];
-    var img_tag = document.createElement("img")
-    img_tag.src = src;
-
-    $(iframe_id).contentDocument.body.appendChild(img_tag);
-
+	$('#keyword_button').click(function(){
+  		$('#keyword_input').html(function() {
+  				if (this.value != '')
+  				{
+  					$('#tag_list').append('<option class="tag">' + this.value + '</option>');
+						$("#tag_list").children(":last").dblclick	(function(){
+								delete_confirmation_dialog({ 	element: 	this, 
+																							title: 		'Delete tag from tag list', 
+																							text: 		'Are you sure you want to delete ' + this.value + ' from your tag list?', 
+																							onsuccess: 'keyword_list' 
+																						});
+							});
+						keyword_list();
+						this.value = '';
+  				}
+  			});
+  	});
 }
 
-function documentAdd(element_id, iframe_id)
-{
-	var href						= $(element_id).href.split('?')[0];
-	var extension 			= href.split('.')[ href.split('.').length - 1 ]
-	var link_tag				= document.createElement('a');
-	var line_break			= document.createElement('br')
-	link_tag.href 			= href;
-	link_tag.innerHTML 	= $(element_id).innerHTML
-		
-	link_tag.addClassName('icon');
-	link_tag.addClassName(extension);
+function keyword_list()
+{	
+	var keywords = "";
+	$("#tag_list option").each(function(){
+	    if ( keywords == "")
+	        keywords = this.value;
+	    else
+	        keywords = keywords + ", " + this.value;
+	});
 	
-	$(iframe_id).contentDocument.body.appendChild(line_break);
-	$(iframe_id).contentDocument.body.appendChild(link_tag);
+	$("#final_tag_list")[0].value = keywords;
 }
 
-function addKeyWord(element)
+// Dialog box functions
+
+function delete_confirmation_dialog( params )
 {
-  var option = document.createElement("option");
-  var tag_list = $('page_tag_list');
+	element = '<div id="dialog-confirm" title="' + params.title + '"><p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>';
+	element	+= params.text + '</p></div>';
 
-  option.innerHTML   = element.value;
-  tag_list.value    += ( tag_list.value.replace(/^\s*/, "").replace(/\s*$/, "") != "" ) ? ', ' + element.value : element.value;
+	$("#main").append(element);
+	
+	$(function() {
+			// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+			$("#dialog").dialog("destroy");
 
-  $('page_tag_list_visuals').appendChild(option);
-  element.value = '';
+			$("#dialog-confirm").dialog({
+				resizable: false,
+				modal: true,
+				dialogClass: 'alert',
+				buttons: {
+					'Delete': function() {
+						$(this).dialog('close');
+						$(params.element).remove();
+						eval(params.onsuccess + '()');
+						$(this).remove();
+					},
+					Cancel: function() {
+						$(this).dialog('close');
+						$(this).remove();
+					}
+				}
+			});
+	});
 }
 
-function TogglePageBoxes(box)
+function image_operations( params )
 {
-  for(var i = 0; i < page_boxes.length; i++)
-  {
-    if (typeof box == 'string')
-    {
-      if (page_boxes[i] != box)
-        $(page_boxes[i]).hide();
-    }
-    else
-    {
-      var conditions = "";
+	element  = '<div id="dialog-pictures" title="' + params.title + '"><p><span class="ui-icon ui-icon-image" style="float:left; margin:0 7px 20px 0;"></span>';
+	element += params.text + '</p></div>';
+	$("#main").append(element);
+	
+	$(function() {
+			// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+			$("#dialog").dialog("destroy");
 
-      for(var j = 0; j < box.length; j++)
-      {
-        conditions += (conditions != "") ? " && '" + page_boxes[i] + "' != '" + box[j] + "'" : "'" + page_boxes[i] + "' != '" + box[j] + "'";
-      }
-
-      if (eval(conditions)) { $(page_boxes[i]).hide(); }
-    }
-  }
-
-  if (typeof box == 'string')
-    $(box).toggle();
-  else
-    box.each(Element.toggle);
+			$("#dialog-pictures").dialog({
+				resizable: false,
+				modal: true,
+				dialogClass: 'info',
+				buttons: {
+					'Add picture to page': function() {
+						$(this).dialog('close');
+						$("body", $("iframe").contents()).append("<br /><img src=\"" + params.element.src.replace(/squared/, 'medium' ) +  "\" />");
+						$(this).remove();
+					},
+					Cancel: function() {
+						$(this).dialog('close');
+						$(this).remove();
+					}
+				}
+			});
+	});	
 }
 
+
+function document_operations( params )
+{
+	element = '<div id="dialog-documents" title="' + params.title + '"><p><span class="ui-icon ui-icon-document" style="float:left; margin:0 7px 20px 0;"</span>';
+	element += params.text + '</p></div>';
+	$("#main").append(element);
+	
+	$(function() {
+			// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+			$("#dialog").dialog("destroy");
+
+			$("#dialog-documents").dialog({
+				resizable: false,
+				modal: true,
+				dialogClass: 'info',
+				buttons: {
+					'Add picture to page': function() {
+						$(this).dialog('close');
+						$("body", $("iframe").contents()).append("<a href=\"" + params.element.href + "\">" + params.element.innerHTML + "</a>");
+						$(this).remove();
+					},
+					Cancel: function() {
+						$(this).dialog('close');
+						$(this).remove();
+					}
+				}
+			});
+	});
+}
+
+// nested models
+
+$(function() {
+  $('form a.add_child').click(function() {
+    var association = $(this).attr('data-association');
+    var template 		= $('#' + association + '_fields_template').html();
+    var regexp 			= new RegExp('new_' + association, 'g');
+    var new_id 			= new Date().getTime();
+
+    $(this).parent().before(template.replace(regexp, new_id));
+    return false;
+  });
+
+  $('form a.remove_child').live('click', function() {
+    var hidden_field = $(this).prev('input[type=hidden]')[0];
+    if(hidden_field) {
+      hidden_field.value = '1';
+    }
+    $(this).parents('.fields').hide();
+    return false;
+  });
+});
+
+// button methods
+
+function submit_button()
+{
+	$('.submit').button( { icons: { primary: 'ui-icon-circle-check' } } ).click(function() {
+  		$('.form').submit();
+  	});
+}

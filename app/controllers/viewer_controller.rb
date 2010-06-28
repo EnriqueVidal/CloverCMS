@@ -3,7 +3,7 @@ class ViewerController < ApplicationController
   
   def home_page
     main_page = Page.find_by_main_page(true)
-    redirect_to show_section_page_path( main_page.pageable.name, main_page.name )
+    redirect_to show_section_page_path( main_page.section.name, main_page.name )
   end
 
   def show_section_page

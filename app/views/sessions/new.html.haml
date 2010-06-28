@@ -1,7 +1,6 @@
 %script{ :type => 'text/javascript' }
-  //<![[CDATA
-  $('main').addClassName('nosidebar');
-  //]]>
+  $(document).ready(function(){ $('#main').addClass('nosidebar'); });
+
 #login-form
   - form_for resource_name, resource, :url => session_path(resource_name) do |f|
     %table

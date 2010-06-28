@@ -2,7 +2,7 @@ class SectionsController < ApplicationController
   before_filter :authenticate_user!, :check_authorization
 
   def index
-    @sections = Section.paginate_and_sort(params[:page], params[:sort])
+    @sections = Section.paginate(:page => params[:page])
 
     if request.xhr?
       return render :partial => 'sections'

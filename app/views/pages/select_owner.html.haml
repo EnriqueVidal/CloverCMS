@@ -1,29 +1,18 @@
-%script{ :type => 'text/javascript' }
-  //<![[CDATA
-  $('new_page_menu_link').addClassName('selected');
-  //]]>
-
-%h2 Select an owner for this new Page
-
-%p Each page must belong a rightful owner.
+%h2=  'Select an owner for this new Page'
+%p=   'Each page must belong a rightful owner.'
 
 %form#owner_form{ :action => '/pages/new', :method => :get }
+  %h3= 'Sections'
 
-  %h3 Sections
+  = select :section, :id, @sections.collect { |section| [ section.title, section.id ] }, :include_blank => true
 
-  %select{ :name => 'section_id', :onchange => 'validateSelection(this);'}
-    %option{ :value => 0 } Select an option
-    - @sections.each do |section|
-      %option{ :value => section.id }
-        = section.title
 
 
 %script{ :type => 'text/javascript' }
-  //<![[CDATA
-  function validateSelection(element)
-  {
-  if (element.value != 0)
-  $('owner_form').submit();
-  }
-  //]]>
+  $(document).ready(function() {
+  $('#new_page_menu_link').addClass('selected');
+  $('#section_id').change(function() {
+  $('#owner_form').submit();
+  });
+  });
 

@@ -2,34 +2,27 @@ class PagesController < ApplicationController
   before_filter :authenticate_user!, :check_authorization
 
   uses_tiny_mce :only => [:edit, :new], :options => {
-                                                  :theme  => 'advanced',
-                                                  :skin   => 'o2k7',
-                                                  :plugins => %w( media print emotions searchreplace inlinepopups safari flash )
+                                                  :theme    => 'advanced',
+                                                  :skin     => 'o2k7',
+                                                  :plugins  => %w(  emotions searchreplace inlinepopups safari )
                                                 }
 
   def index
-    lists = find_pageable true
-    @pageable, @pages = lists[0], lists[1]
-    return render :partial => 'pages' if request.xhr?
+    @section  = Section.find( params[:section_id] )
+    @pages    = @section.pages.paginate(:page => params[:page])
   end
 
   def new
-    @pageable = find_pageable
-    @page     = Page.new
-    @metas    = MetaTag.all
-
-    2.times do
+    if ( params[:section].present? && params[:section][:id].present? ) || params[:section_id].present?
+      @section    = Section.find(params[:section][:id] )  rescue nil
+      @section  ||= Section.find(params[:section_id] )    rescue nil
+      @page       = @section.pages.new if @section
+      @metatags   = MetaTag.all
+      
       @page.photos.build
       @page.documents.build
-    end
-
-    continue = params[:section_id] || params[:subsection_id]
-
-    if continue.nil?
+    else
       redirect_to pick_onwer_path
-    elsif @pageable.nil?
-      flash[:error] = "You have tried to add this page to an element that does not exist."
-      redirect_to sections_path
     end
   end
 
@@ -38,16 +31,20 @@ class PagesController < ApplicationController
   end
 
   def edit
-    @page   = Page.find(params[:id])
-    @metas  = MetaTag.all
+    @page       = Page.find(params[:id])
+    @metatags   = MetaTag.all
+    @section    = @page.section
   end
 
   def create
-    @pageable = find_pageable
-    @page     = @pageable.pages.build( params[:page] )
+    @section  = Section.find( params[:section_id] ) rescue nil
+    @page     = @section.pages.build( params[:page] ) if @section
+    
+    @page.photos.build(params[:photos])       if params[:photos].values.all?(&:present?)
+    @page.documents.build(params[:documents]) if params[:documents].values.all?(&:present?)
 
     respond_to do |format|
-      if @page.save
+      if @section && @page.save
         flash[:success] = 'Page was successfully created.'
         format.html { redirect_to (@page.uploads.count >= 1) ? edit_page_path(@page) : sections_path }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
@@ -61,11 +58,13 @@ class PagesController < ApplicationController
 
   def update
     @page = Page.find(params[:id])
+    @page.photos.build(params[:photos])       if params[:photos].values.all?(&:present?)
+    @page.documents.build(params[:documents]) if params[:documents].values.all?(&:present?)
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
         flash[:notice] = 'Page was successfully updated.'
-        format.html { redirect_to :controller => :manager, :action => :index  }
+        format.html { redirect_to edit_page_path @page }
         format.xml  { head :ok }
       else
         format.html { render :action => :update }
@@ -75,7 +74,7 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    @page       = Page.find(params[:id])
+    @page   = Page.find(params[:id])
     @page.destroy
 
     respond_to do |format|
@@ -84,24 +83,5 @@ class PagesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
-  private
-
-  def find_pageable(paginate=false)
-    params.each do |name, value|
-      if name =~ /(.+)_id$/ and value.to_i > 0
-        type      = $1.classify
-        custom    = { :pageable_id => value, :pageable_type => type }
-        pageable  = type.constantize.find(value) rescue nil
-
-        list      = [ pageable, Page.paginate_and_sort(params[:page], params[:sort], custom) ]
-
-        return ( paginate ) ? list : list[0]
-      end
-    end
-
-    return nil
-  end
-
 end
 

@@ -73,8 +73,7 @@ ActiveRecord::Schema.define(:version => 20100620164931) do
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.integer  "pageable_id"
-    t.string   "pageable_type"
+    t.integer  "section_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"

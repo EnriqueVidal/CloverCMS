@@ -1,0 +1,53 @@
+- form_for @page, :html => { :multipart => :true, :class => 'form' } do |f|
+  = f.error_messages
+  = hidden_field_tag :section_id, @section.id
+  
+  #page_content
+    .splitcontentleft
+      %p
+        = f.label       :title
+        = f.text_field  :title
+      %p= f.text_area   :body, :class => 'mceEditor'
+      
+      %br.spacer
+      %br.spacer
+      
+      #check_box_format
+        = f.check_box :has_contact
+        = f.label :has_contact
+
+      %br.clear
+      %button.submit Submit
+      
+    .splitcontentright
+      %p
+        %label Extras
+      
+      #accordion
+        %h6
+          %a{ :href => '#' }= 'SEO Meta tags'
+        #seo_box
+          = render 'meta_tags/all_meta_tags', :metas => @metatags, :page => @page
+        %h6
+          %a{ :href => '#' }= 'SEO keywords'
+        #tags
+          = render 'shared/keywords', :f => f
+        %h6
+          %a{ :href => '#' }= 'Upload images'
+        #images
+          - fields_for :photos do |photo|
+            = render 'photo', :f => photo
+          %span
+            = add_child_link "New Photo",   :photos
+            = new_child_fields_template f,  :photos
+        %h6
+          %a{ :href => '#' }= 'Upload documents'
+        #documents
+          - fields_for :documents do |upload|
+            = render 'document', :f => upload
+          %span
+            = add_child_link "New Document",  :documents
+            = new_child_fields_template f,    :documents
+
+%script{ :type => 'text/javascript' }
+  setTimeout('$(".mceLayout").css("width", "100%");', 250);

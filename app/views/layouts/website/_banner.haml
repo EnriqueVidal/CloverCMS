@@ -12,7 +12,7 @@
       #slider_right= link_to image_tag("website_images/scroll_right.gif", :alt => "Scroll right"), "#", :class => "next"
   - else
     - if current_page.present?
-      %h1= current_page.pageable.title
+      %h1= current_page.section.title
       %h2= current_page.title
     - elsif current_article.present?
       %h1= current_article.title

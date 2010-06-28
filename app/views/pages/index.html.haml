@@ -1,34 +1,22 @@
-- place   = @pages.first.pageable
-
-%h2= 'Site Pages of ' + place.name
+%h2= 'Site Pages of ' + @section.name
 
 #page_content.splitcontentleft{ :style => 'width: 66%;' }
   %p To keep everything in place and organized, CloverInteractive's Clever CMS does not allow orphan pages, by orphan pages we mean pages that are not assigned to an specific section or subsection. Orphan pages make your site look messy and disorganized.
 
   #pages
     = render :partial => 'pages'
-  #spinner
 
 #tips_content.box.splitcontentright{ :style => 'width: 29%;' }
   %h3 Did you know?
   %p In this latest version of CloverInteractive's Clever CMS, many page creating, editing and displaying issues have been resolved, now you no longer need to think how to name pages as names are taken out of your page title. That way the page name both the user and the Search Engine see is consistent with your content.
 
 #operations_placeholder{ :style => 'display: none;' }
-  - owner     = @pages.first.pageable
-
   %h3 Operations
-  - if owner.class == Section
-    = link_to 'Add a new Page', new_section_page_path(owner), :class => 'icon icon_page_add'
-  - else
-    = link_to 'Add a new Page', new_subsection_page_path(owner),  :class => 'icon icon_page_add'
-    %br
-    = link_to 'Back to Subsections', section_subsections_path(owner.section), :class => 'icon icon_back'
+  = link_to 'Add a new Page', new_section_page_path(@section), :class => 'icon icon_page_add'
   %br
   = link_to 'Back to Sections', sections_path, :class => 'icon icon_back'
 
 %script{ :type => 'text/javascript' }
-  //<![[CDATA
-  $('sidebar').appendChild($('operations_placeholder'));
-  $('operations_placeholder').toggle();
-  //]>
+  $('#sidebar').append( $('#operations_placeholder') );
+  $('#operations_placeholder').toggle();
 
