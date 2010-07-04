@@ -1,11 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :snippets, :member => { :delete => :get }
-
-  map.article 'articles/:article_name.html', :controller => :articles, :action => :show
-  map.resources :articles, :has_many => [ :comments, :snippets ]
-
-  map.devise_for :users, :has_many => [ :articles, :comments ]
-
+  map.resources   :snippets,  :member     => { :delete => :get }
+  map.resources   :articles,  :has_many   => [ :comments, :snippets ]
+  map.devise_for  :users,     :has_many   => [ :articles, :comments ]
+  
   map.profile       'profile',      :controller => :users,  :action => :show
   map.edit_profile  'edit_profile', :controller => :people, :action => :edit
 
@@ -25,8 +22,9 @@ ActionController::Routing::Routes.draw do |map|
   map.get_photos    'uploads/get_uploads/:related_id/:related_type',  :controller => 'uploads', :action => 'get_uploads'
 
 
-  map.show_subsection_page  ':section_name/:subsection_name/:page_name.html', :controller => 'viewer', :action => 'show_section_page'
-  map.show_section_page     ':section_name/:page_name.html',                  :controller => 'viewer', :action => 'show_section_page'
+  map.show_article          ':username/articles/:article_name.html',         :controller => :viewer, :action => :show_article
+  map.show_subsection_page  ':section_name/:subsection_name/:page_name.html', :controller => :viewer, :action => :show_section_page
+  map.show_section_page     ':section_name/:page_name.html',                  :controller => :viewer, :action => :show_section_page
 
 
   map.resources   :sections,    :has_many   => [ :pages, :subsections ]

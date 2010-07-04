@@ -13,7 +13,11 @@
   #tabs-2
     #gallery.splitcontentleft{ :style => 'width: 60%' }
       - @page.photos.each do |photo|
-        = link_to image_tag( photo.upload_url(:squared), :alt => photo.description ), photo.upload_url(:medium)
+        - begin
+          = link_to image_tag( photo.upload_url(:squared), :alt => photo.description ), photo.upload_url(:medium)
+        - rescue
+          = ''
+          
     #tips_content.splitcontentright.box{ :style => 'margin: 25px;width: 29%;' }
       %h3 Adding images to your page
       %p CloverCMS allows you to easily add pictures to your pages.
@@ -23,7 +27,11 @@
     #documents.splitcontentleft{ :style => 'width: 60%' }
       %ul
         -@page.documents.each do |document|
-          %li= link_to document.description, document.upload_url
+          - begin
+            %li= link_to document.description, document.upload_url
+          - rescue
+            = ''
+            
     #tips_content.splitcontentright.box{ :style => 'margin: 25px; width:29%;' }
       %h3 Adding documents to your page
       %p CloverCMS allows you to easily add documents to your page.
@@ -41,6 +49,7 @@
   add_keywords();
   add_images();
   add_documents();
+  remove_uploaded();
   existing_keywords();
   submit_button();
   });

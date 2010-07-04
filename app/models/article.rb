@@ -14,7 +14,8 @@ class Article < ActiveRecord::Base
   before_create :create_name
   before_update :create_name
   
-  accepts_nested_attributes_for :photos,  :reject_if => lambda { |a| a[:description].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :photos,    :reject_if => lambda { |a| a[:description].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :documents, :reject_if => lambda { |a| a[:description].blank? }, :allow_destroy => true
   
   named_scope :blogs,   :conditions => { :is_post   => true }
   named_scope :news,    :conditions => { :is_news   => true }

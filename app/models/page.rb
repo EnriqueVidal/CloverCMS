@@ -1,9 +1,8 @@
 class Page < ActiveRecord::Base
   include GenerateUrlName
   
-  has_and_belongs_to_many :related_pages, :class_name => "Page", :join_table => :related_pages, :foreign_key  => :main_page, :association_foreign_key => :related_page
-                          
-  has_and_belongs_to_many :child_pages, :class_name => "Page", :join_table => :related_pages, :foreign_key  => :related_page, :association_foreign_key => :main_page
+  has_and_belongs_to_many :related_pages, :class_name => "Page", :join_table => :related_pages, :foreign_key  => :main_page,    :association_foreign_key => :related_page                          
+  has_and_belongs_to_many :child_pages,   :class_name => "Page", :join_table => :related_pages, :foreign_key  => :related_page, :association_foreign_key => :main_page
 
   belongs_to  :section
   belongs_to  :meta_title,          :class_name => 'MetaTag'
@@ -19,8 +18,8 @@ class Page < ActiveRecord::Base
   before_create :create_name, :add_metatags, :fix_images_path
   before_update :create_name, :add_metatags, :fix_images_path
 
-  accepts_nested_attributes_for :documents
-  accepts_nested_attributes_for :photos
+  accepts_nested_attributes_for :photos,    :reject_if => lambda { |a| a[:description].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :documents, :reject_if => lambda { |a| a[:description].blank? }, :allow_destroy => true
 
   acts_as_taggable
 

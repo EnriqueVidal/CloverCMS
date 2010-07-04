@@ -34,14 +34,17 @@ class PagesController < ApplicationController
     @page       = Page.find(params[:id])
     @metatags   = MetaTag.all
     @section    = @page.section
+
+    @page.photos.build
+    @page.documents.build
   end
 
   def create
     @section  = Section.find( params[:section_id] ) rescue nil
     @page     = @section.pages.build( params[:page] ) if @section
     
-    @page.photos.build(params[:photos])       if params[:photos].values.all?(&:present?)
-    @page.documents.build(params[:documents]) if params[:documents].values.all?(&:present?)
+#    @page.photos.build(params[:photos])       if params[:photos].values.all?(&:present?)
+#    @page.documents.build(params[:documents]) if params[:documents].values.all?(&:present?)
 
     respond_to do |format|
       if @section && @page.save
@@ -58,8 +61,9 @@ class PagesController < ApplicationController
 
   def update
     @page = Page.find(params[:id])
-    @page.photos.build(params[:photos])       if params[:photos].values.all?(&:present?)
-    @page.documents.build(params[:documents]) if params[:documents].values.all?(&:present?)
+
+#    @page.photos.build(params[:photos])       if params[:photos].values.all?(&:present?)
+#    @page.documents.build(params[:documents]) if params[:documents].values.all?(&:present?)
 
     respond_to do |format|
       if @page.update_attributes(params[:page])

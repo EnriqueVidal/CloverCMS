@@ -35,7 +35,7 @@
         %h6
           %a{ :href => '#' }= 'Upload images'
         #images
-          - fields_for :photos do |photo|
+          - f.fields_for :photos do |photo|
             = render 'photo', :f => photo
           %span
             = add_child_link "New Photo",   :photos
@@ -43,7 +43,7 @@
         %h6
           %a{ :href => '#' }= 'Upload documents'
         #documents
-          - fields_for :documents do |upload|
+          - f.fields_for :documents do |upload|
             = render 'document', :f => upload
           %span
             = add_child_link "New Document",  :documents

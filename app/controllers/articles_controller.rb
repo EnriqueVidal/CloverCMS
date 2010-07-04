@@ -7,7 +7,6 @@ class ArticlesController < ApplicationController
                                                   :cleanup  => false
                                                 }
   uses_tiny_mce       :only => [ :show ], :options => { :theme  => 'simple', :skin   => 'o2k7' }
-  uses_sexy_bookmarks :only => [ :show ]
   
   # GET /articles
   # GET /articles.xml
@@ -23,20 +22,19 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.xml
   def show
-    @article  = Article.find_by_name(params[:article_name])
-    @comments = @article.comments.paginate(:page => params[:page], :per_page => 5, :order => "created_at DESC")
+    article       = Article.find(params[:id]) rescue nil
+    username      = article.present? ? article.user.username  : 'no_user'
+    article_name  = article.present? ? article.name           : 'no_article'
     
-    respond_to do |format|
-      format.html { render :layout => "website" }
-      format.xml  { render :xml => @article }
-    end
+    head :moved_permanently, :location => show_article_path( username, article_name)  
   end
 
   # GET /articles/new
   # GET /articles/new.xml
   def new
     @article = Article.new
-    2.times { @article.photos.build }
+    @article.photos.build
+    @article.documents.build
     
     respond_to do |format|
       format.html # new.html.erb
@@ -46,8 +44,11 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    @article = Article.find(params[:id]) if current_user.admin?
-    @article = current_user.articles.find(params[:id])
+    @article    = Article.find(params[:id]) if current_user.admin?
+    @article  ||= current_user.articles.find(params[:id])
+    
+    @article.photos.build
+    @article.documents.build
   end
 
   # POST /articles
@@ -69,12 +70,12 @@ class ArticlesController < ApplicationController
   # PUT /articles/1
   # PUT /articles/1.xml
   def update
-    logger.info ">>> IN METHOD <<<"
     @article = Article.find(params[:id])
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
-        format.html { redirect_to(sections_path, :notice => 'Article was successfully updated.') }
+        flash[:notice] = 'Article was successfully updated.'
+        format.html { redirect_to edit_article_path( @article ) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

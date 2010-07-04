@@ -8,6 +8,14 @@ function add_images()
 	});
 }
 
+function remove_uploaded()
+{
+	$("p.fields").each(function() {
+	   if ( $(this).children("input:first").val() != "" )
+	    $(this).remove();
+	});
+}
+
 // Add documents to editor
 
 function add_documents()

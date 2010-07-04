@@ -4,10 +4,11 @@
     %table
       %tr
         %td.image{ :style => "float: left;width: 130px;margin: 0 10px" }
-          = link_to image_tag(article.photos.first.present? ? article.photos.first.upload_url(:squared) : 'default_pic'), article_path(article.name)
+          - user_article = show_article_path(article.user.username, article.name)
+          = link_to image_tag(article.photos.first.present? ? article.photos.first.upload_url(:squared) : 'default_pic'), user_article
         %td
           .content
-            %h6= link_to article.title, article_path(article.name), :class => "hl1"
+            %h6= link_to article.title, user_article, :class => "hl1"
             %strong= article.crest
             %br
             %span.small-text

@@ -1,2 +1,9 @@
 %h2= 'Edit ' + @section.name
 = render 'form'
+
+%script{ :type => 'text/javascript' }
+  $(document).ready(function(){
+  $('#new_section_menu_link').addClass('selected');
+  $('#main').addClass('nosidebar');
+  submit_button();
+  });
