@@ -1,24 +1,23 @@
 %table.list
   %thead
     %tr
-      - sort_headers_for :meta_tag, %w{content used_as_title used_as_description created_at updated_at operations} do |header|
-        - "Last Changed" if header == 'updated_at'
+      %th= 'content'
+      %th= 'used as title'
+      %th= 'used as description'
+      %th= 'created at'
+      %th= 'last changed'
+      %th= 'operations'
+      
   - @meta_tags.each do |meta_tag|
     %tr{ :class => cycle(:odd, :even) }
       %td= meta_tag.content
+      %td{ :style => 'text-align: left;' }= meta_tag.pages_meta_title.collect { |page| page.title }.join('<br />')
+      %td{ :style => 'text-align: left;' }= meta_tag.pages_meta_description.collect { |page| page.title }.join('<br />')
 
-      - used_as_title = []
-      - meta_tag.pages_meta_title.each { |page| used_as_title << page.title }
-      %td= used_as_title.join('<br/>')
-
-      - used_as_description = []
-      - meta_tag.pages_meta_description.each { |page| used_as_description << page.title }
-
-      %td= used_as_description.join('<br/>')
       %td= meta_tag.created_at.strftime("%B, %d %Y")
       %td= meta_tag.updated_at.strftime("%B, %d %Y")
       %td
-        %span.icon.icon_bullet_pencil= link_to_remote 'Edit', :url => "/meta_tags/#{meta_tag.id}/edit", :update => :operations, :after => "$('operations').show();"
+        %span.icon.icon_bullet_pencil= link_to 'Edit',    edit_meta_tag_path(meta_tag)
         %span.icon.icon_bullet_delete= link_to 'Destroy', meta_tag, :confirm => 'Are you sure?', :method => :delete
 
 = will_paginate @meta_tags

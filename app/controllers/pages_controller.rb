@@ -1,11 +1,11 @@
 class PagesController < ApplicationController
   before_filter :authenticate_user!, :check_authorization
 
-  uses_tiny_mce :only => [:edit, :new], :options => {
-                                                  :theme    => 'advanced',
-                                                  :skin     => 'o2k7',
-                                                  :plugins  => %w(  emotions searchreplace inlinepopups safari )
-                                                }
+  uses_tiny_mce :only => [:edit, :new, :create, :update ], :options => {
+                                                                        :theme    => 'advanced',
+                                                                        :skin     => 'o2k7',
+                                                                        :plugins  => %w(  emotions searchreplace inlinepopups safari )
+                                                                      }
 
   def index
     @section  = Section.find( params[:section_id] )
@@ -13,16 +13,15 @@ class PagesController < ApplicationController
   end
 
   def new
-    if ( params[:section].present? && params[:section][:id].present? ) || params[:section_id].present?
-      @section    = Section.find(params[:section][:id] )  rescue nil
-      @section  ||= Section.find(params[:section_id] )    rescue nil
+    if params[:section_id].present?
+      @section    = Section.find(params[:section_id] )    rescue nil
       @page       = @section.pages.new if @section
       @metatags   = MetaTag.all
       
       @page.photos.build
       @page.documents.build
     else
-      redirect_to pick_onwer_path
+      redirect_to select_owner_page_path
     end
   end
 
@@ -42,28 +41,24 @@ class PagesController < ApplicationController
   def create
     @section  = Section.find( params[:section_id] ) rescue nil
     @page     = @section.pages.build( params[:page] ) if @section
-    
-#    @page.photos.build(params[:photos])       if params[:photos].values.all?(&:present?)
-#    @page.documents.build(params[:documents]) if params[:documents].values.all?(&:present?)
+    @metatags = MetaTag.all
 
     respond_to do |format|
       if @section && @page.save
         flash[:success] = 'Page was successfully created.'
-        format.html { redirect_to (@page.uploads.count >= 1) ? edit_page_path(@page) : sections_path }
+        format.html { redirect_to (@page.uploads.count >= 1) ? edit_page_path(@page) : section_pages_path(@section) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
-        flash[:error] = 'Please fill out all the required fields.'
-        format.html { redirect_to :action => :new }
+        format.html { render :action => :new }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   def update
-    @page = Page.find(params[:id])
-
-#    @page.photos.build(params[:photos])       if params[:photos].values.all?(&:present?)
-#    @page.documents.build(params[:documents]) if params[:documents].values.all?(&:present?)
+    @page     = Page.find(params[:id])
+    @metatags = MetaTag.all
+    @section  = @page.section
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
@@ -71,8 +66,8 @@ class PagesController < ApplicationController
         format.html { redirect_to edit_page_path @page }
         format.xml  { head :ok }
       else
-        format.html { render :action => :update }
-        format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
+        format.html { render :action  => :edit }
+        format.xml  { render :xml     => @page.errors, :status => :unprocessable_entity }
       end
     end
   end

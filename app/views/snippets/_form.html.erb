@@ -1,5 +1,5 @@
-<% form_for(@snippet) do |f| %>
-  <% lang_collect = [ %w( Ruby ruby ), %w( RHTML/ERB rhtml ),  %w( C c ),  %w( C++ cpp  ), %w( Java java ), %w(HTML html) ] %>
+<% form_for @snippet, :html => { :class => 'form' } do |f| %>
+  <% lang_collect = [ %w( Ruby ruby ), %w( RHTML/ERB rhtml ), %w( Javascript javascript ), %w( C c ), %w( PHP php ),  %w( C++ cpp  ), %w( Java java ), %w(HTML html) ] %>
   <%= f.error_messages %>
   <%= hidden_field_tag :article_id, params[:article_id] %>
   
@@ -13,6 +13,6 @@
   </p>
   
   <p>
-    <%= f.submit 'Submit' %>
+    <button class="submit">Submit</button>
   </p>
 <% end %>

@@ -1,7 +1,12 @@
+= stylesheet_link_tag "coderay/style.css"
+
 %h1= @article.title
 %span.small-text= "Escrito por " + link_to( @article.user.username, '#', :class => 'hl1' ) + " hace " + say_it_in_spanish( time_ago_in_words( @article.created_at ) )
 
 = @article.body
+- @article.snippets.each do |snippet|
+  = coderay snippet.code, snippet.lang
+  %br
 
 = show_sexy_bookmarks( { :title => @article.title, :permalink => permalink, :post_summary => @article.crest, :site_name => 'CloverInteractive' }, [ :facebook, :twitter, :blogger, :digg, :delicious, :meneame, :stumbleupon, :slashdot, :linkedin, :googlebuzz, :myspace, :googlebookmarks, :friendfeed, :orkut ] )
 

@@ -1,6 +1,7 @@
 class ViewerController < ApplicationController
   layout 'website'
   uses_sexy_bookmarks :only => [ :show_article ]
+  uses_tiny_mce       :only => [ :show_article ], :options => { :theme  => 'simple', :skin   => 'o2k7' }
   
   def home_page
     main_page = Page.find_by_main_page(true)

@@ -1,12 +1,18 @@
 class SnippetsController < ApplicationController
+    before_filter :authenticate_user!, :check_authorization
 
   def index
     @snippetable  = find_snippetable
-    @snippets     = @snippetable.snippets
+    @snippets     = @snippetable.snippets.paginate(:page => params[:page], :per_page => 5) if @snippetable.present?
+    @snippets   ||= Snippet.paginate(:page => params[:page], :per_page => 5)
 
     respond_to do |format|
       format.html # index.html.erb
     end
+  end
+  
+  def select_owner
+    @articles = Article.all
   end
   
   def show
@@ -20,11 +26,16 @@ class SnippetsController < ApplicationController
 
   def new
     @snippetable  = find_snippetable
-    @snippet      = @snippetable.snippets.build
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @snippet }
+    if @snippetable.present?
+      @snippet      = @snippetable.snippets.build
+
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml  { render :xml => @snippet }
+      end
+    else
+      redirect_to select_owner_snippet_path
     end
   end
 
@@ -39,7 +50,7 @@ class SnippetsController < ApplicationController
     
     respond_to do |format|
       if @snippet.save!
-        format.html { redirect_to @snippet, :notice => 'Snippet creado con exito' }
+        format.html { redirect_to article_snippet_path(@snippetable.id, @snippet), :notice => 'Snippet creado con exito' }
         format.xml  { render :xml => @snippet, :status => :created, :location => @comment }
       else
         format.html { render :nothing => true }

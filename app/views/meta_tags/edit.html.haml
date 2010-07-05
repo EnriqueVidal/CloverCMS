@@ -1,8 +1,1 @@
-- form_for ( @meta_tag, :url => { :action => 'update' }, :builder => ValidatingFormBuilder, :html => { :class => 'tabular' } ) do |f|
-  = f.hidden_field :id
-  %p
-    = f.text_area :content, :rows => 5
-  %p
-    = f.submit 'Send'
-    = link_to :Cancel, 'javascript:void(null);', :onclick => '$("operations").toggle();'
-
+= render 'form'

@@ -11,7 +11,7 @@ html > body .tabular p
     padding-top:            2px;
 }
 
-div.flash.error, #errorExplanation {
+div.flash.error, #errorExplanation, #flashAlert {
 	text-indent:										25px;
 	color:													brown;
 	min-height:											35px;
@@ -28,11 +28,12 @@ div.flash.notice {
 	min-height:											35px;
 }
 
-div#flashError {
+
+div#flashError, #flashAlert {
 	-moz-background-clip:						border;
 	-moz-background-inline-policy:	continuous;
 	-moz-background-origin:					padding;
-	background:											#FFE3E3 url(../images/icons/exclamation.png) no-repeat scroll 8px 5px;
+	background:											#FFE3E3 url(/images/icons/exclamation.png) no-repeat scroll 8px 5px;
 	border-color:										#DD0000;
 	border-style:										solid none;
 	border-width:										2px medium;
@@ -40,7 +41,10 @@ div#flashError {
 	font-weight:										bold;
 	margin:													0 0 0.2em;
 	padding:												1em;
-	margin-bottom:                                      7px;
+	margin-bottom:                  7px;
+	position: 											absolute;
+	z-index:  											1;
+	width:													98.5%;
 }
 
 /* Since. 'success'.classify returns Succes for now the two are required.*/
@@ -48,7 +52,7 @@ div#flashSuccess, div#flashSucces {
 	-moz-background-clip:						border;
 	-moz-background-inline-policy:	continuous;
 	-moz-background-origin:					padding;
-	background:											#DFFFDF url(../images/icons/accept.png) no-repeat scroll 8px 5px;
+	background:											#DFFFDF url(/images/icons/accept.png) no-repeat scroll 8px 5px;
 	border-color:										#9FCF9F;
 	border-style:										solid none;
 	border-width:										2px medium;
@@ -56,7 +60,10 @@ div#flashSuccess, div#flashSucces {
 	font-weight:										bold;
 	margin:													0 0 0.2em;
 	padding:												1em;
-	margin-bottom:                                      7px;
+	margin-bottom:                  7px;
+	position: 											absolute;
+	z-index:  											1;
+	width:													98.5%;
 }
 
 div#flashNotice
@@ -64,7 +71,7 @@ div#flashNotice
 	-moz-background-clip:						border;
 	-moz-background-inline-policy:	continuous;
 	-moz-background-origin:					padding;
-	background:											#CFF2FF url(../images/icons/information.png) no-repeat scroll 8px 5px;
+	background:											#CFF2FF url(/images/icons/information.png) no-repeat scroll 8px 5px;
 	border-color:										#00BCFF;
 	border-style:										solid none;
 	border-width:										2px medium;
@@ -72,15 +79,18 @@ div#flashNotice
 	font-weight:										bold;
 	margin:													0 0 0.2em;
 	padding:												1em;
-	margin-bottom:                                      7px;
+	margin-bottom:                  7px;
+	position: 											absolute;
+	z-index:  											1;
+	width:													98.5%;
 }
 
-#errorExplanation
+#errorExplanation, #flashalert
 {
 	-moz-background-clip:						border;
 	-moz-background-inline-policy:	continuous;
 	-moz-background-origin:					padding;
-	background:											#FFE3E3 url(../images/icons/exclamation.png) no-repeat scroll 8px 5px;
+	background:											#FFE3E3 url(/images/icons/exclamation.png) no-repeat scroll 8px 5px;
 	color:													#550000
 	border:													#DD0000 2px solid;
 	font-size:											1.1em;
@@ -96,20 +106,20 @@ div#flashNotice
 	background: #FFE3E3;
 }
 
-.icon_add               { background-image: url(../images/icons/add.png); }
-.icon_edit              { background-image: url(../images/icons/pencil.png); }
-.icon_delete            { background-image: url(../images/icons/delete.png); }
-.icon_bullet_delete     { background-image: url(../images/icons/bullet_delete.png); }
-.icon_bullet_add        { background-image: url(../images/icons/bullet_add.png); }
-.icon_bullet_pencil     { background-image: url(../images/icons/bullet_pencil.png); }
-.icon_bullet_page       { background-image: url(../images/icons/bullet_page.png); }
-.icon_bullet_page_world { background-image: url(../images/icons/bullet_page_world.png); }
-.icon_page_add          { background-image: url(../images/icons/page_add.png); }
-.icon_back              { background-image: url(../images/icons/resultset_previous.png); }
-.pdf										{ background-image: url(../images/icons/page_white_acrobat.png); }
-.doc, .docx							{ background-image: url(../images/icons/page_white_word.png); }
-.xls, .xlsx							{ background-image: url(../images/icons/page_excel.png); }
-.ppt, .pptx							{ background-image: url(../images/icons/page_white_powerpoint.png); }
+.icon_add               { background-image: url(/images/icons/add.png); }
+.icon_edit              { background-image: url(/images/icons/pencil.png); }
+.icon_delete            { background-image: url(/images/icons/delete.png); }
+.icon_bullet_delete     { background-image: url(/images/icons/bullet_delete.png); }
+.icon_bullet_add        { background-image: url(/images/icons/bullet_add.png); }
+.icon_bullet_pencil     { background-image: url(/images/icons/bullet_pencil.png); }
+.icon_bullet_page       { background-image: url(/images/icons/bullet_page.png); }
+.icon_bullet_page_world { background-image: url(/images/icons/bullet_page_world.png); }
+.icon_page_add          { background-image: url(/images/icons/page_add.png); }
+.icon_back              { background-image: url(/images/icons/resultset_previous.png); }
+.pdf										{ background-image: url(/images/icons/page_white_acrobat.png); }
+.doc, .docx							{ background-image: url(/images/icons/page_white_word.png); }
+.xls, .xlsx							{ background-image: url(/images/icons/page_excel.png); }
+.ppt, .pptx							{ background-image: url(/images/icons/page_white_powerpoint.png); }
 
 .tabular p
 {
@@ -138,13 +148,6 @@ hr
 	width:													100%;
 }
 
-/*
-input[type="text"], textarea, select
-{
-	border:		1px solid #D7D7D7;
-	padding:	4px;
-}
-*/
 
 input, select
 {
@@ -327,7 +330,7 @@ fieldset label
 {
 	height:						7em;
 	padding:					8px 8px 0;
-	background:				#000000 url(../images/brillo.png) repeat-x scroll 0 0;
+	background:				#000000 url(/images/brillo.png) repeat-x scroll 0 0;
 	position:					relative;
 }
 

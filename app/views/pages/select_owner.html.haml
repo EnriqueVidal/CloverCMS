@@ -12,7 +12,7 @@
   $(document).ready(function() {
   $('#new_page_menu_link').addClass('selected');
   $('#section_id').change(function() {
-  $('#owner_form').submit();
+  $(location).attr("href", "/sections/" + $("#section_id").val() + "/pages/new");
   });
   });
 

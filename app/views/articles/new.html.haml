@@ -9,12 +9,7 @@
 %script{ :type => 'text/javascript' }
   $(document).ready(function() {
   $('#main').addClass('nosidebar');
-  - if params[:is_post].present?
-    $("#new_post_menu_link").addClass("selected");
-  - elsif params[:is_news].present?
-    $("#new_news_menu_link").addClass("selected");
-  - else
-    $("#new_review_menu_link").addClass("selected");
+  $("#new_article_menu_link").addClass("selected");
   $("#tabs").tabs();
   $("#article_show_in_homepage").button( { icons: { primary: 'ui-icon-home' } } ); 
   $("#accordion").accordion({ clearStyle: true, header: 'h6', collapsible: true, active: 3 });

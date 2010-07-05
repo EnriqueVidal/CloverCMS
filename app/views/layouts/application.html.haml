@@ -6,6 +6,7 @@
 
     %title CloverInteractive's Clever CMS Manager
   %body
+    = render_flash_messages
     #wrapper
       #top-menu
         #account= render :partial => 'layouts/account_menu'
@@ -21,10 +22,16 @@
       #main
         #sidebar
         #content
-          = render_flash_messages
           = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'
           = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js'
           = javascript_include_tag 'application'
           = include_tiny_mce_if_needed
           = yield
           = yield :jstemplates
+      %script{ :type => 'text/javascript' }
+        $(document).ready(function(){
+        $("#flashError").delay(3000).fadeOut(1000);
+        $("#flashSucces").delay(3000).fadeOut(1000);
+        $("#flashNotice").delay(3000).fadeOut(1000);
+        $("#flashAlert").delay(3000).fadeOut(1000);
+        });

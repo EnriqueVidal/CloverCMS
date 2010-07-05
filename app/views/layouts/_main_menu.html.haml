@@ -2,8 +2,9 @@
   - if user_signed_in?
     %li= link_to 'Profile',        profile_path,         :id => 'profile_menu_link'
     - if current_user.admin?
-      %li= link_to 'New Section',    new_section_path,     :id => "new_section_menu_link"
-      %li= link_to 'New Page',       new_page_path,        :id => "new_page_menu_link"
+      %li= link_to 'New section',    new_section_path,     :id => "new_section_menu_link"
+      %li= link_to 'New page',       new_page_path,        :id => "new_page_menu_link"
     - if current_user.admin? || current_user.roles.find_by_name( 'post_editor' )
-      %li= link_to 'New article',    new_article_path, :id => "new_article_menu_link"
+      %li= link_to 'New article', new_article_path, :id => "new_article_menu_link"
+      %li= link_to 'New snippet', new_snippet_path, :id => "new_snippet_menu_link"
 

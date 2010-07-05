@@ -1,45 +1,38 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources   :snippets,  :member     => { :delete => :get }
-  map.resources   :articles,  :has_many   => [ :comments, :snippets ]
-  map.devise_for  :users,     :has_many   => [ :articles, :comments ]
-  
-  map.profile       'profile',      :controller => :users,  :action => :show
-  map.edit_profile  'edit_profile', :controller => :people, :action => :edit
 
-  map.resources :users
+  # owner actions
+  map.select_owner_snippet  '/snippets/select_owner', :controller => :snippets, :action => :select_owner
+  map.select_owner_page     '/pages/select_owner',    :controller => :pages,    :action => :select_owner
 
-  map.resources :email_lists, :collection => { :add_to_list => :post }
-
-  map.resources :contact_forms
-  map.new_email 'contact', :controller => 'contact_forms', :action => 'new'
-
-
-  map.resources     :meta_tags
-  map.edit_meta_tag 'meta_tags/:id/edit',     :controller => 'meta_tags', :action => 'edit'
-
-  map.resources     :uploads
-  map.resources     :photos
-  map.get_photos    'uploads/get_uploads/:related_id/:related_type',  :controller => 'uploads', :action => 'get_uploads'
-
-
-  map.show_article          ':username/articles/:article_name.html',         :controller => :viewer, :action => :show_article
-  map.show_subsection_page  ':section_name/:subsection_name/:page_name.html', :controller => :viewer, :action => :show_section_page
-  map.show_section_page     ':section_name/:page_name.html',                  :controller => :viewer, :action => :show_section_page
-
-
+  map.resources   :snippets,    :member     => { :delete => :get }
+  map.resources   :pages,       :belongs_to => [ :section, :subsection ]
+  map.resources   :articles,    :has_many   => [ :comments, :snippets ]
+  map.devise_for  :users,       :has_many   => [ :articles, :comments ]
   map.resources   :sections,    :has_many   => [ :pages, :subsections ]
-  map.manager     'manager',    :controller => 'sections', :action => 'index'
-
   map.resources   :subsections, :has_many   => :pages, :belongs_to => :section
-
-  map.pick_onwer 'select_owner',  :controller => 'pages',   :action => 'select_owner'
-  map.resources   :pages,         :belongs_to => [ :section, :subsection ]
-
-  map.resources :people
+  map.resources   :email_lists, :collection => { :add_to_list => :post }
+  map.resources   :users
+  map.resources   :contact_forms
+  map.resources   :meta_tags
+  map.resources   :uploads
+  map.resources   :photos
+  map.resources   :documents
+  map.resources   :people
   #map.resources :members
   #map.resources :admins
-
-  map.root  :controller => :viewer, :action => :home_page
+  
+  map.profile       'profile',              :controller => :users,          :action => :show
+  map.edit_profile  'edit_profile',         :controller => :people,         :action => :edit
+  map.new_email     'contact',              :controller => :contact_forms,  :action => :new
+  map.edit_meta_tag 'meta_tags/:id/edit',   :controller => :meta_tags,      :action => :edit
+  
+  #viewer actions
+  map.show_article          ':username/articles/:article_name.html',          :controller => :viewer, :action => :show_article
+  map.show_subsection_page  ':section_name/:subsection_name/:page_name.html', :controller => :viewer, :action => :show_section_page
+  map.show_section_page     ':section_name/:page_name.html',                  :controller => :viewer, :action => :show_section_page
+  
+  map.manager 'manager',    :controller => 'sections', :action => 'index'
+  map.root    :controller => :viewer, :action => :home_page
 
   # The priority is based upon order of creation: first created -> highest priority.
 

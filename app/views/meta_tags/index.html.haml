@@ -2,16 +2,14 @@
 
 #meta_tags
   = render :partial => 'metatags'
-#spinner
 
-#operations.box{ :style => 'display: none;', :name => 'operations' }
-#operations_placeholder{ :style => 'display: none;' }
+#operations_placeholder
   %h3 Operations
-  %span.icon.icon_add= link_to_remote 'New Meta Tag', :url => "/meta_tags/new", :method => :get, :update => :operations, :after => "$('operations').show();"
+  %span.icon.icon_add= link_to 'New Meta Tag', new_meta_tag_path
 
 %script{ :type => 'text/javascript' }
-  //<![[CDATA
-  $('sidebar').appendChild($('operations_placeholder'));
-  $('operations_placeholder').toggle();
-  //]]>
+  $(document).ready(function() {
+  $('#sidebar').append($('#operations_placeholder'));  
+  });
+  
 

@@ -34,8 +34,10 @@ class ApplicationController < ActionController::Base
   end
   
   def current_article
+    
     if params[:username].present?
-      Article.find_by_name(params[:article_name]) rescue nil
+      user = User.find_by_username(params[:username])
+      return user.articles.find_by_name(params[:article_name]) rescue nil
     end
     nil
   end

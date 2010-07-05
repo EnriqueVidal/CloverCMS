@@ -6,7 +6,6 @@ class ArticlesController < ApplicationController
                                                   :plugins  => %w( emotions inlinepopups  ),
                                                   :cleanup  => false
                                                 }
-  uses_tiny_mce       :only => [ :show ], :options => { :theme  => 'simple', :skin   => 'o2k7' }
   
   # GET /articles
   # GET /articles.xml
