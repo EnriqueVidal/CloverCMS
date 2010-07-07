@@ -1,20 +1,22 @@
-%h1 Ultimos articulos
-- @articles.each do |article|
-  .post
-    %table
-      %tr
-        %td.image{ :style => "float: left;width: 130px;margin: 0 10px" }
-          - user_article = show_article_path(article.user.username, article.name)
-          = link_to image_tag(article.photos.first.present? ? article.photos.first.upload_url(:squared) : 'default_pic'), user_article
-        %td
-          .content
-            %h6= link_to article.title, user_article, :class => "hl1"
-            %strong= article.crest
-            %br
-            %span.small-text
-              = "Escrito hace por "
-              = link_to(article.user.username, '#', :class =>"hl1") + " hace " + say_it_in_spanish( time_ago_in_words( article.created_at ) )
-            %br
-            = minimize_text strip_html(article.body), 100
-    
-= will_paginate @articles
+%h2= 'Articles'
+
+#page_content.splitcontentleft{ :style => 'width: 66%;' }
+  %p With CloverInteractive's Clever CMS is super easy to create, edit and destroy articles as different users and keep them organized in one page.
+
+  #pages
+    = render :partial => 'articles'
+
+#tips_content.box.splitcontentright{ :style => 'width: 29%;' }
+  %h3 Did you know?
+  %p In this latest version of CloverInteractive's Clever CMS, many article creating, editing and displaying issues have been resolved, now you no longer need to think how to name articles as names are taken out of your article title. That way the article name that both the user and the Search Engine see is consistent with your content.
+
+#operations_placeholder{ :style => 'display: none;' }
+  %h3 Operations
+  = link_to 'Add a new Article', new_article_path, :class => 'icon icon_page_add'
+  %br
+  = link_to 'Back to Sections', sections_path, :class => 'icon icon_back'
+
+%script{ :type => 'text/javascript' }
+  $('#sidebar').append( $('#operations_placeholder') );
+  $('#operations_placeholder').toggle();
+

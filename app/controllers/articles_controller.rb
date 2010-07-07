@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_filter :authenticate_user!, :check_authorization, :except => [ :index, :show ]
+  before_filter :authenticate_user!, :check_authorization, :except => [ :show ]
   uses_tiny_mce :only => [ :edit, :new ], :options => {
                                                   :theme    => 'advanced',
                                                   :skin     => 'o2k7',
@@ -11,11 +11,6 @@ class ArticlesController < ApplicationController
   # GET /articles.xml
   def index
     @articles = Article.paginate( :page => params[:page], :per_page => 5, :order => "created_at DESC" )
-
-    respond_to do |format|
-      format.html { render :layout => "website" }
-      format.xml  { render :xml => @articles }
-    end
   end
 
   # GET /articles/1

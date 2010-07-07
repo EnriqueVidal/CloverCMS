@@ -9,14 +9,30 @@ class ViewerController < ApplicationController
   end
 
   def show_article
-    user      = User.find_by_username( params[:username] )
-    @article  = user.articles.find_by_name( params[:article_name] )                                               if user.present?
-    @comments = @article.comments.paginate( :page => params[:page], :per_page => 5, :order => "created_at DESC" ) if @article.present?
+    user          = User.find_by_username( params[:username] )
+    @article      = user.articles.find_by_name( params[:article_name] )                                               if user.present?
+    @comments     = @article.comments.paginate( :page => params[:page], :per_page => 5, :order => "created_at DESC" ) if @article.present?
     
     if @article.blank?
       FourOhFour.add_request(request.host, request.path, request.env['HTTP_REFERER'] || '')
       render 'four_oh_fours/index'
     end
+  end
+  
+  def show_article_list
+    pagination  = { :page => params[:page], :per_page => 15, :order => "created_at DESC" }
+    
+    case params[:type]
+      when 'blogs'    then @articles = Article.blogs.paginate(pagination)
+      when 'news'     then @articles = Article.news.paginate(pagination)
+      when 'reviews'  then @articles = Article.reviews.paginate(pagination)
+      when 'all'      then @articles = Article.paginate(pagination)
+    end
+    
+   if @articles.blank?
+     FourOhFour.add_request(request.host, request.path, request.env['HTTP_REFERER'] || '')
+     render 'four_oh_fours/index'
+   end
   end
   
   def show_section_page

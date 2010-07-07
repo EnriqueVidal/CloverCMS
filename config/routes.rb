@@ -27,6 +27,8 @@ ActionController::Routing::Routes.draw do |map|
   map.edit_meta_tag 'meta_tags/:id/edit',   :controller => :meta_tags,      :action => :edit
   
   #viewer actions
+  map.show_all_article      'articles/list',                                  :controller => :viewer, :action => :show_article_list  
+  map.show_article_list     'articles/list/:type',                            :controller => :viewer, :action => :show_article_list
   map.show_article          ':username/articles/:article_name.html',          :controller => :viewer, :action => :show_article
   map.show_subsection_page  ':section_name/:subsection_name/:page_name.html', :controller => :viewer, :action => :show_section_page
   map.show_section_page     ':section_name/:page_name.html',                  :controller => :viewer, :action => :show_section_page

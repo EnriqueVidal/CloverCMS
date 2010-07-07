@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::Base  
   layout 'application'
   helper :all
-  helper_method :referer, :current_section, :current_page, :current_article, :current_controller, :permalink
+  helper_method :referer, :current_section, :current_page, :current_article, :current_controller, :current_action, :permalink
   protect_from_forgery 
 
 
@@ -44,6 +44,10 @@ class ApplicationController < ActionController::Base
 
   def current_controller
     params[:controller]
+  end
+  
+  def current_action
+    params[:action]
   end
 
   def permalink

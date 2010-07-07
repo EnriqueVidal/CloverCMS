@@ -17,7 +17,7 @@
     - elsif current_article.present?
       %h1= current_article.title
       %h2= current_article.crest
-    - elsif current_controller == 'articles'
+    - elsif current_controller == 'viewer' && current_action == 'show_article_list' && params[:article_name] != 'no_article'
       %h1 Articulos
       %h2 Estos son los articulos de Clover interactive.
     - else
