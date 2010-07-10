@@ -48,11 +48,12 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.xml
   def create
-    @article = Article.new(params[:article])
+    @article = current_user.articles.build(params[:article])
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to(:controller => :sections, :action => :index, :notice => 'Article was successfully created.') }
+        flash[:success] = 'Article was successfully created.'
+        format.html { redirect_to :action => :index }
         format.xml  { render :xml => @article, :status => :created, :location => @article }
       else
         format.html { render :action => "new" }
