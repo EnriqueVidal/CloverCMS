@@ -42,7 +42,7 @@
             = new_child_fields_template f,  :photos
         %h6
           %a{ :href => '#' }= 'Upload documents'
-        #documents
+        #documents_new
           - f.fields_for :documents do |upload|
             = render 'document', :f => upload
           %span

@@ -28,6 +28,9 @@ class CommentsController < ApplicationController
   private
   
   def commentable_url
+    if @commentable.class.to_s == "Article"
+      return show_article_path(@commentable.user.username, @commentable.name)
+    end
     send(@commentable.class.to_s.downcase + "_path", @commentable.name)
   end
   

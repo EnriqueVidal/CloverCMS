@@ -156,7 +156,7 @@ function document_operations( params )
 				modal: true,
 				dialogClass: 'info',
 				buttons: {
-					'Add picture to page': function() {
+					'Add document to page': function() {
 						$(this).dialog('close');
 						$("body", $("iframe").contents()).append("<a href=\"" + params.element.href + "\">" + params.element.innerHTML + "</a>");
 						$(this).remove();
