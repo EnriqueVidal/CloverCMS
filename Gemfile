@@ -8,8 +8,8 @@ gem 'tlsmail'
 gem 'devise'
 gem 'paperclip',      '2.3.1.1'
 gem 'haml',           '3.0.12'
-gem 'kete-tiny_mce',           :require => 'tiny_mce'
-gem "ambethia-recaptcha",      :require => 'recaptcha/rails'
+gem 'tiny_mce',           :require => 'tiny_mce'
+gem "recaptcha",      :require => 'recaptcha/rails'
 gem 'coderay'
 
 group :development do
