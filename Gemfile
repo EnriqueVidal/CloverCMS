@@ -11,6 +11,7 @@ gem 'haml',           '3.0.12'
 gem 'tiny_mce',           :require => 'tiny_mce'
 gem "recaptcha",      :require => 'recaptcha/rails'
 gem 'coderay'
+gem 'sexy_bookmarks', '0.1.1'
 
 group :development do
   gem 'metric_fu', '1.3.0', :require => 'metric_fu'
