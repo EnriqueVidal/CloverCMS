@@ -1,0 +1,18 @@
+!!! 5
+%html{ :lang => 'es' }
+  %head
+    %meta{ :charset => 'UTF-8' }
+    %title= 'CloverInteractive'
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"
+    = stylesheet_link_tag "website_css/main.css"
+  %body{ :class => ( @page.present? && @page.home_page? ? "" : "section" ) }
+    = render 'layouts/website/google_analytics'
+    #wrapper
+      = render 'layouts/website/top'
+      = render 'layouts/website/banner'
+      #mid
+        #content= yield
+          
+      
+      = render 'layouts/website/bottom'
+      = render 'layouts/website/slider_javascript'

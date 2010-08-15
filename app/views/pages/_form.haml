@@ -1,0 +1,25 @@
+= form_for @page  do |f|
+  - if @page.errors.any?
+    = render 'shared/error_explanation', :object => @page
+    
+  .field
+    = f.label       :name
+    = f.text_field  :name
+  
+  .field
+    = f.label     :content
+    = f.text_area :content, :class => 'mceEditor'
+    
+  .field
+    = f.label   :section
+    = f.select  :section_id, Section.all.collect { |section| [ section.name, section.id ] }, :include_blank => true
+  
+  .field
+    = f.label :home_page?
+    = f.check_box :home_page
+  
+  .field
+    = f.label     :published?
+    = f.check_box :published
+    
+  .actions= f.submit

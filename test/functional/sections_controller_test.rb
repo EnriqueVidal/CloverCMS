@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class SectionsControllerTest < ActionController::TestCase
+  setup do
+    @section = sections(:one)
+  end
+
   test "should get index" do
     get :index
     assert_response :success
@@ -12,32 +16,32 @@ class SectionsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create sections" do
-    assert_difference('Sections.count') do
-      post :create, :sections => { }
+  test "should create section" do
+    assert_difference('Section.count') do
+      post :create, :section => @section.attributes
     end
 
-    assert_redirected_to sections_path(assigns(:sections))
+    assert_redirected_to section_path(assigns(:section))
   end
 
-  test "should show sections" do
-    get :show, :id => sections(:one).to_param
+  test "should show section" do
+    get :show, :id => @section.to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => sections(:one).to_param
+    get :edit, :id => @section.to_param
     assert_response :success
   end
 
-  test "should update sections" do
-    put :update, :id => sections(:one).to_param, :sections => { }
-    assert_redirected_to sections_path(assigns(:sections))
+  test "should update section" do
+    put :update, :id => @section.to_param, :section => @section.attributes
+    assert_redirected_to section_path(assigns(:section))
   end
 
-  test "should destroy sections" do
-    assert_difference('Sections.count', -1) do
-      delete :destroy, :id => sections(:one).to_param
+  test "should destroy section" do
+    assert_difference('Section.count', -1) do
+      delete :destroy, :id => @section.to_param
     end
 
     assert_redirected_to sections_path

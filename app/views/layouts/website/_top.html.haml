@@ -1,0 +1,13 @@
+#top
+  #website_name
+    %h1 CloverInteractive
+  #navigation
+    %ul#nav
+      - current_section   = @section
+      - current_section ||= Section.new
+      - Section.all.first(5).each do |section|
+        %li{ :id => section.url_name, :class => (section.url_name == current_section.url_name ? 'active' : '') }
+          - url = '/' + section.url_name + '/' + section.pages.find_by_published(true).url_name + '.html' rescue ''
+          = link_to (section.url_name == 'negocio' ? 'haz negocio' : section.url_name), url 
+
+.hline1

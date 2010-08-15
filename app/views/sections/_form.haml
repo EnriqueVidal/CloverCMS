@@ -1,0 +1,13 @@
+= form_for @section do |f|
+  - if @section.errors.any?
+    = render 'shared/error_explanation', :object => @section
+
+  .field
+    = f.label       :name
+    = f.text_field  :name
+    
+  .field
+    = f.label   :main_section_id
+    = f.select  :main_section_id, Section.all.collect { |section|  [ section.name, section.id ] }, :include_blank => true
+
+  .actions= f.submit

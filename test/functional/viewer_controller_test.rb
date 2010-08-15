@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class ViewerControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "should get show_page" do
+    get :show_page
+    assert_response :success
   end
+
 end

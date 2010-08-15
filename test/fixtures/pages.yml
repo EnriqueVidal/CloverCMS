@@ -1,7 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+one:
+  name: Conoce
+  content: Conoce nuestros productos y soluciones mejoraran tu vida.
+  section_id: 1
+
+two:
+  name: Bienvenido
+  content: Bienvenido a nuestro sitio esperamos sea de tu agrado.
+  section_id: 1

@@ -1,36 +1,26 @@
 class Page < ActiveRecord::Base
   include GenerateUrlName
   
-  has_and_belongs_to_many :related_pages, :class_name => "Page", :join_table => :related_pages, :foreign_key  => :main_page,    :association_foreign_key => :related_page                          
-  has_and_belongs_to_many :child_pages,   :class_name => "Page", :join_table => :related_pages, :foreign_key  => :related_page, :association_foreign_key => :main_page
+  belongs_to :section
+  
+  before_validation :strip_name
+  
+  validates_presence_of     :name, :content
+  validates_length_of       :content, :minimum => 50
+  validates_uniqueness_of   :name
+  validates_numericality_of :section_id, :message => 'needs to be set'
+  validate                  :create_url_name
 
-  belongs_to  :section
-  belongs_to  :meta_title,          :class_name => 'MetaTag'
-  belongs_to  :meta_description,    :class_name => 'MetaTag'
-
-  has_many    :uploads,   :as => :uploadable
-  has_many    :photos,    :as => :uploadable, :dependent => :destroy
-  has_many    :documents, :as => :uploadable, :dependent => :destroy
-
-  validates_presence_of   :title, :body
-  validates_uniqueness_of :title, :name
-
-  before_create :create_name, :add_metatags, :fix_images_path
-  before_update :create_name, :add_metatags, :fix_images_path
-
-  accepts_nested_attributes_for :photos,    :reject_if => lambda { |a| a[:description].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :documents, :reject_if => lambda { |a| a[:description].blank? }, :allow_destroy => true
-
-  acts_as_taggable
-
-  def add_metatags
-    self.meta_title_id        = MetaTag.first.id unless !self.meta_title_id.nil?
-    self.meta_description_id  = MetaTag.first.id unless !self.meta_description_id.nil?
+  before_save               :is_home_page?
+  
+  def strip_name
+    self.name = self.name.to_s.strip
   end
-
-  def fix_images_path
-    self.body.gsub!(/src=\"images\//, 'src="/images/')
+  
+  def is_home_page?
+    if self.home_page
+      @page = Page.where("home_page = ?", true).first
+      @page.update_attributes(:home_page => false) if @page.present? && @page != self
+    end
   end
-
 end
-

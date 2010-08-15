@@ -1,0 +1,21 @@
+%h1 Listing pages
+
+%table
+  %tr
+    %th Name
+    %th Url name
+    %th Section
+    %th
+    %th
+    %th
+    - @pages.each do |page|
+      %tr
+        %td= page.name
+        %td= page.url_name
+        %td= page.section.name if page.section.present?
+        %td= link_to 'Show', page
+        %td= link_to 'Edit', edit_page_path(page)
+        %td= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete
+        
+%br= will_paginate @pages
+%br= link_to 'New Page', new_page_path

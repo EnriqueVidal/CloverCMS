@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class PagesControllerTest < ActionController::TestCase
+  setup do
+    @page = pages(:one)
+  end
+
   test "should get index" do
     get :index
     assert_response :success
@@ -12,32 +16,32 @@ class PagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create pages" do
-    assert_difference('Pages.count') do
-      post :create, :pages => { }
+  test "should create page" do
+    assert_difference('Page.count') do
+      post :create, :page => @page.attributes
     end
 
-    assert_redirected_to pages_path(assigns(:pages))
+    assert_redirected_to page_path(assigns(:page))
   end
 
-  test "should show pages" do
-    get :show, :id => pages(:one).to_param
+  test "should show page" do
+    get :show, :id => @page.to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => pages(:one).to_param
+    get :edit, :id => @page.to_param
     assert_response :success
   end
 
-  test "should update pages" do
-    put :update, :id => pages(:one).to_param, :pages => { }
-    assert_redirected_to pages_path(assigns(:pages))
+  test "should update page" do
+    put :update, :id => @page.to_param, :page => @page.attributes
+    assert_redirected_to page_path(assigns(:page))
   end
 
-  test "should destroy pages" do
-    assert_difference('Pages.count', -1) do
-      delete :destroy, :id => pages(:one).to_param
+  test "should destroy page" do
+    assert_difference('Page.count', -1) do
+      delete :destroy, :id => @page.to_param
     end
 
     assert_redirected_to pages_path

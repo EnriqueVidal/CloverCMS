@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @section.name
+
+%p
+  %b Main section:
+  = @section.main_section.name if @section.main_section.present?
+
+%p
+  %b URL
+  = @section.url_name
+
+= link_to 'Edit', edit_section_path(@section)
+|
+= link_to 'Back', sections_path
