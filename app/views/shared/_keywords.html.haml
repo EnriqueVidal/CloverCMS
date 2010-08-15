@@ -1,9 +1,0 @@
-%input{ :type => 'text',    :id => 'keyword_input',   :value => '' }
-%input{ :type => 'button',  :id => 'keyword_button',  :value => 'Agregar' }
-%br
-%select{ :size => 5, :id => 'tag_list' }
-  - @page.tag_list.each do |tag|
-    %option.tag
-      = tag
-
-  = f.hidden_field :tag_list, :id => 'final_tag_list'

@@ -1,9 +1,0 @@
-%meta{ "http-equiv" => "Content-Type", :content => "text/html; charset=utf-8" }
-- if @page.present? && !@page.meta_title.nil?
-  %meta{ :name => 'title', :content => @page.meta_title.content }
-
-- if @page.present? && !@page.meta_description.nil?
-  %meta{ :name => 'description', :content => @page.meta_description.content }
-
-- if @page.present? && @page.tag_list.count >= 1
-  %meta{ :name => 'keywords', :content => @page.tag_list.join(', ') }

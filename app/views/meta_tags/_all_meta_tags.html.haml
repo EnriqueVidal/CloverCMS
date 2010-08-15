@@ -1,6 +1,0 @@
-%p= label_tag 'SEO Title:'
-%p= select :page, :meta_title_id, metas.collect { |meta| [ meta.content, meta.id ] }, {}, :size => 5
-
-
-%p= label_tag 'SEO Description:'
-%p= select :page, :meta_description_id, metas.collect { |meta| [ meta.content, meta.id ] }, {}, :size => 5

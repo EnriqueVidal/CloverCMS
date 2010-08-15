@@ -1,8 +1,0 @@
-- form_for @meta_tag, :html => { :class => 'form' } do |f|
-  %p
-  %label{ :for => 'meta_tag_content' }
-    Content
-    %span.required *
-  = f.text_area :content, :rows => 5
-  %p= f.submit 'Send'
-
