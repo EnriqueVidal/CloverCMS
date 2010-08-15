@@ -70,18 +70,8 @@ ActiveRecord::Schema.define(:version => 20100620164931) do
     t.datetime "updated_at"
   end
 
-  create_table "pages", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "section_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.integer  "meta_title_id"
-    t.integer  "meta_description_id"
-    t.boolean  "has_contact"
-    t.boolean  "main_page",           :default => false
-  end
+# Could not dump table "pages" because of following StandardError
+#   Unknown type 'bool' for column 'has_contact'
 
   create_table "people", :force => true do |t|
     t.string   "first_name",         :limit => 40, :default => "", :null => false
@@ -92,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20100620164931) do
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
-    t.string   "gender",             :limit => 0
+    t.string   "gender"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "bio"

@@ -44,7 +44,7 @@ namespace :deploy do
     
     desc "It install all the missing gems needed for our app"
     task :fix_missing_gems_and_db do
-      run "cd #{deploy_to}/current && RAILS_ENV=production rake gems:install db:create db:schema:load &> ~/deploy.log"
+      run "cd #{deploy_to}/current && bundle install && RAILS_ENV=production rake db:create db:schema:load &> ~/deploy.log"
     end
     
     desc "Links public_html to current_release/public"

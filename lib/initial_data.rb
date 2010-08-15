@@ -111,7 +111,7 @@ class InitialData
 
     @user                 = User.create!( user )
     @user.save!
-
+    @user.confirmed_at    = Time.now
 
     @user.admin = true
     @user.roles = []

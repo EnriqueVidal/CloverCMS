@@ -6,6 +6,8 @@ class Person < ActiveRecord::Base
                                                                           :small  => "80x80#",
                                                                           :medium => "180x180#"
                                                                         }
+                                                                        
+  validates_inclusion_of :gender, :in => [ 'male', 'female' ], :allow_blank => true
 
   named_scope :female,    :conditions => "gender = 'female'"
   named_scope :male,      :conditions => "gender = 'male'"

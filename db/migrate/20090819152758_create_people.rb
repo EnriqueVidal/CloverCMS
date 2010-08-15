@@ -9,7 +9,7 @@ class CreatePeople < ActiveRecord::Migration
       t.column      :photo_file_name,     :string
       t.column      :photo_content_type,  :string
       t.column      :photo_file_size,     :integer
-      t.column      :gender,              "ENUM('male', 'female')"
+      t.column      :gender,              :string
 
       t.timestamps
     end
