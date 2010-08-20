@@ -4,7 +4,7 @@ class ViewerController < ApplicationController
   uses_sexy_bookmarks :only => [ :show_article ]
   uses_tiny_mce       :only => [ :show_article ], :options => { :theme  => 'simple', :skin   => 'o2k7' }
   
-  before_filter :menu_sections
+  before_filter :grab_latest_articles
   
   def home_page
     main_page = Page.find_by_main_page(true)
@@ -65,16 +65,8 @@ class ViewerController < ApplicationController
     render_to_string( :partial => 'contact_forms/contact_form') if !@page.nil? && @page.has_contact
   end
   
-  # Not part of the core proyect but a DRY'er way to do the menu
-  
   private
-  def menu_sections
-    @inicio     = Section.find_by_title('Inicio')
-    @miembros   = Section.find_by_title('Miembros')
-    @proyectos  = Section.find_by_title('Proyectos')
-    @podcast    = Section.find_by_title('Podcast')
-    @contacto   = Section.find_by_title('Contacto')
-    
+  def grab_latest_articles
     @articles  = Article.latest(5)
   end
 end
