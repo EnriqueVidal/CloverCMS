@@ -13,12 +13,14 @@ gem 'coderay'
 gem 'sexy_bookmarks', '0.1.1'
 gem 'capistrano'
 
+#Moved out from development as it is required in our Rakefile
+gem 'metric_fu',    '1.3.0', :require => 'metric_fu'
+
 group :production do
   gem 'mysql'
 end
 
 group :development do
-  gem 'metric_fu',    '1.3.0', :require => 'metric_fu'
   gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 

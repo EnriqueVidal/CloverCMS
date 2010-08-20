@@ -11,12 +11,12 @@ else
   ActionMailer::Base.default_charset        = "utf-8"
   ActionMailer::Base.raise_delivery_errors  = true
   ActionMailer::Base.smtp_settings          = {
-                                                :domain          => "domain.com",
-                                                :address         => 'smtp.domain.com',
+                                                :domain          => "tjruby.org",
+                                                :address         => 'smtp.gmail.com',
                                                 :port            => 587,
                                                 :tls             => true,
                                                 :authentication  => :plain,
-                                                :user_name       => 'dont-reply@domain.com',
-                                                :password        => 'secret'
+                                                :user_name       => 'dont-reply@tjruby.org',
+                                                :password        => 'Sn192#*4bdhA!0'
                                               }
 end
