@@ -1,0 +1,11 @@
+#header
+  #logo
+    %h1 TJRuby
+#navigation
+  %ul
+    %li= link_to 'Inicio',    show_section_page_path(@inicio.name, @inicio.pages.first.name),       :class => ( @section.present? && @section.title  == @inicio.title )     ? 'current' : ''
+    %li= link_to 'Miembros',  show_section_page_path(@miembros.name, @miembros.pages.first.name),   :class => ( @section.present? && @section.title  == @miembros.title )   ? 'current' : ''
+    %li= link_to 'Proyectos', show_section_page_path(@proyectos.name, @proyectos.pages.first.name), :class => ( @section.present? && @section.title  == @proyectos.title )  ? 'current' : ''
+    %li= link_to 'Podcast',   show_section_page_path(@podcast.name, @podcast.pages.first.name),     :class => ( @section.present? && @section.title  == @podcast.title )    ? 'current' : ''
+    %li= link_to 'Articulos', show_article_list_path('all'), :class => ( current_action  =~ /article/ )      ? 'current' : ''
+    %li= link_to 'Contacto',  show_section_page_path(@contacto.name, @contacto.pages.first.name),   :class => ( @section.present? && @section.title  == @contacto.title )   ? 'current' : ''

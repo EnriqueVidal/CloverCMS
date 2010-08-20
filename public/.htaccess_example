@@ -1,0 +1,5 @@
+PassengerEnabled on
+PassengerAppRoot /home/user/etc/rails_apps/app/current
+RailsEnv production
+
+Options -Indexes

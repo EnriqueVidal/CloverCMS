@@ -1,0 +1,45 @@
+!!! 5
+%html
+  %head
+    %meta{ :charset => 'utf-8' }
+    %meta{ :name => :description, :content => '' }
+    %meta{ :name => :author, :content => 'CloverInteractive' }
+    %title Grupo de Usuarios de Ruby de Tijuana
+    = stylesheet_link_tag 'website_css/main'
+    = stylesheet_link_tag 'website_css/easy_twitter'
+    = include_sexy_bookmarks_if_needed
+    = include_tiny_mce_if_needed
+        
+  /[if lt IE 6] 
+    <body class="ie6">
+  /[if lt IE 7]
+    <body class="ie7">
+  /[if lt IE 8]
+    <body class="ie8">
+  /[if lt IE 9]
+    <body class="ie9">
+  /[if (gt IE 9)|!(IE)]
+    = "<body>"
+  #wrapper
+    #page-top
+    = render 'layouts/website/top'
+    #main
+      #content
+        = javascript_include_tag 'loader'
+        = yield
+      #sidebar
+        - if @page.present? && !@page.main_page?
+          %h2 Ultimos Articulos
+          %br
+          #article_list
+            %ul
+              - @articles.each do |article|
+                %li= link_to article.title, show_article_path(article.user.username, article.name)
+            
+        - else
+          = render 'layouts/website/home_side_bar'
+    #main-bottom
+      %p 
+    #footer
+      %p Creative commons
+  ="</body>"

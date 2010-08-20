@@ -1,0 +1,8 @@
+%h1 Ultimos Tweets
+%br
+= javascript_include_tag 'website_js/easy_twitter_timeline.min.js'
+.easy_twitter{:style => "margin-left: -20px;"}
+:javascript
+  $(document).ready(function(){
+  $('body').easy_twitter_timeline({ username: 'tijuanarb', max: 5 })
+  });

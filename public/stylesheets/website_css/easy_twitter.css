@@ -1,0 +1,43 @@
+.easy_twitter {
+  color:#333;
+  font: 0.75em 'Lucida Grande',sans-serif;
+  width: 288px;
+  height: 430px;
+  overflow: auto;
+  font-size: 12px;
+}
+
+.easy_twitter_tweet,  #easy_twitter_tweet_list {
+  border-bottom: 1px solid #EEEEEE;
+  list-style-type:none;
+  margin:0;
+  padding:5px 0;
+}
+
+.profile_pic {
+    padding: 5px
+    float: left;
+    margin: 5px;
+    vertical-align: middle;
+}
+
+.easy_twitter_tweet a
+{
+  color: #2276BB !important;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.easy_twitter_tweet_date
+{
+  color:#999999;
+  display:block;
+  font-size:11px;
+}
+
+.tweet_content
+{
+	float:right;
+	position:relative;
+	width:220px;
+}

@@ -1,0 +1,6 @@
+<%= stylesheet_link_tag "coderay/style.css" %>
+<%= coderay @snippet.code, @snippet.lang %>
+<br />
+
+<%= link_to 'Edit', edit_article_snippet_path( @snippetable ) %> |
+<%= link_to 'Back', article_snippets_path( @snippetable ) %>

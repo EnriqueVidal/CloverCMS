@@ -1,0 +1,6 @@
+%p.fields
+  = f.label :upload_description, 'Description:'
+  = f.text_field  :description, :size => 10
+  %br
+  = f.label :upload, 'File name:'
+  = f.file_field  :upload, :size => 10, :style => 'margin-top: 5px;'

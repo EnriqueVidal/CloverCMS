@@ -1,0 +1,15 @@
+log/*.log
+tmp/*
+tmp/**/*
+doc/api
+doc/app
+db/*.sqlite3
+*.swp
+*~
+.DS_Store
+public/images/system
+public/system
+*.bak
+Thumbs.db
+.bundle
+config/database.yml

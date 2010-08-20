@@ -1,0 +1,2 @@
+module FourOhFoursControllerHelper
+end
