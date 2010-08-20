@@ -1,13 +1,15 @@
 .easy_twitter {
   color:#333;
   font: 0.75em 'Lucida Grande',sans-serif;
-  width: 288px;
-  height: 430px;
-  overflow: auto;
+  width: 285px;
   font-size: 12px;
 }
 
-.easy_twitter_tweet,  #easy_twitter_tweet_list {
+#easy_twitter_tweet_list {
+  border-top: 1px solid #EEEEEE;
+}
+
+.easy_twitter_tweet {
   border-bottom: 1px solid #EEEEEE;
   list-style-type:none;
   margin:0;
