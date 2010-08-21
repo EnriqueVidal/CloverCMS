@@ -4,6 +4,9 @@ ActionController::Routing::Routes.draw do |map|
   map.select_owner_snippet  '/snippets/select_owner', :controller => :snippets, :action => :select_owner
   map.select_owner_page     '/pages/select_owner',    :controller => :pages,    :action => :select_owner
 
+  # member list route
+  map.member_list   '/users/all', :controller => :viewer, :action => :member_list
+
   map.resources   :snippets,    :member     => { :delete => :get }
   map.resources   :pages,       :belongs_to => [ :section, :subsection ]
   map.resources   :articles,    :has_many   => [ :comments, :snippets ]

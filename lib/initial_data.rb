@@ -4,34 +4,34 @@ class InitialData
     content_fixture = File.new(Dir.pwd + '/lib/pages/pages_fixtures.yml')
     data            = YAML::load(content_fixture)
 
-    user      = { :username => 'admin', :email    => 'enrique@cloverinteractive.com', :password => 'administrator' }
+    user      = { :username => 'enrique', :email    => 'enrique@cloverinteractive.com', :password => 'administrator' }
 
     roles     = [ :post_editor, :post_commenter, :member ]
     rights    = {
                     :post_editor  =>  [
                                         {
                                           :name       => 'Create Post',
-                                          :controller => 'posts',
+                                          :controller => 'articles',
                                           :action     => 'create'
                                         },
                                         {
                                           :name       => 'Render new Post form',
-                                          :controller => 'posts',
+                                          :controller => 'articles',
                                           :action     => 'new'
                                         },
                                         {
                                           :name       => 'Render edit Post',
-                                          :controller => 'posts',
+                                          :controller => 'articles',
                                           :action     => 'edit'
                                         },
                                         {
                                           :name       => 'Update Post',
-                                          :controller => 'posts',
+                                          :controller => 'articles',
                                           :action     => 'update'
                                         },
                                         {
                                           :name       => 'Delete Post',
-                                          :controller => 'posts',
+                                          :controller => 'articles',
                                           :action     => 'destroy'
                                         }
                                       ],

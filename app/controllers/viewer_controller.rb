@@ -65,6 +65,10 @@ class ViewerController < ApplicationController
     render_to_string( :partial => 'contact_forms/contact_form') if !@page.nil? && @page.has_contact
   end
   
+  def member_list
+    @users = User.paginate(:page => params[:page], :per_page => 15 )
+  end
+  
   private
   def grab_latest_articles
     @articles  = Article.latest(5)
