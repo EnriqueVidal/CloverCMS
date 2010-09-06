@@ -4,34 +4,38 @@ class InitialData
     content_fixture = File.new(Dir.pwd + '/lib/pages/pages_fixtures.yml')
     data            = YAML::load(content_fixture)
 
-    user      = { :username => 'admin', :email    => 'enrique@cloverinteractive.com', :password => 'administrator' }
-
-    roles     = [ :post_editor, :post_commenter, :member ]
+    user      = { :username => 'enrique', :email    => 'enrique@cloverinteractive.com', :password => 'administrator' }
+    roles     = [ :post_editor, :post_commenter, :member, :snippet_creator ]
     rights    = {
                     :post_editor  =>  [
                                         {
+                                          :name       => 'Post list',
+                                          :controller => 'articles',
+                                          :action     => 'index'
+                                        },
+                                        {
                                           :name       => 'Create Post',
-                                          :controller => 'posts',
+                                          :controller => 'articles',
                                           :action     => 'create'
                                         },
                                         {
                                           :name       => 'Render new Post form',
-                                          :controller => 'posts',
+                                          :controller => 'articles',
                                           :action     => 'new'
                                         },
                                         {
                                           :name       => 'Render edit Post',
-                                          :controller => 'posts',
+                                          :controller => 'articles',
                                           :action     => 'edit'
                                         },
                                         {
                                           :name       => 'Update Post',
-                                          :controller => 'posts',
+                                          :controller => 'articles',
                                           :action     => 'update'
                                         },
                                         {
                                           :name       => 'Delete Post',
-                                          :controller => 'posts',
+                                          :controller => 'articles',
                                           :action     => 'destroy'
                                         }
                                       ],
@@ -61,6 +65,45 @@ class InitialData
                                           :name       => 'View other users profile',
                                           :controller => 'users',
                                           :action     => 'show'
+                                        }
+
+                                      ],
+                
+                :snippet_creator  => [
+                                        {
+                                          :name       => 'Create Snippet',
+                                          :controller => 'snippets',
+                                          :action     => 'create'
+                                        },
+                                        
+                                        {
+                                          :name       => 'Render new Snippet',
+                                          :controller => 'snippets',
+                                          :action     => 'new'
+                                        },
+                                        
+                                        {
+                                          :name       => 'Update Snippet',
+                                          :controller => 'snippets',
+                                          :action     => 'update'
+                                        },
+                                        
+                                        {
+                                          :name       => 'Render edit Snippet',
+                                          :controller => 'snippets',
+                                          :action     => 'edit'
+                                        },
+                                        
+                                        {
+                                          :name       => 'Delete Snippet',
+                                          :controller => 'snippets',
+                                          :action     => 'destroy'
+                                        },
+                                        
+                                        {
+                                          :name       => 'List snippets',
+                                          :controller => 'snippets',
+                                          :action     => 'index'
                                         }
                                       ]
                 }

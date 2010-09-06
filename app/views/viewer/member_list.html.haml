@@ -1,0 +1,4 @@
+- @users.each do |user|
+  .user_info
+    .avatar= image_tag user.gravatar_url, :alt => user.username
+    .username= user.username

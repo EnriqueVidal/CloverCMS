@@ -1,7 +1,5 @@
 ENV['RAILS_ENV']  ||= 'production'
-RAILS_GEM_VERSION   = '2.3.8' unless defined? RAILS_GEM_VERSION
-ENV['GEM_PATH']     = "/home/cloverin/ruby/gems/:/usr/lib/ruby/gems/1.8"  if `hostname`.chop == "highbury.webserversystems.com"
-ENV['GEM_HOME']     = "/home/cloverin/ruby/gems"                          if `hostname`.chop == "highbury.webserversystems.com"
+RAILS_GEM_VERSION   = '2.3.9' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -12,7 +10,7 @@ Rails::Initializer.run do |config|
   # -- all .rb files in that directory are automatically loaded.
 
   # Add additional load paths for your own custom dirs
-  config.load_paths += %W( #{RAILS_ROOT}/lib/modules )
+  config.autoload_paths += %W( #{RAILS_ROOT}/lib/modules )
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

@@ -3,12 +3,14 @@
 %h1= @article.title
 %span.small-text= "Escrito por " + link_to( @article.user.username, '#', :class => 'hl1' ) + " hace " + say_it_in_spanish( time_ago_in_words( @article.created_at ) )
 
-= @article.body
+= inline_coderay @article.body
+
 - @article.snippets.each do |snippet|
   = coderay snippet.code, snippet.lang
   %br
 
-= show_sexy_bookmarks( { :title => @article.title, :permalink => permalink, :post_summary => @article.crest, :site_name => 'CloverInteractive' }, [ :facebook, :twitter, :blogger, :digg, :delicious, :meneame, :stumbleupon, :slashdot, :linkedin, :googlebuzz, :myspace, :googlebookmarks, :friendfeed, :orkut ] )
+= show_sexy_bookmarks( { :title => @article.title, :permalink => permalink, :post_summary => @article.crest, :site_name => 'CloverInteractive' }, [ :facebook, :twitter, :blogger, :digg, :delicious, :meneame, :slashdot ] )
+
 
 %br
 %h6= "Comentarios"
@@ -29,8 +31,33 @@
 
 - if user_signed_in? && ( current_user.admin? || current_user.roles.find_by_name( "Post commenter" ) )
   - form_for [ @article, Comment.new ], :html => { :class => 'forms' } do |f|
-    %p= f.text_area :content, :class => 'mceEditor'
+    = f.text_area :content, :class => 'editor'
     %p= f.submit 'Crear Comentario', :class => 'input_submit'
+    
+  = javascript_include_tag "/wymeditor/wymeditor/jquery.wymeditor.js"
+  :javascript
+    $(function() {
+    $(".editor").wymeditor({
+    logoHtml: '',
+    skin: 'compact',
+    toolsItems: [
+        {'name': 'Bold',        'title': 'Negritas',        'css': 'wym_tools_strong'}, 
+        {'name': 'Italic',      'title': 'Enfasis',         'css': 'wym_tools_emphasis'},
+        {'name': 'Indent',      'title': 'Indent',          'css': 'wym_tools_indent'},
+        {'name': 'Outdent',     'title': 'Outdent',         'css': 'wym_tools_outdent'},
+        {'name': 'Undo',        'title': 'Undo',            'css': 'wym_tools_undo'},
+        {'name': 'Redo',        'title': 'Redo',            'css': 'wym_tools_redo'},
+        {'name': 'CreateLink',  'title': 'Link',            'css': 'wym_tools_link'},
+        {'name': 'Unlink',      'title': 'Unlink',          'css': 'wym_tools_unlink'},
+        {'name': 'InsertImage', 'title': 'Image',           'css': 'wym_tools_image'},
+        {'name': 'Paste',       'title': 'Paste_From_Word', 'css': 'wym_tools_paste'}
+      ],
+      containersHtml: '',
+      classesHtml: ''
+    
+    });
+    });
+
 
 %br
 %br

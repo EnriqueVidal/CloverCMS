@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   attr_accessible :username, :email, :password, :password_confirmation
   
   def add_commenter_role
-    self.roles << Role.find_by_name('Post commenter')
+    self.roles << Role.find_by_name('Post commenter') if self.roles.blank?
   end
 end
 

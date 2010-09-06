@@ -1,7 +1,7 @@
 class ViewerController < ApplicationController
-  layout 'website'
+  layout 'website/website'  
   uses_sexy_bookmarks :only => [ :show_article ]
-  uses_tiny_mce       :only => [ :show_article ], :options => { :theme  => 'simple', :skin   => 'o2k7' }
+
   
   def home_page
     main_page = Page.find_by_main_page(true)
@@ -22,11 +22,15 @@ class ViewerController < ApplicationController
   def show_article_list
     pagination  = { :page => params[:page], :per_page => 15, :order => "created_at DESC" }
     
-    case params[:type]
-      when 'blogs'    then @articles = Article.blogs.paginate(pagination)
-      when 'news'     then @articles = Article.news.paginate(pagination)
-      when 'reviews'  then @articles = Article.reviews.paginate(pagination)
-      when 'all'      then @articles = Article.paginate(pagination)
+    if params[:type].present?
+      case params[:type]
+        when 'blogs'    then @articles = Article.blogs.paginate(pagination)
+        when 'news'     then @articles = Article.news.paginate(pagination)
+        when 'reviews'  then @articles = Article.reviews.paginate(pagination)
+        when 'all'      then @articles = Article.paginate(pagination)
+      end
+    else
+      @articles = Article.paginate(pagination)
     end
     
    if @articles.blank?

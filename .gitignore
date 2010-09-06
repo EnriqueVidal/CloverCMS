@@ -11,3 +11,5 @@ public/images/system
 public/system
 *.bak
 Thumbs.db
+.bundle
+Gemfile.lock

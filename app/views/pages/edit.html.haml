@@ -1,6 +1,3 @@
-= javascript_include_tag 'galleria/galleria.js', 'galleria/themes/classic/galleria.classic.js'
-= javascript_include_tag 'galleriffic/jquery.galleriffic.js', 'galleriffic/jquery.opacityrollover.js'
-  
 %h2 Edit Page
 #tabs
   %ul
@@ -38,9 +35,8 @@
       %p Simply click the document name and a dialog window will appear to allow you to add a download linkt to documents you uploaded into your page body.
     .spacer
 
-%script{ :type => 'text/javascript'}  
+:javascript
   $(document).ready(function(){
-  $('#gallery').galleria( { height: '300px', imagecrop: true, transition: 'fade', max_scale_ratio: 1, popup_links: true });
   $('#main').addClass('nosidebar');
   $('#tabs').tabs();
   $('#accordion').accordion({ clearStyle: true, header: 'h6', collapsible: true, active: 4 });

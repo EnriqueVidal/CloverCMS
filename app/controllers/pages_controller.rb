@@ -1,12 +1,6 @@
 class PagesController < ApplicationController
   before_filter :authenticate_user!, :check_authorization
 
-  uses_tiny_mce :only => [:edit, :new, :create, :update ], :options => {
-                                                                        :theme    => 'advanced',
-                                                                        :skin     => 'o2k7',
-                                                                        :plugins  => %w(  emotions searchreplace inlinepopups safari )
-                                                                      }
-
   def index
     @section  = Section.find( params[:section_id] )
     @pages    = @section.pages.paginate(:page => params[:page])

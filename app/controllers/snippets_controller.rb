@@ -12,7 +12,8 @@ class SnippetsController < ApplicationController
   end
   
   def select_owner
-    @articles = Article.all
+    @articles = Article.all if current_user.admin?
+    @articles ||= current_user.articles
   end
   
   def show

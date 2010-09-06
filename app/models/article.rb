@@ -19,5 +19,7 @@ class Article < ActiveRecord::Base
   
   named_scope :blogs,   :conditions => { :is_post   => true }
   named_scope :news,    :conditions => { :is_news   => true }
-  named_scope :reviews, :conditions => { :is_review => true }
+  named_scope :reviews, :conditions => { :is_review => true }  
+  named_scope :latest,  lambda { |limit| { :limit => limit, :order => "created_at DESC" } }
+
 end
