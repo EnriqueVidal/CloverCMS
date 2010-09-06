@@ -13,3 +13,4 @@ public/system
 Thumbs.db
 .bundle
 config/database.yml
+Gemfile.lock
