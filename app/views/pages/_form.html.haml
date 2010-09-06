@@ -7,7 +7,7 @@
       %p
         = f.label       :title
         = f.text_field  :title
-      %p= f.text_area   :body, :class => 'mceEditor'
+      %p= f.text_area   :body, :class => 'wymeditor'
       
       %br.spacer
       %br.spacer
@@ -48,6 +48,3 @@
           %span
             = add_child_link "New Document",  :documents
             = new_child_fields_template f,    :documents
-
-%script{ :type => 'text/javascript' }
-  setTimeout('$(".mceLayout").css("width", "100%");', 250);

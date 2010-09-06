@@ -2,7 +2,6 @@ class ViewerController < ApplicationController
   layout 'website/website'
   
   uses_sexy_bookmarks :only => [ :show_article ]
-  uses_tiny_mce       :only => [ :show_article ], :options => { :theme  => 'simple', :skin   => 'o2k7' }
   
   before_filter :grab_latest_articles
   

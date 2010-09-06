@@ -52,6 +52,13 @@ module ApplicationHelper
   def coderay(code, lang)
     CodeRay.scan(code, lang).div(:css => :class, :line_numbers => :inline).gsub(/&amp;lt;/, "&lt;").gsub(/&amp;gt;/, "&gt;").gsub(/\n/, "\r")
   end
+  
+  def inline_coderay(text)
+    text.gsub(/\<code( lang="(.+?)")?\>(.+?)\<\/code\>/m) do
+      content_tag("notextile", CodeRay.scan($3, $2).div(:css => :class, :line_numbers => :inline)).gsub(/&amp;lt;/, "&lt;").gsub(/&amp;gt;/, "&gt;").gsub(/\n/, "\r")
+    end
+  end
+  
 
 end
 

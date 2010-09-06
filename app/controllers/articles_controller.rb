@@ -1,11 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!, :check_authorization, :except => [ :show ]
-  uses_tiny_mce :only => [ :edit, :new ], :options => {
-                                                  :theme    => 'advanced',
-                                                  :skin     => 'o2k7',
-                                                  :plugins  => %w( emotions inlinepopups  ),
-                                                  :cleanup  => false
-                                                }
+
   
   # GET /articles
   # GET /articles.xml
