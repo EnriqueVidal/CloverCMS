@@ -26,3 +26,4 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+config.action_mailer.default_url_options = { :host => 'www.cloverinteractive.com' }
