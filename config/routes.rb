@@ -1,13 +1,16 @@
 Clover::Application.routes.draw do
   devise_for :users
-
-  get ":section_name/:page_name.html",                  :controller => :viewer, :action => :show_page
-  get ":subsection_name/:section_name/:page_name.html", :controller => :viewer, :action => :show_page
-
-  resources :sections
-  resources :pages
   
-  root :to => "viewer#home"
+  
+  
+  match ":section_name/:page_name.html",                  :to => "pages#show"
+  match ":section_name/:subsection_name/:page_name.html", :to => "pages#show"
+  
+  resources :sections do
+    resources :pages
+  end
+  
+  root :to => "pages#show", :home_page => true
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

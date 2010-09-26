@@ -9,8 +9,4 @@ class Section < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_presence_of   :name
   validate                :create_url_name
-  
-  def strip_name
-    self.name = self.name.to_s.strip
-  end
 end

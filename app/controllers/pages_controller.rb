@@ -1,82 +1,80 @@
 class PagesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!,  :except => [ :show ]
+  before_filter :set_section
+  
   uses_tiny_mce :only => [ :new, :edit, :create, :update ]
 
   # GET /pages
-  # GET /pages.xml
   def index
-    @pages = Page.paginate :page => params[:page], :per_page => 5
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @pages }
-    end
+    @pages = @section.pages.paginate :page => params[:page], :per_page => 5
   end
 
-  # GET /pages/1
-  # GET /pages/1.xml
+  # GET /:section_name/:page_name.html
+  # GET /:section_name/:subsection_name/:page_name.html
   def show
-    @page = Page.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @page }
+    if @page.blank?
+      @page   = @subsection.pages.find_by_url_name  params[:page_name]   if @subsection.present?
+      @page ||= @section.pages.find_by_url_name     params[:page_name]
     end
   end
 
   # GET /pages/new
-  # GET /pages/new.xml
   def new
-    @page = Page.new
-    redirect_to new_section_path, :notice => 'You need to create a section first.' if Section.count < 1
+    @page = @section.pages.new
   end
 
   # GET /pages/1/edit
   def edit
-    @page = Page.find(params[:id])
+    @page = @section.pages.find(params[:id])
   end
 
   # POST /pages
-  # POST /pages.xml
   def create
-    @page = Page.new(params[:page])
+    @page = @section.pages.new(params[:page])
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to(@page, :notice => 'Page was successfully created.') }
-        format.xml  { render :xml => @page, :status => :created, :location => @page }
+        format.html { redirect_to(section_pages_path(@section), :notice => 'Page was successfully created.') }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # PUT /pages/1
-  # PUT /pages/1.xml
   def update
-    @page = Page.find(params[:id])
+    @page = @section.pages.find(params[:id])
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        format.html { redirect_to(@page, :notice => 'Page was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to(section_pages_path(@section), :notice => 'Page was successfully updated.') }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # DELETE /pages/1
-  # DELETE /pages/1.xml
   def destroy
-    @page = Page.find(params[:id])
+    @page     = @section.pages.find(params[:id])
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to(pages_url) }
-      format.xml  { head :ok }
+      format.html { redirect_to(section_pages_path(@section)) }
+    end
+  end
+  
+  private
+  
+  def set_section
+    if params[:section_name]
+      @section    = Section.find_by_url_name params[:section_name]
+      @subsection = @section.subsections.find_by_url_name params[:subsection_name]
+    elsif params[:home_page]
+      @page       = Page.published.home_page
+      @section    = @page.section
+    else
+      @section    = Section.find params[:section_id] rescue nil
     end
   end
 end

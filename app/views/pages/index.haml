@@ -13,9 +13,9 @@
         %td= page.name
         %td= page.url_name
         %td= page.section.name if page.section.present?
-        %td= link_to 'Show', page
-        %td= link_to 'Edit', edit_page_path(page)
-        %td= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete
+        %td= link_to 'Show', section_page_path(@section, page)
+        %td= link_to 'Edit', edit_section_page_path(@section, page)
+        %td= link_to 'Destroy', section_page_path(@section, page), :confirm => 'Are you sure?', :method => :delete
         
 %br= will_paginate @pages
-%br= link_to 'New Page', new_page_path
+%br= link_to 'New Page', new_section_page_path(@section)

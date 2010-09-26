@@ -1,4 +1,4 @@
-= form_for @page  do |f|
+= form_for [ @section, @page ]  do |f|
   - if @page.errors.any?
     = render 'shared/error_explanation', :object => @page
     

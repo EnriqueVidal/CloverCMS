@@ -6,4 +6,8 @@ module GenerateUrlName
     
     errors.add(:url_name, "has been taken.") if current_object.present? && current_object != self
   end
+  
+  def strip_name
+    self.name = self.name.to_s.strip
+  end
 end
