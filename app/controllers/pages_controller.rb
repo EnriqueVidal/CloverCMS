@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   before_filter :authenticate_user!,  :except => [ :show ]
   before_filter :set_section
-  
+  layout 'website/website', :only => [ :show ]
   uses_tiny_mce :only => [ :new, :edit, :create, :update ]
 
   # GET /pages

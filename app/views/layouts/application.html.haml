@@ -1,0 +1,13 @@
+!!!5
+%html
+  %head
+    %title= yield :title
+    = stylesheet_link_tag :all
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js", 'rails'
+    = csrf_meta_tag
+    = include_tiny_mce_if_needed
+  %body
+    %p.notice= notice
+    %p.alert= alert
+    
+    = yield
