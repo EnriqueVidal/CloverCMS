@@ -1,5 +1,5 @@
 class SectionsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :check_authorization
 
   # GET /sections
   # GET /sections.xml

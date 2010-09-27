@@ -1,0 +1,7 @@
+#login_box
+  = form_tag new_user_session_path do
+    = label_tag 'Email'
+    = text_field_tag      'user[email]'
+    = label_tag 'Password'
+    = password_field_tag  'user[password]'
+    %button Login

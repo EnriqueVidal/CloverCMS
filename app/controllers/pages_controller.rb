@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
-  before_filter :authenticate_user!,  :except => [ :show ]
+  before_filter :authenticate_user!,  :check_authorization, :except => [ :show ]
   before_filter :set_section
-  layout 'website/website', :only => [ :show ]
+  
   uses_tiny_mce :only => [ :new, :edit, :create, :update ]
 
   # GET /pages
@@ -16,6 +16,8 @@ class PagesController < ApplicationController
       @page   = @subsection.pages.find_by_url_name  params[:page_name]   if @subsection.present?
       @page ||= @section.pages.find_by_url_name     params[:page_name]
     end
+
+    render :layout => 'website/website'
   end
 
   # GET /pages/new
