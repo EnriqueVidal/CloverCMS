@@ -3,11 +3,6 @@
     %h1 CloverInteractive
   #navigation
     %ul#nav
-      %li#crece.crece= link_to 'login', '#login_box', :id => 'login'
-      
-      
-#login_content{ :style => 'display:none'}
-  #login_box
-    = render 'shared/login_box'
+      %li#crece.crece= link_to 'login', '/_login_box.html', :id => 'login', :class => 'iframe'
 
 .hline1

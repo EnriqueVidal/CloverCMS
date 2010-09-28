@@ -1,7 +1,12 @@
-#login_box
-  = form_tag new_user_session_path do
-    = label_tag 'Email'
-    = text_field_tag      'user[email]'
-    = label_tag 'Password'
-    = password_field_tag  'user[password]'
-    %button Login
+%h1#logo= 'Clover Interactive'
+#login-form-container
+  = form_tag new_user_session_path, :id => 'login-form', :class => 'forms' do
+    #form-body
+      %fieldset
+        = label_tag 'Email'
+        = text_field_tag 'user[email]', nil, :class => :input_text
+        = label_tag 'Password'
+        = password_field_tag 'user[password]', nil,  :class => :input_text
+      %p
+        %input.input_button{ :type => :submit, :value => :login }
+        %button.input_button Register
