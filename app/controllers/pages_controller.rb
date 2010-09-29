@@ -1,8 +1,6 @@
 class PagesController < ApplicationController
   before_filter :authenticate_user!,  :check_authorization, :except => [ :show ]
   before_filter :set_section
-  
-  uses_tiny_mce :only => [ :new, :edit, :create, :update ]
 
   # GET /pages
   def index

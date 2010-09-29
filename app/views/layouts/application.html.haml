@@ -4,6 +4,10 @@
     %title= yield :title
     = stylesheet_link_tag :all
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js", 'rails'
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"
+    = javascript_include_tag "/wymeditor/jquery.wymeditor.js"
+    = javascript_include_tag "/javascripts/boot_wym.js"
+    
     = csrf_meta_tag
     = include_tiny_mce_if_needed
   %body
