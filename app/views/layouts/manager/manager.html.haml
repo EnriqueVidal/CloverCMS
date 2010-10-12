@@ -1,8 +1,6 @@
 !!!5
-%html.login
+%html
   %head
-    %title= yield :title
-    = stylesheet_link_tag 'website_css/main'
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js", 'rails'
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"
     = javascript_include_tag "/wymeditor/jquery.wymeditor.js"
@@ -13,4 +11,4 @@
     #wrapper
       %p.notice= notice
       %p.alert= alert
-      = yield
+    = yield

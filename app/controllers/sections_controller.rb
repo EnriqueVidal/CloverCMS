@@ -1,5 +1,6 @@
 class SectionsController < ApplicationController
-  before_filter :authenticate_user!, :check_authorization
+  before_filter :check_authorization
+  layout 'manager/manager'
 
   # GET /sections
   # GET /sections.xml
@@ -46,7 +47,7 @@ class SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.save
-        format.html { redirect_to(@section, :notice => 'Section was successfully created.') }
+        format.html { redirect_to(sections_path, :notice => 'Section was successfully created.') }
         format.xml  { render :xml => @section, :status => :created, :location => @section }
       else
         format.html { render :action => "new" }
@@ -62,7 +63,7 @@ class SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.update_attributes(params[:section])
-        format.html { redirect_to(@section, :notice => 'Section was successfully updated.') }
+        format.html { redirect_to(sections_path, :notice => 'Section was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

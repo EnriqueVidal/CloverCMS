@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
-  before_filter :authenticate_user!,  :check_authorization, :except => [ :show ]
+  before_filter :check_authorization, :except => [ :show ]
   before_filter :set_section
+  layout        'manager/manager'
 
   # GET /pages
   def index

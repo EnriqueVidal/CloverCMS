@@ -1,6 +1,10 @@
 require 'test_helper'
+require File.join(File.dirname(__FILE__), '..', 'factories')
 
 class SectionTest < ActiveSupport::TestCase
+  def setup
+    @section = Factory(:section)
+  end
   
   test "Name must be present" do
     @section = Section.new

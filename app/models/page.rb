@@ -7,9 +7,8 @@ class Page < ActiveRecord::Base
   belongs_to :section
   
   validates_presence_of     :name, :content
-  validates_length_of       :content, :minimum => 50
   validates_uniqueness_of   :name
-  validates_numericality_of :section_id, :message => 'needs to be set'
+  validates_numericality_of :section_id, :message => 'needs to be set', :greater_than => 0
   validate                  :create_url_name
   
   scope :published, where(:published => true)
