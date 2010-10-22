@@ -1,3 +1,13 @@
-%h1 New page
-= render 'form'
-= link_to 'Back', section_pages_path(@section)
+%h2 New page
+#tabs
+  %ul
+    %li= link_to 'Page details', '#tabs-1'
+    %li= link_to 'Page keywords', '#tabs-2'
+    %li= link_to 'Page files', '#tabs-2'
+  #tabs-1
+    = render 'form'
+    .spacer
+  #tabs-2
+    .spacer
+  #tabs-3
+    .spacer

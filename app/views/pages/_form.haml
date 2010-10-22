@@ -1,25 +1,41 @@
 = form_for [ @section, @page ]  do |f|
   - if @page.errors.any?
     = render 'shared/error_explanation', :object => @page
-    
-  .field
-    = f.label       :name
-    = f.text_field  :name
   
-  .field
-    = f.label     :content
-    = f.text_area :content, :class => 'wymeditor'
-    
-  .field
-    = f.label   :section
-    = f.select  :section_id, Section.all.collect { |section| [ section.name, section.id ] }, :include_blank => true
+  .splitcontentleft
+    #page_content
+      %p
+        = f.label       :name
+        = f.text_field  :name
   
-  .field
-    = f.label :home_page?
-    = f.check_box :home_page
-  
-  .field
-    = f.label     :published?
-    = f.check_box :published
+      %p
+        = f.text_area :content, :class => 'wymeditor'
+      
+      %p
+        = f.label   :section
+        = f.select  :section_id, Section.all.collect { |section| [ section.name, section.id ] }, :include_blank => true
+      %br.spacer
+          
+      .buttonset
+        = f.check_box :home_page, :class => 'home-page'
+        = f.label :home_page?, 'Is Home page?'
+        = f.check_box :has_contact, :class => 'contact-form'
+        = f.label :has_contact?, 'Has contact form?'
+        = f.check_box :published, :class => 'published'
+        = f.label     :published?
+
+      %br.spacer
     
-  .actions= f.submit
+      .actions= f.submit :class => 'wymupdate'
+  .splitcontentright sadasdasd asdas
+                
+:javascript
+  $(document).ready(function() {
+  $('#main').addClass('nosidebar');
+  $('#tabs').tabs();
+  $('.wymupdate').button();
+  $('.buttonset').buttonset();
+  $('.home-page').button({ icons: { primary: "ui-icon-home" } });
+  $('.contact-form').button({ icons: { primary: "ui-icon-mail-closed" } });
+  $('.published').button({ icons: { primary: "ui-icon-check" } });  
+  });

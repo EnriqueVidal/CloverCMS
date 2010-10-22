@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
   include GenerateUrlName
+  acts_as_taggable
   
   before_validation :strip_name
   before_save :is_home_page?

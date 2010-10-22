@@ -35,7 +35,7 @@
 
 
 /*WYM_BOX*/
-        .wym_skin_compact                { /*border: 1px solid gray;*/ padding: 5px}
+        .wym_skin_compact                { /*border: 1px solid gray;*/ padding: 10px}
 
     /*auto-clear the wym_box*/
         .wym_skin_compact:after 	 { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
@@ -67,7 +67,7 @@
         .wym_skin_compact .wym_section h2,
         .wym_skin_compact .wym_section h3         { padding: 1px 3px; margin: 0; }
         .wym_skin_compact .wym_section a          { padding: 0 3px; display: block; text-decoration: none; color: black; }
-        .wym_skin_compact .wym_section a:hover    { background-color: yellow; }
+        .wym_skin_compact .wym_section a:hover    { background-color: #DEEDF7; }
       /*hide section titles by default*/
         .wym_skin_compact .wym_section h2         { display: none; }
       /*disable any margin-collapse*/

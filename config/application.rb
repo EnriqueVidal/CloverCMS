@@ -40,7 +40,7 @@ module Clover
     config.filter_parameters += [:password]
     
     config.generators do |g|
-         g.template_engine :haml
-     end
+      g.template_engine :haml
+    end
   end
 end

@@ -1,8 +1,12 @@
 jQuery(function() {
     jQuery(".wymeditor").wymeditor({ classesItems: [
-	    	{ 'name': 'date', 				'title': 'PARA: Date', 				'expr': 'p'},
-	    	{ 'name': 'hidden-note', 	'title': 'PARA: Hidden note', 'expr': 'p[@class!="important"]'}
+				{ 'name': 'ruby', 			'title': 'Ruby Lang', 			'expr': 'pre' },
+				{ 'name': 'javascript', 'title': 'Javascript Lang', 'expr': 'pre' }
 	  	],
+			editorStyles: [
+		    { 'name': 'pre', 'css': 'background-color: #FFF; border: 1px solid; font-family: "Bitstream Vera Sans Mono","Monaco","Consolas","Courier New",monospace; font-size: 9pt;' }
+		  ],
+		lang: 'es',
 		logoHtml: '',
 		skin: 'compact'
 	   });

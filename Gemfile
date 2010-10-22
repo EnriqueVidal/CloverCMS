@@ -1,12 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'rails',          '3.0.0'
+gem 'rails',          '3.0.1'
 gem 'haml',           '3.0.18'
 gem 'will_paginate', '3.0.pre2'
 gem 'devise'
 gem 'paperclip'
 gem 'hpricot'
 gem 'ruby_parser'
+gem 'acts-as-taggable-on'
+gem 'omniauth'
 
 # Deploy with Capistrano
 gem 'capistrano'

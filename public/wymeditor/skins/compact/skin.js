@@ -27,7 +27,8 @@ WYMeditor.SKINS['compact'] = {
             if(postInit) postInit.call(wym, wym);
             var rule = {
                 name: 'body',
-                css: 'background-color: #f0f0f0;'
+								css: 'background-color: #DEEDF7;'
+//                css: 'background-color: #f0f0f0;'
             };
             wym.addCssRule( wym._doc.styleSheets[0], rule);
         };

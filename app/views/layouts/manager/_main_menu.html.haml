@@ -1,0 +1,6 @@
+%ul
+  - if user_signed_in?
+    %li= link_to 'Profile', '#' #profile_path, :id => 'profile_menu_link'
+    - if current_user.admin?
+      %li= link_to 'New section', new_section_path, :id => "new_section_menu_link"
+      %li= link_to 'New page',    new_section_page_path(Section.first), :id => "new_page_menu_link"

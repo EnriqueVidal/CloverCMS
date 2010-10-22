@@ -1,4 +1,8 @@
 Clover::Application.routes.draw do
+
+  match "/auth/:provider/callback" => "authentications#create"
+  resources :authentications, :only => [ :index, :create, :destroy ]
+  resources :contact_forms
   devise_for :users
     
   match ":section_name/:page_name.html",                  :to => "pages#show"
