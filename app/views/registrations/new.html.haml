@@ -5,10 +5,12 @@
     = f.label :email
     %br
     = f.text_field :email
+
   %p
     = f.label :username
     %br
     = f.text_field :username
+  
   - if @user.password_required?
     %p
       = f.label :password
@@ -17,6 +19,6 @@
     %p
       = f.label :password_confirmation
       %br
-    = f.password_field :password_confirmation
+      = f.password_field :password_confirmation
   %p= f.submit "Sign up"
 = render :partial => "devise/shared/links"
