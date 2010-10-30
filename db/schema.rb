@@ -20,14 +20,6 @@ ActiveRecord::Schema.define(:version => 20101021055417) do
     t.datetime "updated_at"
   end
 
-  create_table "contact_forms", :force => true do |t|
-    t.string   "from"
-    t.string   "subject"
-    t.text     "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "pages", :force => true do |t|
     t.string   "name"
     t.string   "url_name"

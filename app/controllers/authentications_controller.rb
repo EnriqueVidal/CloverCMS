@@ -1,4 +1,6 @@
 class AuthenticationsController < ApplicationController
+  before_filter :authenticate_user!, :except => [ :create ]
+  
   def index
     @authentications = current_user.authentications.all if current_user
   end
@@ -27,7 +29,6 @@ class AuthenticationsController < ApplicationController
     else
       user  = User.find_or_initialize_by_email(email || '')
       user.apply_omniauth(auth)
-      
       if user.save
         flash[:notice] = 'Signed in successfully.'
         sign_in_and_redirect(:user, user)

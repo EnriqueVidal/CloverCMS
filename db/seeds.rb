@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+section = Section.create({ :name => 'main' })
+pages   = Page.create({ :name => 'main page', :content => 'this is my main page', :section_id => section.id, :home_page => true, :published => true })

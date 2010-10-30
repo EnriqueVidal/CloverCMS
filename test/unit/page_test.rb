@@ -1,5 +1,4 @@
 require 'test_helper'
-require File.join(File.dirname(__FILE__), '..', 'factories')
 
 class PageTest < ActiveSupport::TestCase
   def setup

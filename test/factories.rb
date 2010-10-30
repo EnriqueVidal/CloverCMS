@@ -1,4 +1,5 @@
 Factory.define :user do |f|
+  f.username 'user'
   f.email 'user@email.com'
   f.password 'somepassword'
   f.password_confirmation 'somepassword'
@@ -17,4 +18,10 @@ end
 
 Factory.define :section do |f|
   f.name 'Main'
+end
+
+Factory.define :authentication do |f|
+  f.uid 'sample_uid'
+  f.provider 'provider'
+  f.user_id 0
 end

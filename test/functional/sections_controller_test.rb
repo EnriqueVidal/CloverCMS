@@ -1,5 +1,4 @@
 require 'test_helper'
-require File.join(File.dirname(__FILE__), '..', 'factories')
 require 'will_paginate'
 
 class SectionsControllerTest < ActionController::TestCase
