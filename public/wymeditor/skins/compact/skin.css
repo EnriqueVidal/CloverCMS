@@ -35,7 +35,7 @@
 
 
 /*WYM_BOX*/
-        .wym_skin_compact                { /*border: 1px solid gray;*/ padding: 10px}
+        .wym_skin_compact                { /*border: 1px solid gray;*/ }
 
     /*auto-clear the wym_box*/
         .wym_skin_compact:after 	 { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
@@ -43,12 +43,12 @@
 
 
 /*WYM_HTML*/
-        .wym_skin_compact .wym_html               { width: 98%;}
-        .wym_skin_compact .wym_html textarea      { font-size: 120%; width: 100%; height: 200px; border: 1px solid gray; background: white; }
+        .wym_skin_compact .wym_html               { width: auto;}
+        .wym_skin_compact .wym_html textarea      { font-size: 120%; width: 100%; height: 230px; border: 1px solid gray; background: white; }
 
 
 /*WYM_IFRAME*/
-        .wym_skin_compact .wym_iframe             { width: 98%;}
+        .wym_skin_compact .wym_iframe             { width: auto;}
         .wym_skin_compact .wym_iframe iframe      { width: 100%; height: 200px; border: 1px solid gray; background: white }
 
 

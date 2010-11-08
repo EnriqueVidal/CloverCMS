@@ -178,6 +178,8 @@ table.list tbody tr:hover
 {
     float: right;
     width: 49%;
+		margin-right: 10px;
+		padding-bottom: 10px;
 }
 
 .box h3
@@ -189,6 +191,8 @@ table.list tbody tr:hover
 {
     float: left;
     width: 49%;
+		margin-left: 10px;
+		padding-bottom: 10px;
 }
 
 div.row {
@@ -237,7 +241,7 @@ h3, h4
     color: #505050;
     line-height: 1.5em;
     margin-bottom: 10px;
-    padding: 6px;
+    padding: 10px;
 }
 
 table.list tr a
@@ -447,10 +451,13 @@ color: #000000;
 }
 
 #main-menu li a {
-background-color: #666666;
+background-color: #666;
 font-weight: normal;
 padding: 4px 8px 6px;
 margin: 0;
+-moz-border-radius-topright: 5px;
+-moz-border-radius-topleft: 5px;
+border-radius: 5px 5px 0px 0px;
 }
 
 #main-menu li a:hover {
@@ -524,7 +531,6 @@ width: 26%;
 {
 float: right;
 margin: 0;
-min-height: 600px;
 padding: 0;
 position: relative;
 width: 22%;
@@ -557,10 +563,10 @@ border-right: 0 none;
 width: auto;
 }
 
-html > body #content
+/*html > body #content
 {
 min-height: 600px;
-}
+}*/
 
 #wrapper {
 -moz-background-clip: border;
@@ -649,4 +655,50 @@ div.spacer {
   clear: both;
 }
 
+fieldset {
+	padding: 15px;
+	border: 6px solid #DDD;
+	color: #333;
+	background-color: #FFF;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
 
+legend {
+	padding: 10px;
+	color: #333;
+	font-size: 16px;
+}
+
+
+form label {
+  display: block;
+  font-size: 130%;
+  font-weight: bold;
+  font-family: Trebuchet MS,Helvetica,Arial,sans-serif;
+  margin: 5px 10px 10px 0px;
+}
+
+form input[type=text] {
+  border: 1px solid gray;
+  width: 350px;
+  margin: 0px 10px 15px 0px;
+  padding: 5px;
+	display: block;
+}
+
+label small {
+	color:gray;
+	font-weight:lighter;
+}
+
+form select{
+  display: block;
+  margin: 0 10px 10px 0;
+  border: 1px solid lightgray;
+  padding: 2px
+}
+
+#sidebar #operations_placeholder a {
+	display: block;
+}

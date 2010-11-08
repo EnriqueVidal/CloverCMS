@@ -1,0 +1,5 @@
+%p
+  = f.label 'Enter your keywords'
+  %input{ :type => :text, :name => 'keyword_input', :id => 'keyword_input' }
+%input{ :type => 'hidden', :name => 'page[keywords]', :id => 'page_keywords' }
+%select{ :size => 5, :style => 'width: 350px;', :id => 'keywords' }

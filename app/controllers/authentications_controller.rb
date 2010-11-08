@@ -11,7 +11,7 @@ class AuthenticationsController < ApplicationController
     email ||= auth['user_info']['email'] rescue nil
     
     authentication  = Authentication.find_by_provider_and_uid(auth['provider'], auth['uid'])
-    user            = User.find_by_email(email) if email.present?
+    user            = User.find_by_email(email) if email.present? && current_user.blank?
     
     if authentication
       flash[:notice] = 'Signed in successfully.'

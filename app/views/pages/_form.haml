@@ -2,46 +2,37 @@
   - if @page.errors.any?
     = render 'shared/error_explanation', :object => @page
   
-  .splitcontentleft
-    #page_content
-      %p
-        = f.label       :name
-        = f.text_field  :name
-  
-      %p
-        = f.text_area :content, :class => 'wymeditor'
-      
-      %p
-        = f.label   :section
-        = f.select  :section_id, Section.all.collect { |section| [ section.name, section.id ] }, :include_blank => true
-      %br.spacer
-          
-      .buttonset
-        = f.check_box :home_page, :class => 'home-page'
-        = f.label :home_page?, 'Is Home page?'
-        = f.check_box :has_contact, :class => 'contact-form'
-        = f.label :has_contact?, 'Has contact form?'
-        = f.check_box :published, :class => 'published'
-        = f.label     :published?
+  #page_content
+    %label{ :for => :page_name }
+      Name
+      %small Your page name will be used to create a friendly url, pick one wisely.
+    = f.text_field  :name
+    = f.text_area :content, :class => 'wymeditor'
 
-      %br.spacer
-    
-      .actions= f.submit :class => 'wymupdate'
-  .splitcontentright
-    %p
-      = f.label 'Enter your keywords'
-      %input{ :type => :text, :name => 'keyword_input', :id => 'keyword_input' }
-    %input{ :type => 'hidden', :name => 'page[keywords]', :id => 'page_keywords' }
-    %select{ :size => 5, :style => 'width: 350px;', :id => 'keywords' }
+    %label{ :for => :page_section_id }
+      Section
+      %small Every page must belong to a section, section names are also use for friendly urls.
+    = f.select  :section_id, Section.all.collect { |section| [ section.name, section.id ] }, :include_blank => false
+        
+    .buttonset
+      = f.check_box :home_page, :class => 'home-page'
+      = f.label :home_page?, 'Is Home page?'
+      = f.check_box :has_contact, :class => 'contact-form'
+      = f.label :has_contact?, 'Has contact form?'
+      = f.check_box :published, :class => 'published', :checked => true
+      = f.label     :published?
+      
+    .actions= f.submit :class => 'wymupdate'
     
                 
 :javascript
   $(document).ready(function() {
-  $('#main').addClass('nosidebar');
-  $('#tabs').tabs();
-  $('.wymupdate').button();
-  $('.buttonset').buttonset();
-  $('.home-page').button({ icons: { primary: "ui-icon-home" } });
-  $('.contact-form').button({ icons: { primary: "ui-icon-mail-closed" } });
-  $('.published').button({ icons: { primary: "ui-icon-check" } });  
+    $('#main').addClass('nosidebar');
+    $('#tabs').tabs();
+    $('.wymupdate').button();
+    $('.buttonset').buttonset();
+    $('.home-page').button({ icons: { primary: "ui-icon-home" } });
+    $('.contact-form').button({ icons: { primary: "ui-icon-mail-closed" } });
+    $('.published').button({ icons: { primary: "ui-icon-check" } });
+    $('#new_page_menu_link').addClass('selected');
   });

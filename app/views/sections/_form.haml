@@ -2,12 +2,36 @@
   - if @section.errors.any?
     = render 'shared/error_explanation', :object => @section
 
-  .field
-    = f.label       :name
+  .splitcontentleft
+    %label{ :for => :section_name }
+      Section
+      %small Sections act as page containers, names are used for friendly urls.
     = f.text_field  :name
     
-  .field
-    = f.label   :main_section_id
-    = f.select  :main_section_id, Section.all.collect { |section|  [ section.name, section.id ] }, :include_blank => true
+    %label{ :for => :main_section_id }
+      Main section
+      %small Use this if this is a subsection.
+    = f.select  :main_section_id, Section.where("name != '#{@section.name}'").all.collect { |section|  [ section.name, section.id ] }, :include_blank => true
 
-  .actions= f.submit
+    .actions= f.submit
+  
+  .splitcontentright
+    #tips_content.box
+      %h3 Did you know?
+      %p CloverInteractive's Clever CMS automatically creates friendly urls based on your section, subsection and page names.
+      %p Apart from being user friendly, friendly urls allow you to improve your position in the most popular search engines result pages, and let you keep your pages clean and organized.
+
+- content_for :sidebar do
+  #operations_placeholder
+    %h3 Section Operations
+    - if params[:action] == 'edit'
+      = link_to 'Create a new section', new_section_path, :class => 'icon icon_add'
+      = link_to 'Create a  new page', new_section_page_path(@section), :class => 'icon icon_page_add'
+      = link_to 'Go to this section pages', section_pages_path(@section), :class => 'icon icon_back'  
+    = link_to 'Go back to the section list', sections_path, :class => 'icon icon_back'
+
+:javascript
+  $(document).ready(function() {
+    $('#content form input[type=submit]').button();
+    $('#new_section_menu_link').addClass('selected');
+  });
