@@ -671,7 +671,7 @@ legend {
 }
 
 
-form label {
+label {
   display: block;
   font-size: 130%;
   font-weight: bold;
@@ -679,7 +679,7 @@ form label {
   margin: 5px 10px 10px 0px;
 }
 
-form input[type=text] {
+input[type=text] {
   border: 1px solid gray;
   width: 350px;
   margin: 0px 10px 15px 0px;
@@ -692,7 +692,7 @@ label small {
 	font-weight:lighter;
 }
 
-form select{
+select {
   display: block;
   margin: 0 10px 10px 0;
   border: 1px solid lightgray;

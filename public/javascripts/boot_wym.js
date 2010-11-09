@@ -6,7 +6,6 @@ jQuery(function() {
 			editorStyles: [
 		    { 'name': 'pre', 'css': 'background-color: #FFF; border: 1px solid; font-family: "Bitstream Vera Sans Mono","Monaco","Consolas","Courier New",monospace; font-size: 9pt;' }
 		  ],
-		lang: 'es',
 		logoHtml: '',
 		skin: 'compact'
 	   });

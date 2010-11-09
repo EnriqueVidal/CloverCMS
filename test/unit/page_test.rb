@@ -28,4 +28,11 @@ class PageTest < ActiveSupport::TestCase
     @page = Page.new :name => 'Web', :content => 'This is my new content that should make my test pass with its new length.'
     assert !@page.valid?, 'This should not pass as this page is not related to any section.'
   end
+  
+  test "Page should accept keywords" do
+    @page = Page.new :name => 'Web', :content => 'This is my new content that should make my test pass with its new length.', :section_id => 1
+    @page.keyword_list = 'this, are, my, keywords'
+    assert @page.valid?
+    assert @page.save!
+  end
 end

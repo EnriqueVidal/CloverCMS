@@ -31,8 +31,8 @@ class PagesController < ApplicationController
 
   # POST /pages
   def create
-    @page = @section.pages.new(params[:page])
-
+    @page = @section.pages.new(params[:page].except('keywords'))
+    @page.keyword_list = params[:page][:keywords] if params[:page][:keywords].present?
     respond_to do |format|
       if @page.save
         format.html { redirect_to(section_pages_path(@section), :notice => 'Page was successfully created.') }
@@ -45,9 +45,9 @@ class PagesController < ApplicationController
   # PUT /pages/1
   def update
     @page = @section.pages.find(params[:id])
-
+    @page.keyword_list = params[:page][:keywords] if params[:page][:keywords].present?
     respond_to do |format|
-      if @page.update_attributes(params[:page])
+      if @page.update_attributes(params[:page].except('keywords'))
         format.html { redirect_to(section_pages_path(@section), :notice => 'Page was successfully updated.') }
       else
         format.html { render :action => "edit" }

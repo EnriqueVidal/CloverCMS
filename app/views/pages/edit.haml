@@ -1,2 +1,12 @@
 %h2 Editing page
-= render 'form'
+#tabs
+  %ul
+    %li= link_to 'Page details', '#tabs-1'
+    %li= link_to 'Page keywords', '#tabs-2'
+    %li= link_to 'Page files', '#tabs-2'
+  #tabs-1
+    = render 'form'
+  #tabs-2
+    = render 'shared/keywords', :keywords => @page.keywords.map(&:name)
+    .spacer
+  #tabs-3

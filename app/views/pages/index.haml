@@ -1,21 +1,36 @@
-%h1 Listing pages
+%h2= "Listing pages form section #{@section.name}"
 
-%table
-  %tr
-    %th Name
-    %th Url name
-    %th Section
-    %th
-    %th
-    %th
-    - @pages.each do |page|
-      %tr
-        %td= page.name
-        %td= page.url_name
-        %td= page.section.name if page.section.present?
-        %td= link_to 'Show', section_page_path(@section, page)
-        %td= link_to 'Edit', edit_section_page_path(@section, page)
-        %td= link_to 'Destroy', section_page_path(@section, page), :confirm => 'Are you sure?', :method => :delete
-        
-%br= will_paginate @pages
-%br= link_to 'New Page', new_section_page_path(@section)
+.splitcontentleft{ :style => 'width: 66%' }
+  %p To keep everything in place and organized, CloverInteractive's Clever CMS does not allow orphan pages, by orphan pages we mean pages that are not assigned to an specific section or subsection. Orphan pages make your site look messy and disorganized.
+
+  #pages
+    %table.list
+      %thead
+        %tr
+          %th name
+          %th section
+          %th created at
+          %th updated at
+          %th operations
+      %tbody
+        - @pages.each do |page|
+          %tr{ :class => cycle(:odd, :even) }
+            %td= page.name
+            %td= page.section.name if page.section.present?
+            %td= page.created_at.to_s :long
+            %td= page.updated_at.to_s :long
+            %td
+              = link_to 'Edit', edit_section_page_path(@section, page), :class => 'icon icon_bullet_pencil'
+              = link_to 'Destroy', section_page_path(@section, page), :confirm => 'Are you sure?', :method => :delete, :class => 'icon icon_bullet_delete'
+  = will_paginate @pages
+
+.splitcontentright{ :style => 'width: 29%' }
+  #tips_content.box
+    %h3 Did you know?
+    %p In this latest version of CloverInteractive's Clever CMS, many page creating, editing and displaying issues have been resolved, now you no longer need to think how to name pages as names are taken out of your page title. That way the page name that both the user and the Search Engine see is consistent with your content.
+    
+- content_for :sidebar do
+  #operations_placeholder
+    %h3 Page Operations
+    = link_to 'Add a new page', new_section_page_path(@section), :class => 'icon icon_page_add'
+    = link_to 'Go back to sections', sections_path, :class => 'icon icon_back'

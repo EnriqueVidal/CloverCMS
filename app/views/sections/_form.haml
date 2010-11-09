@@ -13,7 +13,7 @@
       %small Use this if this is a subsection.
     = f.select  :main_section_id, Section.where("name != '#{@section.name}'").all.collect { |section|  [ section.name, section.id ] }, :include_blank => true
 
-    .actions= f.submit
+    %button{ :id => "submit" } Submit
   
   .splitcontentright
     #tips_content.box
@@ -32,6 +32,6 @@
 
 :javascript
   $(document).ready(function() {
-    $('#content form input[type=submit]').button();
+    $('#submit').button({ icons: { primary: "ui-icon-circle-check" } });
     $('#new_section_menu_link').addClass('selected');
   });
