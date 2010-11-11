@@ -23,6 +23,9 @@
       = f.check_box :published, :class => 'published', :checked => true
       = f.label     :published?
       
+    - f.fields_for :images do |image|
+      = render 'shared/assets', :f => image
+      
     %button{ :class => 'wymupdate' } Submit
     
 - content_for :sidebar do

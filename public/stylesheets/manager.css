@@ -702,3 +702,8 @@ select {
 #sidebar #operations_placeholder a {
 	display: block;
 }
+
+form div.fields {
+	padding: 10px;
+}
+}

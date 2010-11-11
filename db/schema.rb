@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101021055417) do
+ActiveRecord::Schema.define(:version => 20101110064447) do
+
+  create_table "assets", :force => true do |t|
+    t.string  "description"
+    t.string  "asset_file_name"
+    t.integer "asset_file_size"
+    t.string  "type"
+    t.integer "attachable_id"
+    t.string  "attachable_type"
+  end
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
