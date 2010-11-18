@@ -22,7 +22,6 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = @section.pages.new
-    @page.images.build
   end
 
   # GET /pages/1/edit

@@ -1,0 +1,25 @@
+<script type="text/javascript">
+  <%- session_key = Rails.application.config.session_options[:key] -%>
+  $(function () {
+    var uploadify_script_data = {};
+    // Fetch the CSRF meta tag data
+    var csrf_token = $('meta[name=csrf-token]').attr('content');
+    var csrf_param = $('meta[name=csrf-param]').attr('content');
+ 
+    // Now associate the data in the config, encoding the data safely
+    uploadify_script_data[csrf_param] = encodeURI(encodeURIComponent(csrf_token));
+    
+    // Associate the session information
+    uploadify_script_data['<%= session_key %>'] = '<%= cookies[session_key] %>';
+    uploadify_script_data.attachable_type = '<%= @page.class %>'
+    uploadify_script_data.attachable_id   = '<%= @page.id%>'
+ 
+    $('#uploadify').uploadify({
+      script          : '/assets/',
+      scriptData      : uploadify_script_data,
+      uploader        : '/uploadify/uploadify.swf',
+      cancelImg       : '/uploadify/cancel.png',
+      auto            : true
+    });  
+  });
+</script>

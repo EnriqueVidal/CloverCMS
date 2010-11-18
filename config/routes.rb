@@ -1,10 +1,11 @@
 Clover::Application.routes.draw do
+  resources :assets
   devise_for :users, :controllers => { :registrations => 'registrations' }
-  match "/auth/:provider/callback" => "authentications#create"
-  resources :authentications, :only => [ :index, :create, :destroy ]
-    
+
   match ":section_name/:page_name.html",                  :to => "pages#show"
   match ":section_name/:subsection_name/:page_name.html", :to => "pages#show"
+  match "/auth/:provider/callback" => "authentications#create"
+  resources :authentications, :only => [ :index, :create, :destroy ]
   
   resources :sections, :except => :show  do
     resources :pages, :except => :show

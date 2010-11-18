@@ -1,12 +1,15 @@
 %h2 Editing page
 #tabs
   %ul
-    %li= link_to 'Page details', '#tabs-1'
+    %li= link_to 'Page details',  '#tabs-1'
     %li= link_to 'Page keywords', '#tabs-2'
-    %li= link_to 'Page files', '#tabs-2'
+    %li= link_to 'Page files',    '#tabs-3'
   #tabs-1
     = render 'form'
   #tabs-2
     = render 'shared/keywords', :keywords => @page.keywords.map(&:name)
     .spacer
   #tabs-3
+    %input#uploadify{ :type => :file }
+    = render 'shared/uploadify'
+    

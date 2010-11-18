@@ -90,6 +90,33 @@ ActiveRecord::Schema.define(:version => 20101110064447) do
     t.string "name"
   end
 
+  create_table "uploads", :force => true do |t|
+    t.integer  "creator_id"
+    t.string   "name"
+    t.string   "caption",             :limit => 1000
+    t.text     "description"
+    t.boolean  "is_public",                           :default => true
+    t.integer  "uploadable_id"
+    t.string   "uploadable_type"
+    t.string   "width"
+    t.string   "height"
+    t.string   "local_file_name"
+    t.string   "local_content_type"
+    t.integer  "local_file_size"
+    t.datetime "local_updated_at"
+    t.string   "remote_file_name"
+    t.string   "remote_content_type"
+    t.integer  "remote_file_size"
+    t.datetime "remote_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "uploads", ["creator_id"], :name => "index_uploads_on_creator_id"
+  add_index "uploads", ["local_content_type"], :name => "index_uploads_on_local_content_type"
+  add_index "uploads", ["uploadable_id"], :name => "index_uploads_on_uploadable_id"
+  add_index "uploads", ["uploadable_type"], :name => "index_uploads_on_uploadable_type"
+
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
