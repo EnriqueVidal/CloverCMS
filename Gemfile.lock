@@ -31,7 +31,7 @@ GEM
     acts-as-taggable-on (2.0.6)
     addressable (2.2.2)
     ansi (1.2.2)
-    arel (2.0.3)
+    arel (2.0.4)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
     capistrano (2.5.19)
@@ -69,7 +69,7 @@ GEM
       gem_plugin (~> 0.2.3)
     multi_json (0.0.5)
     multipart-post (1.0.1)
-    mysql (2.8.1)
+    mysql (2.7)
     net-ldap (0.1.1)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -173,7 +173,7 @@ DEPENDENCIES
   mime-types
   mocha
   mongrel (= 1.2.0.pre2)
-  mysql
+  mysql (= 2.7)
   omniauth
   paperclip
   rails (= 3.0.3)

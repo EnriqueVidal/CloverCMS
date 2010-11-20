@@ -3,8 +3,8 @@ class CreateAssets < ActiveRecord::Migration
     create_table :assets do |t|
       t.string  :description
       t.string  :asset_file_name
+      t.string  :asset_content_type
       t.integer :asset_file_size
-      t.string  :type
       t.integer :attachable_id
       t.string  :attachable_type
     end

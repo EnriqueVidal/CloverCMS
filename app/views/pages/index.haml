@@ -15,7 +15,7 @@
       %tbody
         - @pages.each do |page|
           %tr{ :class => cycle(:odd, :even) }
-            %td= page.name
+            %td= link_to page.name, edit_section_page_path(@section, page)
             %td= page.section.name if page.section.present?
             %td= page.created_at.to_s :long
             %td= page.updated_at.to_s :long

@@ -10,6 +10,6 @@
     = render 'shared/keywords', :keywords => @page.keywords.map(&:name)
     .spacer
   #tabs-3
-    %input#uploadify{ :type => :file }
+    %input#uploadify{ :type => :file, :name => :asset }
     = render 'shared/uploadify'
     
