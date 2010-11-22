@@ -1,16 +1,22 @@
-%h1#logo CloverInteractive
+
+%a{:href =>"/"} 
+  %h1#logo CloverInteractive
 #login-form-container
   = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :id => "login-form", :class => :forms } ) do |f|
     #form-body
+      %h2 Sign in
       %fieldset
         = f.label :username
-        = f.text_field :username, :class => :shadowed
+        = f.text_field :username, :class => :"input_text shadowed"
         = f.label :password
-        = f.password_field :password, :class => :shadowed    
+        = f.password_field :password, :class => :"input_password shadowed"
          
       - if devise_mapping.rememberable?
-        %p
-          = f.label :remember_me
-          = f.check_box :remember_me
+        %label 
+          Remember me
+          = f.check_box :remember_me, :class => "input_checkbox"
+		  
       %p= f.submit "Sign in", :class => :input_button
-    = render :partial => "devise/shared/links"
+   
+%div{:class => "content"}
+  = render :partial => "devise/shared/links"
