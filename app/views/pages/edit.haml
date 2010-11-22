@@ -10,6 +10,11 @@
     = render 'shared/keywords', :keywords => @page.keywords.map(&:name)
     .spacer
   #tabs-3
-    %input#uploadify{ :type => :file, :name => :asset }
-    = render 'shared/uploadify'
-    
+    .splitcontentleft
+      #images_list
+        - @page.assets.each do |asset|
+          = image_tag asset.asset.url(:small)
+      %file#uploadify{ :name => 'asset' }
+    .splitcontentright
+    = render 'shared/uploadify', :object => @page
+    .spacer

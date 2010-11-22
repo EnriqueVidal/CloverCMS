@@ -2,11 +2,10 @@ class Page < ActiveRecord::Base
   include GenerateUrlName
   acts_as_taggable_on :keywords 
   has_many :assets, :as => :attachable
+  belongs_to :section
   
   before_validation :strip_name
   before_save :is_home_page?
-  
-  belongs_to :section
   
   validates_presence_of     :name, :content
   validates_uniqueness_of   :name

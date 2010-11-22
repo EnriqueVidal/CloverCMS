@@ -7,8 +7,8 @@
 
     uploadify_script_data[csrf_param]       = encodeURI(encodeURIComponent(csrf_token));
     uploadify_script_data['#{session_key}'] = '#{cookies[session_key]}';
-    uploadify_script_data.attachable_type   = '#{@page.class}'
-    uploadify_script_data.attachable_id     = '#{@page.id}'
+    uploadify_script_data.attachable_type   = '#{object.class}'
+    uploadify_script_data.attachable_id     = '#{object.id}'
  
     $('#uploadify').uploadify({
       script          : '/assets/',
@@ -16,13 +16,16 @@
       uploader        : '/uploadify/uploadify.swf',
       cancelImg       : '/uploadify/cancel.png',
       auto            : true,
-      onComplete      : function(a, b, c, response){ 
-        console.log(response);
-        console.log(a);
-        console.log(b);
+      onComplete      : function(a, b, c, response) { 
+        response = $.parseJSON(response);
+        if (response.status == "success") {
+          var img = document.createElement('img');
+          img.src = response.thumbnail;
+          $("#images_list").append(img);
+        }
       },
       fileDesc        : 'Photo or Document',
       sizeLimit       : #{19.megabytes}
-    });  
+    });
   });
 </script>

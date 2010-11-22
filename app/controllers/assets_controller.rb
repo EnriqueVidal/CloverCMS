@@ -1,14 +1,15 @@
 class AssetsController < ApplicationController
-  before_filter :fix_content_type
+  before_filter :fix_content_type, :check_authorization
   
   def create
     @asset = Asset.new :attachable_type => params[:attachable_type], :attachable_id => params[:attachable_id]
     @asset.asset = params[:Filedata]
     
     if @asset.save!
-      render :json => { :status => 'success' }
+      success = { :status => 'success', :thumbnail => @asset.asset.url(:small) }.to_json
+      render :json =>  success
     else
-      render :json => { :status => 'error' }
+      render :json => { :status => 'error' }.to_json
     end
   end
   

@@ -706,4 +706,16 @@ select {
 form div.fields {
 	padding: 10px;
 }
+
+#images_list { display: block; }
+
+#images_list img {
+  padding: 5px;
+  margin: 5px;
+  border: 2px solid #DDD;
+  background-color: #fff;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }

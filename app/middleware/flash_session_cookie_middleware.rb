@@ -1,4 +1,4 @@
-require 'rack/utils' 
+require 'rack/utils'
 class FlashSessionCookieMiddleware
   def initialize(app, session_key = '_session_id')
     @app = app
