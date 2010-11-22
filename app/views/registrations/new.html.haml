@@ -1,4 +1,4 @@
-%a{:href =>"/"} 
+%a{:href =>"/"}
   %h1#logo CloverInteractive
 
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
@@ -16,7 +16,7 @@
   
   - if @user.password_required?
     %p
-      = f.label :password 
+      = f.label :password
       %br
       = f.password_field :password, :class => :"input_password shadowed"
     %p
