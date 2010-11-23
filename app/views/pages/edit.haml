@@ -18,3 +18,7 @@
     .splitcontentright
     = render 'shared/uploadify', :object => @page
     .spacer
+:javascript
+  $(function() {
+    add_images();
+  })

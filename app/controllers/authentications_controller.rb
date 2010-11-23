@@ -8,34 +8,30 @@ class AuthenticationsController < ApplicationController
   def create
     auth    = request.env["omniauth.auth"]
     email   = auth['extra']['user_hash']['email'] rescue nil
-    email ||= auth['user_info']['email'] rescue nil
+    email ||= auth['user_info']['email']          rescue nil
     
     authentication  = Authentication.find_by_provider_and_uid(auth['provider'], auth['uid'])
     user            = User.find_by_email(email) if email.present? && current_user.blank?
     
     if authentication
-      flash[:notice] = 'Signed in successfully.'
-      sign_in_and_redirect(:user, authentication.user)
+      sign_in_and_redirect(:user, authentication.user, :notice => 'Signed in successfully.')
     elsif user
       user.apply_omniauth(auth)
       session[:omniauth]  = auth.except('extra')
-      session[:email]     = email if email
+      session[:email]     = email
       
       sign_in_and_redirect(:user, user)
     elsif current_user
-      current_user.authentications.find_or_create_by_provider_and_uid(auth['provider'], auth['uid'])
-      flash[:notice] = 'Authentication successful.'
-      redirect_to authentications_url
+      current_user.authentications.with_auth(auth['provider'], auth['uid'])
+      redirect_to authentications_url, :notice => 'Authentication succesful'
     else
       user  = User.find_or_initialize_by_email(email || '')
       user.apply_omniauth(auth)
       if user.save
-        flash[:notice] = 'Signed in successfully.'
-        sign_in_and_redirect(:user, user)
+        sign_in_and_redirect(:user, user, :notice => 'Signed in successfully')
       else
         session[:omniauth]  = auth.except('extra')
-        session[:email]     = email if email
-        
+        session[:email]     = email
         redirect_to new_user_registration_url
       end
     end

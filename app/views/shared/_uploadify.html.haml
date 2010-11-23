@@ -15,6 +15,7 @@
       scriptData      : uploadify_script_data,
       uploader        : '/uploadify/uploadify.swf',
       cancelImg       : '/uploadify/cancel.png',
+      fileExt         : '*.png;*.jpg;*.gif',
       auto            : true,
       onComplete      : function(a, b, c, response) { 
         response = $.parseJSON(response);
@@ -22,6 +23,9 @@
           var img = document.createElement('img');
           img.src = response.thumbnail;
           $("#images_list").append(img);
+          $(img).click(function(){
+        	  image_operations({ element: this, title: 'Add image', text: 'Would you like to add this image to the page?' })
+        	});
         }
       },
       fileDesc        : 'Photo or Document',

@@ -1,8 +1,8 @@
 // Add images to editor
 function add_images()
 {
-	$(".galleria-thumbnails .galleria-image img").each(function(){
-		$(this).dblclick(function(){
+	$("#images_list img").each(function(){
+		$(this).click(function(){
 			image_operations({ element: this, title: 'Add image', text: 'Would you like to add this image to the page?' })
 		});
 	});
@@ -110,67 +110,37 @@ function delete_confirmation_dialog( params ) {
 	});
 }
 
-function image_operations( params )
-{
-element = '<div id="dialog-pictures" title="' + params.title + '"><p><span class="ui-icon ui-icon-image" style="float:left; margin:0 7px 20px 0;"></span>';
-element += params.text + '</p></div>';
-$("#main").append(element);
+function image_operations( params ) {
+	element = '<div id="dialog-pictures" title="' + params.title + '"><p><span class="ui-icon ui-icon-image" style="float:left; margin:0 7px 20px 0;"></span>';
+	element += params.text + '</p></div>';
+	$("#main").append(element);
 
-$(function() {
-// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
-$("#dialog").dialog("destroy");
-
-$("#dialog-pictures").dialog({
-resizable: false,
-modal: true,
-dialogClass: 'info',
-buttons: {
-'Add picture to page': function() {
-$(this).dialog('close');
-$("body", $("iframe").contents()).append("<br /><img src=\"" + params.element.src.replace(/squared/, 'medium' ) + "\" />");
-$(this).remove();
-},
-Cancel: function() {
-$(this).dialog('close');
-$(this).remove();
-}
-}
-});
-});
-}
-
-
-function document_operations( params )
-{
-element = '<div id="dialog-documents" title="' + params.title + '"><p><span class="ui-icon ui-icon-document" style="float:left; margin:0 7px 20px 0;"</span>';
-element += params.text + '</p></div>';
-$("#main").append(element);
-
-$(function() {
-// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
-$("#dialog").dialog("destroy");
-
-$("#dialog-documents").dialog({
-resizable: false,
-modal: true,
-dialogClass: 'info',
-buttons: {
-'Add document to page': function() {
-$(this).dialog('close');
-$("body", $("iframe").contents()).append("<a href=\"" + params.element.href + "\">" + params.element.innerHTML + "</a>");
-$(this).remove();
-},
-Cancel: function() {
-$(this).dialog('close');
-$(this).remove();
-}
-}
-});
-});
+	$(function() {
+		$("#dialog-pictures").dialog({
+			resizable: 		false,
+			modal: 				true,
+			dialogClass: 'info',
+			buttons: {
+				'Add picture to page': function() {
+					$(this).dialog('close');
+					var img = document.createElement("img");
+					var p 	= document.createElement(p)
+					p.innerHTML = ' ';
+					img.src = params.element.src.replace(/small/, 'medium' );
+					$("body", $("iframe").contents()).append(img, p);
+					$("a[href=#tabs-1]").click();
+					$(this).remove();
+			},
+			Cancel: function() {
+				$(this).dialog('close');
+				$(this).remove();
+				}
+			}
+		});
+	});
 }
 
 // nested models
-
 $(function() {
   $('form a.add_child').click(function() {
     var association = $(this).attr('data-association');
@@ -193,10 +163,9 @@ $(function() {
 });
 
 // button methods
-
 function submit_button()
 {
-$('.submit').button( { icons: { primary: 'ui-icon-circle-check' } } ).click(function() {
-   $('.form').submit();
+	$('.submit').button( { icons: { primary: 'ui-icon-circle-check' } } ).click(function() {
+  	$('.form').submit();
    });
 }
