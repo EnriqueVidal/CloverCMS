@@ -1,0 +1,24 @@
+%h2 Editing post
+#tabs
+  %ul
+    %li= link_to 'Page details',  '#tabs-1'
+    %li= link_to 'Page keywords', '#tabs-2'
+    %li= link_to 'Page files',    '#tabs-3'
+  #tabs-1
+    = render 'form'
+  #tabs-2
+    = render 'shared/keywords', :keywords => @post.keywords.map(&:name)
+    .spacer
+  #tabs-3
+    .splitcontentleft
+      #images_list
+        - @post.assets.each do |asset|
+          = image_tag asset.asset.url(:small)
+      %file#uploadify{ :name => 'asset' }
+    .splitcontentright
+    = render 'shared/uploadify', :object => @post
+    .spacer
+:javascript
+  $(function() {
+    add_images();
+  })

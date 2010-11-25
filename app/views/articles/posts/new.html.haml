@@ -1,0 +1,10 @@
+%h2 New post
+#tabs
+  %ul
+    %li= link_to 'Post details', '#tabs-1'
+    %li= link_to 'Post keywords', '#tabs-2'
+  #tabs-1
+    = render 'form'
+  #tabs-2
+    = render 'shared/keywords'
+    .spacer

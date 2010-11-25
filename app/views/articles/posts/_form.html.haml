@@ -1,0 +1,38 @@
+= form_for @post  do |f|
+  - if @post.errors.any?
+    = render 'shared/error_explanation', :object => @post
+  
+  #post_content
+    = f.hidden_field :keywords, :id => :final_keywords_list
+    %label{ :for => :post_name }
+      Name
+      %small Your post name will be used to create a friendly url, pick one wisely.
+    = f.text_field  :name
+    = f.text_area :content, :class => 'wymeditor'
+        
+    .buttonset
+      = f.check_box :in_home_page, :class => 'home-post'
+      = f.label     :in_home_page?, 'Display in home page?'
+    %button{ :class => 'wymupdate' } Submit
+    
+- content_for :sidebar do
+  #operations_placeholder
+    %h3 Posts Operations
+    - if params[:action] == 'edit'
+      = link_to 'Create a new post',      new_articles_post_path,         :class => 'icon icon_post_add'
+    = link_to 'Go back to the post list', articles_posts_path,            :class => 'icon icon_back'
+    
+:javascript
+  $(document).ready(function() {
+    $('#tabs').tabs();
+    $('.wymupdate').button({ icons: { primary: "ui-icon-circle-check" } });
+    $('.buttonset').buttonset();
+    $('.home-post').button({ icons: { primary: "ui-icon-home" } });
+    $('.contact-form').button({ icons: { primary: "ui-icon-mail-closed" } });
+    $('.published').button({ icons: { primary: "ui-icon-check" } });
+    $('#new_post_menu_link').addClass('selected');
+    $('#keyword_button').button({ icons: { primary: "ui-icon-circle-plus" } });
+    $('#keyword_button').css('position', 'relative').css('top', '-5px');
+    add_keywords();
+    existing_keywords();
+  });

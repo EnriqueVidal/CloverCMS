@@ -12,8 +12,6 @@ class Page < ActiveRecord::Base
   validates_numericality_of :section_id, :message => 'needs to be set', :greater_than => 0
   validate                  :create_url_name
   
-  accepts_nested_attributes_for :assets
-  
   scope :published, where(:published => true)
   
   def self.home_page

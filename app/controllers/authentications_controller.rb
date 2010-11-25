@@ -14,7 +14,8 @@ class AuthenticationsController < ApplicationController
     user            = User.find_by_email(email) if email.present? && current_user.blank?
     
     if authentication
-      sign_in_and_redirect(:user, authentication.user, :notice => 'Signed in successfully.')
+      flash[:notice] = 'Signed in successfully.'
+      sign_in_and_redirect(:user, authentication.user)
     elsif user
       user.apply_omniauth(auth)
       session[:omniauth]  = auth.except('extra')
@@ -28,7 +29,8 @@ class AuthenticationsController < ApplicationController
       user  = User.find_or_initialize_by_email(email || '')
       user.apply_omniauth(auth)
       if user.save
-        sign_in_and_redirect(:user, user, :notice => 'Signed in successfully')
+        flash[:notice] = 'Signed in successfully';
+        sign_in_and_redirect(:user, user)
       else
         session[:omniauth]  = auth.except('extra')
         session[:email]     = email
