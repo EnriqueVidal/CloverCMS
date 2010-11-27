@@ -7,7 +7,7 @@ class Articles::PostsControllerTest < ActionController::TestCase
   setup do
     @admin  = Factory :admin
     @user   = Factory :user, :email => 'some@dude.com'
-    @post   = Factory 'Articles::Post'
+    @post   = Factory 'Articles::Post', :user_id => @user.id
     Articles::Post.any_instance.stubs(:paginate).with(:page => 1, :per_page => 5).returns([].paginate)
   end
   
@@ -71,39 +71,51 @@ class Articles::PostsControllerTest < ActionController::TestCase
 
     assert_redirected_to articles_posts_path
   end
-=begin
+
   test "should get edit if admin" do
-    become :admin
-    get :edit, :id => @section.id
+    become @admin
+    get :edit, :id => @post.id
+    assert_response :success
+    assigns :posts
+  end
+
+  test "should get edit if user has authorization and post belongs to user" do
+    @controller.stubs(:check_authorization).returns(true)
+    become @user
+    get :edit, :id => @post.id
+    
     assert_response :success
   end
-  
-  test "should get edit if not admin" do
-    become :user
-    get :edit, :id => @section.id
-    assert_redirected_to new_user_session_path
-  end
-  
-  test "should get edit if not logged in" do
-    get :edit, :id => @section.id
+
+  test "should get edit if user has no authorization" do
+    become @user
+    get :edit, :id => @post.id
+    
     assert_redirected_to new_user_session_path
   end
   
   test "should update section if admin" do
-    become :admin
-    put :update, :id => @section.id, :section => Factory.attributes_for(:section)
-    assert_redirected_to sections_path
+    become @admin
+    put :update, :id => @post.id, :articles_post => Factory.attributes_for('Articles::Post')
+    assert_redirected_to articles_posts_path
+  end
+
+  test "should update section if user has authorization and post belongs to user" do
+    @controller.stubs(:check_authorization).returns(true)
+    become @user
+    put :update, :id => @post.id, :articles_post => Factory.attributes_for('Articles::Post')
+    assert_redirected_to articles_posts_path
   end
   
   test "should destroy section if admin" do
-    become :admin
-    assert_difference('Section.count', -1) do
-      delete :destroy, :id => @section.to_param
+    become @admin
+    assert_difference('Articles::Post.count', -1) do
+      delete :destroy, :id => @post.id
     end
 
-    assert_redirected_to sections_path
+    assert_redirected_to articles_posts_path
   end
-=end
+
   private
 
   def become user=nil
