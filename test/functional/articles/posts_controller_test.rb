@@ -83,14 +83,14 @@ class Articles::PostsControllerTest < ActionController::TestCase
     @controller.stubs(:check_authorization).returns(true)
     become @user
     get :edit, :id => @post.id
-    
+
     assert_response :success
   end
 
   test "should get edit if user has no authorization" do
     become @user
     get :edit, :id => @post.id
-    
+
     assert_redirected_to new_user_session_path
   end
   

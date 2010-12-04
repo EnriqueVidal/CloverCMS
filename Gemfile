@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails',          '3.0.3'
-gem 'haml',           '3.0.18'
+gem 'haml-rails'
 gem 'will_paginate',  '3.0.pre2'
 gem 'devise'
 gem 'paperclip'
@@ -21,7 +21,7 @@ group :test, :development do
 end
 
 group :test do
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'mocha',          :require => false
   gem 'redgreen',       :require => false
   gem 'turn'
