@@ -8,8 +8,7 @@ class User < ActiveRecord::Base
   validates_format_of :username, :with => USERNAME_EXP
 
   has_many :authentications
-  has_many :posts,  :class_name => 'Articles::Post'
-  has_many :news,   :class_name => 'Articles::News'
+  has_many :articles
   has_and_belongs_to_many :roles  
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :avatar, :username

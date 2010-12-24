@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20101123072918) do
     t.text     "content"
     t.boolean  "published"
     t.boolean  "in_home_page"
-    t.boolean  "type"
+    t.string   "kind",         :default => "post"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

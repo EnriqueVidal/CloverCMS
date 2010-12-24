@@ -11,11 +11,7 @@ Clover::Application.routes.draw do
     resources :pages, :except => :show
   end
   
-  namespace :articles do
-    resources :posts,   :except => :show
-    resources :news,    :except => :show
-    resources :reviews, :except => :show
-  end
+  resources :articles
   
   root :to => "pages#show", :home_page => true
   # match ':controller(/:action(/:id(.:format)))'

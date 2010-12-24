@@ -4,6 +4,4 @@
     - if current_user.admin?
       %li= link_to 'New section', new_section_path, :id => "new_section_menu_link"
       %li= link_to 'New page',    new_section_page_path(Section.first), :id => "new_page_menu_link"
-      %li= link_to 'New post',    new_articles_post_path,     :id => 'new_post_menu_link'
-      %li= link_to 'New review',  new_articles_review_path,   :id => 'new_review_menu_link'
-      %li= link_to 'Create News', new_articles_news_path,     :id => 'create_news_menu_link'
+      %li= link_to 'New post',    new_article_path, :id => 'new_post_menu_link'

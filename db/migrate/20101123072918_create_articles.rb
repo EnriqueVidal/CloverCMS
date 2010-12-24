@@ -6,7 +6,7 @@ class CreateArticles < ActiveRecord::Migration
       t.text    :content
       t.boolean :published
       t.boolean :in_home_page
-      t.boolean :type
+      t.string  :kind, :default => 'post'
       t.integer :user_id
       
       t.timestamps

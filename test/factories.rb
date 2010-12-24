@@ -26,7 +26,7 @@ Factory.define :authentication do |f|
   f.user_id 0
 end
 
-Factory.define 'Articles::Post' do |f|
-  f.name 'First post'
-  f.content 'This is my first post'
+Factory.define :article do |f|
+  f.name 'First article'
+  f.content 'This is my first article'
 end

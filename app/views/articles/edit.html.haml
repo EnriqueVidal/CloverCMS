@@ -1,4 +1,4 @@
-%h2 Editing post
+%h2 Editing article
 #tabs
   %ul
     %li= link_to 'Page details',  '#tabs-1'
@@ -7,16 +7,16 @@
   #tabs-1
     = render 'form'
   #tabs-2
-    = render 'shared/keywords', :keywords => @post.keywords.map(&:name)
+    = render 'shared/keywords', :keywords => @article.keywords.map(&:name)
     .spacer
   #tabs-3
     .splitcontentleft
       #images_list
-        - @post.assets.each do |asset|
+        - @article.assets.each do |asset|
           = image_tag asset.asset.url(:small)
       %file#uploadify{ :name => 'asset' }
     .splitcontentright
-    = render 'shared/uploadify', :object => @post
+    = render 'shared/uploadify', :object => @article
     .spacer
 :javascript
   $(function() {

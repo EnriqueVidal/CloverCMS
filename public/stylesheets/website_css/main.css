@@ -773,69 +773,52 @@ html.login #logo{
 	height:69px;
 	margin:0px auto;
 }
-#login-form-container{
-	width:500px;
-	margin:0px auto;
+#login_form{
+
 }
-#form-body, #user_new{
-	background-image: url('/images/website_images/login-main-bg.png ');
-	background-repeat:repeat-x;
-	padding:30px;
-	margin-top:10px;
-	background-color:#ccc;
+#login_form, #user_new{
+	background-image: 	url('/images/website_images/login-main-bg.png ');
+	background-repeat:	repeat-x;
+	padding:  					15px;
+	background-color:		#ccc;
+	width: 470px;
+	margin: 10px auto 0px;
 }
+
 #user_new{
-	width:460px;
-	margin:0px auto;
-	overflow:hidden;
+	width:		438px;
+	margin:		0px auto;
+	overflow:	hidden;
 }
-.input_button{
+
+fieldset input[type=submit]{
 	background-image:none;
-	border:1px solid #ccc;
-	width:auto;
-	margin:0px 5px;
+	border:  		1px solid #ccc;
+	margin:  		0px 5px;
+	font-size:	16px;
+	padding:  	6px;
 }
-#form-body input.input_button:active{
-	margin-top:2px;
-	outline:0px;
+
+fieldset input[type=submit]:active{
+	margin-top:	2px;
+	outline:		0px;
 }
-.forms input.shadowed, .forms select {
-  background-image:url("/images/website_images/input_bg.jpg ");
-  background-repeat:repeat-x;
-  border:1px solid #BADB89;
-  float:left;
-  outline:0 none;
-  padding:6px;
-  text-align:left;
+
+fieldset input[type=text], fieldset input[type=password] {
+	width:   						426px;
+	display: 						block;
+	background-image: 	url("/images/website_images/input_bg.jpg ");
+  background-repeat: 	repeat-x;
+  border: 						1px solid #BADB89;
+  padding: 						6px;
 }
-.input_button{
-	font-size:16px;
-	padding:6px;
-}
-.input_text,
-.input_password{
-	display:block;
-}
-#login-form .input_text,
-#login-form .input_password,
-#user_new .input_text,
-#user_new .input_password
+
+.content, .content a
 {
-	width:426px;
-}
-html.login .content{
+	color: white;
 	margin-top:20px;
 }
-html.login .content,
-html.login .content a,
-html.login .content a:active,
-html.login .content a:visited
-{
-	color:white;
-}
-form p{
-	overflow:hidden;
-}
+
 .alert{
 	padding:10px;
 	background-color:#ffeee0;
