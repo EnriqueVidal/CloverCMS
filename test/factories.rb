@@ -20,12 +20,6 @@ Factory.define :section do |f|
   f.name 'Main'
 end
 
-Factory.define :authentication do |f|
-  f.uid 'sample_uid'
-  f.provider 'provider'
-  f.user_id 0
-end
-
 Factory.define :article do |f|
   f.name 'First article'
   f.content 'This is my first article'

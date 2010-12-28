@@ -19,8 +19,8 @@
         #account= render 'layouts/manager/account_menu'
         %ul
           - if user_signed_in? && current_user.admin?
-            %li= link_to 'Sections', sections_path
-            %li= link_to 'Posts',    articles_path
+            %li= link_to 'Sections',  sections_path
+            %li= link_to 'Articles',  articles_path
       #header
         = image_tag 'logo.png'
         #main-menu= render 'layouts/manager/main_menu'

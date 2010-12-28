@@ -1,20 +1,13 @@
 source 'http://rubygems.org'
 
 gem 'rails',          '3.0.3'
-gem 'haml-rails'
 gem 'will_paginate',  '3.0.pre2'
+gem 'haml-rails'
 gem 'devise'
 gem 'paperclip'
 gem 'acts-as-taggable-on'
-gem 'omniauth'
-gem 'mime-types', :require => 'mime/types'
-
-# Deploy with Capistrano
 gem 'capistrano'
-
-group :development do
-  gem 'mongrel', '1.2.0.pre2'
-end
+gem 'mime-types', :require => 'mime/types'
 
 group :test, :development do
   gem 'sqlite3-ruby',   :require => 'sqlite3'

@@ -2,7 +2,8 @@ require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   def setup
-    @article = Factory :article
+    @user     = Factory :user
+    @article  = Factory :article, :user => @user
   end
   
   test "Test factories" do
