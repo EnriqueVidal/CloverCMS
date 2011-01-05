@@ -1,0 +1,36 @@
+= form_for [ :dashboard, page_section ] do |f|
+  - if page_section.errors.any?
+    = render :partial => 'shared/error_explanation', :object => page_section
+
+  .splitcontentleft
+    %label{ :for => :section_name }
+      = t "activerecord.models.#{model_trans}"
+      %small= t "#{controller_trans}.descriptions.name"
+    = f.text_field  :name
+
+    %label{ :for => :main_section_id }
+      = t "activerecord.attributes.#{model_trans}.main_section"
+      %small= t "#{controller_trans}.descriptions.main_section"
+    = f.select  :main_section_id, available_section_list(page_section.name), :include_blank => true
+
+    %button#submit= t 'common.forms.submit'
+
+  .splitcontentright
+    #tips_content.box
+      %h3= t 'common.headers.did_you_know'
+      %p= t "#{controller_trans}.tips.index.first"
+      %p= t "#{controller_trans}.tips.index.second"
+- content_for :sidebar do
+  #operations_placeholder
+    %h3= t "common.headers.item_operations", :item => t("activerecord.models.#{model_trans}")
+    - if params[:action] == 'edit'
+      = link_to t('links.new_item', :item => t("activerecord.models.#{model_trans}")), new_dashboard_section_path, :class => 'icon icon_add'
+      = link_to t('links.new_item', :item => t('activerecord.models.page')), new_dashboard_section_page_path(page_section), :class => 'icon icon_page_add'
+      = link_to 'Go to this section pages', dashboard_section_pages_path(page_section), :class => 'icon icon_back'  
+    = link_to 'Go back to the section list', dashboard_sections_path, :class => 'icon icon_back'
+
+:javascript
+  $(document).ready(function() {
+    $('#submit').button({ icons: { primary: "ui-icon-circle-check" } });
+    $('#new_section_menu_link').addClass('selected');
+  });

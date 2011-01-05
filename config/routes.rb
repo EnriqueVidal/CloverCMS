@@ -4,10 +4,12 @@ Clover::Application.routes.draw do
   match ":section_name/:page_name.html",                  :to => "pages#show", :as => :section_page,    :via => :get
   match ":section_name/:subsection_name/:page_name.html", :to => "pages#show", :as => :subsection_page, :via => :get
 
-  resources :assets
-  resources :articles,  :only   => [ :create, :destroy ]
-  resources :sections,  :except => :show  do
-    resources :pages,   :except => :show
+  namespace :dashboard do
+    resources :articles
+    resources :assets,    :only   => [ :create, :destroy ]
+    resources :sections,  :except => :show  do
+      resources :pages,   :except => :show
+    end
   end
 
   root :to => "pages#show", :home_page => true, :via => :get

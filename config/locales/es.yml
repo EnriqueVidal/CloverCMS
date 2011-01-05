@@ -1,0 +1,52 @@
+es:
+  dashboard:
+    sections:
+      headers:
+        index: 'Listar secciones'
+      instructions:
+        index:
+          first:    'Esta es la pagina de secciones de tu sition, para ver las paginas de cada seccion solo haz click en %{link} en cada seccion, y seras redireccionado a la pagina de paginas de esa seccion.'
+          second:   'Puedes editar los nombres de seccion, solo con hacer click en el link %{edit_link} o eliminarlas haciendo click en el link %{delete_link}'
+      tips:
+        index:
+          first:  'El ingenioso CMS de CloverInterctive automaticamenta crea direcciones amistosas, basadas en el nombre de tu sección y pagina.'
+          second: 'Independientemente de ser amistosas con los usuarios, las direcciones amistosas te permiten mejorar tu posición en los motores de busqueda populares y te permiten mantener tus paginas organizadas.'
+      descriptions:
+        name:         'Las secciones actuan como contenedores de paginas y sus nombres son utilizadas para generar direcciones amistosas.'
+        main_section: 'Usa este selector si esta es una subsección.'
+  links:
+    edit:           'Editar'
+    show:           'Mostrar'
+    destroy:        'Eliminar'
+    new:            'Crear'
+    view:           'Ver'
+    edit_item:      'Editar %{item}'
+    show_item:      'Mostrar %{item}'
+    destroy_item:   'Eliminar %{item}'
+    new_item:       'Crear %{item}'
+    view_item:      'Ver %{item}'
+
+  common:
+    fields:
+      created_at:     'Creado en'
+      updated_at:     'Actualizado en'
+      url_name:       'Nombre de url'
+    messages:
+      are_you_sure:   '¿Estas seguro?'
+      options:        'Opciones'
+    headers:
+      did_you_know:     '¿Sabias que?'
+      item_operations:  'Operaciones de %{item}'
+    forms:
+      submit: 'Continuar'
+
+  activerecord:
+    models:
+      section:  'Seccion'
+      page:     'Pagina'
+    attributes:
+      section:
+        name:         'Nombre de la seccion'
+        main_section: 'Seccion principal'
+        pages:        'Paginas'
+        main_section: 'Seccion principal'

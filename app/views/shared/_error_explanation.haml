@@ -1,5 +1,5 @@
 #error_explanation
-  %h2= pluralize(object.errors.count, "error") + " prohibited this section from being saved:"
+  %h2= pluralize(error_explanation.errors.count, "error") + " prohibited this section from being saved:"
   %ul
-    - object.errors.full_messages.each do |msg|
+    - error_explanation.errors.full_messages.each do |msg|
       %li= msg

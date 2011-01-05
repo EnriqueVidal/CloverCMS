@@ -1,0 +1,39 @@
+en:
+  errors:
+    messages:
+      not_found: "no encontrado"
+      already_confirmed: "ha sido confirmado"
+      not_locked: "no ha sido bloquedo"
+
+  devise:
+    failure:
+      unauthenticated: 'Necesitas iniciar sesión o registrarte antes de continuar.'
+      unconfirmed: 'Necesitas confirmar tu cuenta antes de continuar.'
+      locked: 'Tú cuenta esta bloqueada.'
+      invalid: 'Correo o contraseña invalida.'
+      invalid_token: 'Token de autentificación invalido.'
+      timeout: 'Tu sesión ha expirado, por favor inicia sesión para continuar.'
+      inactive: 'Tu cuenta aun no ha sido activada.'
+    sessions:
+      signed_in: 'Iniciastes sesión exitosamente.'
+      signed_out: 'Cerraste sesión exitosamente.'
+    passwords:
+      send_instructions: 'En unos minutos recibiras un correo electronico con instrucciones acerca de como restaurar tu contraseña.'
+      updated: 'Tu contraseña ha cambiado exitosamente. Tu sesión ha sido iniciada.'
+    confirmations:
+      send_instructions: 'En unos minutos recibiras un correo electronico con instrucciones acerca de como confirmar tu cuenta.'
+      confirmed: 'Tu cuenta ha sido confirmada exitosamente. Tu sesión ha sido iniciada.'
+    registrations:
+      signed_up: 'Te haz registrado exitosamente. Un correo electronico de confirmación ha sido enviado a tu dirección de correo.'
+      updated: 'Haz actualizado los datos de tu cuenta exitosamente.'
+      destroyed: 'Adios! Tu cuenta ha sido cancelada exitosamente. Esperamos verte por aquí pronto.'
+    unlocks:
+      send_instructions: 'En unos minutos recibiras un correo electronico con instrucciones acerca de como desbloquear tu cuenta.'
+      unlocked: 'Tu cuenta ha sido desbloqueada exitosamente. Tu sesión ha sido iniciada.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Instrucciones de confirmación'
+      reset_password_instructions:
+        subject: 'Instrucciones para restaurar contraseña'
+      unlock_instructions:
+        subject: 'Instrucciones de desbloqueo'

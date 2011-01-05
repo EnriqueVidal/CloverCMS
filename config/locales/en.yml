@@ -1,5 +1,51 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  dashboard:
+    sections:
+      headers:
+        index: 'Listing sections'
+      instructions:
+        index:
+          first:  'This is the sections page, here is the list of sections of your website, to see the pages within each section, you only need to click the %{link} link from the list in each section, and you will be redirected to that particular section pages page.'
+          second: 'You can edit a given section name just by clicking %{edit_link} in each section, or delete them by clicking %{delete_link}.'
+      tips:
+        index:
+          first:  "CloverInteractive's Clever CMS automatically creates friendly urls based on your section and page names."
+          second: "Apart from being user friendly, friendly urls allow you to improve your position in the most popular search engines result pages, and let you keep your pages organized."
+      descriptions:
+        name:         'Sections act as page containers, names are used for friendly urls.'
+        main_section: 'Use this if this is a subsection.'
+  links:
+    edit:          'Edit'
+    show:          'Show'
+    destroy:       'Destroy'
+    new:           'New'
+    view:          'View'
+    edit_item:     'Edit %{item}'
+    show_item:     'Show %{item}'
+    destroy_item:  'Delete %{item}'
+    new_item:      'New %{item}'
+    view_item:     'View %{item}'
+
+  common:
+    fields:
+      created_at:   'Created at'
+      updated_at:   'Updated at'
+      url_name:     'Url name'
+    messages:
+      are_you_sure: 'Are you sure?'
+      options:      'Options'
+    headers:
+      did_you_know:     'Did you know?'
+      item_operations:  '%{item} Operations'
+    forms:
+      submit: 'Submit'
+
+  activerecord:
+    models:
+      section:  'Section'
+      page:     'Page'
+    attributes:
+      section:
+        name:         'Section name'
+        pages:        'Section pages'
+        main_section: 'Main section'

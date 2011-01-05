@@ -14,4 +14,8 @@ class ActiveSupport::TestCase
   #fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def login_as user
+    @controller.class.any_instance.stubs(:current_user).returns(user)
+  end
 end

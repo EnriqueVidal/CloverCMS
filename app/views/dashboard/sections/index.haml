@@ -1,0 +1,39 @@
+%h2= t "#{controller_trans}.headers.index"
+
+.splitcontentleft{ :style => 'width: 66%' }
+  %p= t "#{controller_trans}.instructions.index.first", :link => t('links.view_item', :item => t('activerecord.models.page').pluralize)
+  %p= t "#{controller_trans}.instructions.index.second", :edit_link => t('links.edit'), :delete_link => t('links.destroy')
+
+  %table.list
+    %thead
+      %tr
+        %th= t "activerecord.attributes.#{model_trans}.name"
+        %th= t "activerecord.attributes.#{model_trans}.pages"
+        %th= t "activerecord.attributes.#{model_trans}.main_section"
+        %th= t 'common.fields.created_at'
+        %th= t 'common.fields.updated_at'
+        %th= t 'common.messages.options'
+    %tbody
+      - @sections.each do |section|
+        %tr{ :class => cycle(:odd, :even) }
+          %td= section.name
+          %td= link_to t('links.view_item', :item => t('activerecord.models.page').pluralize), dashboard_section_pages_path(section), :class => 'icon icon_bullet_page'
+          %td= section.main_section.name if section.main_section.present?
+          %td= section.created_at.to_s(:long)
+          %td= section.updated_at.to_s(:long)
+          %td
+            = link_to t('links.edit'), edit_dashboard_section_path(section), :class => 'icon icon_bullet_pencil'
+            = link_to t('links.destroy'), dashboard_section_path(section), :confirm => 'Are you sure?', :method => :delete, :class => 'icon icon_bullet_delete'
+
+  = will_paginate @sections
+
+.splitcontentright{ :style => 'width: 29%' }
+  #tips_content.box
+    %h3= t 'common.headers.did_you_know'
+    %p= t "#{controller_trans}.tips.index.first"
+    %p= t "#{controller_trans}.tips.index.second"
+
+- content_for :sidebar do
+  #operations_placeholder
+    %h3= t "common.headers.item_operations", :item => t("activerecord.models.#{model_trans}")
+    = link_to 'Add a new section', new_dashboard_section_path, :class => 'icon icon_add'
