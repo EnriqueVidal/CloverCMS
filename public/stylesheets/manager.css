@@ -11,7 +11,7 @@ overflow: hidden;
     padding-top: 2px;
 }
 
-div.flash.error, #errorExplanation, #flashAlert {
+div.flash.error, #error_explanation, #flashAlert {
 text-indent: 25px;
 color: brown;
 min-height: 35px;
@@ -98,7 +98,7 @@ margin-bottom: 12px;
 padding: 4px 4px 4px 30px;
 }
 
-#errorExplanation h2
+#error_explanation h2
 {
 padding: 0;
 margin: 0;
@@ -115,6 +115,7 @@ background: #FFE3E3;
 .icon_bullet_page { background-image: url(/images/icons/bullet_page.png); }
 .icon_bullet_page_world { background-image: url(/images/icons/bullet_page_world.png); }
 .icon_page_add { background-image: url(/images/icons/page_add.png); }
+.icon_page_green { background-image: url(/images/icons/page_green.png); }
 .icon_back { background-image: url(/images/icons/resultset_previous.png); }
 .pdf { background-image: url(/images/icons/page_white_acrobat.png); }
 .doc, .docx { background-image: url(/images/icons/page_white_word.png); }
@@ -719,3 +720,5 @@ form div.fields {
   border-radius: 5px;
   cursor: pointer;
 }
+
+

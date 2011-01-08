@@ -1,16 +1,15 @@
 .splitcontentleft
   %label
-    Keywords
-    %small These used for searching related.
-  %input{ :type => :text, :name => 'keyword_input', :id => 'keyword_input', :style => 'width: 250px; display: inline' }
-  %button{ :id => "keyword_button" } Add
+    = t 'common.fields.keywords'
+    %small= t 'dashboard.page.descriptions.keywords'
+  %input#keyword_input{ :type => :text, :style => 'width: 250px; display: inline' }
+  %button#keyword_button= t 'common.forms.add'
   %select{ :size => 5, :style => 'width: 350px; border: 1px solid gray;', :id => 'keywords' }
-    - if keywords.present?
-      - keywords.each do |keyword|
-        %option=keyword
+    - page_keywords.each do |keyword|
+      %option=keyword
 
 .splitcontentright{ :style => 'width: 47%' }
   #tips_container.box
-    %h3 Did you know?
-    %p You can enter one word at the time and click add, or you can enter a list of words separated by commas in the form.
-    %p To remove a keyword from a page just double click in it.
+    %h3= t 'common.headers.did_you_know'
+    %p= t 'dashboard.page.tips.keywords.first'
+    %p= t 'dashboard.page.tips.keywords.second'

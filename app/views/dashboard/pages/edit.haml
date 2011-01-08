@@ -1,13 +1,13 @@
-%h2 Editing page
+%h2= t 'links.edit_item', :item => t('activerecord.models.page')
 #tabs
   %ul
-    %li= link_to 'Page details',  '#tabs-1'
-    %li= link_to 'Page keywords', '#tabs-2'
-    %li= link_to 'Page files',    '#tabs-3'
+    %li= link_to t('links.item_details',  :item => t('activerecord.models.page')), '#tabs-1'
+    %li= link_to t('links.item_keywords', :item => t('activerecord.models.page')), '#tabs-2'
+    %li= link_to t('links.item_assets',   :item => t('activerecord.models.page')), '#tabs-3'
   #tabs-1
-    = render 'form'
+    = render :partial => 'page_editor', :object => @page
   #tabs-2
-    = render 'shared/keywords', :keywords => @page.keywords.map(&:name)
+    = render :partial => 'shared/keywords', :locals => { :page_keywords => @page.keywords.map(&:name) }
     .spacer
   #tabs-3
     .splitcontentleft

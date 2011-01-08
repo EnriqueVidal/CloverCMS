@@ -1,7 +1,6 @@
-class PagesController < ApplicationController
-  before_filter :check_authorization, :except => [ :show ]
-  before_filter :set_section
-  layout        'manager/manager'
+class Dashboard::PagesController < ApplicationController
+  before_filter :check_authorization, :set_section
+  layout 'manager/manager'
 
   # GET /pages
   def index
@@ -15,18 +14,20 @@ class PagesController < ApplicationController
 
   # GET /pages/1/edit
   def edit
-    @page = @section.pages.find(params[:id])
+    @page = @section.pages.find params[:id]
   end
 
   # POST /pages
   def create
-    @page = @section.pages.new(params[:page].except('keywords'))
+    @page = @section.pages.new params[:page].except('keywords')
     @page.keyword_list = params[:page][:keywords] if params[:page][:keywords].present?
+
     respond_to do |format|
       if @page.save
-        format.html { redirect_to(section_pages_path(@section), :notice => 'Page was successfully created.') }
+        flash[:notice] = t('messages.successfully_created')
+        format.html { redirect_to dashboard_section_pages_path(@section) }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => :new }
       end
     end
   end
@@ -35,27 +36,28 @@ class PagesController < ApplicationController
   def update
     @page = @section.pages.find(params[:id])
     @page.keyword_list = params[:page][:keywords] if params[:page][:keywords].present?
+
     respond_to do |format|
-      if @page.update_attributes(params[:page].except('keywords'))
-        format.html { redirect_to(section_pages_path(@section), :notice => 'Page was successfully updated.') }
+      if @page.update_attributes params[:page].except('keywords')
+        flash[:notice] = t('messages.successfully_updated')
+        format.html { redirect_to dashboard_section_pages_path(@section) }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => :edit }
       end
     end
   end
 
   # DELETE /pages/1
   def destroy
-    @page     = @section.pages.find(params[:id])
+    @page = @section.pages.find(params[:id])
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to(section_pages_path(@section)) }
+      format.html { redirect_to dasboard_section_pages_path(@section) }
     end
   end
 
   private
-
   def set_section
     @section ||= Section.find params[:section_id]
   end

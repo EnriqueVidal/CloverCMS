@@ -1,8 +1,6 @@
 es:
   dashboard:
-    sections:
-      headers:
-        index: 'Listar secciones'
+    section:
       instructions:
         index:
           first:    'Esta es la pagina de secciones de tu sition, para ver las paginas de cada seccion solo haz click en %{link} en cada seccion, y seras redireccionado a la pagina de paginas de esa seccion.'
@@ -14,6 +12,18 @@ es:
       descriptions:
         name:         'Las secciones actuan como contenedores de paginas y sus nombres son utilizadas para generar direcciones amistosas.'
         main_section: 'Usa este selector si esta es una subsección.'
+    page:
+      instructions:
+        index: 'Para mantener las paginas organizadas, Clover CMS no permite agregar paginas sin asignarlas a una sección especifica.'
+      tips:
+        index: 'En esta ultima version de Clover CMS, muchas fallas al crear editar y mostrar pagians han sido resultas, ahora ya no necesitas pensar en como nombrar las paginas pues los nombres son tomados del titulo. De esta manera la pagina que ambos el usuario y el motor de busqueda ven es consistente con el contenido.'
+        keywords:
+          first:  'Puedes escribir una palabra y hacer click en Agregar ó puedes escribir varias palabras separadas por comas en su defecto y hacer click.'
+          second: 'Para eliminar una palabra clave solo haz doble click en ella.'
+      descriptions:
+        name:     'El nombre de la pagina sera utilizado para crear una dirección amistosa. Eligelo cuidadosamente.'
+        section:  'Todas las paginas deben pertencera una sección, las secciones tambien son usadas para crear direcciones amistosas.'
+        keywords: 'Son usadas para agrupar, clasificar y realizar busquedas.'
   links:
     edit:           'Editar'
     show:           'Mostrar'
@@ -25,28 +35,51 @@ es:
     destroy_item:   'Eliminar %{item}'
     new_item:       'Crear %{item}'
     view_item:      'Ver %{item}'
+    item_list:      'Ir a la lista de %{item}'
+    item_details:   'Detalles de %{item}'
+    item_keywords:  'Palabras clave de %{item}'
+    item_assets:    'Recursos de %{item}'
+    add_item:       'Agregar %{item}'
 
   common:
     fields:
       created_at:     'Creado en'
       updated_at:     'Actualizado en'
       url_name:       'Nombre de url'
+      name:           'Nombre'
+      keywords:       'Palabras Clave'
+      image:          'imagen'
     messages:
       are_you_sure:   '¿Estas seguro?'
       options:        'Opciones'
     headers:
       did_you_know:     '¿Sabias que?'
       item_operations:  'Operaciones de %{item}'
+      item_list:        'Lista de %{item}'
+      add_image:        '¿Deseas agregar esta imagen al cuerpo de %{item}?'
     forms:
-      submit: 'Continuar'
+      submit:           'Continuar'
+      add:              'Agregar'
+      file_description: 'Imagen ó Documento'
 
   activerecord:
     models:
-      section:  'Seccion'
+      section:  'Sección'
       page:     'Pagina'
     attributes:
       section:
-        name:         'Nombre de la seccion'
-        main_section: 'Seccion principal'
-        pages:        'Paginas'
-        main_section: 'Seccion principal'
+        name:         'Nombre'
+        main_section: 'Sección principal'
+        pages:        'Paginas de esta sección'
+        main_section: 'Sección principal'
+      page:
+        section:      'Séccion'
+        name:         'Nombre'
+        content:      'Contenido'
+        home_page:    'Pagina principal'
+        has_contact:  'Tiene forma de contacto'
+        published:    'Publicar'
+
+  messages:
+    successfully_created: 'Su registro ha sido guardado exitosamente.'
+    successfully_updated: 'Su registro ha sido modificado exitosamente.'
