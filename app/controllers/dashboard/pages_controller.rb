@@ -24,7 +24,7 @@ class Dashboard::PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        flash[:notice] = t('messages.successfully_created')
+        flash[:notice] = t('messages.created_successfully')
         format.html { redirect_to dashboard_section_pages_path(@section) }
       else
         format.html { render :action => :new }
@@ -39,7 +39,7 @@ class Dashboard::PagesController < ApplicationController
 
     respond_to do |format|
       if @page.update_attributes params[:page].except('keywords')
-        flash[:notice] = t('messages.successfully_updated')
+        flash[:notice] = t('messages.updated_successfully')
         format.html { redirect_to dashboard_section_pages_path(@section) }
       else
         format.html { render :action => :edit }
@@ -53,7 +53,7 @@ class Dashboard::PagesController < ApplicationController
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to dasboard_section_pages_path(@section) }
+      format.html { redirect_to dashboard_section_pages_path(@section) }
     end
   end
 

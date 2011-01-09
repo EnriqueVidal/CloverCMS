@@ -6,4 +6,9 @@ module ApplicationHelper
   def all_sections_collection
     Section.all.map { |section| [ section.name, section.id ] }
   end
+
+  def article_kinds
+    types = 'dashboard.articles.types'
+    [ %W(#{t("#{types}.post")} post), %W(#{t("#{types}.review")} review), %W(#{t("#{types}.news")} news) ]
+  end
 end

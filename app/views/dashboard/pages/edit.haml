@@ -7,7 +7,7 @@
   #tabs-1
     = render :partial => 'page_editor', :object => @page
   #tabs-2
-    = render :partial => 'shared/keywords', :locals => { :page_keywords => @page.keywords.map(&:name) }
+    = render :partial => 'shared/keywords', :locals => { :resource_keywords => @page.keywords.map(&:name) }
     .spacer
   #tabs-3
     .splitcontentleft

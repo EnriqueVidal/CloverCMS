@@ -1,0 +1,40 @@
+= form_for [ :dashboard, article_editor ]  do |f|
+  - if article_editor.errors.any?
+    = render :partial => 'shared/error_explanation', :object => article_editor
+
+  #article_content
+    = f.hidden_field :keywords, :id => :final_keywords_list
+    %label{ :for => :article_name }
+      = t 'common.fields.name'
+      %small= t 'common.descriptions.url.item_name', :item => t('activerecord.models.article').downcase
+    = f.text_field  :name
+    = f.text_area :content, :class => 'wymeditor'
+    %label{ :for => :article_type }
+      = t 'activerecord.attributes.article.kind'
+      %small= t 'dashboard.articles.descriptions.kind'
+    = f.select :kind, article_kinds
+
+    .buttonset
+      = f.label :in_home_page, t('common.forms.display_in', :item => t('common.headers.home_page'))
+      = f.check_box :in_home_page, :class => 'home_article'
+
+    %button.wymupdate= t 'common.forms.submit'
+
+- content_for :sidebar do
+  #operations_placeholder
+    %h3= t 'common.headers.item_operations', :item => t('activerecord.models.article')
+    - if params[:action] == 'edit'
+      = link_to t('links.new_item', :item => t('activerecord.models.article')), new_dashboard_article_path, :class => 'icon icon_add'
+    = link_to t('links.item_list', :item => t('activerecord.models.article')), dashboard_articles_path, :class => 'icon icon_back'
+
+:javascript
+  $(document).ready(function() {
+    $('#tabs').tabs();
+    $('.wymupdate').button({ icons: { primary: "ui-icon-circle-check" } });
+    $('.home_article').button({ icons: { primary: "ui-icon-home" } });
+    $('#new_article_menu_link').addClass('selected');
+    $('#keyword_button').button({ icons: { primary: "ui-icon-circle-plus" } });
+    $('#keyword_button').css('position', 'relative').css('top', '-5px');
+    add_keywords();
+    existing_keywords();
+  });

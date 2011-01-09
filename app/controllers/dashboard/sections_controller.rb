@@ -28,7 +28,8 @@ class Dashboard::SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.save
-        format.html { redirect_to(dashboard_sections_path, :notice => 'Section was successfully created.') }
+        flash[:notice] = t 'messages.created_successfully'
+        format.html { redirect_to dashboard_sections_path }
       else
         format.html { render :action => "new" }
       end
@@ -41,7 +42,8 @@ class Dashboard::SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.update_attributes(params[:section])
-        format.html { redirect_to(dashboard_sections_path, :notice => 'Section was successfully updated.') }
+        flash[:notice] = t 'messages.updated_successfully'
+        format.html { redirect_to dashboard_sections_path }
       else
         format.html { render :action => "edit" }
       end
@@ -54,7 +56,7 @@ class Dashboard::SectionsController < ApplicationController
     @section.destroy
 
     respond_to do |format|
-      format.html { redirect_to(dashboard_sections_path) }
+      format.html { redirect_to dashboard_sections_path }
     end
   end
 end

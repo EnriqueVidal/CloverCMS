@@ -1,33 +1,33 @@
-%h2= "Listing articles."
+%h2= t 'common.headers.item_list', :item => t('activerecord.models.article').pluralize
 
 .splitcontentleft{ :style => 'width: 66%' }
-  %p This is a list of the all the articles by user.
+  %p= t '.instructions'
 
   #articles
     %table.list
       %thead
         %tr
-          %th name
-          %th created at
-          %th updated at
-          %th operations
+          %th= t 'common.fields.name'
+          %th= t 'common.fields.created_at'
+          %th= t 'common.fields.updated_at'
+          %th= t 'common.messages.options'
       %tbody
         - @articles.each do |article|
           %tr{ :class => cycle(:odd, :even) }
-            %td= link_to article.name, edit_article_path(article)
+            %td= link_to article.name, edit_dashboard_article_path(article)
             %td= article.created_at.to_s :long
             %td= article.updated_at.to_s :long
             %td
-              = link_to 'Edit', edit_article_path(article), :class => 'icon icon_bullet_pencil'
-              = link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete, :class => 'icon icon_bullet_delete'
+              = link_to t('links.edit'), edit_dashboard_article_path(article), :class => 'icon icon_bullet_pencil'
+              = link_to t('links.destroy'), dashboard_article_path(article), :confirm => t('common.messages.are_you_sure'), :method => :delete, :class => 'icon icon_bullet_delete'
   = will_paginate @articles
 
 .splitcontentright{ :style => 'width: 29%' }
   #tips_content.box
-    %h3 Did you know?
-    %p In this latest version of CloverInteractive's Clever CMS, many article creating, editing and displaying issues have been resolved, now you no longer need to think how to name articles as names are taken out of your article title. That way the article name that both the user and the Search Engine see is consistent with your content.
-    
+    %h3= t 'common.headers.did_you_know'
+    %p= t '.tips'
+
 - content_for :sidebar do
   #operations_placeholder
-    %h3 Post Operations
-    = link_to 'Add a new article', new_article_path, :class => 'icon icon_article_add'
+    %h3= t 'common.headers.item_operations', :item => t('activerecord.models.article')
+    = link_to t('links.new_item', :item => t('activerecord.models.article')), new_dashboard_article_path, :class => 'icon icon_add'

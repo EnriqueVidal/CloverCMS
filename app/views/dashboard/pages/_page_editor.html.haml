@@ -6,7 +6,7 @@
     = f.hidden_field :keywords, :id => :final_keywords_list
     %label{ :for => :page_name }
       = t 'common.fields.name'
-      %small= t 'dashboard.page.descriptions.name'
+      %small= t 'common.descriptions.url.item_name', :item => t('activerecord.models.page').downcase
     = f.text_field  :name
     = f.text_area :content, :class => 'wymeditor'
 

@@ -1,14 +1,12 @@
-%h2 Editing article
+%h2= t 'links.edit_item', :item => t('activerecord.models.article')
 #tabs
   %ul
-    %li= link_to 'Article details',  '#tabs-1'
-    %li= link_to 'Article keywords', '#tabs-2'
-    %li= link_to 'Article files',    '#tabs-3'
-  #tabs-1
-    = render 'form'
-  #tabs-2
-    = render 'shared/keywords', :keywords => @article.keywords.map(&:name)
-    .spacer
+    %li= link_to t('links.item_details', :item => t('activerecord.models.article')), '#tabs-1'
+    %li= link_to t('links.item_keywords', :item => t('activerecord.models.article')), '#tabs-2'
+    %li= link_to t('links.item_assets', :item => t('activerecord.models.article')), '#tabs-3'
+  #tabs-1= render :partial => 'article_editor', :object => @article
+  #tabs-2= render :partial => 'shared/keywords', :locals => { :resource_keywords => @article.keywords.map(&:name) }
+  .spacer
   #tabs-3
     .splitcontentleft
       #images_list

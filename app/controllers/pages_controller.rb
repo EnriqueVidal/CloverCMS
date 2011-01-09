@@ -6,8 +6,8 @@ class PagesController < ApplicationController
   # GET /:section_name/:subsection_name/:page_name.html
   def show
     if @page.blank?
-      @page   = @subsection.pages.find_by_url_name  params[:page_name]   if @subsection.present?
-      @page ||= @section.pages.find_by_url_name     params[:page_name]
+      @page   = @subsection.pages.find_by_url_name params[:page_name] if @subsection.present?
+      @page ||= @section.pages.find_by_url_name params[:page_name]
     end
   end
 

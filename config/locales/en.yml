@@ -17,13 +17,18 @@ en:
         index: 'To keep pages organized, Clover CMS does not allow creating pages without a specific section.'
       tips:
         index: "In this latest version of Clover CMS, many page creating, editing and displaying issues have been resolved, now you no longer need to think how to name pages as names are taken out of your page title. That way the page name that both the user and the Search Engine see is consistent with your content."
-        keywords:
-          first:  "You can enter one word at the time and click add, or you can enter a list of words separated by commas in the form."
-          second: "To remove a keyword from a page just double click in it."
       descriptions:
-        name:     'Your page name will be used to create a friendly url, pick one wisely.'
         section:  'Every page must belong to a section, section names are also use for friendly urls.'
-        keywords: 'Used for grouping, classifying and as search terms.'
+    articles:
+      index:
+        instructions: 'This is a list of the all the articles by user.'
+        tips: "In this latest version of CloverInteractive's Clever CMS, many article creating, editing and displaying issues have been resolved, now you no longer need to think how to name articles as names are taken out of your article title. That way the article name that both the user and the Search Engine see is consistent with your content."
+      descriptions:
+        kind: 'This is the type of article, example (review, post or news).'
+      types:
+        post:   'Post'
+        news:   'News'
+        review: 'Review'
   links:
     edit:           'Edit'
     show:           'Show'
@@ -57,15 +62,27 @@ en:
       item_operations:  '%{item} Operations'
       item_list:        '%{item} List'
       add_image:        'Would you like to add this image to this %{item}?'
+      home_page:        'Home Page'
     forms:
       submit:           'Submit'
       add:              'Add'
       file_description: 'File Description'
+      display_in:       'Display in %{item}'
+    descriptions:
+      keywords: 'Used for grouping, classifying and as search terms.'
+      url:
+        item_name: 'Your %{item} name will be used to create a friendly url, pick one wisely.'
+    tips:
+      keywords:
+        first:  "You can enter one word at the time and click add, or you can enter a list of words separated by commas in the form."
+        second: "To remove a keyword from a page just double click in it."
+
 
   activerecord:
     models:
       section:  'Section'
       page:     'Page'
+      article:  'Article'
     attributes:
       section:
         name:         'Section name'
@@ -73,7 +90,9 @@ en:
         main_section: 'Main section'
       page:
         section:  'Section'
+      article:
+        kind:     'Article type'
 
   messages:
-    successfully_created: 'Your record was successfully created.'
-    successfully_updated: 'Your record was successfully updated.'
+    created_successfully: 'Your record was successfully created.'
+    updated_successfully: 'Your record was successfully updated.'

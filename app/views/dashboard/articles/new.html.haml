@@ -1,10 +1,8 @@
-%h2 New article
+%h2= t 'links.new_item', :item => t('activerecord.models.article')
 #tabs
   %ul
-    %li= link_to 'Article details',   '#tabs-1'
-    %li= link_to 'Article keywords',  '#tabs-2'
-  #tabs-1
-    = render 'form'
-  #tabs-2
-    = render 'shared/keywords'
-    .spacer
+    %li= link_to t('links.item_details', :item => t('activerecord.models.article')),   '#tabs-1'
+    %li= link_to t('links.item_keywords', :item => t('activerecord.models.article')),  '#tabs-2'
+  #tabs-1= render :partial => 'article_editor', :object => @article
+  #tabs-2= render :partial => 'shared/keywords', :locals => { :resource_keywords => @article.keywords.map(&:name) }
+  .spacer
