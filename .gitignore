@@ -4,11 +4,12 @@ tmp/**/*
 doc/api
 doc/app
 db/*.sqlite3
+.sass-cache/
+public/stylesheets/*.css
 *.swp
 *~
 .DS_Store
 public/images/system
 public/system
 *.bak
-.sass-cache/
 Thumbs.db
