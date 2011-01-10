@@ -33,6 +33,30 @@ ActiveRecord::Schema.define(:version => 20101123072918) do
     t.string  "attachable_type"
   end
 
+  create_table "authorization_rights", :force => true do |t|
+    t.string   "description"
+    t.string   "action",      :null => false
+    t.string   "controller",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "authorization_rights_roles", :id => false, :force => true do |t|
+    t.integer "right_id"
+    t.integer "role_id"
+  end
+
+  create_table "authorization_roles", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "authorization_roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "name"
     t.string   "url_name"
@@ -43,30 +67,6 @@ ActiveRecord::Schema.define(:version => 20101123072918) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "has_contact", :default => false
-  end
-
-  create_table "rights", :force => true do |t|
-    t.string   "description"
-    t.string   "action"
-    t.string   "controller"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "rights_roles", :id => false, :force => true do |t|
-    t.integer "right_id"
-    t.integer "role_id"
-  end
-
-  create_table "roles", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "roles_users", :id => false, :force => true do |t|
-    t.integer "role_id"
-    t.integer "user_id"
   end
 
   create_table "sections", :force => true do |t|
@@ -93,33 +93,6 @@ ActiveRecord::Schema.define(:version => 20101123072918) do
   create_table "tags", :force => true do |t|
     t.string "name"
   end
-
-  create_table "uploads", :force => true do |t|
-    t.integer  "creator_id"
-    t.string   "name"
-    t.string   "caption",             :limit => 1000
-    t.text     "description"
-    t.boolean  "is_public",                           :default => true
-    t.integer  "uploadable_id"
-    t.string   "uploadable_type"
-    t.string   "width"
-    t.string   "height"
-    t.string   "local_file_name"
-    t.string   "local_content_type"
-    t.integer  "local_file_size"
-    t.datetime "local_updated_at"
-    t.string   "remote_file_name"
-    t.string   "remote_content_type"
-    t.integer  "remote_file_size"
-    t.datetime "remote_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "uploads", ["creator_id"], :name => "index_uploads_on_creator_id"
-  add_index "uploads", ["local_content_type"], :name => "index_uploads_on_local_content_type"
-  add_index "uploads", ["uploadable_id"], :name => "index_uploads_on_uploadable_id"
-  add_index "uploads", ["uploadable_type"], :name => "index_uploads_on_uploadable_type"
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false

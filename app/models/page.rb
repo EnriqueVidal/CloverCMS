@@ -20,7 +20,7 @@ class Page < ActiveRecord::Base
   def check_home_page
     if home_page?
       page = Page.where("home_page = ?", true).first
-      page.update_attributes(:home_page => false) if page != self
+      page.update_attributes(:home_page => false) if page.present? && page != self
     end
   end
 end

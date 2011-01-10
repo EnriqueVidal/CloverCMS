@@ -6,9 +6,8 @@ class User < ActiveRecord::Base
                                           :thumb_scaled   => "50x50>",
                                           :thumb          => "50x50#"
                                         }
-
-  has_many                :articles
-  has_and_belongs_to_many :roles
+  has_many :articles
+  has_and_belongs_to_many :roles, :class_name => 'Authorization::Role', :join_table => :authorization_roles_users
 
   validates_format_of :username, :with => /^([a-z0-9\-_.]{2,31})$/i
 
