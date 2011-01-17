@@ -1,0 +1,21 @@
+%h2= t 'common.headers.item_list',  :item => t('activerecord.models.user')
+
+.splitcontentleft{ :style => "width: 66%"}
+  %p= t '.instructions'
+
+  %table.list
+    %thead
+      %tr
+        %th= t 'activerecord.attributes.user.username'
+        %th= t 'activerecord.attributes.user.email'
+        %th= t 'activerecord.attributes.user.confirmed_at'
+        %th= t 'activerecord.attributes.user.last_sign_in_at'
+        %th= t 'common.messages.options'
+      %tbody
+        = render :partial => 'user', :collection => @users
+  = will_paginate @user
+
+.splitcontentright{ :style => "width: 29%" }
+  #tips_content.box
+    %h3= t 'common.headers.did_you_know'
+    %p= t '.tip'

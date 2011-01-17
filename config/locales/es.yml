@@ -29,6 +29,14 @@ es:
         post:   'Post'
         news:   'Noticias'
         review: 'Reseña'
+    users:
+      index:
+        instructions: 'Esta es la lista de usuarios registrados en el sistema.'
+        tip: 'En esta seccion de usuarios puedes asignar o quitar roles a diferentes usuarios, asi como eliminarlos. Tan solo haz click en el nombre de usuario o email o el link Editar para editar y click en Eliminar para borrar.'
+      edit:
+        roles_box:
+          header:       'Agregar o eliminar roles de usuario'
+          instructions: 'Esta es la lista de roles disponibles, para agregar solo marque la caja de selección a la izquierda del nombre del rol, haciendo click en la caja o en el nombre del rol.'
   links:
     edit:           'Editar'
     show:           'Mostrar'
@@ -83,6 +91,7 @@ es:
       section:  'Sección'
       page:     'Pagina'
       article:  'Articulo'
+      user:     'Usuario'
     attributes:
       section:
         name:         'Nombre'
@@ -100,7 +109,14 @@ es:
         name:         'Nombre'
         kind:         'Tipo de Articulo'
         content:      'Contenido'
+      user:
+        username:         'Nombre de usuario'
+        email:            'Correo electronico'
+        confirmed_at:     'Fecha de confirmación'
+        last_sign_in_at:  'Ultima sesión'
 
   messages:
     created_successfully: 'Su registro ha sido guardado exitosamente.'
     updated_successfully: 'Su registro ha sido modificado exitosamente.'
+    deleted_successfully: 'Su registro ha sido eliminado exitosamente.'
+    failed_miserably:     'Su registro no pudo ser actualizado.'

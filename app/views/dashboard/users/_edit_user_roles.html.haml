@@ -1,0 +1,22 @@
+- user = edit_user_roles
+
+= form_for [ :dashboard, user ] do |f|
+  .splitcontentleft
+    = f.label :username
+    %p= user.username
+
+    = f.label :email
+    %p= user.email
+
+    = f.submit t('common.forms.submit')
+
+  .splitcontentright
+    #role_box.box
+      %h3=  t 'dashboard.users.edit.roles_box.header'
+      %p=   t 'dashboard.users.edit.roles_box.instructions'
+
+      %ul
+        - Authorization::Role.all.each do |role|
+          %li
+            = check_box_tag "roles[#{role.id}]", role.id, user.roles.include?(role)
+            = label_tag     "roles[#{role.id}]", role.name

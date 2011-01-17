@@ -12,4 +12,16 @@ class User < ActiveRecord::Base
   validates_format_of :username, :with => /^([a-z0-9\-_.]{2,31})$/i
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :avatar, :username
+
+  def add_roles collection=[]
+    begin
+      self.roles = []
+      collection.each do |id|
+        self.roles << Authorization::Role.find(id)
+      end
+      true
+    rescue
+      false
+    end
+  end
 end

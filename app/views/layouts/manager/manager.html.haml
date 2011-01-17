@@ -25,8 +25,6 @@
         = image_tag 'logo.png'
         #main-menu= render 'layouts/manager/main_menu'
       #main
-        #sidebar
-          = yield :sidebar
-        #content
-          = yield
-          = yield :jstemplates
+        - if content_for? :sidebar
+          #sidebar= yield :sidebar
+        #content= yield

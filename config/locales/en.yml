@@ -29,6 +29,14 @@ en:
         post:   'Post'
         news:   'News'
         review: 'Review'
+    users:
+      index:
+        instructions: 'This is the list of registered users in this system.'
+        tip: 'In this users section you can assign or remove roles to different users, as well as remove them. Just click in the username or email or the Edit link to edit or click in Delete to remove.'
+      edit:
+        roles_box:
+          header:       'Add or remove user roles'
+          instructions: 'This is a list of available roles, to add a role just check the box to the left of the role name, by clicking the box or clicking the role name, uncheck to remove role.'
   links:
     edit:           'Edit'
     show:           'Show'
@@ -83,6 +91,7 @@ en:
       section:  'Section'
       page:     'Page'
       article:  'Article'
+      user:     'User'
     attributes:
       section:
         name:         'Section name'
@@ -92,7 +101,14 @@ en:
         section:  'Section'
       article:
         kind:     'Article type'
+      user:
+        username:         'Username'
+        email:            'Email'
+        confirmed_at:     'Confirmed at'
+        last_sign_in_at:  'Last sign in at'
 
   messages:
     created_successfully: 'Your record was successfully created.'
     updated_successfully: 'Your record was successfully updated.'
+    deleted_successfully: 'Your record was successfully removed.'
+    failed_miserably:     'Your record could not be updated.'

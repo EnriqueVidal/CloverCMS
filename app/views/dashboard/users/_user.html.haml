@@ -1,0 +1,8 @@
+%tr{ :class => cycle(:odd, :eve) }
+  %td= link_to user.username, edit_dashboard_user_path(user)
+  %td= link_to user.email,    edit_dashboard_user_path(user)
+  %td= l user.confirmed_at,     :format => :short
+  %td= l user.last_sign_in_at,  :format => :short
+  %td
+    = link_to t('links.edit'), edit_dashboard_user_path(user), :class => 'icon icon_bullet_pencil'
+    = link_to t('links.destroy'), dashboard_user_path(user), :method => :delete, :confirm => t('common.messages.are_you_sure'), :class => 'icon icon_bullet_delete'
