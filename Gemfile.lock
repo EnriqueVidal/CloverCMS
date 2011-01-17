@@ -39,6 +39,8 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.0.0)
+    compass (0.10.6)
+      haml (>= 3.0.4)
     devise (1.1.5)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 1.0.2)
@@ -113,6 +115,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   capistrano
+  compass (>= 0.10.6)
   devise
   factory_girl_rails
   haml-rails

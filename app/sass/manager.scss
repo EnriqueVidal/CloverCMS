@@ -7,6 +7,20 @@ body {
   padding:  0px;
 }
 
+label {
+  display: block;
+  font-size: 130%;
+  font-weight: bold;
+  font-family: Trebuchet MS, Helvetica, Arial, sans-serif;
+  margin: 5px 10px 10px 0px;
+
+  small {
+    color: gray;
+    font-weight: lighter;
+    font-size: 12px;
+  }
+}
+
 body #wrapper {
   font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif;
   font-size: 11px;
@@ -108,18 +122,9 @@ body #wrapper {
         padding-bottom: 10px;
       }
 
-      label {
-        display: block;
-        font-size: 130%;
-        font-weight: bold;
-        font-family: Trebuchet MS, Helvetica, Arial, sans-serif;
-        margin: 5px 10px 10px 0px;
-
-        small {
-          color: gray;
-          font-weight: lighter;
-          font-size: 12px;
-        }
+      p {
+        margin-bottom: 15px;
+        line-height: 19px;
       }
 
       input[type=text] {

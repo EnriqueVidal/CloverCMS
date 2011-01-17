@@ -24,3 +24,7 @@ Factory.define :article do |f|
   f.name 'First article'
   f.content 'This is my first article'
 end
+
+Factory.define :role, :class => Authorization::Role do |r|
+  r.name 'Some role'
+end

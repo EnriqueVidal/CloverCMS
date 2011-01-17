@@ -8,6 +8,7 @@ gem 'paperclip'
 gem 'acts-as-taggable-on'
 gem 'capistrano'
 gem 'mime-types', :require => 'mime/types'
+gem "compass", ">= 0.10.6"
 
 group :test, :development do
   gem 'sqlite3-ruby',   :require => 'sqlite3'
