@@ -9,6 +9,7 @@ gem 'acts-as-taggable-on'
 gem 'capistrano'
 gem 'mime-types', :require => 'mime/types'
 gem "compass", ">= 0.10.6"
+gem 'metric_fu', :require => false
 
 group :test, :development do
   gem 'sqlite3-ruby',   :require => 'sqlite3'
