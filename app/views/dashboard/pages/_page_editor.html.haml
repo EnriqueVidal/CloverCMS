@@ -25,14 +25,6 @@
 
     %button.wymupdate= t 'common.forms.submit'
 
-- content_for :sidebar do
-  #operations_placeholder
-    %h3= t 'common.headers.item_operations', :item => t('activerecord.models.page')
-    - if params[:action] == 'edit'
-      = link_to t('links.new_item', :item => t('activerecord.models.page')),            new_dashboard_section_page_path(page_editor.section), :class => 'icon icon_page_add'
-    = link_to t('links.new_item',   :item => t('activerecord.models.section')),         new_dashboard_section_path,                           :class => 'icon icon_add'
-    = link_to t('links.item_list',  :item => t('activerecord.models.page').pluralize),  dashboard_section_pages_path(page_editor.section),    :class => 'icon icon_back'
-
 :javascript
   $(document).ready(function() {
     $('#tabs').tabs();
@@ -41,7 +33,6 @@
     $('.home_page').button({ icons: { primary: "ui-icon-home" } });
     $('.contact_form').button({ icons: { primary: "ui-icon-mail-closed" } });
     $('.published').button({ icons: { primary: "ui-icon-check" } });
-    $('#new_page_menu_link').addClass('selected');
     $('#keyword_button').button({ icons: { primary: "ui-icon-circle-plus" } });
     $('#keyword_button').css('position', 'relative').css('top', '-5px');
     add_keywords();

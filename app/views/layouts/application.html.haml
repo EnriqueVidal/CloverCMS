@@ -1,21 +1,27 @@
 !!!5
-%html.login
+%html
   %head
-    %title= yield :title
-    = stylesheet_link_tag 'website_css/main'
-
-    - if Rails.env.production?
-      = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" 
-      = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"
-    - else
-      = javascript_include_tag 'jquery-1.4.2.min', 'jquery-ui-1.8.5.custom.min'
-
-    = javascript_include_tag "/wymeditor/jquery.wymeditor.js"
-    = javascript_include_tag "/javascripts/boot_wym.js"
-
+    %title= content_for?(:title) ? yield(:title) : 'CloverInteractive'
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'jquery-1.4.2.min', 'rails', 'application'
+    = yield :head
     = csrf_meta_tag
+
   %body
     #wrapper
-      %p.notice= notice
-      %p.alert= alert
-      = yield
+      #top=yield :top
+      - if content_for? :nav_wrap
+        #nav_wrap= yield :nav_wrap
+
+      #content_wrap
+        #content
+          - if content_for? :module
+            .module
+              %h2.title= t "activerecord.models.#{ controller_name }"
+              .module_body= yield
+          - else
+            = yield
+
+      - if content_for? :footer
+        #footer_wrap
+          #footer= yield :footer

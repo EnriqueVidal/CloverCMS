@@ -2,36 +2,27 @@
   - if page_section.errors.any?
     = render :partial => 'shared/error_explanation', :object => page_section
 
-  .splitcontentleft
-    %label{ :for => :section_name }
-      = t 'activerecord.models.section'
-      %small= t 'dashboard.section.descriptions.name'
-    = f.text_field  :name
+  .columns
+    .half
+      %label{ :for => :section_name }
+        = t 'activerecord.models.section'
+        %small= t 'dashboard.sections.descriptions.name'
+      = f.text_field  :name
 
-    %label{ :for => :main_section_id }
-      = t 'activerecord.attributes.section.main_section'
-      %small= t 'dashboard.section.descriptions.main_section'
-    = f.select :main_section_id, main_sections_collection(page_section.name), :include_blank => true
+      %label{ :for => :main_section_id }
+        = t 'activerecord.attributes.section.main_section'
+        %small= t 'dashboard.sections.descriptions.main_section'
+      = f.select :main_section_id, main_sections_collection(page_section.name), :include_blank => true
 
-    %button#submit= t 'common.forms.submit'
+      %button#submit= t 'common.forms.submit'
 
-  .splitcontentright
-    #tips_content.box
-      %h3= t 'common.headers.did_you_know'
-      %p= t 'dashboard.section.tips.index.first'
-      %p= t 'dashboard.section.tips.index.second'
-
-- content_for :sidebar do
-  #operations_placeholder
-    %h3= t 'common.headers.item_operations', :item => t('activerecord.models.section')
-    - if params[:action] == 'edit'
-      = link_to t('links.new_item',  :item => t('activerecord.models.section')), new_dashboard_section_path, :class => 'icon icon_add'
-      = link_to t('links.new_item',  :item => t('activerecord.models.page')), new_dashboard_section_page_path(page_section), :class => 'icon icon_page_add'
-      = link_to t('links.show_item', :item => t('activerecord.attributes.section.pages')), dashboard_section_pages_path(page_section), :class => 'icon icon_page_green'
-    = link_to t('links.item_list', :item => t('activerecord.models.section')), dashboard_sections_path, :class => 'icon icon_back'
+    .half
+      #tips_content.box
+        %h3= t 'common.headers.did_you_know'
+        %p= t 'dashboard.sections.index.tip'
 
 :javascript
   $(document).ready(function() {
     $('#submit').button({ icons: { primary: 'ui-icon-circle-check' } });
-    $('#new_section_menu_link').addClass('selected');
+    $('#sections_menu_link').addClass('active');
   });

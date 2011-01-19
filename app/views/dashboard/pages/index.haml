@@ -1,27 +1,16 @@
 %h2= t 'common.headers.item_list', :item => t('activerecord.models.page').pluralize
+%p.information
+  %span.bold= t('messages.information') + ':'
+  = t 'dashboard.page.instructions.index'
 
-.splitcontentleft{ :style => 'width: 66%' }
-  %p= t 'dashboard.page.instructions.index'
-
-  #pages
-    %table.list
-      %thead
-        %tr
-          %th= t 'common.fields.name'
-          %th= t 'activerecord.models.section'
-          %th= t 'common.fields.created_at'
-          %th= t 'common.fields.updated_at'
-          %th= t 'common.messages.options'
-      %tbody
-        = render :partial => 'page', :collection => @pages
-    = will_paginate @pages
-
-.splitcontentright{ :style => 'width: 29%' }
-  #tips_content.box
-    %h3= t 'common.headers.did_you_know'
-    %p= t 'dashboard.page.tips.index'
-- content_for :sidebar do
-  #operations_placeholder
-    %h3= t 'common.headers.item_operations', :item => t('activerecord.models.page')
-    = link_to t('links.new_item', :item => t('activerecord.models.page')), new_dashboard_section_page_path(@section), :class => 'icon icon_page_add'
-    = link_to t('links.item_list', :item => t('activerecord.models.section')), dashboard_sections_path, :class => 'icon icon_back'
+%table.tabular{ :cellpadding => 0, :cellspacing => 0}
+  %thead
+    %tr
+      %th= t 'common.fields.name'
+      %th= t 'activerecord.models.section'
+      %th= t 'common.fields.created_at'
+      %th= t 'common.fields.updated_at'
+      %th= t 'common.messages.options'
+  %tbody
+    = render :partial => 'page', :collection => @pages
+= will_paginate @pages

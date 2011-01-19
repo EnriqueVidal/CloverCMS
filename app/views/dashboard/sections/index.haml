@@ -1,29 +1,16 @@
 %h2= t 'common.headers.item_list', :item => t('activerecord.models.section')
+%p.information
+  %span.bold= t('messages.information') + ':'
+  = t '.information'
 
-.splitcontentleft{ :style => 'width: 66%' }
-  %p= t 'dashboard.section.instructions.index.first', :link => t('links.view_item', :item => t('activerecord.models.page').pluralize)
-  %p= t 'dashboard.section.instructions.index.second', :edit_link => t('links.edit'), :delete_link => t('links.destroy')
-
-  %table.list
-    %thead
-      %tr
-        %th= t 'activerecord.attributes.section.name'
-        %th= t 'activerecord.attributes.section.pages'
-        %th= t 'activerecord.attributes.section.main_section'
-        %th= t 'common.fields.created_at'
-        %th= t 'common.fields.updated_at'
-        %th= t 'common.messages.options'
-    %tbody
-      = render :partial => 'section', :collection => @sections
-  = will_paginate @sections
-
-.splitcontentright{ :style => 'width: 29%' }
-  #tips_content.box
-    %h3= t 'common.headers.did_you_know'
-    %p= t 'dashboard.section.tips.index.first'
-    %p= t 'dashboard.section.tips.index.second'
-
-- content_for :sidebar do
-  #operations_placeholder
-    %h3= t 'common.headers.item_operations', :item => t('activerecord.models.section')
-    = link_to t('links.new_item', :item => 'section'), new_dashboard_section_path, :class => 'icon icon_add'
+%table.tabular{ :cellpading => 0, :cellspacing => 0 }
+  %thead
+    %tr
+      %th= t 'activerecord.attributes.section.name'
+      %th= t 'activerecord.attributes.section.pages'
+      %th= t 'activerecord.attributes.section.main_section'
+      %th= t 'common.fields.created_at'
+      %th= t 'common.fields.updated_at'
+      %th= t 'common.messages.options'
+  %tbody= render :partial => 'section', :collection => @sections
+= will_paginate @sections

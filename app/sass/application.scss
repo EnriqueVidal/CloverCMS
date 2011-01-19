@@ -1,1 +1,70 @@
 @import 'resets';
+
+#wrapper {
+  .error, .warning, .information, .success {
+    padding:10px;
+    padding-left:40px;
+    margin:10px 0px;
+  }
+
+  .error{
+    border:1px solid #ff9b9b;
+    background:#ffd3d3 url('/images/system-error-alt.png') no-repeat 10px 9px;
+    color:#de1414;
+  }
+
+  .information {
+    border:1px solid #5abef3;
+    background:#d9f4ff url('/images/system-info-alt.png') no-repeat 10px 9px;
+    color:#0069cb;
+  }
+
+  .success {
+    border:1px solid #78ce4d;
+    background:#e8ffe2 url('/images/success.png') no-repeat 10px 9px;
+    color:#007e1b;
+  }
+
+  .warning {
+    border: 1px solid #c4bc16;
+    background: #fffed7 url('/images/warning.png') no-repeat 10px 9px;
+    color: #6e6000;
+  }
+
+  .clear {
+    clear:both;
+    line-height:1px;
+    font-size:1px;
+  }
+
+  .center { text-align: center; }
+
+  .left { text-align: left; }
+
+  .right { text-align: right; }
+
+  .float_right { float: right; }
+
+  .float_left { float: left; }
+
+  .bold { font-weight: bolder; }
+
+  #content {
+    .columns{
+      overflow:hidden;
+      .half {
+        display: inline;
+        width: 49%;
+        float: left;
+        margin-right: 1%;
+
+        h1 span.right, h2 span.right, h3 span.right, h4 span.right, h5 span.right, h6 span.right {
+          position: absolute;
+          float: right;
+          margin-top: 0px;
+          right: 0px;
+        }
+      }
+    }
+  }
+}
