@@ -57,7 +57,7 @@ html {
       #top {
         background-color: #2C3030;
         color: white;
-        height: 72px;
+        height: 74px;
         width: 100%;
       }
 
@@ -126,8 +126,12 @@ html {
             }
           }
 
-          li.active a, li a:hover {
+          li a:hover {
             color: white;
+          }
+
+          li.current span {
+            color: #FFF;
           }
         }
       }
@@ -237,6 +241,7 @@ label {
   font-size: 14px;
   line-height: 19px;
   font-weight: bold;
+  display: block;
 
   small {
     font-size: 12px;

@@ -2,6 +2,9 @@ class Dashboard::PagesController < ApplicationController
   before_filter :check_authorization, :set_section
   layout 'manager/manager'
 
+  set_tab :list_pages, :only => :index
+  set_tab :new_page, :only => :new
+
   # GET /pages
   def index
     @pages = @section.pages.paginate :page => params[:page], :per_page => 5

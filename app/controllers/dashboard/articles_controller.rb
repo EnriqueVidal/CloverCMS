@@ -4,6 +4,9 @@ class Dashboard::ArticlesController < ApplicationController
 
   layout 'manager/manager'
 
+  set_tab :list_articles, :only => :index
+  set_tab :new_article, :only => :new
+
   def index
     @articles = current_user.articles.paginate :page => params[:page], :per_page => 5 unless current_user.admin?
     @articles ||= Article.paginate :page => params[:page], :per_page => 5

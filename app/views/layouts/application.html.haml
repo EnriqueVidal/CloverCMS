@@ -17,7 +17,7 @@
         #content
           - if content_for? :module
             .module
-              %h2.title= t "activerecord.models.#{ controller_name }"
+              %h2.title= t "activerecord.models.#{ controller_name.singularize }"
               .module_body= yield
           - else
             = yield

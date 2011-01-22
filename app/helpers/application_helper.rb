@@ -11,8 +11,4 @@ module ApplicationHelper
     types = 'dashboard.articles.types'
     [ %W(#{t("#{types}.post")} post), %W(#{t("#{types}.review")} review), %W(#{t("#{types}.news")} news) ]
   end
-
-  def controller_name
-    params[:controller].singularize.split('/')[1]
-  end
 end

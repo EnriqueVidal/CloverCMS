@@ -3,6 +3,7 @@
     %li#sections_menu_link= link_to t('activerecord.models.section'), dashboard_sections_path
     %li#pages_menu_link=    link_to t('activerecord.models.page'),    dashboard_section_pages_path(1)
     %li#articles_menu_link= link_to t('activerecord.models.article'), dashboard_articles_path
+  = render :partial => "layouts/manager/nav/#{controller_name}"
 
 - content_for :head do
   = javascript_include_tag 'jquery-ui-1.8.5.custom.min', '/wymeditor/jquery.wymeditor.js', '/javascripts/boot_wym.js'
@@ -11,10 +12,11 @@
   :javascript
     $(function() {
       $("##{params[:controller].split('/').last}_menu_link").addClass('active');
+      #{yield :javascript}
     });
 
 - content_for :title do
-  = "CloverInteractive - #{params[:controller]} #{action_name}"
+  = "CloverInteractive - #{controller_name} #{action_name}"
 
 - content_for :module do
   / is module
