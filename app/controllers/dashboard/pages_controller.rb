@@ -1,6 +1,6 @@
 class Dashboard::PagesController < ApplicationController
   before_filter :check_authorization, :set_section
-  layout 'manager/manager'
+  layout 'dashboard'
 
   set_tab :list_pages, :only => :index
   set_tab :new_page, :only => :new

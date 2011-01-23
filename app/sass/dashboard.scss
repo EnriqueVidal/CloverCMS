@@ -73,6 +73,13 @@ html {
         float: left;
       }
 
+      #account_info {
+        float: right;
+        padding: 27px;
+
+        a { color: #BBB; }
+      }
+
       #nav_wrap {
         height: 89px;
         clear: both;
@@ -156,6 +163,20 @@ html {
             background-color: #EEE;
             color: #333;
           }
+
+          #roles.box {
+            ul li {
+            list-style: none;
+
+            label {
+              display: inline;
+              cursor: pointer;
+              text-decoration: underline;
+              font-size: 12px;
+              font-weight: normal;
+            }
+          }
+        }
 
           .ui-widget { font-size: 13px; }
 

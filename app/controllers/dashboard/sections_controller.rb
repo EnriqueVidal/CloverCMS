@@ -1,6 +1,6 @@
 class Dashboard::SectionsController < ApplicationController
   before_filter :check_authorization
-  layout 'manager/manager'
+  layout 'dashboard'
 
   set_tab :list_sections, :only => :index
   set_tab :new_section, :only => :new

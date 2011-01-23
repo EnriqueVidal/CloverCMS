@@ -2,7 +2,7 @@ class Dashboard::ArticlesController < ApplicationController
   before_filter :check_authorization
   before_filter :set_article, :only => [ :destroy, :edit, :update ]
 
-  layout 'manager/manager'
+  layout 'dashboard'
 
   set_tab :list_articles, :only => :index
   set_tab :new_article, :only => :new

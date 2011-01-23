@@ -3,15 +3,16 @@
     %li#sections_menu_link= link_to t('activerecord.models.section'), dashboard_sections_path
     %li#pages_menu_link=    link_to t('activerecord.models.page'),    dashboard_section_pages_path(1)
     %li#articles_menu_link= link_to t('activerecord.models.article'), dashboard_articles_path
-  = render :partial => "layouts/manager/nav/#{controller_name}"
+    %li#users_menu_link=    link_to t('activerecord.models.user'),    dashboard_users_path
+  = render :partial => "layouts/dashboard/nav/#{controller_name}"
 
 - content_for :head do
   = javascript_include_tag 'jquery-ui-1.8.5.custom.min', '/wymeditor/jquery.wymeditor.js', '/javascripts/boot_wym.js'
   = javascript_include_tag '/uploadify/swfobject.js', '/uploadify/uploadify.min.js'
-  = stylesheet_link_tag 'manager','themes/smoothness/jquery-ui-1.8.6.custom.css', '/uploadify/uploadify.css'
+  = stylesheet_link_tag 'dashboard','themes/smoothness/jquery-ui-1.8.6.custom.css', '/uploadify/uploadify.css'
   :javascript
     $(function() {
-      $("##{params[:controller].split('/').last}_menu_link").addClass('active');
+      $("##{controller_name}_menu_link").addClass('active');
       #{yield :javascript}
     });
 
@@ -26,5 +27,10 @@
 
 - content_for :top do
   #logo
+  #account_info
+    Welcome
+    = link_to current_user.username, edit_user_registration_path
+    Not you?
+    = link_to 'logout', destroy_user_session_path
 
 = render :file => 'layouts/application'

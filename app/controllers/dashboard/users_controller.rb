@@ -1,7 +1,9 @@
 class Dashboard::UsersController < ApplicationController
   before_filter :check_authorization
+  layout 'dashboard'
 
-  layout 'manager/manager'
+  set_tab :list_users, :only => :index
+  set_tab :edit_user, :only => :edit
 
   def index
     @users = User.paginate :page => params[:page], :per_page => 5, :order => 'username'

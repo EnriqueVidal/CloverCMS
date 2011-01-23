@@ -20,13 +20,6 @@
 
     %button.wymupdate= t 'common.forms.submit'
 
-- content_for :sidebar do
-  #operations_placeholder
-    %h3= t 'common.headers.item_operations', :item => t('activerecord.models.article')
-    - if params[:action] == 'edit'
-      = link_to t('links.new_item', :item => t('activerecord.models.article')), new_dashboard_article_path, :class => 'icon icon_add'
-    = link_to t('links.item_list', :item => t('activerecord.models.article')), dashboard_articles_path, :class => 'icon icon_back'
-
 :javascript
   $(document).ready(function() {
     $('#tabs').tabs();
