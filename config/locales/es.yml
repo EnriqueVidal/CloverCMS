@@ -32,6 +32,31 @@ es:
         roles_box:
           header:       'Agregar o eliminar roles de usuario'
           instructions: 'Esta es la lista de roles disponibles, para agregar solo marque la caja de selección a la izquierda del nombre del rol, haciendo click en la caja o en el nombre del rol.'
+  devise:
+    sessions:
+      new:
+        title: 'Iniciar Sesión'
+    registrations:
+      new:
+        title: 'Registrarse'
+    passwords:
+      new:
+        title: 'Reestablecer contraseña'
+    confirmations:
+      new:
+        title: 'Reenviar instrucciones de confirmación de cuenta'
+    links:
+      sign_in:              'Iniciar sesión'
+      sign_up:              'Registrarse'
+      reset_password:       'Olvidaste tu contresañena'
+      resend_confirmation:  'No recibiste las instrucciones de confirmación?'
+      resend_unlock:        'No recibiste las instrucciones de desbloqueo?'
+    forms:
+      sign_in:              'Iniciar sesión'
+      sign_up:              'Registrarte'
+      change_password:      'Cambia mi contraseña'
+      reset_password:       'Enviame instrucciones de restauración'
+      resend_confirmation:  'Reenviame instrucciones de confirmación'
   links:
     edit:           'Editar'
     show:           'Mostrar'
@@ -48,6 +73,7 @@ es:
     item_keywords:  'Palabras clave de %{item}'
     item_assets:    'Recursos de %{item}'
     add_item:       'Agregar %{item}'
+    logout:         'salir'
 
   common:
     fields:
@@ -60,12 +86,16 @@ es:
     messages:
       are_you_sure:   '¿Estas seguro?'
       options:        'Opciones'
+      unhappy:        'No estas contento?'
+      hi:             'Hola'
+      not_you:        'No eres tú?'
     headers:
       did_you_know:     '¿Sabias que?'
       item_operations:  'Operaciones de %{item}'
       item_list:        'Lista de %{item}'
       add_image:        '¿Deseas agregar esta imagen al cuerpo de %{item}?'
       home_page:        'Pagina principal'
+      cancel_account:   'Cancelar mi cuenta'
     forms:
       submit:           'Continuar'
       add:              'Agregar'
@@ -87,6 +117,7 @@ es:
       page:     'Pagina'
       article:  'Articulo'
       user:     'Usuario'
+      role:     'Rol'
     attributes:
       section:
         name:         'Nombre'
@@ -105,14 +136,22 @@ es:
         kind:         'Tipo de Articulo'
         content:      'Contenido'
       user:
-        username:         'Nombre de usuario'
-        email:            'Correo electronico'
-        confirmed_at:     'Fecha de confirmación'
-        last_sign_in_at:  'Ultima sesión'
+        username:               'Nombre de usuario'
+        email:                  'Correo electronico'
+        confirmed_at:           'Fecha de confirmación'
+        last_sign_in_at:        'Ultima sesión'
+        password:               'Contraseña'
+        password_confirmation:  'Confirmar contraseña'
+        current_password:       'Contraseña actual'
+        remember_me:            'Recordarme'
 
   messages:
     created_successfully: 'Su registro ha sido guardado exitosamente.'
     updated_successfully: 'Su registro ha sido modificado exitosamente.'
     deleted_successfully: 'Su registro ha sido eliminado exitosamente.'
     failed_miserably:     'Su registro no pudo ser actualizado.'
+    unauthorized_access:  'No estas autorizado para ver la pagina que haz solicitado'
+    password:             'dejalo en blanco si no deseas cambiarlo'
+    current_password:     'necesitamos su contraseña actual para confirmar sus cambios.'
     information:          'Información'
+    error:                'Error'

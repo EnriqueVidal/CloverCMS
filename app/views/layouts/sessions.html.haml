@@ -1,0 +1,11 @@
+- content_for :title do
+  = t "devise.#{controller_name}.#{action_name}.title"
+
+- content_for :head do
+  = stylesheet_link_tag 'sessions'
+
+- content_for :top do
+  %a{:href =>"/"}
+    %h1#logo CloverInteractive
+
+= render :file => 'layouts/application'

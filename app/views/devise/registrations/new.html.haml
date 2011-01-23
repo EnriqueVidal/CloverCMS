@@ -1,26 +1,21 @@
-%a{:href =>"/"}
-  %h1#logo CloverInteractive
+#login_form
+  = form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f|
+    %fieldset
+      = devise_error_messages!
 
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  %h2 Sign up
-  %p
-    = f.label :email
-    %br
-    = f.text_field :email, :class => :"input_text shadowed"
-  %p
-    = f.label :username
-    %br
-    = f.text_field :username, :class => :"input_text shadowed"
-  %p
-    = f.label :password
-    %br
-    = f.password_field :password, :class => :"input_password shadowed"
-  %p
-    = f.label :password_confirmation
-    %br
-    = f.password_field :password_confirmation, :class => :"input_password shadowed"
-  %p= f.submit "Sign up", :class => "input_button"
+      = f.label :email
+      = f.text_field :email, :class => :"input_text shadowed"
 
-%div{:class => "content"}
+      = f.label :username
+      = f.text_field :username, :class => :"input_text shadowed"
+
+      = f.label :password
+      = f.password_field :password, :class => :"input_password shadowed"
+
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, :class => :"input_password shadowed"
+
+      = f.submit t('devise.forms.sign_up')
+
+.more_options
   = render :partial => "devise/shared/links"

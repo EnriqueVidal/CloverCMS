@@ -1,27 +1,31 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-  = devise_error_messages!
-  %p
-    = f.label :email
-    %br/
-    = f.text_field :email
-  %p
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password
-  %p
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
-  %p
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password
-  %p= f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.
-= link_to "Back", :back
+%h2= t 'links.edit_item', :item => t('activerecord.models.user')
+= form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put } do |f|
+  .columns
+    .half
+      = devise_error_messages!
+
+      = f.label :email
+      = f.text_field :email
+
+      %label
+        = t 'activerecord.attributes.user.password'
+        %small= t 'messages.password'
+      = f.password_field :password
+
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+
+      %label
+        = t 'activerecord.attributes.user.current_password'
+        %small= t 'messages.current_password'
+      = f.password_field :current_password
+      = f.submit t('common.forms.submit')
+
+    .half
+      .box
+        %h3= t 'common.headers.cancel_account'
+        %p
+          = t('common.messages.unhappy')
+          = link_to t('common.headers.cancel_account'), registration_path(resource_name), :confirm => t('common.messages.are_you_sure'), :method => :delete
+- content_for :sub_nav do
+  = render :partial => 'layouts/dashboard/nav/users'

@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
+  DEVISE_CONTROLLERS = %w/sessions passwords registrations confirmations/
+
   before_filter :set_locale
+  layout :layout_for_devise, :if => lambda { DEVISE_CONTROLLERS.include? controller_name }
 
   protect_from_forgery
 
@@ -10,7 +13,7 @@ class ApplicationController < ActionController::Base
          end
        end )
 
-       flash[:notice] = "No estas autorizado para ver la pagina que haz solicitado"
+       flash[:info] = t 'messages.unauthorized_access'
        redirect_to new_user_session_path
        return false
      end
@@ -20,5 +23,16 @@ class ApplicationController < ActionController::Base
   def set_locale
     session[:locale] = params[:locale] if params[:locale].present?
     I18n.locale = session[:locale]
+  end
+
+  def layout_for_devise
+    if devise_controller?
+      if controller_name == "registrations" && action_name == "edit"
+        set_tab :edit_user
+        'dashboard'
+      else
+        'sessions'
+      end
+    end
   end
 end

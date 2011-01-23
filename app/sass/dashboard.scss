@@ -15,7 +15,7 @@ html {
       position:relative;
       overflow:hidden;
 
-      input[type=text] {
+      input[type=text], input[type=password] {
         border: 2px solid #BBB;
         padding: 6px;
         display: block;

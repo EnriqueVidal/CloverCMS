@@ -3,7 +3,7 @@ class Dashboard::UsersController < ApplicationController
   layout 'dashboard'
 
   set_tab :list_users, :only => :index
-  set_tab :edit_user, :only => :edit
+  set_tab :edit_user_roles, :only => :edit
 
   def index
     @users = User.paginate :page => params[:page], :per_page => 5, :order => 'username'

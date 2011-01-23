@@ -12,12 +12,17 @@
       #top=yield :top
       - if content_for? :nav_wrap
         #nav_wrap= yield :nav_wrap
-
       #content_wrap
         #content
+          #flash
+            = content_tag :div, flash[:info],    :class => "information" if flash[:info]
+            = content_tag :div, flash[:warning], :class => "warning"     if flash[:warning]
+            = content_tag :div, flash[:error],   :class => "error"       if flash[:error]
+            = content_tag :div, flash[:alert],   :class => "error"       if flash[:alert]
+
           - if content_for? :module
             .module
-              %h2.title= t "activerecord.models.#{ controller_name.singularize }"
+              %h2.title= yield :module_title
               .module_body= yield
           - else
             = yield

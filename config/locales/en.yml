@@ -32,6 +32,31 @@ en:
         roles_box:
           header:       'Add or remove user roles'
           instructions: 'This is a list of available roles, to add a role just check the box to the left of the role name, by clicking the box or clicking the role name, uncheck to remove role.'
+  devise:
+    sessions:
+      new:
+        title: 'Sing in'
+    registrations:
+      new:
+        title: 'Register'
+    passwords:
+      new:
+        title: 'Reset password'
+    confirmations:
+      new:
+        title: 'Resend confirmation instructions'
+    links:
+      sign_in:              'Sign in'
+      sign_up:              'Sign up'
+      reset_password:       'Forgot your password?'
+      resend_confirmation:  "Didn't receive confirmation instructions?"
+      resend_unlock:        "Didn't receive unlock instructions?"
+    forms:
+      sign_in:              'Sign in'
+      sign_up:              'Sign up'
+      change_password:      'Change my password'
+      reset_password:       'Send me reset password instructions'
+      resend_confirmation:  'Resend confirmation instructions'
   links:
     edit:           'Edit'
     show:           'Show'
@@ -48,6 +73,7 @@ en:
     item_keywords:  '%{item} keywords'
     item_assets:    '%{item} Assets'
     add_item:       'Add %{item}'
+    logout:         'logout'
 
   common:
     fields:
@@ -60,12 +86,16 @@ en:
     messages:
       are_you_sure: 'Are you sure?'
       options:      'Options'
+      unhappy:      'Unhappy?'
+      hi:           'Hi'
+      not_you:      'Not you?'
     headers:
       did_you_know:     'Did you know?'
       item_operations:  '%{item} Operations'
       item_list:        '%{item} List'
       add_image:        'Would you like to add this image to this %{item}?'
       home_page:        'Home Page'
+      cancel_account:   'Cancel my account'
     forms:
       submit:           'Submit'
       add:              'Add'
@@ -87,6 +117,7 @@ en:
       page:     'Page'
       article:  'Article'
       user:     'User'
+      role:     'Role'
     attributes:
       section:
         name:         'Section name'
@@ -97,14 +128,22 @@ en:
       article:
         kind:     'Article type'
       user:
-        username:         'Username'
-        email:            'Email'
-        confirmed_at:     'Confirmed at'
-        last_sign_in_at:  'Last sign in at'
+        username:               'Username'
+        email:                  'Email'
+        confirmed_at:           'Confirmed at'
+        last_sign_in_at:        'Last sign in at'
+        password:               'Password'
+        password_confirmation:  'Password confirmation'
+        current_password:       'Current password'
+        remember_me:            'Remember me'
 
   messages:
     created_successfully: 'Your record was successfully created.'
     updated_successfully: 'Your record was successfully updated.'
     deleted_successfully: 'Your record was successfully removed.'
     failed_miserably:     'Your record could not be updated.'
+    unauthorized_access:  'You are not authorized to access the page you requested'
+    password:             "leave blank if you don't want to change it"
+    current_password:     'we need your current password to confirm your changes'
     information:          'Information'
+    error:                'Error'

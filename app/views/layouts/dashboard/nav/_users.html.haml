@@ -1,3 +1,4 @@
 = tabs_tag :open_tabs => { :id => "sub_menu", :class => "sub_nav" } do |tab|
-  = tab.list_users  t('links.item_list', :item => t('activerecord.models.user')), dashboard_users_path
-  = tab.edit_user   t('links.edit_item', :item => t('activerecord.models.user')), edit_dashboard_user_path(@user || 1)
+  = tab.list_users        t('links.item_list', :item => t('activerecord.models.user')), dashboard_users_path
+  = tab.edit_user_roles   t('links.edit_item', :item => t('activerecord.models.role')), edit_dashboard_user_path(@user || 1)
+  = tab.edit_user         t('links.edit_item', :item => t('activerecord.models.user')), edit_user_registration_path
