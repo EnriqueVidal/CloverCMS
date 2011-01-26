@@ -129,6 +129,7 @@ en:
         kind:     'Article type'
       user:
         username:               'Username'
+        login:                  'Username or Email'
         email:                  'Email'
         confirmed_at:           'Confirmed at'
         last_sign_in_at:        'Last sign in at'

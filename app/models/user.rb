@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
 
   validates_format_of :username, :with => /^([a-z0-9\-_.]{2,31})$/i
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :avatar, :username
+  attr_accessor :login
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :avatar, :username, :login
 
   def add_roles collection=[]
     begin
@@ -23,5 +24,11 @@ class User < ActiveRecord::Base
     rescue
       false
     end
+  end
+
+  protected
+  def self.find_for_database_authentication(conditions)
+    login = conditions.delete :login
+    where(conditions).where([ "username = :value OR email = :value", { :value => login } ]).first
   end
 end

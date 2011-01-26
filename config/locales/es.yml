@@ -137,6 +137,7 @@ es:
         content:      'Contenido'
       user:
         username:               'Nombre de usuario'
+        login:                  'Usuario ó Email'
         email:                  'Correo electronico'
         confirmed_at:           'Fecha de confirmación'
         last_sign_in_at:        'Ultima sesión'
