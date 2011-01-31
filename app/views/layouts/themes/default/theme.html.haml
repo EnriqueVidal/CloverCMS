@@ -1,0 +1,15 @@
+!!!5
+%html
+  %head
+    %title= (content_for? :title) ? yield(:title) : 'CloverCMS - TJRuby theme'
+    = stylesheet_link_tag 'application', 'default.css'
+  %body
+    #wrapper
+      #page_top
+      = render :partial => 'layouts/themes/default/top'
+      #main
+        #content= yield
+        #sidebar= yield :sidebar
+      #main_bottom
+      #footer
+        %p This CMS and template are released under the MIT License

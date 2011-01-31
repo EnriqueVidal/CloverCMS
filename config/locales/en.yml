@@ -118,6 +118,7 @@ en:
       article:  'Article'
       user:     'User'
       role:     'Role'
+      site_config: 'Site configuration'
     attributes:
       section:
         name:         'Section name'

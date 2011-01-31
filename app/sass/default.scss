@@ -1,0 +1,109 @@
+@import "compass/css3/border-radius";
+
+html {
+  background-image: url('/images/themes/default/html-bg.png');
+
+  body {
+    font-size: 14px;
+
+    #wrapper {
+      width: 960px;
+      margin: 0 auto;
+      background: #F9F9F9 url('/images/themes/default/column-shadow.png') repeat-y 630px 0px;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 20px;
+
+      #header {
+        background-image: url('/images/themes/default/tjruby-sprite2.png ');
+        height:155px;
+        background-position:0px -493px;
+        background-repeat:repeat-x;
+        overflow:hidden;
+
+      #logo{
+          background-image: url('/images/themes/default/tjruby-sprite2.png ');
+          width:159px;
+          height:59px;
+          background-repeat:no-repeat;
+          text-indent:-9999px;
+          overflow:hidden;
+          margin:46px 0px 0px 102px;
+        }
+      }
+
+      #navigation {
+        background-image: url('/images/themes/default/tjruby-sprite2.png ');
+        background-position:0px -89px;
+        height:56px;
+        padding:0px 25px;
+        overflow:hidden;
+
+        ul li {
+          float:left;
+          display:block;
+          padding:0px 0px 0px 20px;
+          line-height:14px;
+          margin-top:5px;
+
+          a, a:active, a:visited {
+            color:white;
+            display:block;
+            padding:16px 30px;
+            text-decoration:none;
+          }
+
+          a:hover, a.current{
+            background-image: url('/images/themes/default/tjruby-sprite2.png ');
+            background-position:0px -145px;
+            @include border-radius(5px);
+          }
+        }
+      }
+
+      #main {
+        background: url('/images/themes/default/main-bg.png') no-repeat scroll 0 0 transparent;
+        padding:50px;
+        overflow:hidden;
+
+        #content, #sidebar{
+          float:left;
+          display:inline;
+        }
+        #content {
+          width: 560px;
+        }
+
+        #sidebar{
+          margin-left:70px;
+          width:230px;
+        }
+      }
+
+      #main_bottom {
+        background: #82011e url('/images/themes/default/main-bottom-bg.png ') repeat-x;
+        padding:30px 50px;
+        color:#ededdc;
+        color:#d4d4c5;
+      }
+
+      #footer {
+        background-color:#2c292a;
+        color:#BBB;
+        padding:20px 50px;
+      }
+
+      h1, h2, h3 { color: #B6002A; }
+      h1 { font-size: 20px; }
+      h2 { font-size: 18px; }
+      h3 { font-size: 16px; }
+      p { padding: 10px 2px; }
+    }
+
+    #page_top, #footer {
+      background-image: url('/images/themes/default/page-top.png');
+      background-repeat: repeat-x;
+      height: 30px;
+      color: #2C292A;
+    }
+  }
+}

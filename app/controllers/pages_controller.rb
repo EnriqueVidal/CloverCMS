@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   before_filter :set_section
-  layout 'website/website'
 
   # GET /:section_name/:page_name.html
   # GET /:section_name/:subsection_name/:page_name.html

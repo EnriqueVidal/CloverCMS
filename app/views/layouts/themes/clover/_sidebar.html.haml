@@ -1,0 +1,7 @@
+#column
+  %h2.sb_header= sidebar.section.name.titleize
+  .sidebar
+    %ul.services
+      - section.pages.each do |page|
+        %li= link_to page.name.titleize, section_page_path(section.url_name, page.url_name)
+  .sidebar_bottom

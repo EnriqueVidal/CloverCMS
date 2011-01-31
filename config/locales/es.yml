@@ -118,6 +118,7 @@ es:
       article:  'Articulo'
       user:     'Usuario'
       role:     'Rol'
+      site_config: 'Configuración'
     attributes:
       section:
         name:         'Nombre'

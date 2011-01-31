@@ -1,0 +1,34 @@
+!!!5
+%html
+  %head
+    %title= content_for?(:title) ? yield(:title) : 'CloverInteractive'
+    = javascript_include_tag 'jquery-1.4.2.min', 'fancybox/jquery.mousewheel-3.0.2.pack.js', 'fancybox/jquery.fancybox-1.3.1.js'
+    = stylesheet_link_tag 'application', 'clover.css', 'fancybox/jquery.fancybox-1.3.1.css'
+    :javascript
+      #{site_config.google_analytics}
+
+    - if @page.present? && @page.home_page?
+      = javascript_include_tag "themes/clover/loopedslider.min.js", "themes/clover/jquery.easing.1.3.js"
+      :javascript
+        $(function() {
+          $.fn.loopedSlider.defaults.addPagination = true;
+          $('#slider').loopedSlider({ autoStart: 5000, containerClick: false });
+        });
+
+    = yield :head
+    = csrf_meta_tag
+  %body{ :class => ( @page.present? && @page.home_page ? '' : 'section' ) }
+    #wrapper
+      = render :partial => 'layouts/themes/clover/top'
+      = render :partial => 'layouts/themes/clover/banner', :object => @page
+
+      #mid
+        - if @page.present? && @page.home_page?
+          #content= yield
+          = render :partial =>'layouts/themes/clover/sidebar', :object => @page, :locals => { :section => @section }
+        - elsif @page.present?
+          #imid
+            = render :partial => 'layouts/themes/clover/sidebar', :object => @page, :locals => { :section => @section }
+            #content= yield
+
+      = render :partial => 'layouts/themes/clover/bottom'

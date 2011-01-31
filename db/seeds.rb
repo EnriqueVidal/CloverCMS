@@ -8,3 +8,4 @@
 
 section = Section.create({ :name => 'main' })
 pages   = Page.create({ :name => 'main page', :content => 'this is my main page', :section_id => section.id, :home_page => true, :published => true })
+SiteConfig.create!

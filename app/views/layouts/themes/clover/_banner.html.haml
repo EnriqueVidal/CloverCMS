@@ -1,0 +1,13 @@
+- page = banner
+#banner
+  - if page.present? && page.home_page
+    #intro
+      %h1 Impulsamos tu empresa a través de las ventajas que Internet te ofrece: reducir costos, potenciar tus productos y aumentar tu economía.
+      %h3 Consigue aqui desde un consejo hasta una solución de telefonia
+    #slider
+      #slider_left= link_to image_tag("themes/clover/scroll_left.gif",   :alt => "Scroll left"), "#", :class => "previous"
+      = render :partial => 'layouts/themes/clover/slides'
+      #slider_right= link_to image_tag("themes/clover/scroll_right.gif", :alt => "Scroll right"), "#", :class => "next"
+  - elsif @page.present?
+    %h1= page.section.name.titleize
+    %h2= page.name.titleize

@@ -1,13 +1,2 @@
-%p#notice= notice
-%p
-  %b Name:
-  = @page.name
-  
-%p
-  %b Url
-  = @page.url_name
-  
-%p
-  %b Content
-  
+%h1= @page.name.titleize
 = raw @page.content

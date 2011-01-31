@@ -23,6 +23,16 @@ html {
         margin: 5px 0;
       }
 
+      textarea {
+        border: 2px solid #DDD;
+        width:  98%;
+        padding: 10px;
+        margin: 5px 0px 15px;
+        display: block;
+        height: 80px;
+        overflow: auto;
+      }
+
       select {
         display: block;
         margin: 10px 0;

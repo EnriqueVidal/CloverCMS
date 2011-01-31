@@ -1,0 +1,10 @@
+#header
+  #logo
+    %h1 TJRuby
+#navigation
+  - if content_for? :navigation
+    = yield :navigation
+  - else
+    %ul
+      %li= link_to 'Home', root_path
+      %li= link_to 'Sign in', new_user_session_path

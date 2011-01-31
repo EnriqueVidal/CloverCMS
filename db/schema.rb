@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101123072918) do
+ActiveRecord::Schema.define(:version => 20110127063250) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -73,6 +73,13 @@ ActiveRecord::Schema.define(:version => 20101123072918) do
     t.string   "name"
     t.integer  "main_section_id"
     t.string   "url_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "site_configs", :force => true do |t|
+    t.text     "google_analytics"
+    t.string   "theme"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
