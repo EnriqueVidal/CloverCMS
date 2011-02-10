@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110127063250) do
+ActiveRecord::Schema.define(:version => 20110209072651) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -77,9 +77,11 @@ ActiveRecord::Schema.define(:version => 20110127063250) do
     t.datetime "updated_at"
   end
 
-  create_table "site_configs", :force => true do |t|
-    t.text     "google_analytics"
-    t.string   "theme"
+  create_table "settings", :force => true do |t|
+    t.string   "name",                           :null => false
+    t.text     "value",                          :null => false
+    t.string   "description"
+    t.boolean  "destroyable", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

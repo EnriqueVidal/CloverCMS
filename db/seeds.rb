@@ -6,6 +6,11 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-section = Section.create({ :name => 'main' })
-pages   = Page.create({ :name => 'main page', :content => 'this is my main page', :section_id => section.id, :home_page => true, :published => true })
-SiteConfig.create!
+section = Section.create! :name => 'main'
+pages   = Page.create! :name => 'main page', :content => 'this is my main page', :section_id => section.id, :home_page => true, :published => true
+
+user    = User.create! :username => 'admin', :password => 'administrator', :confirmed_at => Time.now, :email => "admin@example.com"
+user.admin = true
+user.save!
+
+Setting.create! :name => 'theme', :value => 'default', :destroyable => false, :description => 'This is the theme of your site.'

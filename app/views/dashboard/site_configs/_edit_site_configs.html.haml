@@ -1,8 +1,0 @@
-= form_for [ :dashboard, edit_site_configs ], :url => dashboard_site_config_path, :html => { :method => :put } do |f|
-  = f.label :theme
-  = f.select :theme, themes
-
-  = f.label :google_analytics
-  = f.text_area :google_analytics
-
-  = f.submit

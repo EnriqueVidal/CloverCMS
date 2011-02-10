@@ -28,3 +28,9 @@ end
 Factory.define :role, :class => Authorization::Role do |r|
   r.name 'Some role'
 end
+
+Factory.define :setting do |s|
+  s.name 'new_setting'
+  s.value 'new_value'
+  s.description 'This is our new setting it rocks. :)'
+end

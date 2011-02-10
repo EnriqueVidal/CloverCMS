@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  helper_method :site_config
-
   def check_authorization
     unless current_user.present? && (current_user.admin? || current_user.roles.detect do |role|
       role.rights.detect  do |right|
@@ -19,8 +17,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def site_config
-    @site_config ||= SiteConfig.last
+  def site_layout
+    @site_layout ||= Setting.find_by_name('theme').value rescue nil
   end
 
   private
@@ -39,8 +37,8 @@ class ApplicationController < ActionController::Base
   end
 
   def website_layout
-    if site_config.present?
-      "themes/#{site_config.theme}/theme"
+    if site_layout.present?
+      "themes/#{site_layout}/theme"
     else
       'themes/default/theme'
     end
