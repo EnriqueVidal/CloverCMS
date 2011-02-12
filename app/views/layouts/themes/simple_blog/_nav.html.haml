@@ -1,0 +1,11 @@
+#nav
+  %nav
+    = link_to 'Home',     '/'
+    = link_to 'Suscribe', '#'
+    = link_to 'About',    '#'
+    = link_to 'Contact',  '#'
+  #search_box
+    = form_tag '/pages/search' do
+      = label_tag :query, 'Search'
+      = text_field_tag :query
+      = submit_tag 'Go'

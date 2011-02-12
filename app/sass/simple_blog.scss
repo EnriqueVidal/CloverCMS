@@ -1,0 +1,176 @@
+@import "compass/css3/border-radius";
+
+html {
+  h1, h2, h3, h4, h5, h6 {
+    color: #495961;
+    text-shadow: 1px 1px 0 #FFF;
+    font-weight: normal;
+  }
+
+  body {
+    background: #DDD;
+    font: 13.34px helvetica, arial, free-sans, clean, sans-serif;
+
+    #nav, #wrapper {
+      background-color: #FFF;
+      margin: 10px auto;
+      width: 960px;
+      border: 1px solid #CCC;
+
+      @include border-radius(5px);
+    }
+
+    #nav {
+      margin: 10px auto 25px auto;
+      padding: 10px 25px;
+      top: 0;
+      width: 910px;
+      font-size: 12px;
+      font-weight: bold;
+      position: relative;
+
+      a{
+        color: #333;
+        text-decoration: none;
+        padding: 5px;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      #search_box {
+        position: absolute;
+        top: 5px;
+        right: 15px;
+
+        input {
+          border: 1px solid #BBB;
+          padding: 3px;
+
+          @include border-radius(5px);
+        }
+      }
+    }
+
+    #wrapper {
+      p {
+        color: #666;
+        margin: 1em 0;
+      }
+
+      a {
+        font-size: 12px;
+        color: #4183C4;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover { text-decoration: underline; }
+
+      #content {
+        padding: 15px;
+        width: 70%;
+        float: left;
+
+        h1 {
+          font-size: 30px;
+          border-bottom: 1px solid #EEE;
+          margin-bottom: 20px;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+
+        h2 {
+          font-size: 18px;
+          font-weight: bold;
+        }
+
+        .article {
+          padding: 10px 5px;
+          border-bottom: 1px solid #EEE;
+        }
+
+        .article.last_article {
+          border-bottom: 0px;
+        }
+
+        #pagination {
+          margin-top: 25px;
+
+          a {
+            font-weight: normal;
+            color: #333;
+          }
+        }
+      }
+
+      #sidebar {
+        width: 20%;
+        display: block;
+        border-left: 0.1em solid #EEE;
+        padding: 15px;
+        float: left;
+
+        ul li { list-style: none; }
+        ul.icons li { margin-left: 25px; }
+
+        ul li.twitter   { list-style-image: url('/images/themes/simple_blog/icons/16/twitter.png'); }
+        ul li.facebook  { list-style-image: url('/images/themes/simple_blog/icons/16/facebook.png'); }
+        ul li.myspace   { list-style-image: url('/images/themes/simple_blog/icons/16/myspace.png'); }
+        ul li.youtube   { list-style-image: url('/images/themes/simple_blog/icons/16/youtube.png'); }
+        ul li.msn       { list-style-image: url('/images/themes/simple_blog/icons/16/msn.png'); }
+        ul li.gtalk     { list-style-image: url('/images/themes/simple_blog/icons/16/gtalk.png'); }
+        ul li.skype     { list-style-image: url('/images/themes/simple_blog/icons/16/skype.png'); }
+
+        h2 {
+          font-weight: bold;
+          font-size: 18px;
+          margin: 15px 0px 5px;
+        }
+      }
+
+      #footer {
+        width: 960px;
+        color: #333;
+        text-shadow: 2px 2px #DEDEDE;
+        position: absolute;
+
+        p {
+          color: #333;
+          font-weight: bold;
+        }
+      }
+    }
+      /* General form styles */
+      fieldset {
+        padding: 1em 5em;
+      }
+
+      fieldset form label {
+        display:block;
+        font-size: 16px;
+        margin: 8px 0px;
+      }
+
+      label small {
+        font-size: 11px;
+        color: #666;
+      }
+
+      fieldset form input[type=text], fieldset form textarea {
+        border: 2px solid #BBB;
+        padding: 6px 3px;
+      }
+
+      fieldset form input[type=text] {
+        width: 70%;
+      }
+
+      fieldset form textarea {
+        width: 90%;
+        height: 150px;
+        margin-bottom: 5px;
+      }
+    }
+  }

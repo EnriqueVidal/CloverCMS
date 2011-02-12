@@ -1,0 +1,8 @@
+- if content_for? :sidebar
+  = yield :sidebar
+- else
+  %h2 Follow us on
+  %ul.icons
+    %li.twitter=  link_to 'twitter', '#'
+    %li.facebook= link_to 'facebook', '#'
+    %li.youtube=  link_to 'youtube', '#'
