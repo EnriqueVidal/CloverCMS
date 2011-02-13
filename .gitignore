@@ -11,5 +11,6 @@ public/stylesheets/*.css
 .DS_Store
 public/images/system
 public/system
+public/.htaccess
 *.bak
 Thumbs.db
