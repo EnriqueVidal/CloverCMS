@@ -8,11 +8,11 @@ gem 'paperclip'
 gem 'acts-as-taggable-on'
 gem 'mime-types', :require => 'mime/types'
 gem "compass", ">= 0.10.6"
-gem 'metric_fu', :require => false
 gem 'tabs_on_rails'
 
 group :test, :development do
   gem 'sqlite3-ruby',   :require => 'sqlite3'
+  gem 'metric_fu',      :require => false
 end
 
 group :test do
@@ -25,3 +25,4 @@ end
 group :production do
   gem 'mysql2'
 end
+

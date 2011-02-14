@@ -1,0 +1,18 @@
+PassengerEnabled on
+PassengerAppRoot <%= current_path %>
+RailsEnv production
+
+<% if subdomain == 'www' %>
+RewriteEngine on
+RewriteCond %{HTTP_HOST} !^<%= subdomain %>\.
+RewriteRule (.*) http://<%= "#{subdomain}.#{domain}" %>/$1 [R=301,L]
+<% end %>
+
+Options -Indexes FollowSymLinks SymLinksIfOwnerMatch
+
+<FilesMatch "\.(html|css|js)$">
+  SetOutputFilter DEFLATE
+</FilesMatch>
+
+FileETag none
+

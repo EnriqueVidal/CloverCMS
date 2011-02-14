@@ -1,4 +1,5 @@
-set :domain,      "demo.cloverinteractive.com"
+set :subdomain,   "demo"
+set :domain,      "cloverinteractive.com"
 set :application, "clovercms"
 set :repository,  "git://github.com/EnriqueVidal/CloverCMS.git"
 
@@ -11,24 +12,25 @@ set :scm,         :git
 set :branch,      :development
 set :scm_verbose, true
 
-role :web, domain
-role :app, domain
-role :db,  domain, :primary => true
+role :web, "#{subdomain}.#{domain}"
+role :app, "#{subdomain}.#{domain}"
+role :db,  "#{subdomain}.#{domain}", :primary => true
 
-set :deploy_to, "/home/#{user}/rails_apps/#{domain}/#{application}"
+set :deploy_to, "/home/#{user}/rails_apps/#{subdomain}.#{domain}/#{application}"
+
+require 'config/capistrano_templates'
 
 namespace :deploy do
   task :start do ; end
-  task :stop do ; end
+  task :stop  do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 
   task :cold do
     update
-    put File.read(File.join(File.dirname(__FILE__), '../public/.htaccess')),  File.join(current_release, 'public', '.htaccess')
-    run "cd #{current_path} && rm -fr vendor"
 
+    run "rm -fr #{release_path}/vendor"
     cloverinteractive::missing_folders
     cloverinteractive::missing_gems
     cloverinteractive::link_public
@@ -37,8 +39,8 @@ namespace :deploy do
   namespace :cloverinteractive do
     desc "Create missing shared folders"
     task :missing_folders do
-      run "cd #{deploy_to}; mkdir -p shared/log shared/system shared/pids shared/vendor"
-      run "ln -s #{deploy_to}/shared/vendor #{current_path}/vendor"
+      run "ln -s #{shared_path}/vendor #{current_path}/vendor"
+      run "ln -s #{shared_path}/public/.htaccess #{current_path}/public/.htaccess"
     end
 
     desc "Install missing gems"
@@ -52,3 +54,4 @@ namespace :deploy do
     end
   end
 end
+
