@@ -44,3 +44,5 @@ module Clover
     end
   end
 end
+
+require 'app/exceptions/clover'

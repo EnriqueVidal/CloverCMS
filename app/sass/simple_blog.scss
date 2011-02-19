@@ -1,4 +1,5 @@
 @import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
 
 html {
   h1, h2, h3, h4, h5, h6 {
@@ -8,16 +9,17 @@ html {
   }
 
   body {
-    background: #DDD;
+    background: none repeat scroll 0 0 #DDD;
     font: 13.34px helvetica, arial, free-sans, clean, sans-serif;
 
     #nav, #wrapper {
       background-color: #FFF;
       margin: 10px auto;
       width: 960px;
-      border: 1px solid #CCC;
+      border: 1px solid #999;
 
       @include border-radius(5px);
+      @include box-shadow(#989898, -2px, 2px);
     }
 
     #nav {
