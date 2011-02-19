@@ -5,17 +5,17 @@ Clover::Application.routes.draw do
   match "/dashboard/profile", :to => redirect("/users/edit"),     :as => :user_root, :via => :get
 
   namespace :dashboard do
-    resources :settings, :only => [ :edit, :update ]
-    resources :users, :only => [ :index, :destroy, :edit, :update ]
-    resources :articles
+    resources :settings,  :only   => [ :edit, :update ]
+    resources :users,     :only   => [ :index, :destroy, :edit, :update ]
     resources :assets,    :only   => [ :create, :destroy ]
+    resources :articles,  :except => :show
     resources :sections,  :except => :show  do
       resources :pages,   :except => :show
     end
   end
 
-  match ":section_name/:page_name",                  :to => "pages#show", :as => :section_page,    :via => :get
-  match ":section_name/:subsection_name/:page_name", :to => "pages#show", :as => :subsection_page, :via => :get
+  match ":section/:page",             :to => "pages#show", :as => :section_page,    :via => :get
+  match ":section/:subsection/:page", :to => "pages#show", :as => :subsection_page, :via => :get
 
-  root :to => "pages#show", :home_page => true, :via => :get
+  root :to => "pages#home", :via => :get
 end

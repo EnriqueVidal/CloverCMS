@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  extend ActiveSupport::Memoizable
+
   before_filter :set_locale
   layout :guess_layout
 
@@ -7,6 +9,8 @@ class ApplicationController < ActionController::Base
   rescue_from Clover::UnauthorizedAccessError,  :with => :unauthorized_access
 
   protect_from_forgery
+
+  helper_method :site
 
   def check_authorization
     unless current_user.present? && (current_user.admin? || current_user.roles.detect do |role|
@@ -19,8 +23,12 @@ class ApplicationController < ActionController::Base
     true
   end
 
-  def site_layout
-    @site_layout ||= Setting.find_by_name('theme').value rescue nil
+  def site
+    site = {}
+    Setting.select('name, value').each do |setting|
+      site[setting.name.to_sym] = setting.value
+    end
+    site
   end
 
   private
@@ -39,8 +47,8 @@ class ApplicationController < ActionController::Base
   end
 
   def website_layout
-    if site_layout.present?
-      "themes/#{site_layout}/theme"
+    if site[:theme].present?
+      "themes/#{site[:theme]}/theme"
     else
       'themes/default/theme'
     end
@@ -76,4 +84,6 @@ class ApplicationController < ActionController::Base
     render 'public/404.html', :status => :not_found, :layout => false
     return false
   end
+
+  memoize :site
 end
