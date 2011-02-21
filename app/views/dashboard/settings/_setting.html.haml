@@ -1,0 +1,8 @@
+%tr{ :class => cycle(:odd, :even) }
+  %td= setting.name
+  %td= setting.description
+  %td= l setting.created_at, :format => :short
+  %td= l setting.updated_at, :format => :short
+  %td
+    = link_to t('links.edit'), edit_dashboard_setting_path(setting), :class => 'icon edit'
+    = link_to t('links.destroy'), dashboard_setting_path(setting), :confirm => t('common.messages.are_you_sure'), :method => :delete, :class => 'icon delete' if setting.destroyable?

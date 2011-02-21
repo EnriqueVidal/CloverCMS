@@ -2,7 +2,9 @@ require 'test_helper'
 
 class SettingTest < ActiveSupport::TestCase
   def setup
-    @theme = Setting.create! :name => 'theme', :value => 'clover', :destroyable => false
+    @theme = Setting.create! :name => 'theme', :value => 'clover'
+    @theme.destroyable = false
+    @theme.save!
   end
 
   test "setting should have a name and value" do

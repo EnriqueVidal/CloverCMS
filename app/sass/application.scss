@@ -9,25 +9,25 @@
 
   .error{
     border:1px solid #ff9b9b;
-    background:#ffd3d3 url('/images/system-error-alt.png') no-repeat 10px 9px;
+    background:#ffd3d3 url('/images/system-error-alt.png') no-repeat 10px 7px;
     color:#de1414;
   }
 
   .information {
     border:1px solid #5abef3;
-    background:#d9f4ff url('/images/system-info-alt.png') no-repeat 10px 9px;
+    background:#d9f4ff url('/images/system-info-alt.png') no-repeat 10px 7px;
     color:#0069cb;
   }
 
   .success {
     border:1px solid #78ce4d;
-    background:#e8ffe2 url('/images/success.png') no-repeat 10px 9px;
+    background:#e8ffe2 url('/images/success.png') no-repeat 10px 7px;
     color:#007e1b;
   }
 
   .warning {
     border: 1px solid #c4bc16;
-    background: #fffed7 url('/images/warning.png') no-repeat 10px 9px;
+    background: #fffed7 url('/images/warning.png') no-repeat 10px 7px;
     color: #6e6000;
   }
 
@@ -65,6 +65,28 @@
           right: 0px;
         }
       }
+    }
+
+    .icon {
+      background-position: 0 40%;
+      padding-left: 20px;
+      padding-right: 5px;
+    }
+
+    .edit {
+      background: url('/images/icons/pencil.png') no-repeat;
+    }
+
+    .delete {
+      background: url('/images/icons/delete.png') no-repeat;
+    }
+
+    .user_edit {
+      background: url('/images/icons/user_edit.png') no-repeat;
+    }
+
+    .user_delete {
+      background: url('/images/icons/user_delete.png') no-repeat;
     }
   }
 }

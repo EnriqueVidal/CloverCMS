@@ -5,6 +5,7 @@
     %li#pages_menu_link=          link_to t('activerecord.models.page'),        dashboard_section_pages_path(1)
     %li#articles_menu_link=       link_to t('activerecord.models.article'),     dashboard_articles_path
     %li#users_menu_link=          link_to t('activerecord.models.user'),        dashboard_users_path
+    %li#settings_menu_link=       link_to t('activerecord.models.setting'),     dashboard_settings_path
   - if content_for? :sub_nav
     = yield :sub_nav
   - else

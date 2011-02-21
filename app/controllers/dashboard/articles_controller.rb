@@ -21,7 +21,7 @@ class Dashboard::ArticlesController < ApplicationController
     @article.keyword_list = params[:article][:keywords] if params[:article][:keywords].present?
 
     if @article.save
-      flash[:notice] = t 'messages.created_successfully'
+      flash[:success] = t 'messages.created_successfully'
       redirect_to dashboard_articles_path
     else
       render :new
@@ -32,7 +32,7 @@ class Dashboard::ArticlesController < ApplicationController
     @article.keyword_list = params[:article][:keywords] if params[:article][:keywords].present?
 
     if @article.update_attributes(params[:article].except(:keywords))
-      flash[:notice] = t 'messages.updated_successfully'
+      flash[:success] = t 'messages.updated_successfully'
       redirect_to dashboard_articles_path
     else
       render :edit

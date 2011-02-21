@@ -1,0 +1,26 @@
+= form_for [ :dashboard, setting_editor ] do |f|
+  .columns
+    .half
+      = f.label :name
+      = f.text_field :name
+
+      = f.label :description
+      = f.text_field :description
+
+      = f.label :value
+      - if @themes.present?
+        = f.select :value, @themes
+      - else
+        = f.text_area :value
+
+      %button#submit= t 'common.forms.submit'
+
+    .half
+      #tips_content.box
+        %h3= t 'common.headers.did_you_know'
+        %p= t 'dashboard.settings.forms.tip'
+
+:javascript
+  $(function() {
+    $("#submit").button({ icons: { primary: 'ui-icon-circle-check' } });
+  });

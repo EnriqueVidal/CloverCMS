@@ -1,7 +1,9 @@
 %h1= @page.name.titleize
-= raw @page.content
+!= @page.content
 
 = content_for :title do
   = "#{site[:site_name]} - #{@page.name.titleize}"
 = content_for :footer do
-  = "#{site[:footer]}"
+  != "#{site[:footer]}"
+= content_for :meta do
+  != meta "keywords", @page.keywords.join(',') if @page.keywords.present?

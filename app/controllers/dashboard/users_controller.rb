@@ -18,7 +18,7 @@ class Dashboard::UsersController < ApplicationController
     roles = params[:roles].values.map(&:to_i)
 
     if @user.add_roles roles
-      flash[:notice] = t 'messages.updated_successfully'
+      flash[:success] = t 'messages.updated_successfully'
       redirect_to edit_dashboard_user_path(@user)
     else
       flash[:error] = t 'messages.failed_miserably'
@@ -30,7 +30,7 @@ class Dashboard::UsersController < ApplicationController
     @user = User.find params[:id]
 
     if @user.delete
-      flash[:notice] = t('messages.deleted_successfully')
+      flash[:success] = t('messages.deleted_successfully')
       redirect_to :action => :index
     end
   end

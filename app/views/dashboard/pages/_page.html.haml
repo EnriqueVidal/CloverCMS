@@ -1,8 +1,8 @@
 %tr{ :class => cycle(:odd, :even) }
   %td= link_to page.name, edit_dashboard_section_page_path(page.section, page)
   %td= page.section.name
-  %td= page.created_at.to_s :long
-  %td= page.updated_at.to_s :long
+  %td= l page.created_at, :format => :short
+  %td= l page.updated_at, :format => :short
   %td
-    = link_to t('links.edit'), edit_dashboard_section_page_path(page.section, page), :class => 'icon icon_bullet_pencil'
-    = link_to t('links.destroy'), dashboard_section_page_path(page.section, page), :confirm => t('common.messages.are_you_sure'), :method => :delete, :class => 'icon icon_bullet_delete'
+    = link_to t('links.edit'), edit_dashboard_section_page_path(page.section, page), :class => 'icon edit'
+    = link_to t('links.destroy'), dashboard_section_page_path(page.section, page), :confirm => t('common.messages.are_you_sure'), :method => :delete, :class => 'icon delete'

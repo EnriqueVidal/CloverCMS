@@ -32,6 +32,11 @@ es:
         roles_box:
           header:       'Agregar o eliminar roles de usuario'
           instructions: 'Esta es la lista de roles disponibles, para agregar solo marque la caja de selección a la izquierda del nombre del rol, haciendo click en la caja o en el nombre del rol.'
+    settings:
+      index:
+        instructions: "Esta es la lista de configuraciones del sitio, no todas se pueden eliminar."
+      forms:
+        tip: "Aunque puedes editar el valor y la descripción de las configuraciones no destruibles, no podras cambiar su nombre ni volverlas destruibles. Esto es solo para asegurar que estas configuraciones siempre estaran disponibles para tu sitio."
   devise:
     sessions:
       new:
@@ -81,6 +86,8 @@ es:
       updated_at:     'Actualizado en'
       url_name:       'Nombre de url'
       name:           'Nombre'
+      value:          'Valor'
+      description:    'Descripción'
       keywords:       'Palabras Clave'
       image:          'imagen'
     messages:
@@ -118,7 +125,7 @@ es:
       article:  'Articulo'
       user:     'Usuario'
       role:     'Rol'
-      site_config: 'Configuración'
+      setting: 'Configuración'
     attributes:
       section:
         name:         'Nombre'
@@ -146,7 +153,10 @@ es:
         password_confirmation:  'Confirmar contraseña'
         current_password:       'Contraseña actual'
         remember_me:            'Recordarme'
-
+      setting:
+        value:  'Valor'
+        name:   'Nombre'
+        description: 'Descripción'
   messages:
     created_successfully: 'Su registro ha sido guardado exitosamente.'
     updated_successfully: 'Su registro ha sido modificado exitosamente.'

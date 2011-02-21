@@ -78,10 +78,10 @@ ActiveRecord::Schema.define(:version => 20110209072651) do
   end
 
   create_table "settings", :force => true do |t|
-    t.string   "name",                           :null => false
-    t.text     "value",                          :null => false
+    t.string   "name",                          :null => false
+    t.text     "value",                         :null => false
     t.string   "description"
-    t.boolean  "destroyable", :default => false
+    t.boolean  "destroyable", :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

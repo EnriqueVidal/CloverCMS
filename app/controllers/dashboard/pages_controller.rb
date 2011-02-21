@@ -25,13 +25,11 @@ class Dashboard::PagesController < ApplicationController
     @page = @section.pages.new params[:page].except('keywords')
     @page.keyword_list = params[:page][:keywords] if params[:page][:keywords].present?
 
-    respond_to do |format|
-      if @page.save
-        flash[:notice] = t('messages.created_successfully')
-        format.html { redirect_to dashboard_section_pages_path(@section) }
-      else
-        format.html { render :action => :new }
-      end
+    if @page.save
+      flash[:success] = t 'messages.created_successfully'
+      redirect_to dashboard_section_pages_path(@section)
+    else
+      render :action => :new
     end
   end
 
@@ -40,13 +38,11 @@ class Dashboard::PagesController < ApplicationController
     @page = @section.pages.find(params[:id])
     @page.keyword_list = params[:page][:keywords] if params[:page][:keywords].present?
 
-    respond_to do |format|
-      if @page.update_attributes params[:page].except('keywords')
-        flash[:notice] = t('messages.updated_successfully')
-        format.html { redirect_to dashboard_section_pages_path(@section) }
-      else
-        format.html { render :action => :edit }
-      end
+    if @page.update_attributes params[:page].except('keywords')
+      flash[:success] = t 'messages.updated_successfully'
+      redirect_to dashboard_section_pages_path(@section)
+    else
+      render :action => :edit
     end
   end
 
@@ -55,9 +51,7 @@ class Dashboard::PagesController < ApplicationController
     @page = @section.pages.find(params[:id])
     @page.destroy
 
-    respond_to do |format|
-      format.html { redirect_to dashboard_section_pages_path(@section) }
-    end
+    redirect_to dashboard_section_pages_path(@section)
   end
 
   private

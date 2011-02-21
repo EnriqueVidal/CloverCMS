@@ -29,13 +29,11 @@ class Dashboard::SectionsController < ApplicationController
   def create
     @section = Section.new(params[:section])
 
-    respond_to do |format|
-      if @section.save
-        flash[:notice] = t 'messages.created_successfully'
-        format.html { redirect_to dashboard_sections_path }
-      else
-        format.html { render :action => "new" }
-      end
+    if @section.save
+      flash[:success] = t 'messages.created_successfully'
+      redirect_to dashboard_sections_path
+    else
+      render :action => "new"
     end
   end
 
@@ -43,13 +41,11 @@ class Dashboard::SectionsController < ApplicationController
   def update
     @section = Section.find(params[:id])
 
-    respond_to do |format|
-      if @section.update_attributes(params[:section])
-        flash[:notice] = t 'messages.updated_successfully'
-        format.html { redirect_to dashboard_sections_path }
-      else
-        format.html { render :action => "edit" }
-      end
+    if @section.update_attributes(params[:section])
+      flash[:success] = t 'messages.updated_successfully'
+      redirect_to dashboard_sections_path
+    else
+      render :action => "edit"
     end
   end
 
@@ -58,8 +54,6 @@ class Dashboard::SectionsController < ApplicationController
     @section = Section.find(params[:id])
     @section.destroy
 
-    respond_to do |format|
-      format.html { redirect_to dashboard_sections_path }
-    end
+    redirect_to dashboard_sections_path
   end
 end

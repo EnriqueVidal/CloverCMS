@@ -11,4 +11,8 @@ module ApplicationHelper
     types = 'dashboard.articles.types'
     [ %W(#{t("#{types}.post")} post), %W(#{t("#{types}.review")} review), %W(#{t("#{types}.news")} news) ]
   end
+
+  def meta(name, content)
+    %(<meta name="#{name}" content="#{content}" />)
+  end
 end

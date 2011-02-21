@@ -32,6 +32,11 @@ en:
         roles_box:
           header:       'Add or remove user roles'
           instructions: 'This is a list of available roles, to add a role just check the box to the left of the role name, by clicking the box or clicking the role name, uncheck to remove role.'
+    settings:
+      index:
+        instructions: "This is the site settings list, not all of them are destroyable."
+      forms:
+        tip: "Even though you can edit non-destroyable settings value and description, you won't be able to edit their names nor make them destroyable. This is only to guarantee that those settings values are always available throughout your site."
   devise:
     sessions:
       new:
@@ -81,6 +86,8 @@ en:
       updated_at:   'Updated at'
       url_name:     'Url name'
       name:         'Name'
+      value:        'Value'
+      description:  'Description'
       keywords:     'Keywords'
       image:        'Image'
     messages:
@@ -118,7 +125,7 @@ en:
       article:  'Article'
       user:     'User'
       role:     'Role'
-      site_config: 'Site configuration'
+      setting: 'Setting'
     attributes:
       section:
         name:         'Section name'
@@ -138,7 +145,6 @@ en:
         password_confirmation:  'Password confirmation'
         current_password:       'Current password'
         remember_me:            'Remember me'
-
   messages:
     created_successfully: 'Your record was successfully created.'
     updated_successfully: 'Your record was successfully updated.'

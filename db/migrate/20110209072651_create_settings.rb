@@ -4,7 +4,7 @@ class CreateSettings < ActiveRecord::Migration
       t.string  :name,  :null => false
       t.text    :value, :null => false
       t.string  :description
-      t.boolean :destroyable, :default => false
+      t.boolean :destroyable, :default => true
 
       t.timestamps
     end

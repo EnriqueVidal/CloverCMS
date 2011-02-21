@@ -24,11 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def site
-    site = {}
-    Setting.select('name, value').each do |setting|
-      site[setting.name.to_sym] = setting.value
-    end
-    site
+    Setting.get_site_settings
   end
 
   private
