@@ -1,13 +1,14 @@
 - if content_for? :sidebar
   = yield :sidebar
 - else
-  %h2= section.name.titleize
-  %ul
-    - section.pages.published.each do |page|
-      - if section.main_section
-        %li= link_to page.name.titleize, subsection_page_path(section.url_name, section.main_section.url_name, page.url_name)
-      - else
-        %li= link_to page.name.titleize, section_page_path(section.url_name, page.url_name)
+  - if section
+    %h2= section.name.titleize
+    %ul
+      - section.pages.published.each do |page|
+        - if section.main_section
+          %li= link_to page.name.titleize, subsection_page_path(section.url_name, section.main_section.url_name, page.url_name)
+        - else
+          %li= link_to page.name.titleize, section_page_path(section.url_name, page.url_name)
 
   %h2 Follow us on
   %ul.icons

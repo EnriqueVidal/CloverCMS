@@ -1,0 +1,6 @@
+#flash
+  = content_tag :div, flash[:info],    :class => "information"  if flash[:info]
+  = content_tag :div, flash[:warning], :class => "warning"      if flash[:warning]
+  = content_tag :div, flash[:error],   :class => "error"        if flash[:error]
+  = content_tag :div, flash[:alert],   :class => "error"        if flash[:alert]
+  = content_tag :div, flash[:success], :class => "success"      if flash[:success]

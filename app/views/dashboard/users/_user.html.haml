@@ -1,4 +1,4 @@
-%tr{ :class => cycle(:odd, :eve) }
+%tr{ :class => cycle(:odd, :even) }
   %td= link_to user.username, edit_dashboard_user_path(user)
   %td= link_to user.email,    edit_dashboard_user_path(user)
   %td= l(user.confirmed_at,     :format => :short) if user.confirmed_at

@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   extend ActiveSupport::Memoizable
-
   before_filter :set_locale
   layout :guess_layout
 
@@ -29,8 +28,8 @@ class ApplicationController < ActionController::Base
 
   private
   def set_locale
-    session[:locale] = params[:locale] if params[:locale].present?
-    I18n.locale = session[:locale]
+    session[:locale]  = params[:locale] if params[:locale].present?
+    I18n.locale       = session[:locale] || site[:default_locale]
   end
 
   def devise_layout

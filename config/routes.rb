@@ -1,6 +1,8 @@
 Clover::Application.routes.draw do
   devise_for :users
 
+  resource :contact_form, :only => [ :create ]
+
   match "/dashboard",         :to => "dashboard/sections#index",  :as => :dashboard, :via => :get
   match "/dashboard/profile", :to => redirect("/users/edit"),     :as => :user_root, :via => :get
 

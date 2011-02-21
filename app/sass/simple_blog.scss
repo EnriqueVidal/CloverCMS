@@ -9,17 +9,22 @@ html {
   }
 
   body {
-    background: none repeat scroll 0 0 #DDD;
+    background: url('/images/themes/simple_blog/bg_pattern.png') repeat scroll 0 0 #333;
     font: 13.34px helvetica, arial, free-sans, clean, sans-serif;
 
-    #nav, #wrapper {
+    #wrapper {
+      margin: 10px auto;
+      width: 960px;
+    }
+
+    #nav, #content_wrapper {
       background-color: #FFF;
       margin: 10px auto;
       width: 960px;
       border: 1px solid #999;
 
       @include border-radius(5px);
-      @include box-shadow(#989898, -2px, 2px);
+      @include box-shadow(#000, -2px, 2px, 5px, 2px);
     }
 
     #nav {
@@ -55,7 +60,7 @@ html {
       }
     }
 
-    #wrapper {
+    #content_wrapper {
       p {
         color: #666;
         margin: 1em 0;
@@ -135,13 +140,16 @@ html {
       #footer {
         width: 960px;
         color: #333;
-        text-shadow: 2px 2px #DEDEDE;
+        text-shadow: 2px 2px #000;
         position: absolute;
 
         p {
-          color: #333;
+          color: #fff;
           font-weight: bold;
         }
+
+        a { font-size: 1em; }
+        a:hover { text-decoration: none; }
       }
     }
       /* General form styles */

@@ -1,6 +1,8 @@
 %h1= @page.name.titleize
 != @page.content
 
+!= @contact_form if @contact_form.present?
+
 = content_for :title do
   = "#{site[:site_name]} - #{@page.name.titleize}"
 = content_for :footer do

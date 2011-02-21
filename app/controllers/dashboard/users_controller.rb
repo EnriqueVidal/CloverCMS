@@ -15,7 +15,7 @@ class Dashboard::UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-    roles = params[:roles].values.map(&:to_i)
+    roles = params[:roles].values.map(&:to_i) rescue []
 
     if @user.add_roles roles
       flash[:success] = t 'messages.updated_successfully'
