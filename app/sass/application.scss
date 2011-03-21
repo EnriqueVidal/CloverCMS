@@ -1,7 +1,7 @@
 @import 'resets';
 
 #wrapper {
-  .error, .warning, .information, .success {
+  .error, .warning, .info, .success {
     padding:10px;
     padding-left:40px;
     margin:10px 0px;
@@ -13,7 +13,7 @@
     color:#de1414;
   }
 
-  .information {
+  .info {
     border:1px solid #5abef3;
     background:#d9f4ff url('/images/system-info-alt.png') no-repeat 10px 7px;
     color:#0069cb;

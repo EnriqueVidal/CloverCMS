@@ -12,8 +12,8 @@
     = render :partial => "layouts/dashboard/nav/#{controller_name}"
 
 - content_for :head do
-  = javascript_include_tag  'jquery-ui.min', '/wymeditor/jquery.wymeditor.js', 'boot_wym.js', '/uploadify/swfobject.js', '/uploadify/uploadify.min.js'
-  = stylesheet_link_tag     'dashboard', 'themes/smoothness/jquery-ui-1.8.6.custom.css', '/uploadify/uploadify.css'
+  = javascript_include_tag  'jquery-ui.min', 'wymeditor/jquery.wymeditor.min', 'boot_wym', 'uploadify/swfobject', 'uploadify/uploadify.min'
+  = stylesheet_link_tag     'themes/smoothness/jquery-ui-1.8.6.custom', 'uploadify/uploadify', 'dashboard'
   :javascript
     $(function() {
       $("##{selected_tab}_menu_link").addClass('active');

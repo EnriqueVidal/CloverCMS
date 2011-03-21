@@ -1,5 +1,5 @@
 $(function() {
-  $(".wymeditor").wymeditor({
+  $("textarea.wymeditor").wymeditor({
     logoHtml: '',
     skin: 'compact'
   });

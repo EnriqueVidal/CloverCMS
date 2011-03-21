@@ -16,8 +16,8 @@ Clover::Application.routes.draw do
     end
   end
 
-  match ":section/:page",             :to => "pages#show", :as => :section_page,    :via => :get
-  match ":section/:subsection/:page", :to => "pages#show", :as => :subsection_page, :via => :get
+  match ":section/:page",             :to => "pages#show", :as => :section_page,    :via => :get, :constraints => { :format => 'html' }
+  match ":section/:subsection/:page", :to => "pages#show", :as => :subsection_page, :via => :get, :constraints => { :format => 'html' }
 
   root :to => "pages#home", :via => :get
 end
