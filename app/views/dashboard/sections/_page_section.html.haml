@@ -1,4 +1,4 @@
-= form_for [ :dashboard, page_section ] do |f|
+= form_for [ :dashboard, page_section ], :validate => true do |f|
   - if page_section.errors.any?
     = render :partial => 'shared/error_explanation', :object => page_section
 

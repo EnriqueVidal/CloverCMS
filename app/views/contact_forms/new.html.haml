@@ -1,5 +1,5 @@
 %fieldset
-  = form_for @contact_form, :as => :contact_form, :url => contact_form_path do |contact|
+  = form_for @contact_form, :validate => true do |contact|
     = contact.label :recipient
     = contact.text_field :recipient
 

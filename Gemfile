@@ -1,6 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'rails',          '3.0.5'
+gem 'rails',          '3.0.6'
+
+gem 'client_side_validations', '3.0.2'
+gem 'kaminari'
 gem 'will_paginate',  '3.0.pre2'
 gem 'haml-rails'
 gem 'devise'

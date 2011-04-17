@@ -90,3 +90,9 @@
     }
   }
 }
+
+.field_with_errors input, .field_with_errors textarea {
+  background-color: #FFAAAA;
+  border: 2px solid #A00000 !important;
+  color: #AA0000;
+}

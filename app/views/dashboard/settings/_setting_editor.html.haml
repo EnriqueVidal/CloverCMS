@@ -1,4 +1,4 @@
-= form_for [ :dashboard, setting_editor ] do |f|
+= form_for [ :dashboard, setting_editor ], :validate => true do |f|
   .columns
     .half
       = f.label :name
