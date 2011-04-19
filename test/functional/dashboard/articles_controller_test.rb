@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'will_paginate'
 
 class Dashboard::ArticlesControllerTest < ActionController::TestCase
   include Devise::TestHelpers
@@ -8,7 +7,6 @@ class Dashboard::ArticlesControllerTest < ActionController::TestCase
     @admin    = Factory :admin
     @user     = Factory :user,    :email => 'some@dude.com'
     @article  = Factory :article, :user_id => @user.id
-    Article.any_instance.stubs(:paginate).with(:page => 1, :per_page => 5).returns([].paginate)
   end
 
   test "factories should pass" do

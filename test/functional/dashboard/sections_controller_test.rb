@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'will_paginate'
 
 class Dashboard::SectionsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
@@ -17,7 +16,6 @@ class Dashboard::SectionsControllerTest < ActionController::TestCase
 
   test "should get index if admin" do
     login_as @admin
-    Section.expects(:paginate).with(:page => 1, :per_page => 5).returns([].paginate)
 
     get :index, :page => 1
     assert_response :success

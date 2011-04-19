@@ -7,7 +7,7 @@ class Dashboard::PagesController < ApplicationController
 
   # GET /pages
   def index
-    @pages = @section.pages.paginate :page => params[:page], :per_page => 5
+    @pages = @section.pages.page params[:page]
   end
 
   # GET /pages/new

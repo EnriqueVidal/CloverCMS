@@ -14,4 +14,4 @@
       %th= t 'common.messages.options'
   %tbody
     = render :partial => 'setting', :collection => @settings
-= will_paginate @settings
+= paginate @settings

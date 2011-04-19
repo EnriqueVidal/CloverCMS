@@ -6,7 +6,7 @@ class Dashboard::UsersController < ApplicationController
   set_tab :edit_user_roles, :only => :edit
 
   def index
-    @users = User.paginate :page => params[:page], :per_page => 5, :order => 'username'
+    @users = User.order('username').page params[:page]
   end
 
   def edit

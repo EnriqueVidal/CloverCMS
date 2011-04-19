@@ -5,7 +5,7 @@ class Dashboard::SettingsController < ApplicationController
   set_tab :new_setting,   :only => :new
 
   def index
-    @settings = Setting.paginate :page => params[:page], :per_page =>  5
+    @settings = Setting.page params[:page]
   end
 
   def new

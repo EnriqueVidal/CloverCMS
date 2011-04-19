@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'will_paginate'
 
 class Dashboard::UsersControllerTest < ActionController::TestCase
   include Devise::TestHelpers

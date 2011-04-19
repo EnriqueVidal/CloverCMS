@@ -8,8 +8,8 @@ class Dashboard::ArticlesController < ApplicationController
   set_tab :new_article, :only => :new
 
   def index
-    @articles = current_user.articles.paginate :page => params[:page], :per_page => 5 unless current_user.admin?
-    @articles ||= Article.paginate :page => params[:page], :per_page => 5
+    @articles = current_user.articles.page params[:page] unless current_user.admin?
+    @articles ||= Article.page params[:page]
   end
 
   def new
