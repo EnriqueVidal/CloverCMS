@@ -136,7 +136,6 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     rcov (0.9.9)
-    redgreen (1.2.2)
     reek (1.2.8)
       ruby2ruby (~> 1.2)
       ruby_parser (~> 2.0)
@@ -179,7 +178,6 @@ DEPENDENCIES
   mysql2
   paperclip
   rails (= 3.0.7)
-  redgreen
   sqlite3-ruby
   tabs_on_rails
   turn

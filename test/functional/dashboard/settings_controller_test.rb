@@ -4,8 +4,8 @@ class Dashboard::SettingsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @admin    = Factory :admin, :email => "root@site.com"
-    @setting  = Factory :setting, :name => "test_setting", :value => "true", :description => "this setting is just for testing"
+    @admin    = Factory.create :admin, :email => "root@site.com"
+    @setting  = Factory.create :setting, :name => "test_setting", :value => "true", :description => "this setting is just for testing"
     @setting.destroyable = false
     @setting.save!
   end

@@ -4,10 +4,10 @@ class Dashboard::PagesControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @admin    = Factory(:admin, :email => 'root@site.com')
-    @user     = Factory(:user)
-    @section  = Factory(:section)
-    @page     = Factory(:page, :section_id => @section.id)
+    @admin    = Factory.create :admin, :email => 'root@site.com'
+    @user     = Factory.create :user
+    @section  = Factory.create :section
+    @page     = Factory.create :page, :section => @section
   end
 
   test "factories should workd" do
@@ -19,7 +19,7 @@ class Dashboard::PagesControllerTest < ActionController::TestCase
   test "should get index as admin" do
     login_as @admin
 
-    get :index, {:section_id => @section.id}
+    get :index, :section_id => @section.id
     assert_response :success
     assert_not_nil assigns(:pages)
   end
@@ -27,26 +27,26 @@ class Dashboard::PagesControllerTest < ActionController::TestCase
   test "should redirect if user is not admin" do
     login_as @user
 
-    get :index, {:section_id => @section.id}
+    get :index, :section_id => @section.id
     assert_redirected_to new_user_session_path
   end
 
   test "should redirect to login if not logged in" do
-    get :index, {:section_id => @section.id}
+    get :index, :section_id => @section.id
     assert_redirected_to new_user_session_path
   end
 
   test "should get new if admin" do
     login_as @admin
 
-    get :new, { :section_id => @section.id }
+    get :new, :section_id => @section.id
     assert_response :success
   end
 
   test "should not get new if not admin" do
     login_as @user
 
-    get :new, { :section_id => @section.id }
+    get :new, :section_id => @section.id
     assert_redirected_to new_user_session_path
   end
 
@@ -54,7 +54,7 @@ class Dashboard::PagesControllerTest < ActionController::TestCase
     login_as @admin
 
     assert_difference('Page.count') do
-      post :create, :section_id => @section.id, :page => Factory.attributes_for(:page, :name => 'newest page', :section_id => @section.id)
+      post :create, :section_id => @section.id, :page => Factory.attributes_for(:page, :name => 'newest page', :section => @section)
     end
 
     assert_redirected_to dashboard_section_pages_path(@section)
@@ -62,7 +62,7 @@ class Dashboard::PagesControllerTest < ActionController::TestCase
 
 
   test "shouldn't create page if not admin" do
-    post :create, :section_id => @section.id, :page => Factory.attributes_for(:page, :name => 'newest page', :section_id => @section.id)
+    post :create, :section_id => @section.id, :page => Factory.attributes_for(:page, :name => 'newest page', :section => @section)
     assert_redirected_to new_user_session_path
   end
 
@@ -81,12 +81,12 @@ class Dashboard::PagesControllerTest < ActionController::TestCase
   test "should update page if admin" do
     login_as @admin
 
-    put :update, :section_id => @section.id, :id => @page.id, :page => Factory.attributes_for(:page, :section_id => @section.id)
+    put :update, :section_id => @section.id, :id => @page.id, :page => Factory.attributes_for(:page, :section => @section)
     assert_redirected_to dashboard_section_pages_path(@section)
   end
 
   test "shouldn't update page if not admin" do
-    put :update, :section_id => @section.id, :id => @page.id, :page => Factory.attributes_for(:page, :section_id => @section.id)
+    put :update, :section_id => @section.id, :id => @page.id, :page => Factory.attributes_for(:page, :section => @section)
     assert_redirected_to new_user_session_path
   end
 

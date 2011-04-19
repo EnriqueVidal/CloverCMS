@@ -1,15 +1,14 @@
 class Page < ActiveRecord::Base
   include GenerateUrlName
-  acts_as_taggable_on :keywords 
+  acts_as_taggable_on :keywords
   has_many :assets, :as => :attachable
   belongs_to :section
 
   before_validation :strip_name
   before_save :check_home_page
 
-  validates_presence_of     :name, :content
+  validates_presence_of     :name, :content, :section
   validates_uniqueness_of   :name, :url_name, :allow_blank? => false, :allow_nil? => false
-  validates_numericality_of :section_id, :message => 'needs to be set', :greater_than => 0
 
   scope :published, where(:published => true)
 

@@ -2,8 +2,8 @@ require 'test_helper'
 
 class PagesControllerTest < ActionController::TestCase
   setup do
-    @section  = Factory :section
-    @page     = Factory :page, :section => @section, :home_page => true
+    @section  = Factory.create :section
+    @page     = Factory.create :page, :section => @section, :home_page => true
   end
 
   test "anyone can hit show" do

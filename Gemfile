@@ -13,15 +13,17 @@ gem "compass", ">= 0.10.6"
 gem 'tabs_on_rails'
 gem 'jquery-rails'
 
+group :development do
+  gem 'metric_fu', :require => false
+end
+
 group :test, :development do
-  gem 'sqlite3-ruby',   :require => 'sqlite3'
-  gem 'metric_fu',      :require => false
+  gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 
 group :test do
   gem 'factory_girl_rails'
-  gem 'mocha',          :require => false
-  gem 'redgreen',       :require => false
+  gem 'mocha', :require => false
   gem 'turn'
 end
 

@@ -4,9 +4,9 @@ class Dashboard::SectionsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @admin    = Factory(:admin)
-    @user     = Factory(:user, :email => 'some@dude.com')
-    @section  = Factory(:section)
+    @admin    = Factory.create :admin
+    @user     = Factory.create :user, :email => 'some@dude.com'
+    @section  = Factory.create :section
   end
 
   test "factories should pass" do

@@ -2,9 +2,7 @@ require 'test_helper'
 
 class SettingTest < ActiveSupport::TestCase
   def setup
-    @theme = Setting.create! :name => 'theme', :value => 'clover'
-    @theme.destroyable = false
-    @theme.save!
+    @theme = Factory.create :setting, :name => 'theme', :value => 'clover', :destroyable => false
   end
 
   test "setting should have a name and value" do
@@ -28,17 +26,17 @@ class SettingTest < ActiveSupport::TestCase
 
   test "settings count increase after creating a new setting" do
     assert_difference 'Setting.count' do
-      Factory(:setting)
+      Factory.create(:setting)
     end
   end
 
   test "settings name should be properly formatted" do
-    setting = Setting.new Factory.attributes_for(:setting, :name => 'badly formated name ')
+    setting = Factory.build(:setting, :name => 'badly formated name ')
     assert setting.invalid?
   end
 
   test "should not delete setting if setting is not destroyable" do
-    setting = Factory(:setting, :destroyable => true)
+    setting = Factory.create(:setting, :destroyable => true)
 
     assert !@theme.delete
     assert setting.delete

@@ -4,9 +4,9 @@ class Dashboard::UsersControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   def setup
-    @admin  = Factory :admin, :confirmed_at => Time.now
-    @user   = Factory :user, :email => 'some@dude.com', :confirmed_at => Time.now
-    Factory :role
+    @admin  = Factory.create :admin, :confirmed_at => Time.now
+    @user   = Factory.create :user, :email => 'some@dude.com', :confirmed_at => Time.now
+    Factory.create :role
   end
 
   test "if not admin can not get index" do
