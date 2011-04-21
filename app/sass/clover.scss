@@ -1,6 +1,6 @@
 html {
   background-image: url('/images/themes/clover/html_bg.jpg');
-  background-repeat: repeat-x;
+  background-repeat: repeat;
   background-color: #3B5061;
 
   body {
@@ -17,11 +17,8 @@ html {
     h3 { font-size: .93em; }
 
     div.hline1 {
-      background-image: url('/images/themes/clover/hline_bg.jpg');
-      background-color: white;
-      height: 10px;
-      width: 960px;
-      overflow: hidden;
+      background-color: #ccc;
+      height: 3px;
     }
 
     div.hline2{
@@ -33,23 +30,29 @@ html {
     }
 
     #wrapper {
-      width: 960px;
-      margin: 10px auto;
       text-align: left;
 
       #top {
-        background: #2D2D2D url('/images/themes/clover/top_bg.jpg') no-repeat;
-        width: 960px;
-        height:100px;
+        background: url('/images/themes/clover/top_bg.jpg') repeat-x;
+		background-repeat: repeat-x;
+        height: 135px;
 
         #website_name { display: none }
 
-        #navigation {
+        #logo {
+          background: url('/images/themes/clover/clover_logo.png') no-repeat;
           float: left;
+          width: 338px;
+          height: 60px;
+          margin-left: 40px;
+          margin-top: 40px;
+        }
+
+        #navigation {
+          float: right;
           display: inline;
-          width: 430px;
-          margin-left: 525px;
-          margin-top: 36px;
+          width: 470px;
+          margin-top: 73px;
 
           #nav {
             li {
@@ -58,67 +61,21 @@ html {
               display:inline;
 
               a {
-                padding: 8px 0px;
+                background: url('/images/themes/clover/button_bg.png') no-repeat top center;
+                padding: 6px 0px;
                 display: block;
                 outline: 0;
-              }
-
-              a, a:active, a:visited {
-                text-decoration: none;
-                text-transform: uppercase;
+                width: 81px;
+                height: 31px;
+                text-align: center;
                 color: white;
                 font-size: 14px;
+                text-decoration: none;
               }
-            }
 
-            #hola a {
-              width: 54px;
-              text-align: center;
-            }
-
-            #hola.active a, #hola a:hover {
-              background: transparent url('/images/themes/clover/home_button.gif') no-repeat top center;
-               text-align: center;
-            }
-
-            #conoce a {
-              width: 76px;
-              text-align: center;
-            }
-
-            #conoce.active a, #conoce a:hover {
-              background: transparent url('/images/themes/clover/conoce_button.gif') no-repeat top center;
-              text-align: center;
-            }
-
-            #crece a, #login a {
-              width: 64px;
-              text-align: center;
-            }
-
-            #crece.active a, #crece a:hover, #login.active a, #login a:hover {
-              background: transparent url('/images/themes/clover/crece_button.gif') no-repeat top center;
-              text-align: center;
-            }
-
-            #negocio a {
-              width: 110px;
-              text-align: center;
-            }
-
-            #negocio.active a, #negocio a:hover {
-              background: transparent url('/images/themes/clover/negocio_button.gif') no-repeat top center;
-              text-align: center;
-            }
-
-            #contacto a, #live_chat a {
-              width: 93px;
-              text-align: center;
-            }
-
-            #contacto.active a, #contacto a:hover, #live_chat.active a, #live_chat a:hover {
-              background: transparent url('/images/themes/clover/contacto_button.gif') no-repeat top center;
-              text-align: center;
+              a:active, a:hover {
+                background: url('/images/themes/clover/button_over.png') no-repeat top center;
+              }
             }
           }
         }
@@ -219,7 +176,8 @@ html {
         padding: 40px 0px;
         overflow: hidden;
         height: 100%;
-        background: white url('/images/themes/clover/mid_bg.jpg') repeat-x;
+		width: 820px;
+        background: white;
 
         #content, #column {
           float: left;

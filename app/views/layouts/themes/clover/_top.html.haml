@@ -1,6 +1,10 @@
 #top
   #website_name
     %h1 CloverInteractive
+  #logo
+  #search
+    %input(type="search" name="search" value="Search")/
+    #search-button= link_to 'Search', '#'
   #navigation
     %ul#nav
       %li#hola.hola=            link_to 'Hola', '/'
@@ -8,4 +12,3 @@
       %li#crece.crece=          link_to 'Crece', '#'
       %li#contacto.contacto=    link_to 'Contacto', '#'
       %li#live_chat.live_chat=  link_to 'live chat', '#'
-.hline1
