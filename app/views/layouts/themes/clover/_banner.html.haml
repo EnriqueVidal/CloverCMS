@@ -8,6 +8,6 @@
       #slider_left= link_to image_tag("themes/clover/scroll_left.gif",   :alt => "Scroll left"), "#", :class => "previous"
       = render :partial => 'layouts/themes/clover/slides'
       #slider_right= link_to image_tag("themes/clover/scroll_right.gif", :alt => "Scroll right"), "#", :class => "next"
-  - elsif @page.present?
-    %h1= page.section.name.titleize
+  - elsif page.present?
+    %h1= section.name.titleize
     %h2= page.name.titleize

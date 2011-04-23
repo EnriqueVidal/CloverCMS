@@ -8,7 +8,7 @@
   - if content_for? :sub_nav
     = yield :sub_nav
   - else
-    = render :partial => "layouts/dashboard/nav/#{controller_name}"
+    = render :partial => "layouts/dashboard/nav/#{controller_name}", :locals => { :section => @section }
 
 - content_for :head do
   = javascript_include_tag  'jquery-ui.min', 'wymeditor/jquery.wymeditor.min', 'boot_wym', 'uploadify/swfobject', 'uploadify/uploadify.min'

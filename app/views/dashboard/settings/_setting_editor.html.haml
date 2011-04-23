@@ -8,8 +8,8 @@
       = f.text_field :description
 
       = f.label :value
-      - if @themes.present?
-        = f.select :value, @themes
+      - if themes.present?
+        = f.select :value, themes
       - else
         = f.text_area :value
 

@@ -1,6 +1,4 @@
 class Dashboard::UsersController < ApplicationController
-  layout 'dashboard'
-
   access_control do
     allow :admin
   end

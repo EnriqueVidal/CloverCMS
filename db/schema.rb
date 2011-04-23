@@ -12,18 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110421033234) do
 
-  create_table "articles", :force => true do |t|
-    t.string   "name"
-    t.string   "url_name"
-    t.text     "content"
-    t.boolean  "published"
-    t.boolean  "in_home_page"
-    t.string   "kind",         :default => "post"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "assets", :force => true do |t|
     t.string  "description"
     t.string  "asset_file_name"
@@ -32,6 +20,9 @@ ActiveRecord::Schema.define(:version => 20110421033234) do
     t.integer "attachable_id"
     t.string  "attachable_type"
   end
+
+  add_index "assets", ["asset_content_type"], :name => "index_assets_on_asset_content_type"
+  add_index "assets", ["attachable_id", "attachable_type"], :name => "index_assets_on_attachable_id_and_attachable_type"
 
   create_table "pages", :force => true do |t|
     t.string   "name"
@@ -44,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20110421033234) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "pages", ["section_id"], :name => "index_pages_on_section_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name",              :limit => 40
@@ -75,6 +68,8 @@ ActiveRecord::Schema.define(:version => 20110421033234) do
     t.datetime "updated_at"
   end
 
+  add_index "sections", ["main_section_id"], :name => "index_sections_on_main_section_id"
+
   create_table "settings", :force => true do |t|
     t.string   "name",                          :null => false
     t.text     "value",                         :null => false
@@ -96,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20110421033234) do
 
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tagger_id", "tagger_type"], :name => "index_taggings_on_tagger_id_and_tagger_type"
 
   create_table "tags", :force => true do |t|
     t.string "name"

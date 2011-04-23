@@ -8,9 +8,15 @@ class CreateAssets < ActiveRecord::Migration
       t.integer :attachable_id
       t.string  :attachable_type
     end
+
+    add_index :assets, :asset_content_type
+    add_index :assets, [ :attachable_id, :attachable_type ]
   end
 
   def self.down
-   drop_table :assets
+    remove_index :assets, [ :attachable_id, :attachable_type ]
+    remove_index :assets, :asset_content_type
+
+    drop_table :assets
   end
 end

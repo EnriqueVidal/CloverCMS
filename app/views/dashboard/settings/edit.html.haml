@@ -1,2 +1,2 @@
 %h2= t 'links.edit_item', :item => t('activerecord.models.setting')
-= render :partial => 'setting_editor', :object => @setting
+= render :partial => 'setting_editor', :object => @setting, :locals => { :themes => @themes }

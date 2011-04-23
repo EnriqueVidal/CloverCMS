@@ -7,9 +7,13 @@ class CreateSections < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :sections, :main_section_id
   end
 
   def self.down
+    remove_index :sections, :main_section_id
+
     drop_table :sections
   end
 end

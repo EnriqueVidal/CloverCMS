@@ -1,3 +1,3 @@
 = tabs_tag :open_tabs => { :id => "sub_menu", :class => "sub_nav" } do |tab|
   = tab.list_pages  t('links.item_list',  :item => t('activerecord.models.page')), dashboard_section_pages_path
-  = tab.new_page    t('links.new_item',   :item => t('activerecord.models.page')), new_dashboard_section_page_path(@section || 1)
+  = tab.new_page    t('links.new_item',   :item => t('activerecord.models.page')), new_dashboard_section_page_path(section || 1)

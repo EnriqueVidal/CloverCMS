@@ -1,6 +1,4 @@
 class Dashboard::SectionsController < ApplicationController
-  layout 'dashboard'
-
   set_tab :list_sections, :only => :index
   set_tab :new_section,   :only => :new
 

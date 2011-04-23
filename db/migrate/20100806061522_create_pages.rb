@@ -11,9 +11,13 @@ class CreatePages < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :pages, :section_id
   end
 
   def self.down
+    remove_index :pages, :section_id
+
     drop_table :pages
   end
 end

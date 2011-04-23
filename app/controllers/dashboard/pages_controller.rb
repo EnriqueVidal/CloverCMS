@@ -1,6 +1,5 @@
 class Dashboard::PagesController < ApplicationController
   before_filter :set_section
-  layout 'dashboard'
 
   access_control do
     allow :admin
