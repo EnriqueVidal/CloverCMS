@@ -4,9 +4,7 @@ class Dashboard::UsersControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   def setup
-    @admin  = Factory.create :admin, :confirmed_at => Time.now
     @user   = Factory.create :user, :email => 'some@dude.com', :confirmed_at => Time.now
-    Factory.create :role
   end
 
   test "if not admin can not get index" do
@@ -21,32 +19,14 @@ class Dashboard::UsersControllerTest < ActionController::TestCase
   end
 
   test "if admin can get index" do
-    login_as @admin
+    login_as @user, :admin
     get :index
     assert_response :success
     assert_template :index
   end
 
-  test "admin can get edit" do
-    login_as @admin
-
-    get :edit, :id => @admin.id
-    assert_response :success
-    assert_template :edit
-  end
-
-  test "admin can update users roles" do
-    login_as @admin
-
-    assert_difference "User.find(#{@user.id}).roles.count" do
-      put :update, :roles => { 1 => Authorization::Role.first.id }, :id => @user.id
-      assert assigns(:user)
-      assert_redirected_to edit_dashboard_user_path(@user)
-    end
-  end
-
   test "admin can delete users" do
-    login_as @admin
+    login_as @user, :admin
 
     assert_difference "User.count", -1 do
       delete :destroy, :id => @user.id

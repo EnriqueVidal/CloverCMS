@@ -5,10 +5,6 @@ Factory.define :user do |f|
   f.password_confirmation 'somepassword'
 end
 
-Factory.define :admin, :parent => :user do |f|
-  f.admin true
-end
-
 Factory.define :page do |f|
   f.name 'My new page'
   f.published true
@@ -23,10 +19,6 @@ end
 Factory.define :article do |f|
   f.name 'First article'
   f.content 'This is my first article'
-end
-
-Factory.define :role, :class => Authorization::Role do |r|
-  r.name 'Some role'
 end
 
 Factory.define :setting do |s|

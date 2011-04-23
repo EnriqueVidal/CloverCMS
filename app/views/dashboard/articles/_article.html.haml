@@ -1,7 +1,0 @@
-%tr{ :class => cycle(:odd, :even) }
-  %td= link_to article.name, edit_dashboard_article_path(article)
-  %td= l article.created_at, :format => :short
-  %td= l article.updated_at, :format => :short
-  %td
-    = link_to t('links.edit'), edit_dashboard_article_path(article), :class => 'icon edit'
-    = link_to t('links.destroy'), dashboard_article_path(article), :confirm => t('common.messages.are_you_sure'), :method => :delete, :class => 'icon delete'

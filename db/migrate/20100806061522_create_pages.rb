@@ -5,8 +5,9 @@ class CreatePages < ActiveRecord::Migration
       t.string  :url_name
       t.text    :content
       t.integer :section_id
-      t.boolean :published, :default => false
-      t.boolean :home_page, :default => false
+      t.boolean :published,   :default => false
+      t.boolean :home_page,   :default => false
+      t.boolean :has_contact, :default => false
 
       t.timestamps
     end

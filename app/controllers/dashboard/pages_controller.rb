@@ -1,6 +1,10 @@
 class Dashboard::PagesController < ApplicationController
-  before_filter :check_authorization, :set_section
+  before_filter :set_section
   layout 'dashboard'
+
+  access_control do
+    allow :admin
+  end
 
   set_tab :list_pages, :only => :index
   set_tab :new_page, :only => :new

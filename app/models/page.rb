@@ -1,6 +1,9 @@
 class Page < ActiveRecord::Base
   include GenerateUrlName
+
   acts_as_taggable_on :keywords
+  acts_as_authorization_object
+
   has_many :assets, :as => :attachable
   belongs_to :section
 

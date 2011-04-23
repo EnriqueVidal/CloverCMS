@@ -1,6 +1,4 @@
 class Dashboard::SettingsController < ApplicationController
-  before_filter :check_authorization
-
   set_tab :list_settings, :only => :index
   set_tab :new_setting,   :only => :new
 

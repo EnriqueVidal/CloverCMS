@@ -7,10 +7,9 @@ Clover::Application.routes.draw do
   match "/dashboard/profile", :to => redirect("/users/edit"),     :as => :user_root, :via => :get
 
   namespace :dashboard do
-    resources :users,     :only   => [ :index, :destroy, :edit, :update ]
+    resources :users,     :only   => [ :index, :destroy ]
     resources :assets,    :only   => [ :create, :destroy ]
     resources :settings,  :except => :show
-    resources :articles,  :except => :show
     resources :sections,  :except => :show  do
       resources :pages,   :except => :show
     end

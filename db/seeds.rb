@@ -7,8 +7,9 @@ pages   = Page.create! :name => 'main page', :content => 'this is my main page',
 
 user    = User.create! :username => 'admin', :password => 'administrator', :email => "admin@example.com"
 user.confirmed_at = Time.now
-user.admin = true
 user.save!
+
+user.has_role! :admin
 
 # We create the default non-destroyable site settings
 

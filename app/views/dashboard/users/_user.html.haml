@@ -1,8 +1,7 @@
 %tr{ :class => cycle(:odd, :even) }
-  %td= link_to user.username, edit_dashboard_user_path(user)
-  %td= link_to user.email,    edit_dashboard_user_path(user)
+  %td= user.username
+  %td= user.email
   %td= l(user.confirmed_at,     :format => :short) if user.confirmed_at
   %td= l(user.last_sign_in_at,  :format => :short) if user.last_sign_in_at
   %td
-    = link_to t('links.edit'), edit_dashboard_user_path(user), :class => 'icon user_edit'
     = link_to t('links.destroy'), dashboard_user_path(user), :method => :delete, :confirm => t('common.messages.are_you_sure'), :class => 'icon user_delete'

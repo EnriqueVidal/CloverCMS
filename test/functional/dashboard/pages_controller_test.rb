@@ -4,20 +4,19 @@ class Dashboard::PagesControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @admin    = Factory.create :admin, :email => 'root@site.com'
     @user     = Factory.create :user
     @section  = Factory.create :section
     @page     = Factory.create :page, :section => @section
   end
 
-  test "factories should workd" do
-    assert @admin
+  test "factories should work" do
+    assert @user
     assert @section
     assert @page
   end
 
   test "should get index as admin" do
-    login_as @admin
+    login_as @user, :admin
 
     get :index, :section_id => @section.id
     assert_response :success
@@ -37,7 +36,7 @@ class Dashboard::PagesControllerTest < ActionController::TestCase
   end
 
   test "should get new if admin" do
-    login_as @admin
+    login_as @user, :admin
 
     get :new, :section_id => @section.id
     assert_response :success
@@ -51,7 +50,7 @@ class Dashboard::PagesControllerTest < ActionController::TestCase
   end
 
   test "should create page if admin" do
-    login_as @admin
+    login_as @user, :admin
 
     assert_difference('Page.count') do
       post :create, :section_id => @section.id, :page => Factory.attributes_for(:page, :name => 'newest page', :section => @section)
@@ -67,7 +66,7 @@ class Dashboard::PagesControllerTest < ActionController::TestCase
   end
 
   test "should get edit if admin" do
-    login_as @admin
+    login_as @user, :admin
     get :edit, :id => @page.id, :section_id => @section.id
     assert_response :success
   end
@@ -79,7 +78,7 @@ class Dashboard::PagesControllerTest < ActionController::TestCase
   end
 
   test "should update page if admin" do
-    login_as @admin
+    login_as @user, :admin
 
     put :update, :section_id => @section.id, :id => @page.id, :page => Factory.attributes_for(:page, :section => @section)
     assert_redirected_to dashboard_section_pages_path(@section)
@@ -91,7 +90,7 @@ class Dashboard::PagesControllerTest < ActionController::TestCase
   end
 
   test "should destroy page if admin" do
-    login_as @admin
+    login_as @user, :admin
 
     assert_difference('Page.count', -1) do
       delete :destroy, :section_id => @section.id, :id => @page.id

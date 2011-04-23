@@ -20,17 +20,4 @@ class UserTest < ActiveSupport::TestCase
       assert user.invalid?
     end
   end
-
-  test "user can add roles by sending an array of ids" do
-    3.times do |n|
-      Factory.create :role, :name => "Role #{n}"
-    end
-
-    user  = Factory.create :user
-    assert_equal 0, user.roles.count
-
-    assert_difference "User.first.roles.count", 3 do
-      assert user.add_roles %w/1 2 3/
-    end
-  end
 end

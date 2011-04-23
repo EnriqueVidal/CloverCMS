@@ -1,26 +1,16 @@
 class ApplicationController < ActionController::Base
   extend ActiveSupport::Memoizable
-  before_filter :set_locale
+  before_filter :set_locale, :authenticate_user!
   layout :guess_layout
 
   rescue_from ActiveRecord::RecordNotFound,     :with => :record_missing
   rescue_from Clover::PageNotFoundError,        :with => :page_not_found
   rescue_from Clover::UnauthorizedAccessError,  :with => :unauthorized_access
+  rescue_from Acl9::AccessDenied,               :with => :unauthorized_access
 
   protect_from_forgery
 
   helper_method :site
-
-  def check_authorization
-    unless current_user.present? && (current_user.admin? || current_user.roles.detect do |role|
-        role.rights.detect  do |right|
-          right.action == action_name && right.controller ==  self.class.controller_path
-        end
-      end)
-      raise Clover::UnauthorizedAccessError
-    end
-    true
-  end
 
   def site
     Setting.get_site_settings

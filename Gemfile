@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails',          '3.0.7'
-
+gem 'rails', '3.0.7'
 gem 'client_side_validations', '3.0.2'
 gem 'kaminari'
 gem 'haml-rails'
@@ -12,6 +11,7 @@ gem 'mime-types', :require => 'mime/types'
 gem "compass", ">= 0.10.6"
 gem 'tabs_on_rails'
 gem 'jquery-rails'
+gem 'acl9'
 
 group :development do
   gem 'metric_fu', :require => false

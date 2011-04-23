@@ -1,9 +1,12 @@
 class Dashboard::SectionsController < ApplicationController
-  before_filter :check_authorization
   layout 'dashboard'
 
   set_tab :list_sections, :only => :index
-  set_tab :new_section, :only => :new
+  set_tab :new_section,   :only => :new
+
+  access_control do
+    allow :admin
+  end
 
   # GET /sections
   def index
@@ -12,7 +15,7 @@ class Dashboard::SectionsController < ApplicationController
 
   # GET /sections/1
   def show
-    @section = Section.find(params[:id])
+    @section = Section.find params[:id]
   end
 
   # GET /sections/new
@@ -22,12 +25,12 @@ class Dashboard::SectionsController < ApplicationController
 
   # GET /sections/1/edit
   def edit
-    @section = Section.find(params[:id])
+    @section = Section.find params[:id]
   end
 
   # POST /sections
   def create
-    @section = Section.new(params[:section])
+    @section = Section.new params[:section]
 
     if @section.save
       flash[:success] = t 'messages.created_successfully'
@@ -39,9 +42,9 @@ class Dashboard::SectionsController < ApplicationController
 
   # PUT /sections/1
   def update
-    @section = Section.find(params[:id])
+    @section = Section.find params[:id]
 
-    if @section.update_attributes(params[:section])
+    if @section.update_attributes params[:section]
       flash[:success] = t 'messages.updated_successfully'
       redirect_to dashboard_sections_path
     else
@@ -51,7 +54,7 @@ class Dashboard::SectionsController < ApplicationController
 
   # DELETE /sections/1
   def destroy
-    @section = Section.find(params[:id])
+    @section = Section.find params[:id]
     @section.destroy
 
     redirect_to dashboard_sections_path

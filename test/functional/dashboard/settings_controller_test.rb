@@ -4,7 +4,7 @@ class Dashboard::SettingsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @admin    = Factory.create :admin, :email => "root@site.com"
+    @user     = Factory.create :user
     @setting  = Factory.create :setting, :name => "test_setting", :value => "true", :description => "this setting is just for testing"
     @setting.destroyable = false
     @setting.save!
@@ -33,19 +33,8 @@ class Dashboard::SettingsControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
   end
 
-  test "authorized user should be able to get all pages" do
-    login_as @admin
-
-    actions = %w/index new edit/
-    actions.each do |action|
-      get action, :id => @setting.id
-      assert_response :success
-      assert_template action
-    end
-  end
-
   test "should not be able to update non destroyable settings name" do
-    login_as @admin
+    login_as @user
 
     new_name = "new_name"
     put :update, :id => @setting.id, :setting => { :name => new_name }
@@ -54,8 +43,8 @@ class Dashboard::SettingsControllerTest < ActionController::TestCase
     assert_not_equal new_name, @setting.name
   end
 
-  test "should be able to update value and description from non destroyable settings" do
-    login_as @admin
+  test "should be able to update value and description from all settings" do
+    login_as @user
 
     new_values      = { :value => "false", :description => "this is can be changed" }
     original_values = @setting.attributes
@@ -66,8 +55,8 @@ class Dashboard::SettingsControllerTest < ActionController::TestCase
     assert_not_equal original_values[:description], @setting.description
   end
 
-  test "authorized users should be able to create new settings with destroyable defaulting to true" do
-    login_as @admin
+  test "authorized users should be able to create new settings" do
+    login_as @user
 
     new_setting_values = Factory.attributes_for :setting
 
@@ -80,9 +69,9 @@ class Dashboard::SettingsControllerTest < ActionController::TestCase
   end
 
   test "authorized users should be able to destroy destroyable settings" do
-    login_as @admin
+    login_as @user
 
-    Factory(:setting)
+    Factory.create :setting
 
     assert_difference 'Setting.count', -1 do
       delete :destroy, :id => Setting.last.id
@@ -91,8 +80,8 @@ class Dashboard::SettingsControllerTest < ActionController::TestCase
     end
   end
 
-  test "authorized users should not be able to destroy destroyable settings" do
-    login_as @admin
+  test "should not be able to destroy destroyable settings" do
+    login_as @user
 
     assert_no_difference 'Setting.count' do
       delete :destroy, :id => @setting.id

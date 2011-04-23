@@ -1,5 +1,5 @@
 class Dashboard::AssetsController < ApplicationController
-  before_filter :fix_content_type, :check_authorization
+  before_filter :fix_content_type
 
   def create
     @asset = Asset.new :attachable_type => params[:attachable_type], :attachable_id => params[:attachable_id]
